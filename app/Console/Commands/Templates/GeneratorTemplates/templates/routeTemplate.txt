@@ -1,0 +1,6 @@
+// Begin :::model::: Generator Routes
+
+Route::get(':::modelPath:::-generator', ':::model:::GeneratorController@create');
+Route::post(':::modelPath:::-generator', ':::model:::GeneratorController@store');
+
+// End :::model::: Generator Routes

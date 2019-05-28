@@ -1,0 +1,10 @@
+    // Begin :::model::: Api All Models Method
+
+    public function :::allApiControllerMethod:::(Request $request)
+    {
+
+        return GridQuery::sendData($request, ':::model:::Query');
+
+    }
+
+    // End :::model::: Api All Models Method

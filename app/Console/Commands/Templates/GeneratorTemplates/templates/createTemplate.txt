@@ -1,0 +1,29 @@
+@extends('layouts.masters.master-admin-dash')
+
+@section('title')
+
+    <title>Create :::model::: Generator</title>
+
+@endsection
+
+
+
+@section('content')
+
+    <div class="container ">
+
+            <div class="row">
+
+                <h1 class="flow-text grey-text text-darken-1">:::model::: Generator</h1>
+
+                <section class="mt-20">
+
+                    @include(':::modelPath:::-generator.create-form')
+
+                </section>
+
+        </div>
+
+    </div>
+
+@endsection

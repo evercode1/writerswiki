@@ -1,0 +1,4 @@
+<!-- Begin :::model::: Generator Nav -->
+                                      <li><a href="/:::modelPath:::-generator" class="waves-effect">:::model::: Generator
+                                                                      <i class="fa fa-star"></i></a></li>
+                                      <!-- End :::model::: Generator Nav -->

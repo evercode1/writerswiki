@@ -1,0 +1,33 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// partials
+
+@import "circ";
+
+@import 'main';
+
+@import 'margins';
+
+@import 'badges';
+
+@import 'bold';
+
+@import 'errors';
+
+// Materialize
+
+
+
+
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+

@@ -1,0 +1,17 @@
+    // Begin :::model::: Image Config Array Method
+
+
+        ':::imageFolderName:::' => [
+                'destinationFolder'     => '/imgs/:::imageFolderName:::/',
+                'createFolder'          => '/imgs/:::imageFolderName:::',
+                'destinationThumbnail'  => '/imgs/:::imageFolderName:::/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/:::imageFolderName:::/',
+                'thumbnailPath'         => '/imgs/:::imageFolderName:::/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End :::model::: Image Config Array Method

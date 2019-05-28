@@ -1,0 +1,41 @@
+@extends('layouts.masters.master-auth')
+
+@section('title')
+
+    <title>:::upperCaseModelName:::</title>
+
+@endsection
+
+@section('content')
+
+        <div class="container">
+
+        <h1 class="flow-text grey-text text-darken-1">:::upperCaseModelName:::</h1>
+
+        <div class="row">
+
+        <ul class="collection with-header">
+                        <li class="collection-header"><h4>{{ $:::modelInstance:::->name }}</h4></li>
+
+                        <li class="collection-item">From Universe:
+                        <b><a href="/universe/{{ $:::modelInstance:::->universe->id }} -
+                        {{ $:::modelInstance:::->universe->slug }}">
+                        {{ $:::modelInstance:::->universe->name }}</a></b></li>
+
+                        <li class="collection-item">From Galaxy:
+                        <b><a href="/galaxy/{{ $:::modelInstance:::->galaxy->id }} -
+                        {{ $:::modelInstance:::->galaxy->slug }}">
+                        {{ $:::modelInstance:::->galaxy->name }}</a></b></li>
+
+                        <li class="collection-item">{!! $:::modelInstance:::->description !!}</li>
+
+        </ul>
+
+
+
+        <div>
+
+        </div>
+
+@endsection
+

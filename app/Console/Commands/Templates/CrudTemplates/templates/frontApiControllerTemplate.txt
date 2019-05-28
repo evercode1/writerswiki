@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use DB;
+use App\Queries\GridQueries\GridQuery;
+
+class FrontApiController extends Controller
+{
+
+    // Begin :::model::: Api All Models Method
+
+    public function :::allApiControllerMethod:::(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'All:::model:::sQuery');
+
+    }
+
+    // End :::model::: Api All Models Method
+
+}

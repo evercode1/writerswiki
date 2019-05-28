@@ -1,0 +1,25 @@
+@extends('layouts.:::masterPageName:::')
+
+@section('title')
+
+    <title>:::upperCaseModelName:::</title>
+
+    @endsection
+
+
+    @section('content')
+
+        <div class="container">
+
+            <div class="row">
+
+            <:::gridName:::></:::gridName:::>
+
+            </div>
+
+
+        </div>
+
+
+    @endsection
+
