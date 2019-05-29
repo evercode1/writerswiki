@@ -1,4 +1,4 @@
-@extends('layouts.:::masterPageName:::')
+@extends('layouts.masters.:::masterPageName:::')
 
 @section('title')
 

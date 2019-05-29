@@ -27,7 +27,7 @@
     <div class="navbar-fixed">
         <nav class="navbar white">
             <div class="nav-wrapper"><a href="/home" class="brand-logo grey-text text-darken-4 left ml-25">Home</a>
-
+                @if(Auth::check())
                 <ul id="nav-mobile" class="right">
                     <li><a href="#!" data-target="chat-dropdown" class="dropdown-trigger waves-effect"><i class="material-icons">settings</i></a></li>
                     <li><img class="circ" src="{{ Gravatar::get(Auth::user()->email)  }}"></li>
@@ -35,7 +35,21 @@
                     <li><a class="dropdown-trigger" href="#!" data-target="user-links">{{ Auth::user()->name }}
                             <i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul><a href="#!" data-target="sidenav-left" class="sidenav-trigger left"><i class="material-icons black-text">menu</i></a>
+
                 <alarm-bell></alarm-bell>
+
+                @else
+
+                    <ul id="nav-mobile" class="right">
+
+                        <li><a href="{{ url('/auth/facebook') }}">FB</a></li>
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href="{{ url('/register') }}">Register</a></li>
+                    </ul>
+
+
+                @endif
+
 
             </div>
         </nav>

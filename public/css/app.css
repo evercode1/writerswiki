@@ -1,2 +1,170 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css?family=Nunito);/* circ is for gravatar */
+
+.circ {
+  width: 40px;
+  vertical-align: middle;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.circ:hover {
+  box-shadow: 0 0 0 3px #f00;
+}
+
+html,
+body {
+  background-color: #fff;
+  color: #636b6f;
+  font-family: "Raleway", sans-serif;
+  font-weight: 100;
+  height: 100vh;
+  margin: 0;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.position-ref {
+  position: relative;
+}
+
+.top-right {
+  position: absolute;
+  right: 10px;
+  top: 18px;
+}
+
+.content {
+  text-align: center;
+}
+
+.title {
+  font-size: 84px;
+}
+
+.links > a {
+  color: #636b6f;
+  padding: 0 25px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.m-b-md {
+  margin-bottom: 30px;
+}
+
+.mb-5 {
+  margin-bottom: 5px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-50 {
+  margin-bottom: 50px;
+}
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+.ml-5 {
+  margin-left: 5px;
+}
+
+.ml-10 {
+  margin-left: 10px;
+}
+
+.ml-20 {
+  margin-left: 20px;
+}
+
+.ml-25 {
+  margin-left: 25px;
+}
+
+.ml-30 {
+  margin-left: 30px;
+}
+
+.square-badge-blue {
+  border-radius: 3px;
+  width: 50px;
+  height: 15px;
+  background: #3786ed;
+  padding: 5px;
+  color: white;
+}
+
+.square-badge-teal {
+  border-radius: 3px;
+  width: 50px;
+  height: 15px;
+  background: #14a69a;
+  padding: 5px;
+  color: white;
+}
+
+.square-badge-grey {
+  border-radius: 3px;
+  width: 50px;
+  height: 15px;
+  background: #e3e8eb;
+  padding: 5px;
+  color: #343434;
+}
+
+.square-badge-orange {
+  border-radius: 3px;
+  width: 50px;
+  height: 15px;
+  background: #a67736;
+  padding: 5px;
+  color: white;
+}
+
+.make-bold {
+  font-weight: bold;
+}
+
+.help-block {
+  color: red;
+}
+
+.has-error {
+  color: red;
+}
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
 

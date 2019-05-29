@@ -1,4 +1,4 @@
-@extends('layouts.masters.master-guest')
+@extends('layouts.masters.master-auth')
 
 @section('content')
 

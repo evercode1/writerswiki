@@ -20,8 +20,6 @@ class Create:::migrationModel:::Table extends Migration
             $table->string('name', 100)->unique();
             $table->string('slug', 100);
             $table->boolean('is_active')->default(1);
-            $table->unsignedInteger('universe_id');
-            $table->unsignedInteger('galaxy_id');
             $table->longText('description');
             $table->string('image_name')->unique()->nullable();
             $table->string('image_extension', 10)->nullable();

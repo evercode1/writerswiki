@@ -1,0 +1,14 @@
+/* circ is for gravatar */
+
+.circ{
+
+
+  width : 40px;
+  vertical-align: middle;
+  border-radius: 50%;
+  padding: 5px;
+
+}
+.circ:hover{
+  box-shadow: 0 0 0 3px #f00;
+}

@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\UtilityTraits\KebabHelper;
 use App\UtilityTraits\ManagesImages;
 use Illuminate\Http\Request;
-use App\Universe;
-use App\Galaxy;
 use Illuminate\Support\Facades\Redirect;
 :::useModel:::;
 
@@ -49,12 +47,10 @@ class :::upperCaseModelName:::Controller extends Controller
     public function create()
     {
 
-           $universes = Universe::all();
-
-           $galaxies = Galaxy::all();
 
 
-           return view(':::modelPath:::.create', compact('universes', 'galaxies'));
+
+           return view(':::modelPath:::.create');
 
     }
 
@@ -74,10 +70,9 @@ class :::upperCaseModelName:::Controller extends Controller
 
                     'name' => 'required|unique::::tableName:::|string|max:100',
                     'is_active' => 'required|boolean',
-                    'galaxy_id' => 'required|integer',
                     'body' => 'required|string|max:1000',
                     'image' => 'max:1000',
-                    'universe_id' => 'required',
+
 
                 ]);
 
@@ -90,8 +85,6 @@ class :::upperCaseModelName:::Controller extends Controller
         $:::modelInstance::: = :::upperCaseModelName:::::create([ 'name' => $request->name,
                                                                   'slug' => $slug,
                                                                   'is_active' => $request->is_active,
-                                                                  'galaxy_id' => $request->galaxy_id,
-                                                                  'universe_id' => $request->universe_id,
                                                                   'description' => $request->body,
                                                                   'image_name' => $imageName,
                                                                   'image_extension' => $image]);
@@ -141,26 +134,10 @@ class :::upperCaseModelName:::Controller extends Controller
 
         $:::modelInstance::: = :::upperCaseModelName:::::findOrFail($id);
 
-        $universeId = $:::modelInstance:::->universe_id;
-
-        $universeName = $:::modelInstance:::->universe->name;
-
-        $universes = Universe::all();
-
-        $galaxyId = $:::modelInstance:::->galaxy->id;
-
-        $galaxyName = $:::modelInstance:::->galaxy->name;
-
-        $galaxies = Galaxy::all();
 
 
-        return view(':::modelPath:::.edit', compact(':::modelInstance:::' ,
-                                                    'universeId',
-                                                    'universeName',
-                                                    'universes',
-                                                    'galaxyId',
-                                                    'galaxyName',
-                                                    'galaxies'));
+
+        return view(':::modelPath:::.edit', compact(':::modelInstance:::'));
 
     }
 
@@ -180,10 +157,9 @@ class :::upperCaseModelName:::Controller extends Controller
 
             'name' => 'required|string|max:100|unique::::tableName:::,name,' .$id,
             'is_active' => 'required|boolean',
-            'galaxy_id' => 'required|integer',
             'body' => 'required|string|max:1000',
             'image' => 'max:1000',
-            'universe_id' => 'required'
+
 
             ]);
 
@@ -259,10 +235,8 @@ class :::upperCaseModelName:::Controller extends Controller
 
         $modelInstance->name = $request->get('name');
         $modelInstance->slug = $slug;
-        $modelInstance->galaxy_id = $request->get('galaxy_id');
         $modelInstance->is_active = $request->get('is_active');
         $modelInstance->description = $request->get('body');
-        $modelInstance->universe_id = $request->get('universe_id');
         $modelInstance->image_name = $this->formatString($request->get('name'));
 
     }
