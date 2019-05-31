@@ -28,7 +28,7 @@
 <div class="navbar-fixed">
     <nav class="navbar blue darken-1">
         <div class="nav-wrapper">
-            <a href="/" class="brand-logo ml-10 left">Star Faer</a>
+            <a href="/" class="brand-logo ml-10 left">Writers Wiki</a>
 
             @if(Auth::check())
             <ul class="right">
