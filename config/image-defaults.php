@@ -15,23 +15,7 @@ return [
 
 
 
-    // Begin Nudge Image Config Array Method
-
-
-        'nudge' => [
-                'destinationFolder'     => '/imgs/nudge/',
-                'createFolder'          => '/imgs/nudge',
-                'destinationThumbnail'  => '/imgs/nudge/thumbnails/',
-                'thumbPrefix'           => 'thumb-',
-                'imagePath'             => '/imgs/nudge/',
-                'thumbnailPath'         => '/imgs/nudge/thumbnails/thumb-',
-                'thumbHeight'           => 60,
-                'thumbWidth'            => 60,
-            ],
-
-
-
-    // End Nudge Image Config Array Method
+    
 
 
 

@@ -2,14 +2,16 @@
 
 namespace App\Console\Commands\Tokens\TokenTraits;
 
+use Illuminate\Support\Str;
+
 trait FormatsModel
 {
 
 
     private function formatModel($model)
     {
-        $model = camel_case($model);
-        $model = str_singular($model);
+        $model = Str::camel($model);
+        $model = Str::singular($model);
         return $model = ucwords($model);
 
     }

@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands\Builders\Writers;
 
-use App\Console\Commands\ContentRouters\ChildCrudContentRouter;
+use App\Console\Commands\Builders\ContentRouters\ChildCrudContentRouter;
 
 class ChildCrudFileWriter
 {

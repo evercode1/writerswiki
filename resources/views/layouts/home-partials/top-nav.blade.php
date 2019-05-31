@@ -34,11 +34,13 @@
                     <!-- Dropdown Trigger -->
                     <li><a class="dropdown-trigger" href="#!" data-target="user-links">{{ Auth::user()->name }}
                             <i class="material-icons right">arrow_drop_down</i></a></li>
+
+                    @endif
                 </ul><a href="#!" data-target="sidenav-left" class="sidenav-trigger left"><i class="material-icons black-text">menu</i></a>
 
                 <alarm-bell></alarm-bell>
 
-                @else
+                @if(!Auth::check())
 
                     <ul id="nav-mobile" class="right">
 

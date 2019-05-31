@@ -6,6 +6,7 @@ use App\UtilityTraits\KebabHelper;
 use App\UtilityTraits\ManagesImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 :::useModel:::;
 
 
@@ -76,7 +77,7 @@ class :::upperCaseModelName:::Controller extends Controller
 
                 ]);
 
-        $slug = str_slug($request->name, "-");
+        $slug = Str::slug($request->name, "-");
 
         $imageName = $this->formatString($request->get('name'));
 
@@ -165,7 +166,7 @@ class :::upperCaseModelName:::Controller extends Controller
 
         $:::modelInstance::: = :::upperCaseModelName:::::findOrFail($id);
 
-        $slug = str_slug($request->name, "-");
+        $slug = Str::slug($request->name, "-");
 
         $this->setUpdatedModelValues($request, $:::modelInstance:::, $slug);
 

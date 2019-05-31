@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Console\Commands\RemoveCommands\RemoveTraits;
-
+use Illuminate\Support\Str;
 
 trait RemovesFiles
 {
@@ -65,7 +65,7 @@ trait RemovesFiles
     private function setCrudPaths()
     {
 
-        $allQueryName = 'All ' . str_plural(ucwords($this->modelName));
+        $allQueryName = 'All ' . Str::plural(ucwords($this->modelName));
 
         $this->unlinkFiles['model'] = base_path('app/' . $this->modelName .'.php');
         $this->unlinkFiles['modelQuery'] = base_path('app/Queries/GridQueries/' . $this->modelName .'Query.php');
@@ -84,7 +84,7 @@ trait RemovesFiles
     {
 
 
-        return 'All' . str_plural($this->modelName). 'Controller.php';
+        return 'All' . Str::plural($this->modelName). 'Controller.php';
 
     }
 
@@ -111,7 +111,7 @@ trait RemovesFiles
     private function setViewPaths(){
 
 
-        $allModel ='All' . str_plural($this->formatTheModel($this->modelName));
+        $allModel ='All' . Str::plural($this->formatTheModel($this->modelName));
 
         // I can't get the file to unlink, it can't find it for some reason
 
@@ -121,18 +121,18 @@ trait RemovesFiles
 
        //  unlink($path);
 
-        $this->unlinkFiles['component'] = base_path('resources/assets/js/components/' . $this->modelName .'Grid.vue');
-        $this->unlinkFiles['all-component'] = base_path('resources/assets/js/components/' . $allModel .'.vue');
-        $this->extractFromFiles['Grid Component Call'] = base_path('resources/assets/js/components.js');
-        $this->extractFromFiles['All Models Call'] = base_path('resources/assets/js/components.js');
+        $this->unlinkFiles['component'] = base_path('resources/js/components/' . $this->modelName .'Grid.vue');
+        $this->unlinkFiles['all-component'] = base_path('resources/js/components/' . $allModel .'.vue');
+        $this->extractFromFiles['Grid Component Call'] = base_path('resources/js/components.js');
+        $this->extractFromFiles['All Models Call'] = base_path('resources/js/components.js');
 
 
     }
 
     private function formatTheModel($model)
     {
-        $model = camel_case($model);
-        $model = str_singular($model);
+        $model = Str::camel($model);
+        $model = Str::singular($model);
         return $model = ucwords($model);
 
     }
@@ -145,7 +145,7 @@ trait RemovesFiles
 
         $model = ltrim($model, '-');
 
-        return $model = 'all-' . str_plural(strtolower($model));
+        return $model = 'all-' . Str::plural(strtolower($model));
 
     }
 
@@ -155,7 +155,7 @@ trait RemovesFiles
     private function getMigrationFilePath($model)
     {
 
-        $migrationModelName = str_plural(snake_case($model));
+        $migrationModelName = Str::plural(Str::snake($model));
 
         $file = 'create_' .$migrationModelName . '_table';
 
@@ -163,7 +163,7 @@ trait RemovesFiles
 
         foreach ($migrations as $migration){
 
-            if( str_contains($migration, $file)){
+            if( Str::contains($migration, $file)){
 
                 $file = $migration;
             }
@@ -229,7 +229,7 @@ trait RemovesFiles
         foreach($this->extractFromFiles as $type => $file){
 
 
-            if ( str_contains($file, '.js')){
+            if ( Str::contains($file, '.js')){
 
                 $start = '/** Begin ' . $this->modelName . ' ' .  $type . ' */';
 
@@ -319,7 +319,7 @@ trait RemovesFiles
 
         $content = file_get_contents($file);
 
-        if( ! str_contains($content, '// Begin')){
+        if( ! Str::contains($content, '// Begin')){
 
             unlink($file);
         }
