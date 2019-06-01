@@ -31,7 +31,7 @@ class AddIsAdminStatusIsSubscribed extends Migration
 
         Schema::table('users', function ($table) {
             $table->dropColumn('is_admin');
-            $table->dropColumn('status');
+            $table->dropColumn('status_id');
             $table->dropColumn('is_subscribed');
         });
 
