@@ -1796,6 +1796,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pagination */ "./resources/js/components/Pagination.vue");
+/* harmony import */ var _SearchBox__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SearchBox */ "./resources/js/components/SearchBox.vue");
+/* harmony import */ var _GridCount__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./GridCount */ "./resources/js/components/GridCount.vue");
+/* harmony import */ var _PageNumber__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PageNumber */ "./resources/js/components/PageNumber.vue");
+/* harmony import */ var _TableHead__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TableHead */ "./resources/js/components/TableHead.vue");
 //
 //
 //
@@ -1908,13 +1913,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/utilities/gridData.js");
 
+
+
+
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    'pagination': __webpack_require__(/*! ./Pagination */ "./resources/js/components/Pagination.vue"),
-    'search-box': __webpack_require__(/*! ./SearchBox */ "./resources/js/components/SearchBox.vue"),
-    'grid-count': __webpack_require__(/*! ./GridCount */ "./resources/js/components/GridCount.vue"),
-    'page-number': __webpack_require__(/*! ./PageNumber */ "./resources/js/components/PageNumber.vue"),
-    'table-head': __webpack_require__(/*! ./TableHead */ "./resources/js/components/TableHead.vue")
+    'pagination': _Pagination__WEBPACK_IMPORTED_MODULE_0__["default"],
+    'search-box': _SearchBox__WEBPACK_IMPORTED_MODULE_1__["default"],
+    'grid-count': _GridCount__WEBPACK_IMPORTED_MODULE_2__["default"],
+    'page-number': _PageNumber__WEBPACK_IMPORTED_MODULE_3__["default"],
+    'table-head': _TableHead__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   mounted: function mounted() {
     gridData.loadData('api/user-data', this);
@@ -50108,6 +50118,7 @@ if (token) {
 /***/ (function(module, exports, __webpack_require__) {
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+Vue.component('user-grid', __webpack_require__(/*! ./components/UserGrid.vue */ "./resources/js/components/UserGrid.vue")["default"]);
 Vue.component('user-grid', __webpack_require__(/*! ./components/UserGrid.vue */ "./resources/js/components/UserGrid.vue")["default"]);
 
 /***/ }),

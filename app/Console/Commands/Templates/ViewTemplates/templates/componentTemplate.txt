@@ -101,14 +101,20 @@
 
     var gridData = require('../utilities/gridData');
 
+        import Pagination from './Pagination';
+        import SearchBox from './SearchBox';
+        import GridCount from './GridCount';
+        import PageNumber from './PageNumber';
+        import TableHead from './TableHead';
+
 
     export default {
 
-        components: {'pagination' : require('./Pagination'),
-                     'search-box' : require('./SearchBox'),
-                     'grid-count' : require('./GridCount'),
-                     'page-number' : require('./PageNumber'),
-                     'table-head' : require('./TableHead')},
+        components: {'pagination' : Pagination,
+                     'search-box' : SearchBox,
+                     'grid-count' : GridCount,
+                     'page-number' : PageNumber,
+                     'table-head' : TableHead },
 
         mounted: function () {
 
