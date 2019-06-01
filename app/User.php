@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class User extends Authenticatable
 {
@@ -43,6 +44,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function updateUser($user, Request $request)
+    {
+
+        $request->is_admin === 'on' ? $isAdmin = true : $isAdmin = false;
+        $request->is_subscribed === 'on' ? $isSubscribed = true : $isSubscribed = false;
+
+        return  $user->update(['name'  => $request->name,
+                               'email' => $request->email,
+                               'is_subscribed' => $isSubscribed,
+                               'is_admin' => $isAdmin,
+                               'status_id' => $request->status_id,
+
+        ]);
+
+
+    }
 
 
     public function isAdmin()
@@ -83,6 +101,28 @@ class User extends Authenticatable
     {
 
         return $user->status == 10;
+
+
+    }
+
+    public function showAdminStatusOf($user)
+    {
+
+        return $user->is_admin ? 'Yes' : 'No';
+
+    }
+
+    public function showNewsletterStatusOf($user)
+    {
+
+        return $user->is_subscribed == 1 ? 'Yes' : 'No';
+
+    }
+
+    public function showStatusName($status)
+    {
+
+        return $status === 10 ?  'Active' : 'Inactive';
 
 
     }

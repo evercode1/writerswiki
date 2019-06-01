@@ -1,9 +1,3 @@
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);/**
- * Created by billk on 5/27/19.
- */
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('user-grid', require('./components/UserGrid.vue').default);
 
-/** Begin Nudge Grid Component Call */
-
-Vue.component('nudge-grid', require('./components/NudgeGrid.vue').default);
-
-/** End Nudge Grid Component Call */

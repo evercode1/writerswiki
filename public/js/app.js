@@ -1787,15 +1787,26 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NudgeGrid.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/NudgeGrid.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UserGrid.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/UserGrid.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1906,12 +1917,12 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
     'table-head': __webpack_require__(/*! ./TableHead */ "./resources/js/components/TableHead.vue")
   },
   mounted: function mounted() {
-    gridData.loadData('/api/nudge-data', this);
+    gridData.loadData('api/user-data', this);
   },
   data: function data() {
     return {
       query: '',
-      gridColumns: ['Id', 'Name', 'Active', 'Created'],
+      gridColumns: ['Id', 'Name', 'Email', 'Status', 'Subscribed', 'Admin', 'Joined'],
       gridData: [],
       total: null,
       next_page_url: null,
@@ -1924,8 +1935,8 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
       go_to_page: null,
       sortOrder: 1,
       sortKey: 'id',
-      createUrl: '/nudge/create',
-      showCreateButton: true
+      createUrl: '/user/create',
+      showCreateButton: false
     };
   },
   methods: {
@@ -1938,7 +1949,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
       this.getData(query);
     },
     getData: function getData(request) {
-      gridData.getQueryData(request, '/api/nudge-data', this);
+      gridData.getQueryData(request, 'api/user-data', this);
     },
     setPageNumbers: function setPageNumbers() {
       this.pages = [];
@@ -1962,17 +1973,14 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
     pageInRange: function pageInRange() {
       return this.go_to_page <= parseInt(this.last_page);
     },
-    formatActive: function formatActive(active) {
-      return active === 1 ? 'Active' : 'Inactive';
+    showStatus: function showStatus(status) {
+      return status == 10 ? 'Active' : 'Inactive';
     },
-    confirmDelete: function confirmDelete(id) {
-      var _this = this;
-
-      if (confirm("Are you sure you want to delete?")) {
-        axios.post('/nudge-delete/' + id).then(function (response) {
-          gridData.loadData('/api/nudge-data', _this);
-        });
-      }
+    showAdmin: function showAdmin(admin) {
+      return admin == 1 ? 'Yes' : 'No';
+    },
+    showSubscribed: function showSubscribed(subscribed) {
+      return subscribed == 1 ? 'Yes' : 'No';
     }
   }
 });
@@ -37340,145 +37348,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NudgeGrid.vue?vue&type=template&id=36ea08a6&":
-/*!************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/NudgeGrid.vue?vue&type=template&id=36ea08a6& ***!
-  \************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "row" },
-    [
-      _c("h1", { staticClass: "flow-text grey-text text-darken-1" }, [
-        _vm._v("Nudge")
-      ]),
-      _vm._v(" "),
-      _c("search-box"),
-      _vm._v(" "),
-      _c("div", { staticClass: "right" }, [_c("grid-count")], 1),
-      _vm._v(" "),
-      _c(
-        "section",
-        { staticClass: "mt-20" },
-        [
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "table",
-              [
-                _c("table-head"),
-                _vm._v(" "),
-                _c(
-                  "tbody",
-                  _vm._l(_vm.gridData, function(row) {
-                    return _c("tr", [
-                      _c("td", [
-                        _vm._v(
-                          "\n\n                               " +
-                            _vm._s(row.Id) +
-                            "\n\n                        "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "/nudge/" + row.Id + "-" + row.Slug }
-                          },
-                          [_vm._v(" " + _vm._s(row.Name))]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n\n                            " +
-                            _vm._s(_vm.formatActive(row.Active)) +
-                            "\n\n                        "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n\n                               " +
-                            _vm._s(row.Created) +
-                            "\n\n                        "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          { attrs: { href: "/nudge/" + row.Id + "/edit" } },
-                          [
-                            _c(
-                              "button",
-                              {
-                                staticClass:
-                                  "waves-effect waves-light btn mt-5",
-                                attrs: { type: "button" }
-                              },
-                              [
-                                _vm._v(
-                                  "\n\n                                    Edit\n\n                            "
-                                )
-                              ]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "waves-effect waves-light btn mt-5",
-                            on: {
-                              click: function($event) {
-                                return _vm.confirmDelete(row.Id)
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n\n                                    Delete\n\n                            "
-                            )
-                          ]
-                        )
-                      ])
-                    ])
-                  }),
-                  0
-                )
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("page-number")
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("pagination")
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PageNumber.vue?vue&type=template&id=1b15593a&":
 /*!*************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PageNumber.vue?vue&type=template&id=1b15593a& ***!
@@ -37845,6 +37714,149 @@ var render = function() {
         _c("th", [_vm._v("Actions")])
       ],
       2
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UserGrid.vue?vue&type=template&id=01423ac8&":
+/*!***********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/UserGrid.vue?vue&type=template&id=01423ac8& ***!
+  \***********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
+    _c(
+      "div",
+      [
+        _c("h1", { staticClass: "flow-text grey-text text-darken-1" }, [
+          _vm._v("Users")
+        ]),
+        _vm._v(" "),
+        _c("search-box"),
+        _vm._v(" "),
+        _c("div", { staticClass: "right" }, [_c("grid-count")], 1),
+        _vm._v(" "),
+        _c(
+          "section",
+          [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "table",
+                [
+                  _c("table-head"),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.gridData, function(row) {
+                      return _c("tr", [
+                        _c("td", [
+                          _vm._v(
+                            "\n\n                               " +
+                              _vm._s(row.Id) +
+                              "\n\n                        "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            { attrs: { href: "/user/" + row.Id + "/edit" } },
+                            [_vm._v(" " + _vm._s(row.Name))]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            { attrs: { href: "/user/" + row.Id + "/edit" } },
+                            [_vm._v(" " + _vm._s(row.Email))]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n\n                            " +
+                              _vm._s(_vm.showStatus(row.Status)) +
+                              "\n\n                        "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n\n                            " +
+                              _vm._s(_vm.showSubscribed(row.Subscribed)) +
+                              "\n\n                        "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n\n                            " +
+                              _vm._s(_vm.showAdmin(row.Admin)) +
+                              "\n\n                        "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n\n                               " +
+                              _vm._s(row.Joined) +
+                              "\n\n                        "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            { attrs: { href: "/user/" + row.Id + "/edit" } },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn waves-effect waves-light",
+                                  attrs: { type: "button" }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n\n                                    Edit\n\n                            "
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    }),
+                    0
+                  )
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("page-number")
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("pagination")
+      ],
+      1
     )
   ])
 }
@@ -50096,14 +50108,7 @@ if (token) {
 /***/ (function(module, exports, __webpack_require__) {
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
-/**
-* Created by billk on 5/27/19.
-*/
-
-/** Begin Nudge Grid Component Call */
-
-Vue.component('nudge-grid', __webpack_require__(/*! ./components/NudgeGrid.vue */ "./resources/js/components/NudgeGrid.vue")["default"]);
-/** End Nudge Grid Component Call */
+Vue.component('user-grid', __webpack_require__(/*! ./components/UserGrid.vue */ "./resources/js/components/UserGrid.vue")["default"]);
 
 /***/ }),
 
@@ -50224,75 +50229,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GridCount_vue_vue_type_template_id_4fe081e4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GridCount_vue_vue_type_template_id_4fe081e4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/NudgeGrid.vue":
-/*!***********************************************!*\
-  !*** ./resources/js/components/NudgeGrid.vue ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _NudgeGrid_vue_vue_type_template_id_36ea08a6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NudgeGrid.vue?vue&type=template&id=36ea08a6& */ "./resources/js/components/NudgeGrid.vue?vue&type=template&id=36ea08a6&");
-/* harmony import */ var _NudgeGrid_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NudgeGrid.vue?vue&type=script&lang=js& */ "./resources/js/components/NudgeGrid.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _NudgeGrid_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _NudgeGrid_vue_vue_type_template_id_36ea08a6___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _NudgeGrid_vue_vue_type_template_id_36ea08a6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/NudgeGrid.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/NudgeGrid.vue?vue&type=script&lang=js&":
-/*!************************************************************************!*\
-  !*** ./resources/js/components/NudgeGrid.vue?vue&type=script&lang=js& ***!
-  \************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NudgeGrid_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./NudgeGrid.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NudgeGrid.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NudgeGrid_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/NudgeGrid.vue?vue&type=template&id=36ea08a6&":
-/*!******************************************************************************!*\
-  !*** ./resources/js/components/NudgeGrid.vue?vue&type=template&id=36ea08a6& ***!
-  \******************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NudgeGrid_vue_vue_type_template_id_36ea08a6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./NudgeGrid.vue?vue&type=template&id=36ea08a6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NudgeGrid.vue?vue&type=template&id=36ea08a6&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NudgeGrid_vue_vue_type_template_id_36ea08a6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NudgeGrid_vue_vue_type_template_id_36ea08a6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -50505,6 +50441,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TableHead_vue_vue_type_template_id_7a4a79f3___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TableHead_vue_vue_type_template_id_7a4a79f3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/UserGrid.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/UserGrid.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _UserGrid_vue_vue_type_template_id_01423ac8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserGrid.vue?vue&type=template&id=01423ac8& */ "./resources/js/components/UserGrid.vue?vue&type=template&id=01423ac8&");
+/* harmony import */ var _UserGrid_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserGrid.vue?vue&type=script&lang=js& */ "./resources/js/components/UserGrid.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _UserGrid_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _UserGrid_vue_vue_type_template_id_01423ac8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _UserGrid_vue_vue_type_template_id_01423ac8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/UserGrid.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/UserGrid.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/UserGrid.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserGrid_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./UserGrid.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UserGrid.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserGrid_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/UserGrid.vue?vue&type=template&id=01423ac8&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/UserGrid.vue?vue&type=template&id=01423ac8& ***!
+  \*****************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserGrid_vue_vue_type_template_id_01423ac8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./UserGrid.vue?vue&type=template&id=01423ac8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/UserGrid.vue?vue&type=template&id=01423ac8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserGrid_vue_vue_type_template_id_01423ac8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserGrid_vue_vue_type_template_id_01423ac8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
