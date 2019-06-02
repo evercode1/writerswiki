@@ -71,7 +71,7 @@ class ContentController extends Controller
 
                     'name' => 'required|unique:contents|string|max:100',
                     'is_active' => 'required|boolean',
-                    'body' => 'required|string|max:1000',
+                    'body' => 'required|string|max:10000',
                     'image' => 'max:1000',
 
 
@@ -90,7 +90,11 @@ class ContentController extends Controller
                                                                   'image_name' => $imageName,
                                                                   'image_extension' => $image]);
 
-        $content->save();
+       if( ! $content->save()){
+
+           dd('could not save');
+
+       }
 
         if ($request->has('image')){
 
@@ -158,7 +162,7 @@ class ContentController extends Controller
 
             'name' => 'required|string|max:100|unique:contents,name,' .$id,
             'is_active' => 'required|boolean',
-            'body' => 'required|string|max:1000',
+            'body' => 'required|string|max:10000',
             'image' => 'max:1000',
 
 
