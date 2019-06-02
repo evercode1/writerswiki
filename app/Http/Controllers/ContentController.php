@@ -71,7 +71,7 @@ class ContentController extends Controller
 
                     'name' => 'required|unique:contents|string|max:100',
                     'is_active' => 'required|boolean',
-                    'body' => 'required|string|max:10000',
+                    'body' => 'required|string|max:100000',
                     'image' => 'max:1000',
 
 
@@ -162,7 +162,7 @@ class ContentController extends Controller
 
             'name' => 'required|string|max:100|unique:contents,name,' .$id,
             'is_active' => 'required|boolean',
-            'body' => 'required|string|max:10000',
+            'body' => 'required|string|max:100000',
             'image' => 'max:1000',
 
 
