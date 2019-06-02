@@ -3,6 +3,7 @@
 namespace App\Console\Commands\Tokens;
 
 use App\Console\Commands\Tokens\TokenTraits\FormatsModel;
+use Illuminate\Support\Str;
 
 class Tokens
 {
@@ -35,23 +36,23 @@ class Tokens
 
         $allControllerName = $this->formatAllControllerName($this->tableName());
 
-        $allViewFolder = 'all-' . str_plural($this->formatModelPath($this->model));
+        $allViewFolder = 'all-' . Str::plural($this->formatModelPath($this->model));
 
-        $allGetRoute = 'all-' . str_plural($this->formatModelPath($this->model));
+        $allGetRoute = 'all-' . Str::plural($this->formatModelPath($this->model));
 
         $allGridComponentName = $this->formatAllGridComponentName($this->tableName());
 
-        $allEndGridName = '/all-' . str_plural($this->formatModelPath($this->model));
+        $allEndGridName = '/all-' . Str::plural($this->formatModelPath($this->model));
 
-        $allGridName = 'all-' . str_plural($this->formatModelPath($this->model));
+        $allGridName = 'all-' . Str::plural($this->formatModelPath($this->model));
 
-        $allGridTitle = 'All ' . str_plural(ucwords($this->model));
+        $allGridTitle = 'All ' . Str::plural(ucwords($this->model));
 
         $allApiControllerMethod = $this->formatAllApiControllerMethod($this->tableName());
 
-        $allApiDataPath = 'api/' . 'all-' . str_plural($this->formatModelPath($this->model)) . '-data';
+        $allApiDataPath = 'api/' . 'all-' . Str::plural($this->formatModelPath($this->model)) . '-data';
 
-        $allQueryName = 'All' . str_plural(ucwords($this->model));
+        $allQueryName = 'All' . Str::plural(ucwords($this->model));
 
         $appName = $this->appName;
 
@@ -113,7 +114,7 @@ class Tokens
 
         $modelRoute = '/' . $this->formatFolderName();
 
-        $modelsUpperCase = ucwords(str_plural($this->model));
+        $modelsUpperCase = ucwords(Str::plural($this->model));
 
         $namespace = ucwords($this->namespace);
 
@@ -121,7 +122,7 @@ class Tokens
 
         $parentFieldName = 'name';
 
-        $parent_id = strtolower(snake_case($this->parent)) . '_id';
+        $parent_id = strtolower(Str::snake($this->parent)) . '_id';
 
         $parentId = $this->formatParentInstanceVariable() . '->id';
 
@@ -281,18 +282,18 @@ class Tokens
 
     private function tableName()
     {
-        $tableName = strtolower(snake_case($this->model));
+        $tableName = strtolower(Str::snake($this->model));
 
-        return str_plural($tableName);
+        return Str::plural($tableName);
 
 
     }
 
     private function childTableName()
     {
-        $tableName = strtolower(snake_case($this->child));
+        $tableName = strtolower(Str::snake($this->child));
 
-        return str_plural($tableName);
+        return Str::plural($tableName);
 
 
     }
@@ -302,7 +303,7 @@ class Tokens
     private function formatInstanceVariable()
     {
 
-        return camel_case($this->model);
+        return Str::camel($this->model);
     }
 
     private function formatModelResults()
@@ -310,13 +311,13 @@ class Tokens
 
         $model = $this->formatInstanceVariable();
 
-        return $model = str_plural($model);
+        return $model = Str::plural($model);
     }
 
     private function formatParentInstanceVariable()
     {
 
-        return camel_case($this->parent);
+        return Str::camel($this->parent);
     }
 
     private function formatChartApiControllerMethod()
@@ -344,7 +345,7 @@ class Tokens
 
         $parent = strtolower($parent);
 
-        return str_plural($parent);
+        return Str::plural($parent);
 
 
     }
@@ -362,16 +363,16 @@ class Tokens
     {
         $model = $this->formatModel($model);
 
-        return $model = str_plural($model);
+        return $model = Str::plural($model);
 
     }
 
     private function formatParentsTableName($parent)
     {
 
-        $parent = snake_case($parent);
+        $parent = Str::snake($parent);
 
-        return str_plural($parent);
+        return Str::plural($parent);
 
 
 
@@ -380,9 +381,9 @@ class Tokens
     private function formatChildRelation($child)
     {
 
-        $child = camel_case($child);
+        $child = Str::camel($child);
 
-        return str_plural($child);
+        return Str::plural($child);
 
 
     }

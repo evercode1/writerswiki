@@ -16,7 +16,7 @@ class MakeFoundation extends Command
      */
     protected $signature = 'make:foundation
                            {ModelName}
-                           {MasterPage}
+                           {MasterPage=master-admin-dash}
                            {Front=false}
                            {Namespace=default}';
 

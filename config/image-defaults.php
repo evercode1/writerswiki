@@ -15,6 +15,25 @@ return [
 
 
 
+    // Begin Content Image Config Array Method
+
+
+        'content' => [
+                'destinationFolder'     => '/imgs/content/',
+                'createFolder'          => '/imgs/content',
+                'destinationThumbnail'  => '/imgs/content/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/content/',
+                'thumbnailPath'         => '/imgs/content/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End Content Image Config Array Method
+    
+    
     
 
 
