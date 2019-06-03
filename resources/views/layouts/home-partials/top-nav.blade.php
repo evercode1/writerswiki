@@ -41,7 +41,7 @@
                     @if(Auth::check())
 
                         <alarm-bell></alarm-bell>
-                        
+
                     @endif
 
                 @if(!Auth::check())

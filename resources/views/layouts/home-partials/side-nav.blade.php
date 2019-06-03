@@ -1,5 +1,7 @@
 <ul id="sidenav-left" class="sidenav sidenav-fixed">
+
     <li><a href="/" class="logo-container">Writers Wiki<i class="material-icons left">widgets</i></a></li>
+
     <li class="no-padding">
         <ul class="collapsible collapsible-accordion">
             <li class="bold waves-effect active"><a class="collapsible-header">Pages<i class="material-icons chevron">chevron_left</i></a>
@@ -38,4 +40,5 @@
 
         </ul>
     </li>
+
 </ul>

@@ -15,6 +15,45 @@
 
 Route::get('/admin', 'AdminController@index')->name('admin');
 
+
+// api routes
+
+Route::get('api/alarm-data', 'ApiController@alarmData');
+Route::get('api/alarm-data-admin', 'ApiController@alarmDataAdmin');
+Route::get('api/user-data', 'ApiController@userData');
+Route::get('api/closed-contact-data', 'ApiController@closedContactData');
+Route::get('api/contact-data', 'ApiController@ContactData');
+Route::any('api/contact-topic-data', 'ApiController@contactTopicData');
+Route::get('api/open-contact-data', 'ApiController@openContactData');
+
+// auth routes
+
+Auth::routes();
+
+// Contact Routes
+
+Route::post('/contact-delete', 'ContactController@destroy')->name('contact.destroy');
+
+Route::resource('/contact', 'ContactController', ['except' => ['destroy']]);
+
+Route::get('/open-contacts', 'OpenContactController@index')->name('contact.open');
+
+Route::get('/closed-contacts', 'ClosedContactController@index');
+
+
+// Begin ContactTopic Routes
+
+
+Route::post('/contact-topic-delete/{id}', 'ContactTopicController@destroy')->name('contact-topic.destroy');
+
+Route::get('/contact-topic/create', 'ContactTopicController@create')->name('contact-topic.create');
+
+Route::get('contact-topic/{id}', 'ContactTopicController@show')->name('contact-topic.show');
+
+Route::resource('contact-topic', 'ContactTopicController', ['except' => ['destroy']]);
+
+// End ContactTopic Routes
+
 // Begin Content Routes
 
 Route::any('api/content-data', 'ApiController@contentData');
@@ -35,16 +74,6 @@ Route::get('/', 'HomeController@index')->name('home.index');
 
 Route::get('/home', 'HomeController@index')->name('home.index');
 
-// api routes
-
-Route::get('api/alarm-data', 'ApiController@alarmData');
-Route::get('api/alarm-data-admin', 'ApiController@alarmDataAdmin');
-Route::get('api/user-data', 'ApiController@userData');
-
-// auth routes
-
-Auth::routes();
-
 // Pages Routes
 
 
@@ -56,9 +85,24 @@ Route::get('/privacy-policy', 'PagesController@privacy')->name('pages.privacy');
 
 Route::get('/terms-of-service', 'PagesController@terms')->name('pages.terms');
 
+// Reply Routes
+
+Route::resource('reply', 'ReplyController');
+
+
+// Support Messages Routes
+
+Route::get('support-messages', 'MessagesController@index');
+
+Route::get('support-messages-show/{message}', 'MessagesController@show');
+
+
 // user routes
 
 Route::resource('user', 'UserController');
+
+
+
 
 
 

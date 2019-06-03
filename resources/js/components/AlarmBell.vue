@@ -3,7 +3,7 @@
 
     <div>
         <ul id="nav-mobile" class="right">
-            <li class="hide-on-med-and-down">
+            <li class="">
                 <a href="/support-messages"
                    v-bind:class="isActive"
                    data-target="dropdown1"

@@ -8,17 +8,6 @@ use App\Queries\GridQueries\GridQuery;
 class ApiController extends Controller
 {
 
-    // Begin Content Api Data Grid Method
-
-    public function contentData(Request $request)
-    {
-
-        return GridQuery::sendData($request, 'ContentQuery');
-
-    }
-
-    // End Content Api Data Grid Method
-
     public function alarmData()
     {
 
@@ -40,6 +29,53 @@ class ApiController extends Controller
         // return json_encode($data);
 
     }
+
+    public function closedContactData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'ClosedContactQuery');
+
+    }
+
+    public function contactData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'ContactQuery');
+
+    }
+
+    // Begin ContactTopic Api Data Grid Method
+
+    public function contactTopicData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'ContactTopicQuery');
+
+    }
+
+    // End ContactTopic Api Data Grid Method
+
+
+
+    // Begin Content Api Data Grid Method
+
+    public function contentData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'ContentQuery');
+
+    }
+
+    // End Content Api Data Grid Method
+
+    public function openContactData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'OpenContactQuery');
+
+    }
+
+
 
 
     public function userData(Request $request)

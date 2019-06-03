@@ -15,6 +15,23 @@ return [
 
 
 
+    // Begin ContactTopic Image Config Array Method
+
+
+        'contacttopic' => [
+                'destinationFolder'     => '/imgs/contacttopic/',
+                'createFolder'          => '/imgs/contacttopic',
+                'destinationThumbnail'  => '/imgs/contacttopic/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/contacttopic/',
+                'thumbnailPath'         => '/imgs/contacttopic/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End ContactTopic Image Config Array Method
     // Begin Content Image Config Array Method
 
 
