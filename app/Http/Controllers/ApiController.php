@@ -19,14 +19,27 @@ class ApiController extends Controller
 
     // End Content Api Data Grid Method
 
+    public function alarmData()
+    {
 
+        return AlarmQuery::sendData();
 
-    
+    }
 
+    public function alarmDataAdmin()
+    {
 
+        return AlarmAdminQuery::sendData();
 
-    
+    }
 
+    public function alarmSupportData()
+    {
+
+        // $data = Contact::where('status_id', 1)->count();
+        // return json_encode($data);
+
+    }
 
 
     public function userData(Request $request)

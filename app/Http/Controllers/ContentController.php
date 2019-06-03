@@ -90,11 +90,9 @@ class ContentController extends Controller
                                                                   'image_name' => $imageName,
                                                                   'image_extension' => $image]);
 
-       if( ! $content->save()){
+        $content->save();
 
-           dd('could not save');
 
-       }
 
         if ($request->has('image')){
 

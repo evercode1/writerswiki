@@ -37,6 +37,8 @@ Route::get('/home', 'HomeController@index')->name('home.index');
 
 // api routes
 
+Route::get('api/alarm-data', 'ApiController@alarmData');
+Route::get('api/alarm-data-admin', 'ApiController@alarmDataAdmin');
 Route::get('api/user-data', 'ApiController@userData');
 
 // auth routes

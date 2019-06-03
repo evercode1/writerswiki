@@ -70,18 +70,18 @@
     <!-- end is_active select -->
 
 
-    <!-- description input -->
+    <!-- description input use of ckeditor forces us to name it body-->
 
-        <div class="{{ $errors->has('description') ? ' has-error' : '' }}">
+        <div class="{{ $errors->has('body') ? ' has-error' : '' }}">
 
             <label>Description</label>
 
             <textarea id="description" name="body">{!! $content->description !!}</textarea>
 
-            @if ($errors->has('description'))
+            @if ($errors->has('body'))
 
                 <span class="help-block">
-                    <strong>{{ $errors->first('description') }}</strong>
+                    <strong>{{ $errors->first('body') }}</strong>
                 </span>
 
             @endif

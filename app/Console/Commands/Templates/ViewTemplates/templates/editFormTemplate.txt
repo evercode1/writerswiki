@@ -70,18 +70,18 @@
     <!-- end is_active select -->
 
 
-    <!-- description input -->
+    <!-- description input --use of CKEditor forces us to name the field body, saves as description -->
 
-        <div class="{{ $errors->has('description') ? ' has-error' : '' }}">
+        <div class="{{ $errors->has('body') ? ' has-error' : '' }}">
 
             <label>Description</label>
 
             <textarea id="description" name="body">{!! $:::modelInstance:::->description !!}</textarea>
 
-            @if ($errors->has('description'))
+            @if ($errors->has('body'))
 
                 <span class="help-block">
-                    <strong>{{ $errors->first('description') }}</strong>
+                    <strong>{{ $errors->first('body') }}</strong>
                 </span>
 
             @endif
