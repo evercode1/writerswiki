@@ -38,7 +38,11 @@
                     @endif
                 </ul><a href="#!" data-target="sidenav-left" class="sidenav-trigger left"><i class="material-icons black-text">menu</i></a>
 
-                <alarm-bell></alarm-bell>
+                    @if(Auth::check())
+
+                        <alarm-bell></alarm-bell>
+                        
+                    @endif
 
                 @if(!Auth::check())
 
