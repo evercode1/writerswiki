@@ -2,6 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="msapplication-tap-highlight" content="no">
-<meta name="description" content="Free Resources For Writers">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<title>Writers Wiki</title>
+
+
+@yield('meta')
