@@ -26,9 +26,9 @@
     </li>
 </ul>
 <div class="navbar-fixed">
-    <nav class="navbar blue darken-1">
+    <nav class="navbar white">
         <div class="nav-wrapper">
-            <a href="/" class="brand-logo ml-10 left">Writers Wiki</a>
+            <a href="/" class="brand-logo grey-text text-darken-4 left ml-25">Writers Wiki</a>
 
             @if(Auth::check())
             <ul class="right">
@@ -40,10 +40,8 @@
                 @else
 
                 <ul id="nav-mobile" class="right">
-
-                    <li><a href="{{ url('/auth/facebook') }}">FB</a></li>
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
+                    <li><a href="{{ url('/login') }}" class="grey-text text-darken-4">Login</a></li>
+                    <li><a href="{{ url('/register') }}" class="grey-text text-darken-4">Register</a></li>
                 </ul>
 
 
