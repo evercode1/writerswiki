@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Contacts;
 
 use App\Exceptions\UnauthorizedException;
 use Illuminate\Http\Request;
@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Contact;
 use App\Reply;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class MessagesController extends Controller
 {
@@ -39,7 +40,7 @@ class MessagesController extends Controller
             ->get();
 
 
-        return view('messages.index', compact('messages'));
+        return view('contacts.messages.index', compact('messages'));
 
 
     }
@@ -64,7 +65,7 @@ class MessagesController extends Controller
 
 
 
-        return view('messages.show', compact('message', 'reply'));
+        return view('contacts.messages.show', compact('message', 'reply'));
 
     }
 }

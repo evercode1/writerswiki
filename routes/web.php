@@ -20,11 +20,12 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::get('api/alarm-data', 'ApiController@alarmData');
 Route::get('api/alarm-data-admin', 'ApiController@alarmDataAdmin');
-Route::get('api/user-data', 'ApiController@userData');
-Route::get('api/closed-contact-data', 'ApiController@closedContactData');
+Route::get('api/closed-contact-data', 'ApiController@closedContactData')->middleware(['auth', 'admin']);
 Route::get('api/contact-data', 'ApiController@ContactData');
-Route::any('api/contact-topic-data', 'ApiController@contactTopicData');
-Route::get('api/open-contact-data', 'ApiController@openContactData');
+Route::any('api/contact-topic-data', 'ApiController@contactTopicData')->middleware(['auth', 'admin']);
+Route::get('api/open-contact-data', 'ApiController@openContactData')->middleware(['auth', 'admin']);
+Route::get('api/user-data', 'ApiController@userData')->middleware(['auth', 'admin']);
+
 
 // auth routes
 
@@ -32,25 +33,25 @@ Auth::routes();
 
 // Contact Routes
 
-Route::post('/contact-delete', 'ContactController@destroy')->name('contact.destroy');
+Route::post('/contact-delete', 'Contacts\ContactController@destroy')->name('contact.destroy');
 
-Route::resource('/contact', 'ContactController', ['except' => ['destroy']]);
+Route::resource('/contact', 'Contacts\ContactController', ['except' => ['destroy']]);
 
-Route::get('/open-contacts', 'OpenContactController@index')->name('contact.open');
+Route::get('/open-contacts', 'Contacts\OpenContactController@index')->name('contact.open');
 
-Route::get('/closed-contacts', 'ClosedContactController@index');
+Route::get('/closed-contacts', 'Contacts\ClosedContactController@index');
 
 
 // Begin ContactTopic Routes
 
 
-Route::post('/contact-topic-delete/{id}', 'ContactTopicController@destroy')->name('contact-topic.destroy');
+Route::post('/contact-topic-delete/{id}', 'Contacts\ContactTopicController@destroy')->name('contact-topic.destroy');
 
-Route::get('/contact-topic/create', 'ContactTopicController@create')->name('contact-topic.create');
+Route::get('/contact-topic/create', 'Contacts\ContactTopicController@create')->name('contact-topic.create');
 
-Route::get('contact-topic/{id}', 'ContactTopicController@show')->name('contact-topic.show');
+Route::get('contact-topic/{id}', 'Contacts\ContactTopicController@show')->name('contact-topic.show');
 
-Route::resource('contact-topic', 'ContactTopicController', ['except' => ['destroy']]);
+Route::resource('contact-topic', 'Contacts\ContactTopicController', ['except' => ['destroy']]);
 
 // End ContactTopic Routes
 
@@ -92,9 +93,9 @@ Route::resource('reply', 'ReplyController');
 
 // Support Messages Routes
 
-Route::get('support-messages', 'MessagesController@index');
+Route::get('support-messages', 'Contacts\MessagesController@index');
 
-Route::get('support-messages-show/{message}', 'MessagesController@show');
+Route::get('support-messages-show/{message}', 'Contacts\MessagesController@show');
 
 
 // user routes

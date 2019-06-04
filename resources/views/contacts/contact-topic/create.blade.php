@@ -2,7 +2,7 @@
 
 @section('title')
 
-    <title>Edit ContactTopic</title>
+    <title>Create a ContactTopic</title>
 
 @endsection
 
@@ -12,21 +12,22 @@
 
 @endsection
 
+
 @section('content')
 
     <div class="container ">
 
             <div class="row">
 
-                <h1 class="flow-text grey-text text-darken-1">Edit ContactTopic</h1>
+                <h1 class="flow-text grey-text text-darken-1">ContactTopic</h1>
 
                 <section class="mt-20">
 
-                @include('contact-topic.edit-form')
+                    @include('contacts.contact-topic.create-form')
 
                 </section>
 
-            </div>
+        </div>
 
     </div>
 

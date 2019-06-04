@@ -16,7 +16,7 @@
 
             <div class="mt-20">
 
-                @include('contact.reply-form', ['user_id' => $contact->user_id, 'contact_id' => $contact->id])
+                @include('contacts.contact.reply-form', ['user_id' => $contact->user_id, 'contact_id' => $contact->id])
 
 
             </div>

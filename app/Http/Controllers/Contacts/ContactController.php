@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Contacts;
 
 use App\Exceptions\UnauthorizedException;
 use Illuminate\Http\Request;
@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Queries\ContactShowQuery;
 use App\Rules\IsValidTopic;
+use App\Http\Controllers\Controller;
 
 class ContactController extends Controller
 {
@@ -34,7 +35,7 @@ class ContactController extends Controller
 
         }
 
-        return view('contact.index');
+        return view('contacts.contact.index');
 
     }
 
@@ -49,7 +50,7 @@ class ContactController extends Controller
 
         $topics = ContactTopic::all();
 
-        return view('contact.create', compact('topics'));
+        return view('contacts.contact.create', compact('topics'));
 
     }
 
@@ -86,7 +87,7 @@ class ContactController extends Controller
 
         }
 
-        return view('contact.confirmation');
+        return view('contacts.contact.confirmation');
 
     }
 
@@ -110,7 +111,7 @@ class ContactController extends Controller
 
 
 
-            return view('contact.show', compact('contact', 'oldMessages', 'messages'));
+            return view('contacts.contact.show', compact('contact', 'oldMessages', 'messages'));
 
         }
 

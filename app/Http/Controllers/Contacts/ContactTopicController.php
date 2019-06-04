@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Contacts;
 
 use App\UtilityTraits\KebabHelper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use App\ContactTopic;
+use App\Http\Controllers\Controller;
 
 
 class ContactTopicController extends Controller
@@ -33,7 +34,7 @@ class ContactTopicController extends Controller
     public function index()
     {
 
-        return view('contact-topic.index');
+        return view('contacts.contact-topic.index');
 
     }
 
@@ -47,7 +48,7 @@ class ContactTopicController extends Controller
     {
 
 
-           return view('contact-topic.create');
+           return view('contacts.contact-topic.create');
 
     }
 
@@ -90,7 +91,7 @@ class ContactTopicController extends Controller
 
         $contactTopic = ContactTopic::findOrFail($id);
 
-        return view('contact-topic.show', compact('contactTopic'));
+        return view('contacts.contact-topic.show', compact('contactTopic'));
 
     }
 
@@ -107,7 +108,7 @@ class ContactTopicController extends Controller
         $contactTopic = ContactTopic::findOrFail($id);
 
 
-        return view('contact-topic.edit', compact('contactTopic'));
+        return view('contacts.contact-topic.edit', compact('contactTopic'));
 
     }
 

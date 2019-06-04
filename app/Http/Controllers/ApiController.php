@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Queries\GridQueries\GridQuery;
 use App\Queries\AlarmQuery;
 use App\Queries\AlarmAdminQuery;
+use Illuminate\Support\Facades\Auth;
 
 class ApiController extends Controller
 {
@@ -78,14 +79,14 @@ class ApiController extends Controller
     }
 
 
-
-
     public function userData(Request $request)
     {
 
-        return GridQuery::sendData($request, 'UserQuery');
+           return GridQuery::sendData($request, 'UserQuery');
 
     }
+
+
 
 
 }
