@@ -21,7 +21,7 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('api/alarm-data', 'ApiController@alarmData');
 Route::get('api/alarm-data-admin', 'ApiController@alarmDataAdmin');
 Route::get('api/closed-contact-data', 'ApiController@closedContactData')->middleware(['auth', 'admin']);
-Route::get('api/contact-data', 'ApiController@ContactData');
+Route::get('api/contact-data', 'ApiController@ContactData')->middleware(['auth', 'admin']);
 Route::any('api/contact-topic-data', 'ApiController@contactTopicData')->middleware(['auth', 'admin']);
 Route::get('api/open-contact-data', 'ApiController@openContactData')->middleware(['auth', 'admin']);
 Route::get('api/user-data', 'ApiController@userData')->middleware(['auth', 'admin']);
