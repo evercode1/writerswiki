@@ -1,5 +1,13 @@
 @extends('layouts.masters.master-guest')
 
+@section('meta')
+
+    <meta name="description" content="Free Resources For Writers">
+
+    <title>Writers Wiki</title>
+
+@endsection
+
 @section('content')
 
 <div class="mt-20">
