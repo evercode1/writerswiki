@@ -1,4 +1,4 @@
-<ul id="sidenav-left" class="sidenav sidenav-fixed">
+<ul id="sidenav-left" class="sidenav sidenav-fixed  gray">
 
     <li><a href="/" class="logo-container">Writers Wiki<i class="material-icons left">widgets</i></a></li>
 

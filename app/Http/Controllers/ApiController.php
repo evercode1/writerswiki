@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Queries\GridQueries\GridQuery;
+use App\Queries\AlarmQuery;
+use App\Queries\AlarmAdminQuery;
 
 class ApiController extends Controller
 {

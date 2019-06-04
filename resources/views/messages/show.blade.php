@@ -19,7 +19,7 @@
                     <!-- create button -->
 
                     <div>
-                        <a href="/contact/create"><button class="waves-effect waves-light btn">
+                        <a href="/contact/create"><button class="brown waves-effect waves-light btn">
                             Create New Support Request
                         </button>
                         </a>

@@ -1,4 +1,4 @@
-<ul id="sidenav-left" class="sidenav sidenav-fixed">
+<ul id="sidenav-left" class="sidenav sidenav-fixed gray">
     <li><a href="/admin" class="logo-container">Admin<i class="material-icons left">spa</i></a></li>
     <li class="no-padding">
         <ul class="collapsible collapsible-accordion">
