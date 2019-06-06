@@ -1,7 +1,7 @@
 
 // Begin :::upperCaseModelName::: Routes
 
-Route::any(':::gridApiRoute:::', 'ApiController@:::apiControllerMethod:::');
+Route::get(':::gridApiRoute:::', 'ApiController@:::apiControllerMethod:::')->middleware(['auth', 'admin']);
 
 Route::post(':::modelPath:::-delete/{id}', ':::upperCaseModelName:::Controller@destroy');
 

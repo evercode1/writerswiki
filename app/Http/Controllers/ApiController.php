@@ -11,6 +11,44 @@ use Illuminate\Support\Facades\Auth;
 class ApiController extends Controller
 {
 
+    // Begin Subcategory Api Data Grid Method
+
+    public function subcategoryData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'SubcategoryQuery');
+
+    }
+
+    // End Subcategory Api Data Grid Method
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+    
+
+
+
+
     public function alarmData()
     {
 
@@ -32,6 +70,17 @@ class ApiController extends Controller
         // return json_encode($data);
 
     }
+
+    // Begin Category Api Data Grid Method
+
+    public function categoryData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'CategoryQuery');
+
+    }
+
+    // End Category Api Data Grid Method
 
     public function closedContactData(Request $request)
     {

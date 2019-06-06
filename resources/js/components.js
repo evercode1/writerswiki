@@ -19,3 +19,14 @@ Vue.component('content-grid', require('./components/ContentGrid.vue').default);
 Vue.component('contact-topic-grid', require('./components/ContactTopicGrid.vue').default);
 
 /** End ContactTopic Grid Component Call */
+/** Begin Category Grid Component Call */
+
+Vue.component('category-grid', require('./components/CategoryGrid.vue').default);
+
+/** End Category Grid Component Call */
+
+/** Begin Subcategory Grid Component Call */
+
+Vue.component('subcategory-grid', require('./components/SubcategoryGrid.vue').default);
+
+/** End Subcategory Grid Component Call */

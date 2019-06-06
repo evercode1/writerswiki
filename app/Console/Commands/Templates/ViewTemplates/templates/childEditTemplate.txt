@@ -1,0 +1,29 @@
+@extends('layouts.masters.:::masterPageName:::')
+
+@section('title')
+
+    <title>Edit :::upperCaseModelName:::</title>
+
+@endsection
+
+
+@section('content')
+
+    <div class="container ">
+
+            <div class="row">
+
+                <h1 class="flow-text grey-text text-darken-1">Edit :::upperCaseModelName:::</h1>
+
+                <section class="mt-20">
+
+                @include(':::modelPath:::.edit-form')
+
+                </section>
+
+            </div>
+
+    </div>
+
+@endsection
+

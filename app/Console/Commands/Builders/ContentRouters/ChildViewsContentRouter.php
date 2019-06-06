@@ -27,9 +27,21 @@ class ChildViewsContentRouter
 
                 break;
 
+            case 'create-form' :
+
+                return $this->routeTemplate($tokens, 'childCreateFormTemplate');
+
+                break;
+
             case 'edit' :
 
                 return $this->routeTemplate($tokens, 'childEditTemplate');
+
+                break;
+
+            case 'edit-form' :
+
+                return $this->routeTemplate($tokens, 'childEditFormTemplate');
 
                 break;
 
@@ -42,7 +54,9 @@ class ChildViewsContentRouter
 
             case 'component' :
 
+
                 if ( $this->hasSlug($tokens)){
+
 
                     return $this->routeTemplate($tokens, 'childComponentSlugTemplate');
 

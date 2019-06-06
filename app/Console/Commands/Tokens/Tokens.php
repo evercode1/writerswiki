@@ -18,6 +18,7 @@ class Tokens
     public $configName;
     public $seedsName;
     public $namespace;
+    public $slug;
     public $tokens = [];
 
     public function __construct(array $tokens)
@@ -28,11 +29,14 @@ class Tokens
 
         $this->tokens = $this->formatTokens();
 
+
     }
 
 
     public function formatTokens()
     {
+
+
 
         $allControllerName = $this->formatAllControllerName($this->tableName());
 
@@ -135,6 +139,8 @@ class Tokens
         $parentsTableName = $this->formatParentsTableName($this->parent);
 
         $seedsName = $this->seedsName;
+
+        $slug = $this->slug;
 
         $tableName = $this->tableName();
 

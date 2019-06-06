@@ -20,16 +20,29 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::get('api/alarm-data', 'ApiController@alarmData');
 Route::get('api/alarm-data-admin', 'ApiController@alarmDataAdmin');
+Route::get('/api/all-articles-data', 'ApiController@allArticlesData');
+Route::get('api/article-list-data', 'ApiController@articleListData');
+Route::get('api/archives', 'ApiController@archives');
+Route::any('api/category-data', 'ApiController@categoryData')->middleware(['auth', 'admin']);
 Route::get('api/closed-contact-data', 'ApiController@closedContactData')->middleware(['auth', 'admin']);
 Route::get('api/contact-data', 'ApiController@ContactData')->middleware(['auth', 'admin']);
 Route::any('api/contact-topic-data', 'ApiController@contactTopicData')->middleware(['auth', 'admin']);
 Route::get('api/open-contact-data', 'ApiController@openContactData')->middleware(['auth', 'admin']);
+Route::any('api/subcategory-data', 'ApiController@subcategoryData')->middleware(['auth', 'admin']);
 Route::get('api/user-data', 'ApiController@userData')->middleware(['auth', 'admin']);
 
 
 // auth routes
 
 Auth::routes();
+
+// Begin Category Routes
+
+Route::post('category-delete/{category}', 'CategoryController@destroy');
+
+Route::resource('category', 'CategoryController', ['except' => ['destroy']]);
+
+// End Category Routes
 
 // Contact Routes
 
@@ -97,22 +110,20 @@ Route::get('support-messages', 'Contacts\MessagesController@index');
 
 Route::get('support-messages-show/{message}', 'Contacts\MessagesController@show');
 
-
 // user routes
 
 Route::resource('user', 'UserController');
 
 
+// Begin Subcategory Routes
 
+Route::post('subcategory-delete/{id}', 'SubcategoryController@destroy');
 
+Route::get('/subcategory/create', 'SubcategoryController@create')->name('subcategory.create');
 
+Route::get('subcategory/{id}', 'SubcategoryController@show')->name('subcategory.show');
 
+Route::resource('subcategory', 'SubcategoryController', ['except' => ['show', 'create','destroy']]);
 
-
-
-
-
-
-
-
+// End Subcategory Routes
 

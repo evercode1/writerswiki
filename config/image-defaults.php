@@ -15,6 +15,23 @@ return [
 
 
 
+    // Begin Category Image Config Array Method
+
+
+        'category' => [
+                'destinationFolder'     => '/imgs/category/',
+                'createFolder'          => '/imgs/category',
+                'destinationThumbnail'  => '/imgs/category/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/category/',
+                'thumbnailPath'         => '/imgs/category/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End Category Image Config Array Method
     // Begin ContactTopic Image Config Array Method
 
 

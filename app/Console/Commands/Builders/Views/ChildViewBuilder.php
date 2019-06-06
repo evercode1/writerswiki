@@ -91,19 +91,27 @@ class ChildViewBuilder
             . $this->tokens['modelPath']
             . '/create.blade.php';
 
+        $this->fileWritePaths['create-form'] = base_path() . '/resources/views/'
+            . $this->tokens['modelPath']
+            . '/create-form.blade.php';
+
         $this->fileWritePaths['edit'] = base_path() . '/resources/views/'
             . $this->tokens['modelPath']
             . '/edit.blade.php';
+
+        $this->fileWritePaths['edit-form'] = base_path() . '/resources/views/'
+            . $this->tokens['modelPath']
+            . '/edit-form.blade.php';
 
         $this->fileWritePaths['show'] = base_path() . '/resources/views/'
             . $this->tokens['modelPath']
             . '/show.blade.php';
 
-        $this->fileWritePaths['component'] = base_path() . '/resources/assets/js/components/'
+        $this->fileWritePaths['component'] = base_path() . '/resources/js/components/'
             . $this->tokens['gridComponentName']
             . '.vue';
 
-        $this->fileWritePaths['components'] = base_path() . '/resources/assets/js/components.js';
+        $this->fileWritePaths['components'] = base_path() . '/resources/js/components.js';
 
 
     }

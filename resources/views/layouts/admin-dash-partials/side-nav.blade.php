@@ -127,6 +127,7 @@
                     <ul>
                         <li><a href="/content" class="waves-effect">Content<i class="material-icons">dashboard</i></a></li>
                         <li><a href="/category" class="waves-effect">Categories<i class="material-icons">dashboard</i></a></li>
+                        <li><a href="/subcategory" class="waves-effect">Subcategories<i class="material-icons">dashboard</i></a></li>
                     </ul>
                 </div>
             </li>

@@ -59,8 +59,8 @@ class ChildCrudBuilder
         $this->fileWritePaths['apiController'] = base_path() . '/app/Http/Controllers/ApiController.php';
         $this->fileAppendPaths['routes'] = base_path() . '/routes/web.php';
         $this->fileWritePaths['migration'] = base_path() . '/database/migrations/' . date('Y_m_d_His') . '_create_' .$this->tokens['tableName'] . '_table'. '.php';
-        $this->fileAppendPaths['factory'] = base_path() . '/database/factories/ModelFactory.php';
-        $this->fileWritePaths['test'] = base_path() . '/tests/' .  $this->tokens['upperCaseModelName'] .  'Test.php';
+        $this->fileWritePaths['factory'] = base_path() . '/database/factories/'
+            . $this->tokens['upperCaseModelName'] . 'Factory.php';
         $this->fileWritePaths['dataQuery'] = base_path() . '/app/Queries/GridQueries/Contracts/' . 'DataQuery.php';
         $this->fileWritePaths['gridQuery'] = base_path() . '/app/Queries/GridQueries/' . 'GridQuery.php';
         $this->fileWritePaths['modelQuery'] = base_path() . '/app/Queries/GridQueries/' . $this->tokens['upperCaseModelName'] . 'Query.php';
@@ -74,6 +74,7 @@ class ChildCrudBuilder
 
         $this->tokens = $tokenBuilder->tokens;
 
+
     }
 
     /**
@@ -82,6 +83,10 @@ class ChildCrudBuilder
 
     private function setInput($input)
     {
+
+
+
+
         $this->initialValues['model'] = $input['ChildName'];
 
         $this->initialValues['slug'] = strtolower($input['Slug']);
@@ -89,6 +94,10 @@ class ChildCrudBuilder
         $this->initialValues['parent'] = $input['ParentName'];
 
         $this->initialValues['child'] = $input['ChildName'];
+
+
+
+
     }
 
 

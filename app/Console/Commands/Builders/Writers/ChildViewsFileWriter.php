@@ -61,10 +61,35 @@ class ChildViewsFileWriter
 
                     break;
 
+                case 'create-form' :
+
+                    $txt = $content->getContentFromTemplate('create-form', $this->tokens);
+
+                    $handle = fopen($filePath, "w");
+
+                    fwrite($handle, $txt);
+
+                    fclose($handle);
+
+                    break;
+
                 case 'edit' :
 
 
                     $txt = $content->getContentFromTemplate('edit', $this->tokens);
+
+                    $handle = fopen($filePath, "w");
+
+                    fwrite($handle, $txt);
+
+                    fclose($handle);
+
+                    break;
+
+                case 'edit-form' :
+
+
+                    $txt = $content->getContentFromTemplate('edit-form', $this->tokens);
 
                     $handle = fopen($filePath, "w");
 
