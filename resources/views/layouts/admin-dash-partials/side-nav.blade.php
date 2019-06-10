@@ -96,6 +96,8 @@
                         <li><a href="/contact-topic" class="waves-effect">Support Topics<i class="material-icons">list_alt</i></a></li>
                         <li><a href="/user" class="waves-effect">Users
                                 <i class="material-icons">person</i></a></li>
+                        <li><a href="/profile" class="waves-effect">Profiles
+                                <i class="material-icons">person</i></a></li>
 
                     </ul>
                 </div>

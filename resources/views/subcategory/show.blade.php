@@ -1,4 +1,4 @@
-@extends('layouts.master-auth')
+@extends('layouts.masters.master-auth')
 
 @section('title')
 

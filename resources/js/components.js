@@ -30,3 +30,9 @@ Vue.component('category-grid', require('./components/CategoryGrid.vue').default)
 Vue.component('subcategory-grid', require('./components/SubcategoryGrid.vue').default);
 
 /** End Subcategory Grid Component Call */
+
+/** Begin Profile Grid Component Call */
+
+Vue.component('profile-grid', require('./components/ProfileGrid.vue').default);
+
+/** End Profile Grid Component Call */

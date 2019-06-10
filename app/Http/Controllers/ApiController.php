@@ -11,40 +11,22 @@ use Illuminate\Support\Facades\Auth;
 class ApiController extends Controller
 {
 
-    // Begin Subcategory Api Data Grid Method
+    // Begin Profile Api Data Grid Method
 
-    public function subcategoryData(Request $request)
+    public function profileData(Request $request)
     {
 
-        return GridQuery::sendData($request, 'SubcategoryQuery');
+        return GridQuery::sendData($request, 'ProfileQuery');
 
     }
 
-    // End Subcategory Api Data Grid Method
+    // End Profile Api Data Grid Method
 
 
 
-    
 
 
 
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
-
-
-
-    
 
 
 
@@ -126,6 +108,17 @@ class ApiController extends Controller
         return GridQuery::sendData($request, 'OpenContactQuery');
 
     }
+
+    // Begin Subcategory Api Data Grid Method
+
+    public function subcategoryData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'SubcategoryQuery');
+
+    }
+
+    // End Subcategory Api Data Grid Method
 
 
     public function userData(Request $request)

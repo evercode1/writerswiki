@@ -1,0 +1,285 @@
+<template>
+
+    <div class="row">
+
+
+
+        <h1 class="flow-text grey-text text-darken-1">Profile</h1>
+
+            <search-box></search-box>
+
+            <div class="right">
+
+                <grid-count></grid-count>
+
+            </div>
+
+
+
+            <section class="mt-20">
+
+
+                <div class="row">
+
+                    <table>
+
+                        <table-head></table-head>
+
+                        <tbody>
+
+                        <tr v-for="row in gridData">
+
+                            <td>
+
+                                   {{ row.Id }}
+
+                            </td>
+
+                            <td> <a v-bind:href="'/profile/' + row.Id ">
+                                <img v-bind:src="'/imgs/profile/thumbnails/thumb-' + formatImageName(row.Name) + '.' + row.Ext "></a>
+                            </td>
+
+                            <td>
+
+                                <a v-bind:href="'/profile/' + row.Id + '-' + row.Slug"> {{ row.Name }}</a>
+
+                            </td>
+
+                            <td><a v-bind:href="'/user/' + row.UserId + '-' + row.UserSlug">{{ row.User }}</a></td>
+
+                            <td>
+
+                                {{ formatContributor(row.Contributor) }}
+
+                            </td>
+
+                            <td>
+
+                                {{ showStatus(row.Status) }}
+
+                            </td>
+
+                            <td>
+
+                                   {{ row.Created }}
+
+                            </td>
+
+                            <td >
+
+                                <a v-bind:href="'/profile/' + row.Id + '/edit'">
+
+                                <button type="button" class="waves-effect waves-light btn mt-5">
+
+                                        Edit
+
+                                </button>
+
+                                </a>
+
+
+                                <button class="waves-effect waves-light btn mt-5"
+                                        @click="confirmDelete(row.Id)">
+
+                                        Delete
+
+                                </button>
+
+
+
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <page-number></page-number>
+
+            </section>
+
+            <pagination></pagination>
+
+
+
+    </div>
+
+</template>
+
+<script>
+
+    var gridData = require('../utilities/gridData');
+
+        import Pagination from './Pagination';
+        import SearchBox from './SearchBox';
+        import GridCount from './GridCount';
+        import PageNumber from './PageNumber';
+        import TableHead from './TableHead';
+
+
+    export default {
+
+        components: {'pagination' : Pagination,
+                     'search-box' : SearchBox,
+                     'grid-count' : GridCount,
+                     'page-number' : PageNumber,
+                     'table-head' : TableHead },
+
+        mounted: function () {
+
+            gridData.loadData('/api/profile-data', this);
+
+        },
+        data: function () {
+            return {
+                query: '',
+                gridColumns: ['Id', 'Thumbnail', 'Name', 'User', 'Contributor', 'Status', 'Created'],
+                gridData: [],
+                total: null,
+                next_page_url: null,
+                prev_page_url: null,
+                last_page: null,
+                current_page: null,
+                pages: [],
+                first_page_url: null,
+                last_page_url: null,
+                go_to_page: null,
+                sortOrder: 1,
+                sortKey: 'id',
+                createUrl: '/profile/create',
+                showCreateButton: true
+            }
+        },
+
+        methods: {
+
+            sortBy: function (key){
+                this.sortKey = key;
+                this.sortOrder = (this.sortOrder == 1) ? -1 : 1;
+                this.getData(1);
+            },
+
+            search: function(query){
+                this.getData(query);
+            },
+
+
+            getData:  function(request){
+
+                gridData.getQueryData(request, '/api/profile-data', this);
+
+            },
+
+            setPageNumbers: function(){
+
+                this.pages = [];
+
+                for (var i = 1; i <= this.last_page; i++) {
+                    this.pages.push(i);
+                }
+            },
+
+            checkPage: function(page){
+                return page == this.current_page;
+            },
+
+            resetPageNumbers: function(){
+
+                this.setPageNumbers();
+            },
+
+            checkUrlNotNull: function(url){
+
+                return url != null;
+
+            },
+
+            clearPageNumberInputBox: function(){
+
+                return this.go_to_page = '';
+
+            },
+
+            pageInRange: function(){
+
+                return this.go_to_page <= parseInt(this.last_page);
+
+            },
+
+                formatActive: function(active){
+
+                    return  active === 1 ? 'Active' : 'Inactive';
+
+            },
+
+            formatContributor: function(contributor){
+
+                return contributor == 10 ? 'Yes'  : 'No';
+
+            },
+
+            showStatus: function(status){
+
+                switch (status){
+
+                    case 5:
+
+                        return 'No';
+                        break;
+
+                    case 7:
+
+                        return 'Pending';
+                        break;
+
+                    case 10:
+
+                        return 'Active';
+                        break;
+
+                    default:
+
+                        return 'No';
+
+                }
+
+                return status == 10 ? 'Yes'  : 'No';
+
+            },
+
+            formatImageName:  function(imageName){
+
+
+                return imageName.split(" ").join("-").toLowerCase();
+
+
+
+            },
+
+            confirmDelete: function(id){
+
+                if(confirm("Are you sure you want to delete?")){
+
+                    axios.post('/profile-delete/' + id)
+                            .then(response => {
+
+                                gridData.loadData('/api/profile-data', this);
+
+                            });
+
+
+                }
+
+
+
+            }
+
+
+        }
+
+    }
+
+</script>

@@ -127,3 +127,20 @@ Route::resource('subcategory', 'SubcategoryController', ['except' => ['show', 'c
 
 // End Subcategory Routes
 
+
+
+
+
+// Begin Profile Routes
+
+Route::any('api/profile-data', 'ApiController@profileData');
+
+Route::post('profile-delete/{id}', 'ProfileController@destroy');
+
+Route::get('profile/create', ['as' => 'profile.create', 'uses' => 'ProfileController@create']);
+
+Route::get('profile/{id}-{slug?}', ['as' => 'profile.show', 'uses' => 'ProfileController@show']);
+
+Route::resource('profile', 'ProfileController', ['except' => ['show', 'create', 'destroy']]);
+
+// End Profile Routes

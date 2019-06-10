@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 :::useModel:::;
 :::useParent:::;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 
 class :::upperCaseModelName:::Controller extends Controller
 {
@@ -56,7 +57,7 @@ class :::upperCaseModelName:::Controller extends Controller
 
         ]);
 
-        $slug = str_slug($request->:::field_name:::, "-");
+        $slug = Str::slug($request->:::field_name:::, "-");
 
         $:::modelInstance::: = :::upperCaseModelName:::::create([':::field_name:::' => $request->:::field_name:::,
                                                                   'slug' => $slug,
@@ -133,7 +134,7 @@ class :::upperCaseModelName:::Controller extends Controller
 
         $:::modelInstance::: = :::upperCaseModelName:::::findOrFail($id);
 
-        $slug = str_slug($request->:::field_name:::, "-");
+        $slug = Str::slug($request->:::field_name:::, "-");
 
         $:::modelInstance:::->update([':::field_name:::' => $request->:::field_name:::,
                                        'slug' => $slug,

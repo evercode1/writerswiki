@@ -24,7 +24,7 @@ class User extends Authenticatable
         'password',
         'is_subscribed',
         'is_admin',
-        'status',
+        'status_id',
         'is_terms_accepted'
     ];
 
@@ -62,6 +62,19 @@ class User extends Authenticatable
 
 
     }
+
+    // Begin Profile Relationship
+
+    public function profiles()
+    {
+
+        return $this->hasOne('App\Profile');
+
+    }
+
+    // End Profile Relationship
+
+    
 
 
 

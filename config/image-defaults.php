@@ -66,26 +66,20 @@ return [
 
 
     // End Content Image Config Array Method
+
+        'profile' => [
+            'destinationFolder'     => '/imgs/profile/',
+            'createFolder'          => '/imgs/profile',
+            'destinationThumbnail'  => '/imgs/profile/thumbnails/',
+            'thumbPrefix'           => 'thumb-',
+            'imagePath'             => '/imgs/profile/',
+            'thumbnailPath'         => '/imgs/profile/thumbnails/thumb-',
+            'thumbHeight'           => 60,
+            'thumbWidth'            => 60,
+        ],
     
     
-    
 
-
-
-
-
-
-
-
-    'books' => [
-        'destinationFolder'     => '/imgs/books/',
-        'destinationThumbnail'  => '/imgs/books/thumbnails/',
-        'thumbPrefix'           => 'thumb-',
-        'imagePath'             => '/imgs/books/',
-        'thumbnailPath'         => '/imgs/books/thumbnails/thumb-',
-        'thumbHeight'           => 60,
-        'thumbWidth'            => 60,
-    ],
 
 
 ];

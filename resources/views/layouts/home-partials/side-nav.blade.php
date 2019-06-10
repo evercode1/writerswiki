@@ -33,7 +33,7 @@
             <li class="bold waves-effect"><a class="collapsible-header">Books<i class="material-icons chevron">chevron_left</i></a>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a href="#" class="waves-effect">All Books<i class="material-icons">book</i></a></li>
+                        <li><a href="" class="waves-effect">All Books<i class="material-icons">book</i></a></li>
                     </ul>
                 </div>
             </li>
