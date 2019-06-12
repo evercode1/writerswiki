@@ -15,6 +15,23 @@ return [
 
 
 
+    // Begin ContributorLinkType Image Config Array Method
+
+
+        'contributorlinktype' => [
+                'destinationFolder'     => '/imgs/contributorlinktype/',
+                'createFolder'          => '/imgs/contributorlinktype',
+                'destinationThumbnail'  => '/imgs/contributorlinktype/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/contributorlinktype/',
+                'thumbnailPath'         => '/imgs/contributorlinktype/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End ContributorLinkType Image Config Array Method
     // Begin Category Image Config Array Method
 
 

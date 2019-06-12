@@ -144,3 +144,35 @@ Route::get('profile/{id}-{slug?}', ['as' => 'profile.show', 'uses' => 'ProfileCo
 Route::resource('profile', 'ProfileController', ['except' => ['show', 'create', 'destroy']]);
 
 // End Profile Routes
+
+
+
+// Begin ContributorLinkType Routes
+
+Route::get('api/contributor-link-type-data', 'ApiController@contributorLinkTypeData')->middleware(['auth', 'admin']);
+
+Route::post('contributor-link-type-delete/{id}', 'ContributorLinkTypeController@destroy');
+
+Route::get('/contributor-link-type/create', 'ContributorLinkTypeController@create')->name('contributor-link-type.create');
+
+Route::get('contributor-link-type/{id}', 'ContributorLinkTypeController@show')->name('contributor-link-type.show');
+
+Route::resource('contributor-link-type', 'ContributorLinkTypeController', ['except' => ['show', 'create','destroy']]);
+
+// End ContributorLinkType Routes
+
+
+// Begin ContributorLink Routes
+
+Route::get('api/contributor-link-data', 'ApiController@contributorLinkData')->middleware(['auth', 'admin']);
+
+Route::post('contributor-link-delete/{id}', 'ContributorLinkController@destroy');
+
+Route::get('/contributor-link/create', 'ContributorLinkController@create')->name('contributor-link.create');
+
+Route::get('contributor-link/{id}', 'ContributorLinkController@show')->name('contributor-link.show');
+
+Route::resource('contributor-link', 'ContributorLinkController', ['except' => ['show', 'create','destroy']]);
+
+// End ContributorLink Routes
+

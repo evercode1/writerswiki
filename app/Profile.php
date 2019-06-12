@@ -5,6 +5,8 @@ namespace App;
 use App\UtilityTraits\ShowsImages;
 use Illuminate\Database\Eloquent\Model;
 
+    
+
 class Profile extends Model
 {
     use ShowsImages;

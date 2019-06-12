@@ -2,7 +2,7 @@
 
 @section('title')
 
-    <title>Profile</title>
+    <title>ContributorLinkType</title>
 
     @endsection
 
@@ -13,7 +13,7 @@
 
             <div class="row">
 
-            <profile-grid></profile-grid>
+            <contributor-link-type-grid></contributor-link-type-grid>
 
             </div>
 

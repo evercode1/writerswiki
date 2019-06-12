@@ -4,7 +4,7 @@
 
 
 
-        <h1 class="flow-text grey-text text-darken-1">Profile</h1>
+        <h1 class="flow-text grey-text text-darken-1">ContributorLink</h1>
 
             <search-box></search-box>
 
@@ -35,27 +35,17 @@
 
                             </td>
 
-                            <td> <a v-bind:href="'/profile/' + row.Id ">
-                                <img v-bind:src="'/imgs/profile/thumbnails/thumb-' + formatImageName(row.Name) + '.' + row.Ext "></a>
-                            </td>
-
                             <td>
 
-                                <a v-bind:href="'/profile/' + row.Id + '-' + row.Slug"> {{ row.Name }}</a>
+                                <a v-bind:href="'/contributor-link/' + row.Id"> {{ row.Name }}</a>
 
                             </td>
 
-                            <td><a v-bind:href="'/user/' + row.UserId + '/edit/'">{{ row.User }}</a></td>
+                            <td><a v-bind:href="'/contributor-link-type/' + row.ContributorLinkTypeId">{{ row.ContributorLinkType }}</a></td>
 
                             <td>
 
-                                {{ formatContributor(row.Contributor) }}
-
-                            </td>
-
-                            <td>
-
-                                {{ showStatus(row.Status) }}
+                                {{ row.User }}
 
                             </td>
 
@@ -67,7 +57,7 @@
 
                             <td >
 
-                                <a v-bind:href="'/profile/' + row.Id + '/edit'">
+                                <a v-bind:href="'/contributor-link/' + row.Id + '/edit'">
 
                                 <button type="button" class="waves-effect waves-light btn mt-5">
 
@@ -130,13 +120,13 @@
 
         mounted: function () {
 
-            gridData.loadData('/api/profile-data', this);
+            gridData.loadData('/api/contributor-link-data', this);
 
         },
         data: function () {
             return {
                 query: '',
-                gridColumns: ['Id', 'Thumbnail', 'Name', 'User', 'Contributor', 'Status', 'Created'],
+                gridColumns: ['Id', 'Name', 'ContributorLinkType', 'User', 'Created'],
                 gridData: [],
                 total: null,
                 next_page_url: null,
@@ -149,7 +139,7 @@
                 go_to_page: null,
                 sortOrder: 1,
                 sortKey: 'id',
-                createUrl: '/profile/create',
+                createUrl: '/contributor-link/create',
                 showCreateButton: true
             }
         },
@@ -169,7 +159,7 @@
 
             getData:  function(request){
 
-                gridData.getQueryData(request, '/api/profile-data', this);
+                gridData.getQueryData(request, '/api/contributor-link-data', this);
 
             },
 
@@ -215,58 +205,14 @@
 
             },
 
-            formatContributor: function(contributor){
-
-                return contributor == 10 ? 'Yes'  : 'No';
-
-            },
-
-            showStatus: function(status){
-
-                switch (status){
-
-                    case 5:
-
-                        return 'No';
-                        break;
-
-                    case 7:
-
-                        return 'Pending';
-                        break;
-
-                    case 10:
-
-                        return 'Active';
-                        break;
-
-                    default:
-
-                        return 'No';
-
-                }
-
-                return status == 10 ? 'Yes'  : 'No';
-
-            },
-
-            formatImageName:  function(imageName){
-
-
-                return imageName.split(" ").join("-").toLowerCase();
-
-
-
-            },
-
             confirmDelete: function(id){
 
                 if(confirm("Are you sure you want to delete?")){
 
-                    axios.post('/profile-delete/' + id)
+                    axios.post('/contributor-link-delete/' + id)
                             .then(response => {
 
-                                gridData.loadData('/api/profile-data', this);
+                                gridData.loadData('/api/contributor-link-data', this);
 
                             });
 

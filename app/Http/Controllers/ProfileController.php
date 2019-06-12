@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Queries\ProfileLinksQuery;
 use Illuminate\Http\Request;
 use App\Profile;
 use App\User;
@@ -10,6 +11,8 @@ use App\UtilityTraits\ManagesImages;
 use Illuminate\Support\Str;
 use App\UtilityTraits\KebabHelper;
 use Illuminate\Support\Facades\Auth;
+use App\ContributorLink;
+use DB;
 
 class ProfileController extends Controller
 {
@@ -117,8 +120,13 @@ class ProfileController extends Controller
         }
 
         $user = $profile->user->name;
+        $userId = $profile->user->id;
 
-        return view('profile.show', compact('profile', 'user'));
+
+        $links = ProfileLinksQuery::data($userId);
+
+
+        return view('profile.show', compact('profile', 'user', 'links'));
 
     }
 

@@ -36,3 +36,14 @@ Vue.component('subcategory-grid', require('./components/SubcategoryGrid.vue').de
 Vue.component('profile-grid', require('./components/ProfileGrid.vue').default);
 
 /** End Profile Grid Component Call */
+
+/** Begin ContributorLinkType Grid Component Call */
+
+Vue.component('contributor-link-type-grid', require('./components/ContributorLinkTypeGrid.vue').default);
+
+/** End ContributorLinkType Grid Component Call */
+/** Begin ContributorLink Grid Component Call */
+
+Vue.component('contributor-link-grid', require('./components/ContributorLinkGrid.vue').default);
+
+/** End ContributorLink Grid Component Call */

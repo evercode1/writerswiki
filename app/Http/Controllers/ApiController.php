@@ -11,6 +11,36 @@ use Illuminate\Support\Facades\Auth;
 class ApiController extends Controller
 {
 
+    // Begin ContributorLink Api Data Grid Method
+
+    public function contributorLinkData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'ContributorLinkQuery');
+
+    }
+
+    // End ContributorLink Api Data Grid Method
+
+
+
+    // Begin ContributorLinkType Api Data Grid Method
+
+    public function contributorLinkTypeData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'ContributorLinkTypeQuery');
+
+    }
+
+    // End ContributorLinkType Api Data Grid Method
+
+
+
+    
+
+
+
     // Begin Profile Api Data Grid Method
 
     public function profileData(Request $request)

@@ -8,9 +8,11 @@
 
 @section('content')
 
+<div class="container">
+
+    <div class="center"><h1>{{  $profile->name }}</h1></div>
 
 
-        <h1>Profile Details</h1>
 
         <div class="row">
             <div class="col s12 m7">
@@ -24,18 +26,26 @@
                     </div>
                     <div class="card-action">
 
-                        <h4>Links</h4>
-
-                        <ul>
-
-                          <li><a href="#">Max's blog</a></li>
-                            <li><a href="#">Star Faer</a></li>
-                            <li><a href="#">This is a link</a></li>
-                            <li><a href="#">This is a link</a></li>
-                            <li><a href="#">This is a link</a></li>
 
 
-                        </ul>
+
+                    @foreach($links as $name => $infos)
+
+                            <h4>{{ $name }}</h4>
+
+                        @forEach($infos as $info)
+
+                            <ul>
+                                <li><a href="{{ $info->Url }}" class="grey-text text-darken-2">
+                                        {{ $info->Name }}</a>
+                                </li>
+                            </ul>
+
+                        @endforeach
+
+
+                @endforeach
+
 
 
                     </div>
@@ -43,7 +53,7 @@
             </div>
         </div>
 
-
+</div>
 
 
 @endsection
