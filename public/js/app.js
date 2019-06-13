@@ -3739,17 +3739,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/utilities/gridData.js");
 
 
@@ -3771,7 +3760,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
   data: function data() {
     return {
       query: '',
-      gridColumns: ['Id', 'Thumbnail', 'Name', 'User', 'Contributor', 'Status', 'Created'],
+      gridColumns: ['Id', 'Thumbnail', 'Name', 'User', 'Created'],
       gridData: [],
       total: null,
       next_page_url: null,
@@ -3824,29 +3813,6 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
     },
     formatActive: function formatActive(active) {
       return active === 1 ? 'Active' : 'Inactive';
-    },
-    formatContributor: function formatContributor(contributor) {
-      return contributor == 10 ? 'Yes' : 'No';
-    },
-    showStatus: function showStatus(status) {
-      switch (status) {
-        case 5:
-          return 'No';
-          break;
-
-        case 7:
-          return 'Pending';
-          break;
-
-        case 10:
-          return 'Active';
-          break;
-
-        default:
-          return 'No';
-      }
-
-      return status == 10 ? 'Yes' : 'No';
     },
     formatImageName: function formatImageName(imageName) {
       return imageName.split(" ").join("-").toLowerCase();
@@ -4224,7 +4190,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
   data: function data() {
     return {
       query: '',
-      gridColumns: ['Id', 'Name', 'Email', 'Status', 'Subscribed', 'Admin', 'Contributor', 'Constat', 'Joined'],
+      gridColumns: ['Id', 'Name', 'Email', 'Status', 'Subscribed', 'Admin', 'Contributor', 'Approved', 'Joined'],
       gridData: [],
       total: null,
       next_page_url: null,
@@ -4287,7 +4253,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
     showConstat: function showConstat(constat) {
       switch (constat) {
         case 10:
-          return 'active';
+          return 'Approved';
           break;
 
         case 7:
@@ -42024,22 +41990,6 @@ var render = function() {
                           "a",
                           { attrs: { href: "/user/" + row.UserId + "/edit/" } },
                           [_vm._v(_vm._s(row.User))]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n\n                            " +
-                            _vm._s(_vm.formatContributor(row.Contributor)) +
-                            "\n\n                        "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n\n                            " +
-                            _vm._s(_vm.showStatus(row.Status)) +
-                            "\n\n                        "
                         )
                       ]),
                       _vm._v(" "),

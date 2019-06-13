@@ -47,17 +47,6 @@
 
                             <td><a v-bind:href="'/user/' + row.UserId + '/edit/'">{{ row.User }}</a></td>
 
-                            <td>
-
-                                {{ formatContributor(row.Contributor) }}
-
-                            </td>
-
-                            <td>
-
-                                {{ showStatus(row.Status) }}
-
-                            </td>
 
                             <td>
 
@@ -136,7 +125,7 @@
         data: function () {
             return {
                 query: '',
-                gridColumns: ['Id', 'Thumbnail', 'Name', 'User', 'Contributor', 'Status', 'Created'],
+                gridColumns: ['Id', 'Thumbnail', 'Name', 'User', 'Created'],
                 gridData: [],
                 total: null,
                 next_page_url: null,
@@ -214,41 +203,7 @@
                     return  active === 1 ? 'Active' : 'Inactive';
 
             },
-
-            formatContributor: function(contributor){
-
-                return contributor == 10 ? 'Yes'  : 'No';
-
-            },
-
-            showStatus: function(status){
-
-                switch (status){
-
-                    case 5:
-
-                        return 'No';
-                        break;
-
-                    case 7:
-
-                        return 'Pending';
-                        break;
-
-                    case 10:
-
-                        return 'Active';
-                        break;
-
-                    default:
-
-                        return 'No';
-
-                }
-
-                return status == 10 ? 'Yes'  : 'No';
-
-            },
+            
 
             formatImageName:  function(imageName){
 
