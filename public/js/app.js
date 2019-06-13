@@ -4193,6 +4193,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/utilities/gridData.js");
 
 
@@ -4214,7 +4224,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
   data: function data() {
     return {
       query: '',
-      gridColumns: ['Id', 'Name', 'Email', 'Status', 'Subscribed', 'Admin', 'Joined'],
+      gridColumns: ['Id', 'Name', 'Email', 'Status', 'Subscribed', 'Admin', 'Contributor', 'Constat', 'Joined'],
       gridData: [],
       total: null,
       next_page_url: null,
@@ -4270,6 +4280,24 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
     },
     showAdmin: function showAdmin(admin) {
       return admin == 1 ? 'Yes' : 'No';
+    },
+    showContributor: function showContributor(contributor) {
+      return contributor == 1 ? 'Yes' : 'No';
+    },
+    showConstat: function showConstat(constat) {
+      switch (constat) {
+        case 10:
+          return 'active';
+          break;
+
+        case 7:
+          return 'pending';
+          break;
+
+        case 5:
+          return 'none';
+          break;
+      }
     },
     showSubscribed: function showSubscribed(subscribed) {
       return subscribed == 1 ? 'Yes' : 'No';
@@ -42426,6 +42454,22 @@ var render = function() {
                           _vm._v(
                             "\n\n                            " +
                               _vm._s(_vm.showAdmin(row.Admin)) +
+                              "\n\n                        "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n\n                            " +
+                              _vm._s(_vm.showContributor(row.Contributor)) +
+                              "\n\n                        "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            "\n\n                            " +
+                              _vm._s(_vm.showConstat(row.Constat)) +
                               "\n\n                        "
                           )
                         ]),

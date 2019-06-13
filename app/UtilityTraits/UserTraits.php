@@ -25,6 +25,43 @@ trait UserTraits
         return Auth::user()->status_id == 10;
     }
 
+    public function isContributor()
+    {
+
+        return Auth::user()->is_contributor == 1;
+
+    }
+
+    public function formatContributorStatus($value)
+    {
+
+        switch ($value){
+
+            case 5:
+
+                return 'None';
+                break;
+
+            case 7:
+
+                return 'Pending';
+                break;
+
+            case 10:
+
+                return 'Active';
+                break;
+
+            default:
+
+                return 'None';
+
+        }
+
+
+    }
+
+
     public function isSubscribed()
     {
 
@@ -38,6 +75,13 @@ trait UserTraits
 
 
     }
+
+    public function isUserContributor($user)
+    {
+
+        return $user->is_contributor == 1;
+    }
+
 
     public function isUserSubscribed($user)
     {

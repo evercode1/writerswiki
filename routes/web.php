@@ -27,7 +27,11 @@ Route::any('api/category-data', 'ApiController@categoryData')->middleware(['auth
 Route::get('api/closed-contact-data', 'ApiController@closedContactData')->middleware(['auth', 'admin']);
 Route::get('api/contact-data', 'ApiController@ContactData')->middleware(['auth', 'admin']);
 Route::any('api/contact-topic-data', 'ApiController@contactTopicData')->middleware(['auth', 'admin']);
+Route::any('api/content-data', 'ApiController@contentData')->middleware(['auth', 'admin']);
+Route::get('api/contributor-link-data', 'ApiController@contributorLinkData')->middleware(['auth', 'admin']);
+Route::get('api/contributor-link-type-data', 'ApiController@contributorLinkTypeData')->middleware(['auth', 'admin']);
 Route::get('api/open-contact-data', 'ApiController@openContactData')->middleware(['auth', 'admin']);
+Route::any('api/profile-data', 'ApiController@profileData')->middleware(['auth', 'admin']);
 Route::any('api/subcategory-data', 'ApiController@subcategoryData')->middleware(['auth', 'admin']);
 Route::get('api/user-data', 'ApiController@userData')->middleware(['auth', 'admin']);
 
@@ -72,7 +76,6 @@ Route::resource('contact-topic', 'Contacts\ContactTopicController', ['except' =>
 
 // Begin Content Routes
 
-Route::any('api/content-data', 'ApiController@contentData');
 
 Route::post('content-delete/{id}', 'ContentController@destroy');
 
@@ -86,7 +89,7 @@ Route::resource('content', 'ContentController', ['except' => ['show', 'create','
 
 // Begin ContributorLinkType Routes
 
-Route::get('api/contributor-link-type-data', 'ApiController@contributorLinkTypeData')->middleware(['auth', 'admin']);
+
 
 Route::post('contributor-link-type-delete/{id}', 'ContributorLinkTypeController@destroy');
 
@@ -100,7 +103,7 @@ Route::resource('contributor-link-type', 'ContributorLinkTypeController', ['exce
 
 // Begin ContributorLink Routes
 
-Route::get('api/contributor-link-data', 'ApiController@contributorLinkData')->middleware(['auth', 'admin']);
+
 
 Route::post('contributor-link-delete/{id}', 'ContributorLinkController@destroy');
 
@@ -140,7 +143,7 @@ Route::get('/terms-of-service', 'PagesController@terms')->name('pages.terms');
 
 // Begin Profile Routes
 
-Route::any('api/profile-data', 'ApiController@profileData');
+
 
 Route::get('show-profile', 'ProfileController@showProfileToUser')->name('show-profile');
 
@@ -159,6 +162,12 @@ Route::resource('profile', 'ProfileController', ['except' => ['show', 'create', 
 // Reply Routes
 
 Route::resource('reply', 'ReplyController');
+
+// Settings routes
+
+Route::get('settings', 'SettingsController@edit');
+
+Route::patch('settings', 'SettingsController@update')->name('user-update');
 
 
 // Support Messages Routes

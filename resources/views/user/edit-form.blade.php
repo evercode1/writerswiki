@@ -104,6 +104,47 @@
 
         <!-- end status -->
 
+        <!-- contributor_status select -->
+
+        <div class="row">
+
+            <div class="row">
+
+        <div class="{{ $errors->has('contributor_status ') ? ' has-error' : '' }}">
+
+            <label>Contributor Status?</label>
+
+            <select id="contributor_status" name="contributor_status">
+
+                <option value="{{ $user->contributor_status }}">{{ $user->formatContributorStatus($user->contributor_status) }}</option>
+
+
+
+                    <option value="5">None</option>
+                    <option value="7">Pending</option>
+                    <option value="10">Approved</option>
+
+
+
+            </select>
+
+            @if ($errors->has('contributor_status'))
+
+                <span class="help-block">
+
+                        <strong>{{ $errors->first('contributor_status') }}</strong>
+
+                    </span>
+
+            @endif
+
+        </div>
+            </div>
+
+        </div>
+
+        <!-- end contributor_status select -->
+
         <!-- is_subscribed checkbox -->
 
         <div class="row">
@@ -139,6 +180,39 @@
 
         <!-- is_admin checkbox -->
 
+            <div class="row">
+
+                <div class="row">
+                    <div class="ml-20">
+
+                        <p>
+                            <label>
+                                <input type="checkbox"
+                                       id="is_admin"
+                                       name="is_admin"
+                                        {{ old('is_admin') ? 'checked' : $user->isUserAdmin($user) ? 'checked' : '' }}
+                                />
+                                <span>Is Admin?</span>
+                            </label>
+                        </p>
+
+                    </div>
+                </div>
+
+                @if ($errors->has('is_admin'))
+
+                    <span class="form-error">
+                        <strong>{{ $errors->first('is_admin') }}</strong>
+                    </span>
+
+                @endif
+
+        </div>
+
+        <!-- end is_admin checkbox -->
+
+        <!-- is_contributor checkbox -->
+
         <div class="row">
 
             <div class="row">
@@ -147,28 +221,28 @@
                     <p>
                         <label>
                             <input type="checkbox"
-                                   id="is_admin"
-                                   name="is_admin"
-                                    {{ old('is_admin') ? 'checked' : $user->isUserAdmin($user) ? 'checked' : '' }}
+                                   id="is_contributor"
+                                   name="is_contributor"
+                                    {{ old('is_contributor') ? 'checked' : $user->isUserContributor($user) ? 'checked' : '' }}
                             />
-                            <span>Is Admin?</span>
+                            <span>Is Contributor?</span>
                         </label>
                     </p>
 
                 </div>
             </div>
 
-            @if ($errors->has('is_admin'))
+            @if ($errors->has('is_contributor'))
 
                 <span class="form-error">
-                        <strong>{{ $errors->first('is_admin') }}</strong>
+                        <strong>{{ $errors->first('is_contributor') }}</strong>
                     </span>
 
             @endif
 
         </div>
 
-        <!-- end is_subscribed checkbox -->
+        <!-- end is_contributor checkbox -->
 
 
 

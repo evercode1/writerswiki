@@ -66,7 +66,17 @@
 
                             </td>
 
+                            <td>
 
+                                {{ showContributor(row.Contributor) }}
+
+                            </td>
+
+                            <td>
+
+                                {{ showConstat(row.Constat) }}
+
+                            </td>
 
                             <td>
 
@@ -135,7 +145,7 @@
         data: function () {
             return {
                 query: '',
-                gridColumns: ['Id', 'Name', 'Email', 'Status', 'Subscribed','Admin', 'Joined'],
+                gridColumns: ['Id', 'Name', 'Email', 'Status', 'Subscribed','Admin', 'Contributor', 'Approved', 'Joined'],
                 gridData: [],
                 total: null,
                 next_page_url: null,
@@ -211,6 +221,33 @@
             showAdmin: function(admin){
 
                 return admin == 1 ? 'Yes'  : 'No';
+
+            },
+
+            showContributor: function(contributor){
+
+                return contributor == 1 ? 'Yes'  : 'No';
+
+            },
+
+            showConstat: function(constat){
+
+                switch (constat){
+
+                    case 10:
+                        return 'Approved';
+                        break;
+
+                    case 7:
+                        return 'pending';
+                        break;
+
+                    case 5:
+                        return 'none';
+                        break;
+                }
+
+
 
             },
 

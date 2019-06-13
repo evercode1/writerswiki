@@ -24,6 +24,8 @@ class User extends Authenticatable
         'password',
         'is_subscribed',
         'is_admin',
+        'is_contributor',
+        'contributor_status',
         'status_id',
         'is_terms_accepted'
     ];
@@ -50,12 +52,15 @@ class User extends Authenticatable
     {
 
         $request->is_admin === 'on' ? $isAdmin = true : $isAdmin = false;
+        $request->is_contributor === 'on' ? $isContributor = true : $isContributor = false;
         $request->is_subscribed === 'on' ? $isSubscribed = true : $isSubscribed = false;
 
         return  $user->update(['name'  => $request->name,
                                'email' => $request->email,
                                'is_subscribed' => $isSubscribed,
                                'is_admin' => $isAdmin,
+                               'is_contributor' => $isContributor,
+                               'contributor_status' => $request->contributor_status,
                                'status_id' => $request->status_id,
 
         ]);
