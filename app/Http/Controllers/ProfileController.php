@@ -137,7 +137,12 @@ class ProfileController extends Controller
 
         $this->saveImageFiles($file, $profile);
 
-        return Redirect::route('profile.show');
+        $user = $profile->user->name;
+        $userId = $profile->user->id;
+
+        $links = ProfileLinksQuery::data($userId);
+
+        return Redirect::route('profile.show', ['profile' => $profile, 'user' => $user, 'links' => $links]);
 
     }
 
