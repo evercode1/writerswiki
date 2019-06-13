@@ -54,32 +54,6 @@
 
     <!-- end description input -->
 
-    <!-- is_contributor select -->
-
-        <div class="{{ $errors->has('is_contributor') ? ' has-error' : '' }}">
-
-            <label>Contributor?</label>
-
-            <select id="is_contributor" name="is_contributor">
-
-                <option value="1">Yes</option>
-                <option value="0">No</option>
-
-            </select>
-
-            @if ($errors->has('is_contributor'))
-
-                <span class="help-block">
-
-                    <strong>{{ $errors->first('is_contributor') }}</strong>
-
-                </span>
-
-            @endif
-
-        </div>
-
-    <!-- end is_contributor select -->
 
     <!-- image file Form Input -->
 

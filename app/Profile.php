@@ -4,7 +4,7 @@ namespace App;
 
 use App\UtilityTraits\ShowsImages;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Facades\Auth;
     
 
 class Profile extends Model
@@ -19,6 +19,14 @@ class Profile extends Model
                            'slug',
                            'image_name',
                            'image_extension'];
+
+    public function owner($profile)
+    {
+
+        return Auth::id() == $profile->user_id;
+
+
+    }
 
     public function user()
    {

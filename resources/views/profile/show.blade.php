@@ -18,11 +18,21 @@
             <div class="col s12 m7">
                 <div class="card">
                     <div class="card-image">
-                        <img src="{{ $profile->showImage($profile, '/imgs/profile/' ) }}">
+
+                        <div id="ImageContainer">
+                            <img src="{{ $profile->showImage($profile, '/imgs/profile/' ) }}" class="Image">
+                        </div>
+
+
                         <span class="card-title">{{ $profile->name }}</span>
                     </div>
                     <div class="card-content">
                         <p>{!! $profile->description !!}</p>
+
+                        @if(Auth::check() && $profile->owner($profile))
+                        <a href="/profile/{{ $profile->id }}/edit" class="waves-effect waves-light btn-small mt-20">Edit</a>
+                        @endif
+
                     </div>
                     <div class="card-action">
 
@@ -46,7 +56,9 @@
 
                 @endforeach
 
-
+                        @if(Auth::check() && $profile->owner($profile))
+                            <a href="/manage-links" class="waves-effect waves-light btn-small mt-20">manage links</a>
+                        @endif
 
                     </div>
                 </div>

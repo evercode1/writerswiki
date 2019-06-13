@@ -1,10 +1,22 @@
 <div id="settings" class="col s12">
     <div class="settings-group">
+
+        <div class="setting">
+
+            <a href="/my-profile">Profile</a>
+
+        </div>
+        <div class="setting">
+
+            <a href="/manage-links">My Links</a>
+
+        </div>
         <div class="setting">
 
             <a href="/settings">Settings</a>
 
         </div>
+
         <div class="setting">
 
             <a href="/password/reset">Reset Password</a>

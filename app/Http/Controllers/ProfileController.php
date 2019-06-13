@@ -5,18 +5,19 @@ namespace App\Http\Controllers;
 use App\Queries\ProfileLinksQuery;
 use Illuminate\Http\Request;
 use App\Profile;
-use App\User;
 use Illuminate\Support\Facades\Redirect;
 use App\UtilityTraits\ManagesImages;
 use Illuminate\Support\Str;
 use App\UtilityTraits\KebabHelper;
 use Illuminate\Support\Facades\Auth;
-use App\ContributorLink;
 use DB;
+use App\Exceptions\UnauthorizedException;
+use App\User;
+use App\Http\AuthTraits\OwnsRecord;
 
 class ProfileController extends Controller
 {
-    use ManagesImages, KebabHelper;
+    use OwnsRecord, ManagesImages, KebabHelper;
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +27,8 @@ class ProfileController extends Controller
     public function __construct()
     {
 
-        $this->middleware(['auth', 'admin']);
+        $this->middleware('auth');
+        $this->middleware('admin',['only'=> 'index']);
 
         $this->setImageDefaultsFromConfig('profile');
 
@@ -37,6 +39,45 @@ class ProfileController extends Controller
     {
 
         return view('profile.index');
+
+    }
+
+    public function determineProfileRoute()
+    {
+
+        if ($this->profileExists()){
+
+            return Redirect::route('show-profile');
+
+        }
+
+        return view('profile.create');
+
+    }
+
+    public function showProfileToUser()
+    {
+        $profile = Profile::where('user_id', Auth::id())->first();
+
+        if( ! $profile){
+
+            return Redirect::route('profile.create');
+
+        }
+
+
+        if ($this->userNotOwnerOf($profile)){
+
+            throw new UnauthorizedException;
+
+        }
+
+        $user = $profile->user->name;
+        $userId = $profile->user->id;
+
+        $links = ProfileLinksQuery::data($userId);
+
+        return view('profile.show', compact('profile', 'user', 'links'));
 
     }
 
@@ -67,8 +108,7 @@ class ProfileController extends Controller
 
        $this->validate($request, [
 
-           'name' => 'required|unique:contents|string|max:100',
-           'is_contributor' => 'required|boolean',
+           'name' => 'required|unique:profiles|string|max:100',
            'body' => 'required|string|max:100000',
            'image' => 'max:1000',
 
@@ -97,7 +137,7 @@ class ProfileController extends Controller
 
         $this->saveImageFiles($file, $profile);
 
-        return Redirect::route('profile.index');
+        return Redirect::route('profile.show');
 
     }
 
@@ -112,12 +152,19 @@ class ProfileController extends Controller
     {
         $profile = Profile::findOrFail($id);
 
+        if (! $this->adminOrCurrentUserOwns($profile)){
+
+            throw new UnauthorizedException;
+
+        }
+
         if ($profile->slug !== $slug) {
 
             return Redirect::route('profile.show', ['id' => $profile->id,
                                                    'slug' => $profile->slug], 301);
 
         }
+
 
         $user = $profile->user->name;
         $userId = $profile->user->id;
@@ -141,7 +188,11 @@ class ProfileController extends Controller
     {
         $profile = Profile::findOrFail($id);
 
+        if (! $this->adminOrCurrentUserOwns($profile)){
 
+            throw new UnauthorizedException;
+
+        }
 
         return view('profile.edit', compact('profile'));
     }
@@ -160,8 +211,7 @@ class ProfileController extends Controller
 
         $this->validate($request, [
 
-            'name' => 'required|string|max:100|unique:contents,name,' .$id,
-            'is_contributor' => 'required|boolean',
+            'name' => 'required|string|max:100|unique:profiles,name,' .$id,
             'body' => 'required|string|max:100000',
             'image' => 'max:1000',
 
@@ -169,6 +219,12 @@ class ProfileController extends Controller
         ]);
 
         $profile = Profile::findOrFail($id);
+
+        if (! $this->adminOrCurrentUserOwns($profile)){
+
+            throw new UnauthorizedException;
+
+        }
 
         $slug = Str::slug($request->name, "-");
 
@@ -213,9 +269,15 @@ class ProfileController extends Controller
     public function destroy($id)
     {
 
-        $content = Profile::findOrFail($id);
+        $profile = Profile::findOrFail($id);
 
-        $this->deleteExistingImages($content);
+        if (! $this->adminOrCurrentUserOwns($profile)){
+
+            throw new UnauthorizedException;
+
+        }
+
+        $this->deleteExistingImages($profile);
 
         Profile::destroy($id);
 
@@ -240,10 +302,22 @@ class ProfileController extends Controller
 
         $modelInstance->name = $request->get('name');
         $modelInstance->slug = $slug;
-        $modelInstance->is_contributor = $request->get('is_contributor');
-        $modelInstance->contributor_status = $request->get('contributor_status');
         $modelInstance->description = $request->get('body');
         $modelInstance->image_name = $this->formatString($request->get('name'));
+
+    }
+
+    /**
+     * @return mixed
+     */
+
+    private function profileExists()
+    {
+        $profileExists = DB::table('profiles')
+                         ->where('user_id', Auth::id())
+                         ->exists();
+
+        return $profileExists;
 
     }
 }
