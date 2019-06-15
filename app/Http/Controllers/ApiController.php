@@ -7,6 +7,7 @@ use App\Queries\GridQueries\GridQuery;
 use App\Queries\AlarmQuery;
 use App\Queries\AlarmAdminQuery;
 use Illuminate\Support\Facades\Auth;
+use App\Queries\SignatureQuery;
 
 class ApiController extends Controller
 {
@@ -136,6 +137,14 @@ class ApiController extends Controller
     {
 
         return GridQuery::sendData($request, 'OpenContactQuery');
+
+    }
+
+    public function signature(Request $request, $id)
+    {
+
+        return SignatureQuery::data($id);
+
 
     }
 

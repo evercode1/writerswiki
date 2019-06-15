@@ -54,6 +54,30 @@
 
     <!-- end description input -->
 
+    <!-- tagline input -->
+
+    <div class="{{ $errors->has('tagline') ? ' has-error' : '' }}">
+
+        <label>Tagline</label>
+
+        <input type="text"
+               name="tagline"
+               value="{{ old('tagline') }}" />
+
+        @if ($errors->has('tagline'))
+
+            <span class="help-block">
+
+                    <strong>{{ $errors->first('tagline') }}</strong>
+
+                </span>
+
+        @endif
+
+    </div>
+
+    <!-- end tagline input -->
+
 
     <!-- image file Form Input -->
 

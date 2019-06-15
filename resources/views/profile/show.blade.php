@@ -27,6 +27,11 @@
                         <span class="card-title">{{ $profile->name }}</span>
                     </div>
                     <div class="card-content">
+                        <div>
+                            <p><h3>{{ $profile->tagline }}</h3></p>
+
+                        </div>
+
                         <p>{!! $profile->description !!}</p>
 
                         @if(Auth::check() && $profile->owner($profile))

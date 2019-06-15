@@ -110,6 +110,7 @@ class ProfileController extends Controller
 
            'name' => 'required|unique:profiles|string|max:100',
            'body' => 'required|string|max:100000',
+           'tagline' => 'required|string|max:50',
            'image' => 'max:1000',
 
 
@@ -120,6 +121,7 @@ class ProfileController extends Controller
 
         $profile = Profile::create(['name' => $request->name,
                                     'description' => $request->body,
+                                    'tagline' => $request->tagline,
                                     'slug' => $slug,
                                     'user_id'  => Auth::id(),
                                     'image_name'        => $this->formatString($request->get('name')),
@@ -218,6 +220,7 @@ class ProfileController extends Controller
 
             'name' => 'required|string|max:100|unique:profiles,name,' .$id,
             'body' => 'required|string|max:100000',
+            'tagline' => 'required|string|max:50',
             'image' => 'max:1000',
 
 
@@ -308,6 +311,7 @@ class ProfileController extends Controller
         $modelInstance->name = $request->get('name');
         $modelInstance->slug = $slug;
         $modelInstance->description = $request->get('body');
+        $modelInstance->tagline = $request->tagline;
         $modelInstance->image_name = $this->formatString($request->get('name'));
 
     }

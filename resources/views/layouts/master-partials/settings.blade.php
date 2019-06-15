@@ -13,6 +13,11 @@
         </div>
         <div class="setting">
 
+            <a href="/contributor">Contributor Status</a>
+
+        </div>
+        <div class="setting">
+
             <a href="/settings">Settings</a>
 
         </div>

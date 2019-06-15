@@ -19,7 +19,6 @@
 <script src="/dist/js/imagesloaded.pkgd.min.js"></script>
 <script src="/dist/js/masonry.pkgd.min.js"></script>
 
-
 <!-- Initialization script -->
 <script src="/dist/js/admin.js"></script>
 <script src="/dist/js/page-scripts/dashboard.js"></script>

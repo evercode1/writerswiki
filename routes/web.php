@@ -33,6 +33,7 @@ Route::get('api/contributor-link-type-data', 'ApiController@contributorLinkTypeD
 Route::get('api/open-contact-data', 'ApiController@openContactData')->middleware(['auth', 'admin']);
 Route::any('api/profile-data', 'ApiController@profileData')->middleware(['auth', 'admin']);
 Route::any('api/subcategory-data', 'ApiController@subcategoryData')->middleware(['auth', 'admin']);
+Route::get('api/signature-data/{user}', 'ApiController@signature');
 Route::get('api/user-data', 'ApiController@userData')->middleware(['auth', 'admin']);
 
 
@@ -86,6 +87,11 @@ Route::get('content/{id}', 'ContentController@show')->name('content.show');
 Route::resource('content', 'ContentController', ['except' => ['show', 'create','destroy']]);
 
 // End Content Routes
+
+// contributor routes
+
+Route::get('contributor', 'ContributorController@index')->name('contributor.index');
+Route::post('contributor', 'ContributorController@store')->name('contributor.store');
 
 // Begin ContributorLinkType Routes
 
@@ -192,6 +198,11 @@ Route::get('subcategory/{id}', 'SubcategoryController@show')->name('subcategory.
 Route::resource('subcategory', 'SubcategoryController', ['except' => ['show', 'create','destroy']]);
 
 // End Subcategory Routes
+
+
+// test routes
+
+Route::get('test', 'TestController@index')->name('test.index');
 
 
 

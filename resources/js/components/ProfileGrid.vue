@@ -203,7 +203,7 @@
                     return  active === 1 ? 'Active' : 'Inactive';
 
             },
-            
+
 
             formatImageName:  function(imageName){
 

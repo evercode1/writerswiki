@@ -6,7 +6,6 @@ use App\UtilityTraits\UserTraits;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
 use Illuminate\Http\Request;
 
 class User extends Authenticatable
@@ -67,6 +66,8 @@ class User extends Authenticatable
 
 
     }
+
+
 
     // Begin Profile Relationship
 

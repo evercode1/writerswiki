@@ -119,8 +119,8 @@
                 <option value="{{ $user->contributor_status }}">{{ $user->formatContributorStatus($user->contributor_status) }}</option>
 
 
-
-                    <option value="5">None</option>
+                    <option value="0">Rejected</option>
+                    <option value="5">Not applied</option>
                     <option value="7">Pending</option>
                     <option value="10">Approved</option>
 

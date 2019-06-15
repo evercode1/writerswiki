@@ -83,7 +83,7 @@ class UserController extends Controller
             'is_subscribed' => new OnOrNull,
             'is_admin' => new OnOrNull,
             'is_contributor' => new OnOrNull,
-            'contributor_status' => 'in:5,7,10',
+            'contributor_status' => 'in:0,5,7,10',
             'status_id' => 'in:5,7,10',
 
         ]);
