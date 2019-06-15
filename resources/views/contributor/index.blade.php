@@ -22,20 +22,22 @@
 
                 <p>You are approved.  You may contribute articles, snippets and more.</p>
 
+            @elseif($contributor == 'Pending')
+
+                <p>Your application is pending</p>
+
+            @elseif($contributor == 'Rejected')
+
+                <p>We're sorry.  We were unable to approve your application.</p>
+
             @else
-
-                @if($contributor == 'Pending')
-
-                    <p>Your application is pending</p>
-
-                    @else
 
                     @include('contributor.apply-form')
 
-                    @endif
+             @endif
 
 
-                @endif
+
 
 
         </div>

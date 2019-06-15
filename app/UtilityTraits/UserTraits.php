@@ -47,6 +47,11 @@ trait UserTraits
 
         switch ($value){
 
+            case 0:
+
+                return 'Rejected';
+                break;
+
             case 5:
 
                 return 'None';
