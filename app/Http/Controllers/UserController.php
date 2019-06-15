@@ -8,6 +8,7 @@ use DB;
 use App\User;
 use Redirect;
 use App\Rules\OnOrNull;
+use App\Contributor;
 
 class UserController extends Controller
 {
@@ -62,7 +63,9 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
-        return view('user.edit', compact('user'));
+        $contributor = Contributor::where('user_id', $id)->first();
+
+        return view('user.edit', compact('user', 'contributor'));
 
     }
 

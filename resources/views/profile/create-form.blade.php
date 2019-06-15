@@ -86,7 +86,7 @@
         <div class="{{ $errors->has('image') ? 'has-error' : '' }}">
 
             <div class="row">
-                <label>Book Image</label>
+                <label>Profile Image</label>
 
             </div>
 

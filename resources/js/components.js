@@ -4,8 +4,10 @@ Vue.component('closed-contact-grid', require('./components/ClosedContactGrid.vue
 Vue.component('contact-grid', require('./components/ContactGrid.vue').default);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('open-contact-grid', require('./components/OpenContactGrid.vue').default);
+Vue.component('pending-contributors-grid', require('./components/PendingContributorsGrid.vue').default);
 Vue.component('signature', require('./components/Signature.vue').default);
 Vue.component('user-grid', require('./components/UserGrid.vue').default);
+
 
 
 

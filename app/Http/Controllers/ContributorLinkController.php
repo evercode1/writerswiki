@@ -7,7 +7,7 @@ use App\ContributorLink;
 use App\ContributorLinkType;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
-
+use App\Rules\MustHaveProfile;
 class ContributorLinkController extends Controller
 {
     /**
@@ -52,6 +52,7 @@ class ContributorLinkController extends Controller
        $this->validate($request, [
             'name' => 'required|unique:contributor_links|string|max:100',
             'url' => 'required|url|max:300',
+            'user' => new MustHaveProfile(),
             'contributor_link_type_id' => "required|numeric"
 
         ]);

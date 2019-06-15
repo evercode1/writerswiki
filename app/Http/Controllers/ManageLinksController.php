@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\UnauthorizedException;
 use App\Http\AuthTraits\OwnsRecord;
+use App\Rules\MaxLinkRecords;
 use Illuminate\Http\Request;
 use App\Queries\ProfileLinksQuery;
 use Illuminate\Support\Facades\Auth;
 use App\ContributorLink;
 use App\ContributorLinkType;
 use Illuminate\Support\Facades\Redirect;
+use App\Rules\MustHaveProfile;
 
 class ManageLinksController extends Controller
 {
@@ -57,6 +59,8 @@ class ManageLinksController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:contributor_links|string|max:100',
             'url' => 'required|url|max:300',
+            'user' => new MustHaveProfile(),
+            'count' => new MaxLinkRecords(Auth::id()),
             'contributor_link_type_id' => "required|numeric"
 
         ]);

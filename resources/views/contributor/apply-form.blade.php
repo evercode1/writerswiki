@@ -37,7 +37,7 @@
 
     <div class="{{ $errors->has('body') ? ' has-error' : '' }}">
 
-        <label>Briefly Tell Us Why You Want to Contribute</label>
+        <label>Briefly Tell Us Why You Want to Contribute - 400 character maximum</label>
 
         <textarea id="description" name="body"></textarea>
 

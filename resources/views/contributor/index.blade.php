@@ -15,7 +15,7 @@
 
 
             <h1 class="flow-text grey-text text-darken-1">Contributor Status</h1>
-
+            <p>Help other writers and promote your work.</p>
 
 
             @if($contributor == 'Approved')

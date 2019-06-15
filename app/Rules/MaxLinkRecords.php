@@ -3,19 +3,23 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use App\Profile;
-use Illuminate\Support\Facades\Auth;
+use App\ContributorLink;
 
-class MustHaveProfile implements Rule
+class MaxLinkRecords implements Rule
 {
+
+    private $userId;
+
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($userId)
     {
-        //
+        $this->userId = $userId;
+
+
     }
 
     /**
@@ -27,7 +31,11 @@ class MustHaveProfile implements Rule
      */
     public function passes($attribute, $value)
     {
-        return Profile::where('user_id', Auth::id())->exists();
+        $count = ContributorLink::where('user_id', $this->userId)->count();
+
+
+        return $count < 12 ? true : false;
+
     }
 
     /**
@@ -37,6 +45,6 @@ class MustHaveProfile implements Rule
      */
     public function message()
     {
-        return 'You must complete your profile before you can do this.';
+        return 'You cannot have more than 12 Links';
     }
 }

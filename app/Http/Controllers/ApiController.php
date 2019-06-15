@@ -38,7 +38,13 @@ class ApiController extends Controller
 
 
 
-    
+   public function pendingContributorData(Request $request)
+   {
+
+       return GridQuery::sendData($request, 'PendingContributorQuery');
+
+
+   }
 
 
 
@@ -52,13 +58,6 @@ class ApiController extends Controller
     }
 
     // End Profile Api Data Grid Method
-
-
-
-
-
-
-
 
 
 

@@ -5,6 +5,52 @@
 
 {{ csrf_field() }}
 
+<!-- hidden input -->
+
+    <div class="{{ $errors->has('user') ? ' has-error' : '' }}">
+
+
+        <input type="hidden"
+               name="user"
+               value="{{ 'user' }}" />
+
+        @if ($errors->has('user'))
+
+            <span class="help-block">
+
+                    <strong>{{ $errors->first('user') }}</strong>
+
+                </span>
+
+        @endif
+
+    </div>
+
+    <!-- end hidden input -->
+
+    <!-- hidden input -->
+
+    <div class="{{ $errors->has('count') ? ' has-error' : '' }}">
+
+
+        <input type="hidden"
+               name="count"
+               value="{{ 'count' }}" />
+
+        @if ($errors->has('count'))
+
+            <span class="help-block">
+
+                    <strong>{{ $errors->first('count') }}</strong>
+
+                </span>
+
+        @endif
+
+    </div>
+
+    <!-- end hidden input -->
+
 
     <!-- Parent Name dropdown -->
 

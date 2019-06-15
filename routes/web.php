@@ -31,6 +31,7 @@ Route::any('api/content-data', 'ApiController@contentData')->middleware(['auth',
 Route::get('api/contributor-link-data', 'ApiController@contributorLinkData')->middleware(['auth', 'admin']);
 Route::get('api/contributor-link-type-data', 'ApiController@contributorLinkTypeData')->middleware(['auth', 'admin']);
 Route::get('api/open-contact-data', 'ApiController@openContactData')->middleware(['auth', 'admin']);
+Route::get('api/pending-contributor-data', 'ApiController@pendingContributorData')->middleware(['auth', 'admin']);
 Route::any('api/profile-data', 'ApiController@profileData')->middleware(['auth', 'admin']);
 Route::any('api/subcategory-data', 'ApiController@subcategoryData')->middleware(['auth', 'admin']);
 Route::get('api/signature-data/{user}', 'ApiController@signature');
@@ -146,6 +147,11 @@ Route::get('/cancel-account-confirmation', 'PagesController@cancelAccountConfirm
 Route::get('/privacy-policy', 'PagesController@privacy')->name('pages.privacy');
 
 Route::get('/terms-of-service', 'PagesController@terms')->name('pages.terms');
+
+// pending contributors route
+
+
+Route::get('pending-contributors', 'PendingContributorsController@index')->name('pending-contributors.index');
 
 // Begin Profile Routes
 
