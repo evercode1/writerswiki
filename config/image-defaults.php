@@ -15,6 +15,23 @@ return [
 
 
 
+    // Begin Book Image Config Array Method
+
+
+        'book' => [
+                'destinationFolder'     => '/imgs/book/',
+                'createFolder'          => '/imgs/book',
+                'destinationThumbnail'  => '/imgs/book/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/book/',
+                'thumbnailPath'         => '/imgs/book/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End Book Image Config Array Method
     // Begin ContributorLinkType Image Config Array Method
 
 

@@ -8,9 +8,24 @@ use App\Queries\AlarmQuery;
 use App\Queries\AlarmAdminQuery;
 use Illuminate\Support\Facades\Auth;
 use App\Queries\SignatureQuery;
+use App\Queries\SubcategoriesForDropdownQuery;
+use App\Queries\CategoriesForDropdownQuery;
 
 class ApiController extends Controller
 {
+
+    // Begin Book Api Data Grid Method
+
+    public function bookData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'BookQuery');
+
+    }
+
+    // End Book Api Data Grid Method
+
+
 
     // Begin ContributorLink Api Data Grid Method
 
@@ -80,6 +95,13 @@ class ApiController extends Controller
 
         // $data = Contact::where('status_id', 1)->count();
         // return json_encode($data);
+
+    }
+
+    public function categoriesForDropdown()
+    {
+
+        return CategoriesForDropdownQuery::data();
 
     }
 
@@ -157,6 +179,13 @@ class ApiController extends Controller
     }
 
     // End Subcategory Api Data Grid Method
+
+    public function subcategoriesForDropdown($id)
+    {
+
+        return SubcategoriesForDropdownQuery::data($id);
+
+    }
 
 
     public function userData(Request $request)

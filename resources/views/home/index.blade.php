@@ -13,8 +13,5 @@
 
 <div class="center"><h4 class="flow-text grey-text text-darken-1">Free Resources For Writers</h4></div>
 
-
-       
-
 @endsection
 

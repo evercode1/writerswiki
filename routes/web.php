@@ -23,6 +23,7 @@ Route::get('api/alarm-data-admin', 'ApiController@alarmDataAdmin');
 Route::get('/api/all-articles-data', 'ApiController@allArticlesData');
 Route::get('api/article-list-data', 'ApiController@articleListData');
 Route::get('api/archives', 'ApiController@archives');
+Route::get('api/categories-for-dropdown', 'ApiController@categoriesForDropdown');
 Route::any('api/category-data', 'ApiController@categoryData')->middleware(['auth', 'admin']);
 Route::get('api/closed-contact-data', 'ApiController@closedContactData')->middleware(['auth', 'admin']);
 Route::get('api/contact-data', 'ApiController@ContactData')->middleware(['auth', 'admin']);
@@ -34,6 +35,7 @@ Route::get('api/open-contact-data', 'ApiController@openContactData')->middleware
 Route::get('api/pending-contributor-data', 'ApiController@pendingContributorData')->middleware(['auth', 'admin']);
 Route::any('api/profile-data', 'ApiController@profileData')->middleware(['auth', 'admin']);
 Route::any('api/subcategory-data', 'ApiController@subcategoryData')->middleware(['auth', 'admin']);
+Route::get('api/subcategories-for-dropdown/{id}', 'ApiController@subcategoriesForDropdown');
 Route::get('api/signature-data/{user}', 'ApiController@signature');
 Route::get('api/user-data', 'ApiController@userData')->middleware(['auth', 'admin']);
 
@@ -218,6 +220,29 @@ Route::get('test', 'TestController@index')->name('test.index');
 
 
 
+
+
+
+
+
+
+// Begin Book Routes
+
+Route::get('all-books', 'AllBooksController@index');
+
+Route::get('/api/all-books-data', 'FrontApiController@allBooksData');
+
+Route::any('api/book-data', 'ApiController@bookData');
+
+Route::post('book-delete/{id}', 'BookController@destroy');
+
+Route::get('/book/create', 'BookController@create')->name('book.create');
+
+Route::get('book/{id}', 'BookController@show')->name('book.show');
+
+Route::resource('book', 'BookController', ['except' => ['show', 'create','destroy']]);
+
+// End Book Routes
 
 
 
