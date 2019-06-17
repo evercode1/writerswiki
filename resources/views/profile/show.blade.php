@@ -46,15 +46,17 @@
 
                     @foreach($links as $name => $infos)
 
-                            <h4>{{ $name }}</h4>
+                            <h4><u>{{ $name }}</u></h4>
 
                         @forEach($infos as $info)
 
                             <ul>
-                                <li><a href="{{ $info->Url }}" class="grey-text text-darken-2">
+                                <li><a href="{{ $info->Url }}" class="grey-text text-darken-2" target="_blank">
                                         {{ $info->Name }}</a>
                                 </li>
                             </ul>
+
+                        <hr>
 
                         @endforeach
 

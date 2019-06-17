@@ -158,7 +158,7 @@ class ProfileController extends Controller
     public function show($id, $slug='')
     {
         $profile = Profile::findOrFail($id);
-        
+
 
         if ($profile->slug !== $slug) {
 
