@@ -23,9 +23,11 @@ class BookController extends Controller
     public function __construct()
     {
 
-        $this->middleware(['auth'], ['except' => 'index', 'show']);
+        $this->middleware(['auth'], ['except' => 'show']);
 
-        $this->middleware(['contributor'], ['except' => 'show']);
+        $this->middleware(['admin'], ['only' => ['edit', 'index']]);
+
+        $this->middleware(['contributor'], ['only' => 'create']);
 
         $this->setImageDefaultsFromConfig('book');
 
