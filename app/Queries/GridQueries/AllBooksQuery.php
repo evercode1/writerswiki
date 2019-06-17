@@ -18,6 +18,7 @@ class AllBooksQuery implements DataQuery
                          'books.slug as Slug',
                          'books.is_active as Active',
                          'profiles.name as Contributor',
+                         'profiles.id as Profile',
                          'categories.name as Category',
                          'subcategories.name as Subcategory',
                          DB::raw('DATE_FORMAT(books.created_at,

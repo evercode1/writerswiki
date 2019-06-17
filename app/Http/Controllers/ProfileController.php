@@ -158,12 +158,7 @@ class ProfileController extends Controller
     public function show($id, $slug='')
     {
         $profile = Profile::findOrFail($id);
-
-        if (! $this->adminOrCurrentUserOwns($profile)){
-
-            throw new UnauthorizedException;
-
-        }
+        
 
         if ($profile->slug !== $slug) {
 
