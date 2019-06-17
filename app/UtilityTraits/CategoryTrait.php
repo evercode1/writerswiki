@@ -22,4 +22,27 @@ trait CategoryTrait
     }
 
 
+    public function showCategoryName($id)
+    {
+
+        $category = Category::where('id', $id)->first();
+
+        return $category->name;
+
+
+
+    }
+
+    public function showSubcategoryName($id)
+    {
+
+        $subcategory = Subcategory::where('id', $id)->first();
+
+        return $subcategory->name;
+
+
+
+    }
+
+
 }

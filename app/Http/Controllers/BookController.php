@@ -14,6 +14,7 @@ use App\Book;
 use Illuminate\Support\Facades\Auth;
 use App\Category;
 use App\Subcategory;
+use App\User;
 
 class BookController extends Controller
 {
@@ -119,7 +120,16 @@ class BookController extends Controller
 
         $book = Book::findOrFail($id);
 
-        return view('book.show', compact('book'));
+        $contributor = User::where('id', $book->user_id)->first();
+
+        $contributor = $contributor->profiles->name;
+
+        $category = $this->showCategoryName($book->category_id);
+
+        $subcategory = $this->showSubcategoryName($book->subcategory_id);
+
+
+        return view('book.show', compact('book', 'category', 'subcategory', 'contributor'));
     }
 
     /**
