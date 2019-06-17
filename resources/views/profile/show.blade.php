@@ -51,7 +51,7 @@
                         @forEach($infos as $info)
 
                             <ul>
-                                <li><a href="{{ $info->Url }}" class="grey-text text-darken-2" target="_blank">
+                                <li><a href="{{ $info->Url }}" class="blue-text text-darken-2" target="_blank">
                                         {{ $info->Name }}</a>
                                 </li>
                             </ul>
