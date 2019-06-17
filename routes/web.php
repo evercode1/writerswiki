@@ -21,6 +21,8 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('api/alarm-data', 'ApiController@alarmData');
 Route::get('api/alarm-data-admin', 'ApiController@alarmDataAdmin');
 Route::get('/api/all-articles-data', 'ApiController@allArticlesData');
+Route::get('/api/book-data', 'ApiController@bookData');
+Route::get('/api/all-books-data', 'FrontApiController@allBooksData');
 Route::get('api/article-list-data', 'ApiController@articleListData');
 Route::get('api/archives', 'ApiController@archives');
 Route::get('api/categories-for-dropdown', 'ApiController@categoriesForDropdown');
@@ -43,6 +45,20 @@ Route::get('api/user-data', 'ApiController@userData')->middleware(['auth', 'admi
 // auth routes
 
 Auth::routes();
+
+// Begin Book Routes
+
+Route::get('all-books', 'AllBooksController@index');
+
+Route::post('book-delete/{id}', 'BookController@destroy');
+
+Route::get('/book/create', 'BookController@create')->name('book.create');
+
+Route::get('book/{id}', 'BookController@show')->name('book.show');
+
+Route::resource('book', 'BookController', ['except' => ['show', 'create','destroy']]);
+
+// End Book Routes
 
 // Begin Category Routes
 
@@ -226,23 +242,7 @@ Route::get('test', 'TestController@index')->name('test.index');
 
 
 
-// Begin Book Routes
 
-Route::get('all-books', 'AllBooksController@index');
-
-Route::get('/api/all-books-data', 'FrontApiController@allBooksData');
-
-Route::any('api/book-data', 'ApiController@bookData');
-
-Route::post('book-delete/{id}', 'BookController@destroy');
-
-Route::get('/book/create', 'BookController@create')->name('book.create');
-
-Route::get('book/{id}', 'BookController@show')->name('book.show');
-
-Route::resource('book', 'BookController', ['except' => ['show', 'create','destroy']]);
-
-// End Book Routes
 
 
 

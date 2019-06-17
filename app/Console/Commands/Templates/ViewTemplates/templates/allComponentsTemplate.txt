@@ -1,6 +1,6 @@
 
 /** Begin :::upperCaseModelName::: All Models Call */
 
-Vue.component(':::allGridName:::', require('./components/:::allGridComponentName:::.vue'));
+Vue.component(':::allGridName:::', require('./components/:::allGridComponentName:::.vue').default);
 
 /** End :::upperCaseModelName::: All Models Call */

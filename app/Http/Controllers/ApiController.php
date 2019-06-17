@@ -14,6 +14,8 @@ use App\Queries\CategoriesForDropdownQuery;
 class ApiController extends Controller
 {
 
+
+
     // Begin Book Api Data Grid Method
 
     public function bookData(Request $request)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Queries\GridQueries\GridQuery;
 
 class FrontApiController extends Controller
 {
@@ -12,7 +13,7 @@ class FrontApiController extends Controller
     public function allBooksData(Request $request)
     {
 
-        return GridQuery::sendData($request, 'BookQuery');
+        return GridQuery::sendData($request, 'AllBooksQuery');
 
     }
 

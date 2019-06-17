@@ -1,16 +1,45 @@
 <form class="mt-20"
       role="form"
       method="POST"
-      action="{{ url('/book/'. $book->id) }}"
-      enctype="multipart/form-data">
+      action="{{ url('/book/'. $book->id) }}">
 
 {{ method_field('PATCH') }}
 {{ csrf_field() }}
 
-    <edit-category  :oldcategory="{{ json_encode($oldcategory) }}"
-                           :categories="{{ json_encode($categories) }}"
-                           :oldsubcategory="{{ json_encode($oldsubcategory) }}"
-                           :subcategories="{{ json_encode($subcategories) }}"
+    <div class="row">
+
+        <div class="{{ $errors->has('category') ? ' has-error' : '' }}">
+
+
+            @if ($errors->has('category'))
+
+                <span class="help-block">
+
+                    <strong>{{ $errors->first('category') }}</strong>
+
+                </span>
+
+            @endif
+
+        </div>
+
+        <div class="{{ $errors->has('subcategory') ? ' has-error' : '' }}">
+
+
+            @if ($errors->has('subcategory'))
+
+                <span class="help-block">
+
+                    <strong>{{ $errors->first('subcategory') }}</strong>
+
+                </span>
+
+            @endif
+
+        </div>
+
+    <edit-category  :oldcat="{{ json_encode($oldcategory) }}"
+                    :oldsub="{{ json_encode($oldsubcategory) }}"
 
     ></edit-category>
 
@@ -37,6 +66,54 @@
     </div>
 
     <!-- end name input -->
+
+        <!-- author input -->
+
+        <div class="{{ $errors->has('author') ? ' has-error' : '' }}">
+
+            <label>Author</label>
+
+            <input type="text"
+                   name="author"
+                   value="{{ $book->author }}" />
+
+            @if ($errors->has('author'))
+
+                <span class="help-block">
+
+                <strong>{{ $errors->first('author') }}</strong>
+
+            </span>
+
+            @endif
+
+        </div>
+
+        <!-- end author input -->
+
+        <!-- url input -->
+
+        <div class="{{ $errors->has('url') ? ' has-error' : '' }}">
+
+            <label>Url</label>
+
+            <input type="text"
+                   name="url"
+                   value="{{ $book->url }}" />
+
+            @if ($errors->has('url'))
+
+                <span class="help-block">
+
+                <strong>{{ $errors->first('url') }}</strong>
+
+            </span>
+
+            @endif
+
+        </div>
+
+        <!-- end url input -->
 
 
 
@@ -97,43 +174,12 @@
 
     <!-- end description input -->
 
-    <!-- image file Form Input -->
 
-        <div class="row mt-20">
-
-            <div class="{{ $errors->has('image') ? 'has-error' : '' }}">
-
-                <div class="row">
-
-                    <label>Image Upload</label>
-
-                </div>
-
-                <div class="row">
-
-                    <input type="file" name="image" id="image">
-                </div>
-
-                @if ($errors->has('image'))
-
-                    <span class="help-block">
-
-                    <strong>{{ $errors->first('image') }}</strong>
-
-                    </span>
-
-                @endif
-
-            </div>
-
-        </div>
-
-    <!-- end file input -->
 
 
     <!-- submit button -->
 
-        <div class="row">
+        <div class="row mt-20">
 
             <button type="submit"
                     class="waves-effect waves-light btn">

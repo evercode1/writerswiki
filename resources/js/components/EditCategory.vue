@@ -1,7 +1,6 @@
 <template>
     <div>
 
-
         <!-- Category Select Form -->
 
 
@@ -13,9 +12,9 @@
 
             </div>
 
-            <select  @change="onChange($event.target.value)" name="category_id" class="browser-default">
+            <select  @change="onChange($event.target.value)" name="category" class="browser-default">
 
-                <option value="">Please Choose One</option>
+                <option :value="oldcat.id">{{ oldcat.name }}</option>
 
                 <option v-for="cat in categories" :value="cat.id">{{cat.name}}</option>
 
@@ -26,7 +25,7 @@
 
         <!-- Subcategory Select Form -->
 
-        <div v-show="current > 0">
+        <div>
 
             <div class="mb-10">
 
@@ -34,9 +33,9 @@
 
             </div>
 
-            <select v-model="defaultOption"  name="subcategory_id" class="browser-default">
+            <select  name="subcategory" class="browser-default">
 
-                <option value="0">Please Choose One</option>
+                <option :value="oldsub.id">{{ oldsub.name }}</option>
 
                 <option v-for="subcategory in subcategories"
                         v-bind:value=" subcategory.id ">{{ subcategory.name }}</option>
@@ -54,10 +53,13 @@
 
     export default {
 
+        props:  ['oldsub', 'oldcat'],
+
 
         mounted: function () {
 
             this.loadData();
+            this.loadSubcategories(oldsub);
 
         },
 

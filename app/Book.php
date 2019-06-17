@@ -15,9 +15,7 @@ class Book extends Model
                            'user_id',
                            'slug',
                            'is_active',
-                           'description',
-                           'image_name',
-                           'image_extension'];
+                           'description'];
 
 
 

@@ -29,23 +29,35 @@
 
                         <tr v-for="row in gridData">
 
+
+
                             <td>
 
-                                   {{ row.Id }}
+                                <a v-bind:href="row.Url" target="_blank"> {{ row.Name }}</a>
 
                             </td>
 
                             <td>
 
-                                <a v-bind:href="'/book/' + row.Id + '-' + row.Slug"> {{ row.Name }}</a>
+                                <a v-bind:href="row.Url" target="_blank"> {{ row.Author }}</a>
 
                             </td>
 
+                            <td>
 
+                                {{ row.Category }}
+
+                            </td>
 
                             <td>
 
-                                   {{ row.Created }}
+                                {{ row.Subcategory }}
+
+                            </td>
+
+                            <td>
+
+                                <a :href="'/profile/' + row.Profile">{{ row.Contributor }}</a>
 
                             </td>
 
@@ -98,7 +110,7 @@
         data: function () {
             return {
                 query: '',
-                gridColumns: ['Id', 'Name', 'Created'],
+                gridColumns: ['Name', 'Author', 'Category', 'Subcategory', 'Contributor'],
                 gridData: [],
                 total: null,
                 next_page_url: null,

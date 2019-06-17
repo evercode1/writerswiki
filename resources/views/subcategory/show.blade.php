@@ -1,4 +1,4 @@
-@extends('layouts.masters.master-auth')
+@extends('layouts.masters.master-admin-dash')
 
 @section('title')
 

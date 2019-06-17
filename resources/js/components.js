@@ -1,5 +1,7 @@
 Vue.component('alarm-bell', require('./components/AlarmBell.vue').default);
 Vue.component('alarm-bell-admin', require('./components/AlarmBellAdmin.vue').default);
+Vue.component('all-books', require('./components/AllBooks.vue').default);
+Vue.component('all-table-head', require('./components/AllTableHead.vue').default);
 Vue.component('closed-contact-grid', require('./components/ClosedContactGrid.vue').default);
 Vue.component('contact-grid', require('./components/ContactGrid.vue').default);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
@@ -59,6 +61,6 @@ Vue.component('book-grid', require('./components/BookGrid.vue').default);
 /** End Book Grid Component Call */
 /** Begin Book All Models Call */
 
-Vue.component('all-books', require('./components/AllBooks.vue'));
+Vue.component('all-books', require('./components/AllBooks.vue').default);
 
 /** End Book All Models Call */

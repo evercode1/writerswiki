@@ -1,8 +1,7 @@
 <form class="mt-20"
       role="form"
       method="POST"
-      action="{{ url('/book') }}"
-      enctype="multipart/form-data">
+      action="{{ url('/book') }}">
 
 {{ csrf_field() }}
 
@@ -163,38 +162,6 @@
         </div>
 
     <!-- end description input -->
-
-    <!-- image file Form Input -->
-
-        <div class="row mt-20">
-
-            <div class="{{ $errors->has('image') ? 'has-error' : '' }}">
-
-                <div class="row">
-                    <label>Image Upload</label>
-
-                </div>
-
-                <div class="row">
-
-                    <input type="file" name="image" id="image">
-                </div>
-
-                @if ($errors->has('image'))
-
-                    <span class="help-block">
-
-                    <strong>{{ $errors->first('image') }}</strong>
-
-                    </span>
-
-                @endif
-
-            </div>
-
-        </div>
-
-     <!-- end file input -->
 
 
     <!-- submit button -->

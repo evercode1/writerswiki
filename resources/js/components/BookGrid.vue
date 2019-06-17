@@ -43,6 +43,30 @@
 
                             <td>
 
+                                <a v-bind:href="'/book/' + row.Id + '-' + row.Slug"> {{ row.Author }}</a>
+
+                            </td>
+
+                            <td>
+
+                                {{ row.Category }}
+
+                            </td>
+
+                            <td>
+
+                                {{ row.Subcategory }}
+
+                            </td>
+
+                            <td>
+
+                                <a :href="'/profile/' + row.Profile">{{ row.Contributor }}</a>
+
+                            </td>
+
+                            <td>
+
                                 {{ formatActive(row.Active) }}
 
                             </td>
@@ -124,7 +148,9 @@
         data: function () {
             return {
                 query: '',
-                gridColumns: ['Id', 'Name', 'Active', 'Created'],
+                gridColumns: ['Id', 'Name', 'Author', 'Category',
+                              'Subcategory', 'Contributor', 'Active',
+                              'Created'],
                 gridData: [],
                 total: null,
                 next_page_url: null,

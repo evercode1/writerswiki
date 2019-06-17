@@ -4,4 +4,3 @@
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="description" content="">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<title>Admin - Star Faer</title>

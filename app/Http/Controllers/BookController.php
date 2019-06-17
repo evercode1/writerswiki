@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rules\MustBelongToCategory;
 use App\Rules\MustHaveValueGreaterThanZero;
 use App\UtilityTraits\CategoryTrait;
 use App\UtilityTraits\KebabHelper;
@@ -140,6 +141,7 @@ class BookController extends Controller
 
 
 
+
         return view('book.edit', compact('book', 'oldcategory', 'oldsubcategory'));
 
     }
@@ -156,13 +158,15 @@ class BookController extends Controller
     {
         // request value is 'body', not 'description' to accommodate ckeditor
 
+
         $this->validate($request, [
 
             'name' => 'required|string|max:100',
             'author' => 'required|string|max:100',
             'url' => 'required|url|unique:books,name,' .$id,
             'category' => 'required|integer',
-            'subcategory' => ['required','integer', new MustHaveValueGreaterThanZero()],
+            'subcategory' => ['required','integer', new MustHaveValueGreaterThanZero(),
+                                                    new MustBelongToCategory($request->category)],
             'is_active' => 'required|boolean',
             'body' => 'required|string|max:1000',
 
