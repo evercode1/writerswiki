@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Cache;
 use App\MediaLinkType;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
 
 class Controller extends BaseController
 {
@@ -18,12 +18,15 @@ class Controller extends BaseController
     public function __construct()
     {
 
+        Cache::flush();
+
         // Build our navigation
         $links = Cache::get('links', function()
         {
             $links = MediaLinkType::where('is_active', 1)->get();
             $links = $links->pluck('name');
             $links->all();
+            $links = Arr::sort($links);
             Cache::put('links', $links, now()->addMinutes(10));
             return $links;
         });
