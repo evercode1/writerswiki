@@ -18,8 +18,6 @@ class Controller extends BaseController
     public function __construct()
     {
 
-        Cache::flush();
-
         // Build our navigation
         $links = Cache::get('links', function()
         {
