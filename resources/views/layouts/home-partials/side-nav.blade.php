@@ -4,7 +4,7 @@
 
     <li class="no-padding">
         <ul class="collapsible collapsible-accordion">
-            <li class="bold waves-effect active"><a class="collapsible-header">Resources<i class="material-icons chevron">chevron_left</i></a>
+            <li class="bold waves-effect active"><a class="collapsible-header">Free Resources<i class="material-icons chevron">chevron_left</i></a>
                 <div class="collapsible-body">
                     <ul>
                         <li><a href="/home" class="waves-effect active">Dashboard<i class="material-icons">web</i></a></li>
