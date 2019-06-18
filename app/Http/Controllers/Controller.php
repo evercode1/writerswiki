@@ -17,13 +17,16 @@ class Controller extends BaseController
 
     public function __construct()
     {
+
+        Cache::flush();
+
         // Build our navigation
         $links = Cache::get('links', function()
         {
             $links = MediaLinkType::where('is_active', 1)->get();
             $links = $links->pluck('name');
             $links->all();
-            Cache::forever('links', $links);
+            Cache::put('links', $links, now()->addMinutes(10));
             return $links;
         });
 
