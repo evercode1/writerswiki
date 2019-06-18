@@ -15,6 +15,23 @@ return [
 
 
 
+    // Begin MediaLinkType Image Config Array Method
+
+
+        'medialinktype' => [
+                'destinationFolder'     => '/imgs/medialinktype/',
+                'createFolder'          => '/imgs/medialinktype',
+                'destinationThumbnail'  => '/imgs/medialinktype/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/medialinktype/',
+                'thumbnailPath'         => '/imgs/medialinktype/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End MediaLinkType Image Config Array Method
     // Begin Book Image Config Array Method
 
 

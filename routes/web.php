@@ -21,7 +21,7 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('api/alarm-data', 'ApiController@alarmData');
 Route::get('api/alarm-data-admin', 'ApiController@alarmDataAdmin');
 Route::get('/api/all-articles-data', 'ApiController@allArticlesData');
-Route::get('/api/book-data', 'ApiController@bookData');
+Route::get('/api/book-data', 'ApiController@bookData')->middleware(['auth', 'admin']);
 Route::get('/api/all-books-data', 'FrontApiController@allBooksData');
 Route::get('api/article-list-data', 'ApiController@articleListData');
 Route::get('api/archives', 'ApiController@archives');
@@ -33,6 +33,8 @@ Route::any('api/contact-topic-data', 'ApiController@contactTopicData')->middlewa
 Route::any('api/content-data', 'ApiController@contentData')->middleware(['auth', 'admin']);
 Route::get('api/contributor-link-data', 'ApiController@contributorLinkData')->middleware(['auth', 'admin']);
 Route::get('api/contributor-link-type-data', 'ApiController@contributorLinkTypeData')->middleware(['auth', 'admin']);
+Route::get('api/media-link-type-data', 'ApiController@mediaLinkTypeData')->middleware(['auth', 'admin']);
+Route::get('api/media-link-types', 'ApiController@mediaLinkTypes')->middleware(['auth', 'admin']);
 Route::get('api/open-contact-data', 'ApiController@openContactData')->middleware(['auth', 'admin']);
 Route::get('api/pending-contributor-data', 'ApiController@pendingContributorData')->middleware(['auth', 'admin']);
 Route::any('api/profile-data', 'ApiController@profileData')->middleware(['auth', 'admin']);
@@ -79,8 +81,6 @@ Route::get('/open-contacts', 'Contacts\OpenContactController@index')->name('cont
 Route::get('/closed-contacts', 'Contacts\ClosedContactController@index');
 
 
-
-
 // Begin ContactTopic Routes
 
 
@@ -95,7 +95,6 @@ Route::resource('contact-topic', 'Contacts\ContactTopicController', ['except' =>
 // End ContactTopic Routes
 
 // Begin Content Routes
-
 
 Route::post('content-delete/{id}', 'ContentController@destroy');
 
@@ -114,8 +113,6 @@ Route::post('contributor', 'ContributorController@store')->name('contributor.sto
 
 // Begin ContributorLinkType Routes
 
-
-
 Route::post('contributor-link-type-delete/{id}', 'ContributorLinkTypeController@destroy');
 
 Route::get('/contributor-link-type/create', 'ContributorLinkTypeController@create')->name('contributor-link-type.create');
@@ -127,8 +124,6 @@ Route::resource('contributor-link-type', 'ContributorLinkTypeController', ['exce
 // End ContributorLinkType Routes
 
 // Begin ContributorLink Routes
-
-
 
 Route::post('contributor-link-delete/{id}', 'ContributorLinkController@destroy');
 
@@ -155,8 +150,19 @@ Route::get('manage-links/{id}/edit', 'ManageLinksController@edit')->name('manage
 Route::post('manage-links/{id}', 'ManageLinksController@update')->name('manage-links.update');
 Route::post('manage-links-delete/{id}', 'ManageLinksController@destroy');
 
-// Pages Routes
+// Begin MediaLinkType Routes
 
+Route::post('media-link-type-delete/{id}', 'MediaLinkTypeController@destroy');
+
+Route::get('/media-link-type/create', 'MediaLinkTypeController@create')->name('media-link-type.create');
+
+Route::get('media-link-type/{id}', 'MediaLinkTypeController@show')->name('media-link-type.show');
+
+Route::resource('media-link-type', 'MediaLinkTypeController', ['except' => ['show', 'create','destroy']]);
+
+// End MediaLinkType Routes
+
+// Pages Routes
 
 Route::get('/about', 'PagesController@about')->name('pages.about');
 
@@ -168,12 +174,9 @@ Route::get('/terms-of-service', 'PagesController@terms')->name('pages.terms');
 
 // pending contributors route
 
-
 Route::get('pending-contributors', 'PendingContributorsController@index')->name('pending-contributors.index');
 
 // Begin Profile Routes
-
-
 
 Route::get('show-profile', 'ProfileController@showProfileToUser')->name('show-profile');
 
@@ -199,7 +202,6 @@ Route::get('settings', 'SettingsController@edit');
 
 Route::patch('settings', 'SettingsController@update')->name('user-update');
 
-
 // Support Messages Routes
 
 Route::get('support-messages', 'Contacts\MessagesController@index');
@@ -223,10 +225,12 @@ Route::resource('subcategory', 'SubcategoryController', ['except' => ['show', 'c
 
 // End Subcategory Routes
 
-
 // test routes
 
 Route::get('test', 'TestController@index')->name('test.index');
+
+
+
 
 
 

@@ -7,6 +7,7 @@ Vue.component('contact-grid', require('./components/ContactGrid.vue').default);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('open-contact-grid', require('./components/OpenContactGrid.vue').default);
 Vue.component('pending-contributors-grid', require('./components/PendingContributorsGrid.vue').default);
+Vue.component('side-nav', require('./components/SideNav.vue').default);
 Vue.component('signature', require('./components/Signature.vue').default);
 Vue.component('user-grid', require('./components/UserGrid.vue').default);
 Vue.component('create-category', require('./components/CreateCategory.vue').default);
@@ -64,3 +65,8 @@ Vue.component('book-grid', require('./components/BookGrid.vue').default);
 Vue.component('all-books', require('./components/AllBooks.vue').default);
 
 /** End Book All Models Call */
+/** Begin MediaLinkType Grid Component Call */
+
+Vue.component('media-link-type-grid', require('./components/MediaLinkTypeGrid.vue').default);
+
+/** End MediaLinkType Grid Component Call */

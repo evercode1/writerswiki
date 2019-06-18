@@ -15,9 +15,15 @@
             <div class="col s6 m3">
                 <h5>Connect</h5>
                 <ul>
-                    <li><a href="/all-articles">Blog Posts</a></li>
-                    <li><a href="/all-videos">Videos</a></li>
-                    <li><a href="/all-books">books</a></li>
+                    @if(isset($links))
+
+                        @foreach($links as $link)
+
+                            <li><a href="/all-{{ strtolower($link) }}s">{{ $link }}s</a></li>
+
+                        @endforeach
+                    @endif
+
 
                 </ul>
             </div>
