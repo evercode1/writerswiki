@@ -15,21 +15,4 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function __construct()
-    {
-
-        // Build our navigation
-        $links = Cache::get('links', function()
-        {
-            $links = MediaLinkType::where('is_active', 1)->get();
-            $links = $links->pluck('name');
-            $links->all();
-            $links = Arr::sort($links);
-            Cache::put('links', $links, now()->addMinutes(10));
-            return $links;
-        });
-
-        View::share('links', $links);
-
-    }
 }
