@@ -15,6 +15,23 @@ return [
 
 
 
+    // Begin MediaLink Image Config Array Method
+
+
+        'medialink' => [
+                'destinationFolder'     => '/imgs/medialink/',
+                'createFolder'          => '/imgs/medialink',
+                'destinationThumbnail'  => '/imgs/medialink/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/medialink/',
+                'thumbnailPath'         => '/imgs/medialink/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End MediaLink Image Config Array Method
     // Begin MediaLinkType Image Config Array Method
 
 

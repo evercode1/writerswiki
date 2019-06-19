@@ -70,3 +70,13 @@ Vue.component('all-books', require('./components/AllBooks.vue').default);
 Vue.component('media-link-type-grid', require('./components/MediaLinkTypeGrid.vue').default);
 
 /** End MediaLinkType Grid Component Call */
+/** Begin MediaLink Grid Component Call */
+
+Vue.component('media-link-grid', require('./components/MediaLinkGrid.vue').default);
+
+/** End MediaLink Grid Component Call */
+/** Begin MediaLink All Models Call */
+
+Vue.component('all-media-links', require('./components/AllMediaLinks.vue').default);
+
+/** End MediaLink All Models Call */

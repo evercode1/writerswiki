@@ -23,6 +23,20 @@ trait OwnsRecord
         return $modelRecord->user_id === Auth::id();
     }
 
+    public function adminOrContributorOwns($modelRecord)
+    {
+        if (Auth::user()->isAdmin()){
+            return true;
+        }
+
+        if (! Auth::user()->isContributor()){
+            return false;
+        }
+
+
+        return $modelRecord->user_id === Auth::id();
+    }
+
     public function allowUserUpdate($userId)
     {
 

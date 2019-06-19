@@ -14,6 +14,19 @@ use App\Queries\CategoriesForDropdownQuery;
 class ApiController extends Controller
 {
 
+    // Begin MediaLink Api Data Grid Method
+
+    public function mediaLinkData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'MediaLinkQuery');
+
+    }
+
+    // End MediaLink Api Data Grid Method
+
+
+
     // Begin MediaLinkType Api Data Grid Method
 
     public function mediaLinkTypeData(Request $request)

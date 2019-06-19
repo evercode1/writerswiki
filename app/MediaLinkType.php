@@ -11,5 +11,14 @@ class MediaLinkType extends Model
                            'is_active'];
 
 
+    public function mediaLinks()
+    {
+
+        return $this->hasMany('App\MediaLink');
+
+
+    }
+
+
 
 }
