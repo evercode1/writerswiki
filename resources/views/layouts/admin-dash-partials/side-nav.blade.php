@@ -34,24 +34,11 @@
                 </div>
             </li>
 
-            <li class="bold waves-effect"><a class="collapsible-header">Videos<i class="material-icons chevron">chevron_left</i></a>
+
+            <li class="bold waves-effect"><a class="collapsible-header">Media Links<i class="material-icons chevron">chevron_left</i></a>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a href="/video" class="waves-effect">All Videos<i class="material-icons">videocam</i></a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="bold waves-effect"><a class="collapsible-header">Posts<i class="material-icons chevron">chevron_left</i></a>
-                <div class="collapsible-body">
-                    <ul>
-                        <li><a href="/post" class="waves-effect">All Posts<i class="material-icons">collections</i></a></li>
-                    </ul>
-                </div>
-            </li>
-            <li class="bold waves-effect"><a class="collapsible-header">Books<i class="material-icons chevron">chevron_left</i></a>
-                <div class="collapsible-body">
-                    <ul>
-                        <li><a href="/book" class="waves-effect">All Books<i class="material-icons">book</i></a></li>
+                        <li><a href="/media-link" class="waves-effect">All Media Links<i class="material-icons">book</i></a></li>
                     </ul>
                 </div>
             </li>

@@ -13,7 +13,7 @@
 
             <div class="row">
 
-            <all-socials></all-socials>
+                <all-media-links type="socials"></all-media-links>
 
             </div>
 

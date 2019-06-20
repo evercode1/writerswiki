@@ -51,7 +51,6 @@ Auth::routes();
 
 // Begin Book Routes
 
-Route::get('all-books', 'AllMediaLinksController@books');
 
 Route::post('book-delete/{id}', 'BookController@destroy');
 
@@ -153,7 +152,7 @@ Route::post('manage-links-delete/{id}', 'ManageLinksController@destroy');
 
 // Begin MediaLink Routes
 
-Route::get('all-media-links', 'AllMediaLinksController@index');
+Route::get('all-{type}', 'AllMediaLinksController@media');
 
 
 

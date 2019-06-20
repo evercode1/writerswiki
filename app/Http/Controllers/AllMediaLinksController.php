@@ -20,6 +20,16 @@ class AllMediaLinksController extends Controller
 
     }
 
+    public function media($id)
+    {
+
+        $view = 'all-media-links.' . $id;
+
+        return view($view);
+
+    }
+
+
     public function books()
     {
 

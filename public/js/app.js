@@ -42148,15 +42148,19 @@ var render = function() {
                   _vm._l(_vm.gridData, function(row) {
                     return _c("tr", [
                       _c("td", [
-                        _c("a", { attrs: { href: "/media-link/" + row.Url } }, [
-                          _vm._v(" " + _vm._s(row.Name))
-                        ])
+                        _c(
+                          "a",
+                          { attrs: { href: row.Url, target: "_blank" } },
+                          [_vm._v(" " + _vm._s(row.Name))]
+                        )
                       ]),
                       _vm._v(" "),
                       _c("td", [
-                        _c("a", { attrs: { href: "/media-link/" + row.Url } }, [
-                          _vm._v(" " + _vm._s(row.Author))
-                        ])
+                        _c(
+                          "a",
+                          { attrs: { href: row.Url, target: "_blank" } },
+                          [_vm._v(" " + _vm._s(row.Author))]
+                        )
                       ]),
                       _vm._v(" "),
                       _c("td", [

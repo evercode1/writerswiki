@@ -13,7 +13,7 @@
 
             <div class="row">
 
-            <all-groups></all-groups>
+                <all-media-links type="groups"></all-media-links>
 
             </div>
 

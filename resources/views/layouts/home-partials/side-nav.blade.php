@@ -20,10 +20,10 @@
 
             @foreach($links as $link)
 
-            <li  class="bold waves-effect"><a class="collapsible-header">{{ ($link) }}s<i class="material-icons chevron">chevron_left</i></a>
+            <li  class="bold waves-effect"><a class="collapsible-header">{{ ($link) }}<i class="material-icons chevron">chevron_left</i></a>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a href="/all-{{ strtolower($link) }}s" class="waves-effect">{{ $link }}s
+                        <li><a href="/all-{{ strtolower($link) }}s" class="waves-effect">{{ $link }}
                                 <i class="material-icons">perm_media</i></a></li>
                     </ul>
                 </div>
