@@ -21,7 +21,7 @@
 
     @yield('content')
 
-    @include('layouts.admin-dash-partials.footer')
+    @include('layouts.home-partials.footer')
 
 </div> <!-- end app div for vue -->
 

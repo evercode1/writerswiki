@@ -29,8 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
 
         Schema::defaultStringLength(191);
-
-        Cache::flush('links');
+        
 
         // Build our navigation
         $links = Cache::get('links', function()
