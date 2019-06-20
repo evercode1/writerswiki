@@ -40,5 +40,12 @@ class FrontApiController extends Controller
     // End Book Api All Models Method
 
 
-    //
+    public function selfPublishingData(Request $request)
+    {
+
+
+        return GridQuery::sendData($request, 'SelfPublishingQuery');
+
+
+    }
 }

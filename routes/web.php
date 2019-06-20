@@ -39,6 +39,7 @@ Route::get('api/media-link-types', 'ApiController@mediaLinkTypes')->middleware([
 Route::get('api/open-contact-data', 'ApiController@openContactData')->middleware(['auth', 'admin']);
 Route::get('api/pending-contributor-data', 'ApiController@pendingContributorData')->middleware(['auth', 'admin']);
 Route::any('api/profile-data', 'ApiController@profileData')->middleware(['auth', 'admin']);
+Route::get('api/self-publishing-data', 'FrontApiController@selfPublishingData');
 Route::any('api/subcategory-data', 'ApiController@subcategoryData')->middleware(['auth', 'admin']);
 Route::get('api/subcategories-for-dropdown/{id}', 'ApiController@subcategoriesForDropdown');
 Route::get('api/signature-data/{user}', 'ApiController@signature');
@@ -229,6 +230,10 @@ Route::get('support-messages-show/{message}', 'Contacts\MessagesController@show'
 // user routes
 
 Route::resource('user', 'UserController');
+
+// Self-Publishing routes
+
+Route::get('self-publishing', 'SelfPublishingController@index')->name('self-publishing.index');
 
 
 // Begin Subcategory Routes
