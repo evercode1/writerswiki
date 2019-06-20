@@ -7,7 +7,7 @@ use App\Queries\GridQueries\Contracts\DataQuery;
 
 class ContactQuery implements DataQuery
 {
-    public function data($column, $direction)
+    public function data($column, $direction, $type)
     {
         $rows = DB::table('contacts')
             ->select('contacts.id as Id',
@@ -27,7 +27,7 @@ class ContactQuery implements DataQuery
 
     }
 
-    public function filteredData($column, $direction, $keyword)
+    public function filteredData($column, $direction, $keyword, $type)
     {
         $rows = DB::table('contacts')
             ->select('contacts.id as Id',

@@ -7,7 +7,7 @@ use App\Queries\GridQueries\Contracts\DataQuery;
 class BookQuery implements DataQuery
 {
 
-    public function data($column, $direction)
+    public function data($column, $direction, $type)
     {
 
         $rows = DB::table('books')
@@ -35,7 +35,7 @@ class BookQuery implements DataQuery
 
     }
 
-    public function filteredData($column, $direction, $keyword)
+    public function filteredData($column, $direction, $keyword, $type)
     {
 
         $rows = DB::table('books')

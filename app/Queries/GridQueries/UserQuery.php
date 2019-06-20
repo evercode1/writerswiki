@@ -7,7 +7,7 @@ use App\Queries\GridQueries\Contracts\DataQuery;
 
 class UserQuery implements DataQuery
 {
-    public function data($column, $direction)
+    public function data($column, $direction, $type)
     {
         $rows = DB::table('users')
               ->select('id as Id',
@@ -26,7 +26,7 @@ class UserQuery implements DataQuery
 
     }
 
-    public function filteredData($column, $direction, $keyword)
+    public function filteredData($column, $direction, $keyword, $type)
     {
         $rows = DB::table('users')
                 ->select('id as Id',

@@ -4,7 +4,7 @@
 
 
 
-        <h1 class="flow-text grey-text text-darken-1">All MediaLinks</h1>
+        <h1 class="flow-text grey-text text-darken-1 capitalize">All {{ type }}</h1>
 
             <search-box></search-box>
 
@@ -29,25 +29,37 @@
 
                         <tr v-for="row in gridData">
 
+
                             <td>
 
-                                   {{ row.Id }}
+                                <a v-bind:href="'/media-link/' + row.Url"> {{ row.Name }}</a>
 
                             </td>
 
                             <td>
 
-                                <a v-bind:href="'/media-link/' + row.Id + '-' + row.Slug"> {{ row.Name }}</a>
+                                <a v-bind:href="'/media-link/' + row.Url"> {{ row.Author }}</a>
 
                             </td>
-
-
 
                             <td>
 
-                                   {{ row.Created }}
+                                {{ row.Category }}
 
                             </td>
+
+                            <td>
+
+                                {{ row.Subcategory }}
+
+                            </td>
+
+                            <td>
+
+                                <a :href="'/profile/' + row.Profile">{{ row.Contributor }}</a>
+
+                            </td>
+
 
 
 
@@ -84,6 +96,8 @@
 
     export default {
 
+        props:  ['type'],
+
         components: {'pagination' : Pagination,
                      'search-box' : SearchBox,
                      'grid-count' : GridCount,
@@ -92,13 +106,14 @@
 
         mounted: function () {
 
-            gridData.loadData('/api/all-media-links-data', this);
+            gridData.loadData('/api/all-media-links-data/' + this.type, this);
+
 
         },
         data: function () {
             return {
                 query: '',
-                gridColumns: ['Id', 'Name', 'Created'],
+                gridColumns: ['Title', 'Author', 'Category', 'Subcategory', 'Contributor'],
                 gridData: [],
                 total: null,
                 next_page_url: null,
@@ -131,7 +146,7 @@
 
             getData:  function(request){
 
-                gridData.getQueryData(request, '/api/all-media-links-data', this);
+                gridData.getQueryData(request, '/api/all-media-links-data/' + this.type, this);
 
             },
 
@@ -163,6 +178,12 @@
 
             pageInRange: function(){
                 return this.go_to_page <= parseInt(this.last_page);
+            },
+
+            formatType(type){
+
+                return
+
             }
 
 

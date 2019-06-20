@@ -2161,6 +2161,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/utilities/gridData.js");
 
 
@@ -2169,6 +2181,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['type'],
   components: {
     'pagination': _Pagination__WEBPACK_IMPORTED_MODULE_0__["default"],
     'search-box': _SearchBox__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -2177,12 +2190,12 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
     'table-head': _TableHead__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   mounted: function mounted() {
-    gridData.loadData('/api/all-media-links-data', this);
+    gridData.loadData('/api/all-media-links-data/' + this.type, this);
   },
   data: function data() {
     return {
       query: '',
-      gridColumns: ['Id', 'Name', 'Created'],
+      gridColumns: ['Title', 'Author', 'Category', 'Subcategory', 'Contributor'],
       gridData: [],
       total: null,
       next_page_url: null,
@@ -2209,7 +2222,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
       this.getData(query);
     },
     getData: function getData(request) {
-      gridData.getQueryData(request, '/api/all-media-links-data', this);
+      gridData.getQueryData(request, '/api/all-media-links-data/' + this.type, this);
     },
     setPageNumbers: function setPageNumbers() {
       this.pages = [];
@@ -2232,6 +2245,9 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
     },
     pageInRange: function pageInRange() {
       return this.go_to_page <= parseInt(this.last_page);
+    },
+    formatType: function formatType(type) {
+      return;
     }
   }
 });
@@ -42107,9 +42123,11 @@ var render = function() {
     "div",
     { staticClass: "row" },
     [
-      _c("h1", { staticClass: "flow-text grey-text text-darken-1" }, [
-        _vm._v("All MediaLinks")
-      ]),
+      _c(
+        "h1",
+        { staticClass: "flow-text grey-text text-darken-1 capitalize" },
+        [_vm._v("All " + _vm._s(_vm.type))]
+      ),
       _vm._v(" "),
       _c("search-box"),
       _vm._v(" "),
@@ -42130,9 +42148,29 @@ var render = function() {
                   _vm._l(_vm.gridData, function(row) {
                     return _c("tr", [
                       _c("td", [
+                        _c("a", { attrs: { href: "/media-link/" + row.Url } }, [
+                          _vm._v(" " + _vm._s(row.Name))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c("a", { attrs: { href: "/media-link/" + row.Url } }, [
+                          _vm._v(" " + _vm._s(row.Author))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
                         _vm._v(
-                          "\n\n                               " +
-                            _vm._s(row.Id) +
+                          "\n\n                            " +
+                            _vm._s(row.Category) +
+                            "\n\n                        "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          "\n\n                            " +
+                            _vm._s(row.Subcategory) +
                             "\n\n                        "
                         )
                       ]),
@@ -42140,20 +42178,8 @@ var render = function() {
                       _c("td", [
                         _c(
                           "a",
-                          {
-                            attrs: {
-                              href: "/media-link/" + row.Id + "-" + row.Slug
-                            }
-                          },
-                          [_vm._v(" " + _vm._s(row.Name))]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n\n                               " +
-                            _vm._s(row.Created) +
-                            "\n\n                        "
+                          { attrs: { href: "/profile/" + row.Profile } },
+                          [_vm._v(_vm._s(row.Contributor))]
                         )
                       ])
                     ])

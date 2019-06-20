@@ -13,7 +13,7 @@
 
             <div class="row">
 
-            <all-books></all-books>
+            <all-media-links type="books"></all-media-links>
 
             </div>
 

@@ -7,7 +7,7 @@ use App\Queries\GridQueries\Contracts\DataQuery;
 class ContactTopicQuery implements DataQuery
 {
 
-    public function data($column, $direction)
+    public function data($column, $direction, $type)
     {
 
         $rows = DB::table('contact_topics')
@@ -23,7 +23,7 @@ class ContactTopicQuery implements DataQuery
 
     }
 
-    public function filteredData($column, $direction, $keyword)
+    public function filteredData($column, $direction, $keyword, $type)
     {
 
         $rows = DB::table('contact_topics')

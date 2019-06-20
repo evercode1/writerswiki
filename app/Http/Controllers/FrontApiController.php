@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Queries\GridQueries\GridQuery;
+use App\MediaLinkType;
 
 class FrontApiController extends Controller
 {
@@ -13,7 +14,13 @@ class FrontApiController extends Controller
     public function allMediaLinksData(Request $request)
     {
 
-        return GridQuery::sendData($request, 'MediaLinkQuery');
+        $type = MediaLinkType::where('name', $request->type)->first();
+
+       $type = $type->id;
+
+
+
+        return GridQuery::sendData($request, 'AllMediaLinksQuery', $type);
 
     }
 

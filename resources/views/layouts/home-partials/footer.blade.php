@@ -19,7 +19,7 @@
 
                         @foreach($links as $link)
 
-                            <li><a href="/all-{{ strtolower($link) }}s">{{ $link }}s</a></li>
+                            <li><a href="/all-{{ strtolower($link) }}">{{ $link }}</a></li>
 
                         @endforeach
                     @endif

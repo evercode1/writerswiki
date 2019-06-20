@@ -21,8 +21,9 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('api/alarm-data', 'ApiController@alarmData');
 Route::get('api/alarm-data-admin', 'ApiController@alarmDataAdmin');
 Route::get('/api/all-articles-data', 'ApiController@allArticlesData');
-Route::get('/api/book-data', 'ApiController@bookData')->middleware(['auth', 'admin']);
 Route::get('/api/all-books-data', 'FrontApiController@allBooksData');
+Route::get('/api/book-data', 'ApiController@bookData')->middleware(['auth', 'admin']);
+Route::get('/api/all-media-links-data/{type}', 'FrontApiController@allMediaLinksData');
 Route::get('api/article-list-data', 'ApiController@articleListData');
 Route::get('api/archives', 'ApiController@archives');
 Route::get('api/categories-for-dropdown', 'ApiController@categoriesForDropdown');
@@ -50,7 +51,7 @@ Auth::routes();
 
 // Begin Book Routes
 
-Route::get('all-books', 'AllBooksController@index');
+Route::get('all-books', 'AllMediaLinksController@books');
 
 Route::post('book-delete/{id}', 'BookController@destroy');
 
@@ -149,6 +150,24 @@ Route::post('manage-links', 'ManageLinksController@store')->name('manage-links.s
 Route::get('manage-links/{id}/edit', 'ManageLinksController@edit')->name('manage-links.edit');
 Route::post('manage-links/{id}', 'ManageLinksController@update')->name('manage-links.update');
 Route::post('manage-links-delete/{id}', 'ManageLinksController@destroy');
+
+// Begin MediaLink Routes
+
+Route::get('all-media-links', 'AllMediaLinksController@index');
+
+
+
+Route::any('api/media-link-data', 'ApiController@mediaLinkData');
+
+Route::post('media-link-delete/{id}', 'MediaLinkController@destroy');
+
+Route::get('/media-link/create', 'MediaLinkController@create')->name('media-link.create');
+
+Route::get('media-link/{id}', 'MediaLinkController@show')->name('media-link.show');
+
+Route::resource('media-link', 'MediaLinkController', ['except' => ['show', 'create','destroy']]);
+
+// End MediaLink Routes
 
 // Begin MediaLinkType Routes
 
@@ -253,23 +272,7 @@ Route::get('test', 'TestController@index')->name('test.index');
 
 
 
-// Begin MediaLink Routes
 
-Route::get('all-media-links', 'AllMediaLinksController@index');
-
-Route::get('/api/all-media-links-data', 'FrontApiController@allMediaLinksData');
-
-Route::any('api/media-link-data', 'ApiController@mediaLinkData');
-
-Route::post('media-link-delete/{id}', 'MediaLinkController@destroy');
-
-Route::get('/media-link/create', 'MediaLinkController@create')->name('media-link.create');
-
-Route::get('media-link/{id}', 'MediaLinkController@show')->name('media-link.show');
-
-Route::resource('media-link', 'MediaLinkController', ['except' => ['show', 'create','destroy']]);
-
-// End MediaLink Routes
 
 
 

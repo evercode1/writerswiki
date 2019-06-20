@@ -189,3 +189,7 @@ div#ImageContainer {
   color: #151515 !important;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+

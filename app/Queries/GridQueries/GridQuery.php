@@ -9,8 +9,10 @@ use DB;
 class GridQuery
 {
 
-    public static function sendData(Request $request, $query)
+    public static function sendData(Request $request, $query, $type=null)
     {
+
+
 
         $class = '\\App\Queries\GridQueries\\' . $query;
 
@@ -26,14 +28,14 @@ class GridQuery
 
         if ($request->has('keyword')) {
 
-            return static::keywordFilter($request, $query, $column, $direction);
+            return static::keywordFilter($request, $query, $column, $direction, $type);
 
 
         }
 
         // return data
 
-        return static::getData($query, $column, $direction);
+        return static::getData($query, $column, $direction, $type);
 
 
 
@@ -97,21 +99,21 @@ class GridQuery
 
     }
 
-    public static function keywordFilter(Request $request, $query, $column, $direction)
+    public static function keywordFilter(Request $request, $query, $column, $direction, $type)
     {
         $keyword = $request->get('keyword');
 
         return response()->json($query->filteredData($column,
                                                      $direction,
-                                                     $keyword));
+                                                     $keyword, $type));
 
     }
 
 
-    public static function getData($query, $column, $direction)
+    public static function getData($query, $column, $direction, $type)
     {
 
-        return response()->json($query->data($column, $direction));
+        return response()->json($query->data($column, $direction, $type));
 
     }
 
