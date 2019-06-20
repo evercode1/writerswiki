@@ -85,6 +85,20 @@ class GridQuery
 
                 break;
 
+            case $query instanceof EmotionQuery  :
+
+                $column = 'name';
+                $direction = 'asc';
+
+                break;
+
+            case $query instanceof AllEmotionsQuery  :
+
+                $column = 'name';
+                $direction = 'asc';
+
+                break;
+
             default:
 
                 $column = 'id';

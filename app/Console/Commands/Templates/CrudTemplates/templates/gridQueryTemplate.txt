@@ -9,7 +9,7 @@ use DB;
 class GridQuery
 {
 
-    public static function sendData(Request $request, $query)
+    public static function sendData(Request $request, $query, $type)
     {
 
         $class = '\\App\Queries\GridQueries\\' . $query;
@@ -41,7 +41,7 @@ class GridQuery
 
     }
 
-    public static function setSort(Request $request, $query)
+    public static function setSort(Request $request, $query, $type)
     {
 
         // set sort by column with default

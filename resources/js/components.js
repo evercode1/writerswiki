@@ -81,3 +81,13 @@ Vue.component('media-link-grid', require('./components/MediaLinkGrid.vue').defau
 Vue.component('all-media-links', require('./components/AllMediaLinks.vue').default);
 
 /** End MediaLink All Models Call */
+/** Begin Emotion Grid Component Call */
+
+Vue.component('emotion-grid', require('./components/EmotionGrid.vue').default);
+
+/** End Emotion Grid Component Call */
+/** Begin Emotion All Models Call */
+
+Vue.component('all-emotions', require('./components/AllEmotions.vue').default);
+
+/** End Emotion All Models Call */

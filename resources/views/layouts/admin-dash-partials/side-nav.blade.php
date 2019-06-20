@@ -6,7 +6,7 @@
                 <div class="collapsible-body">
                     <ul>
                         <li><a href="/home" class="waves-effect active">Dashboard<i class="material-icons">web</i></a></li>
-                        <li><a href="#" class="waves-effect">Emotions<i class="material-icons">star</i></a></li>
+                        <li><a href="/emotion" class="waves-effect">Emotions<i class="material-icons">star</i></a></li>
                         <li><a href="#" class="waves-effect">Action Beats<i class="material-icons">star</i></a></li>
                         <li><a href="#" class="waves-effect">Descriptions<i class="material-icons">star</i></a></li>
                         <li><a href="/self-publishing" class="waves-effect">Self-Publishing<i class="material-icons">star</i></a></li>

@@ -9,6 +9,19 @@ use App\MediaLinkType;
 class FrontApiController extends Controller
 {
 
+    // Begin Emotion Api All Models Method
+
+    public function allEmotionsData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'EmotionQuery');
+
+    }
+
+    // End Emotion Api All Models Method
+
+
+
     // Begin MediaLink Api All Models Method
 
     public function allMediaLinksData(Request $request)

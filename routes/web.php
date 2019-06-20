@@ -22,10 +22,11 @@ Route::get('api/alarm-data', 'ApiController@alarmData');
 Route::get('api/alarm-data-admin', 'ApiController@alarmDataAdmin');
 Route::get('/api/all-articles-data', 'ApiController@allArticlesData');
 Route::get('/api/all-books-data', 'FrontApiController@allBooksData');
-Route::get('/api/book-data', 'ApiController@bookData')->middleware(['auth', 'admin']);
+Route::get('/api/all-emotions-data', 'FrontApiController@allEmotionsData');
 Route::get('/api/all-media-links-data/{type}', 'FrontApiController@allMediaLinksData');
 Route::get('api/article-list-data', 'ApiController@articleListData');
 Route::get('api/archives', 'ApiController@archives');
+Route::get('/api/book-data', 'ApiController@bookData')->middleware(['auth', 'admin']);
 Route::get('api/categories-for-dropdown', 'ApiController@categoriesForDropdown');
 Route::any('api/category-data', 'ApiController@categoryData')->middleware(['auth', 'admin']);
 Route::get('api/closed-contact-data', 'ApiController@closedContactData')->middleware(['auth', 'admin']);
@@ -34,6 +35,7 @@ Route::any('api/contact-topic-data', 'ApiController@contactTopicData')->middlewa
 Route::any('api/content-data', 'ApiController@contentData')->middleware(['auth', 'admin']);
 Route::get('api/contributor-link-data', 'ApiController@contributorLinkData')->middleware(['auth', 'admin']);
 Route::get('api/contributor-link-type-data', 'ApiController@contributorLinkTypeData')->middleware(['auth', 'admin']);
+Route::any('api/emotion-data', 'ApiController@emotionData')->middleware(['auth', 'admin']);
 Route::get('api/media-link-type-data', 'ApiController@mediaLinkTypeData')->middleware(['auth', 'admin']);
 Route::get('api/media-link-types', 'ApiController@mediaLinkTypes')->middleware(['auth', 'admin']);
 Route::get('api/open-contact-data', 'ApiController@openContactData')->middleware(['auth', 'admin']);
@@ -110,6 +112,7 @@ Route::resource('content', 'ContentController', ['except' => ['show', 'create','
 // contributor routes
 
 Route::get('contributor', 'ContributorController@index')->name('contributor.index');
+
 Route::post('contributor', 'ContributorController@store')->name('contributor.store');
 
 // Begin ContributorLinkType Routes
@@ -136,6 +139,20 @@ Route::resource('contributor-link', 'ContributorLinkController', ['except' => ['
 
 // End ContributorLink Routes
 
+// Begin Emotion Routes
+
+Route::get('all-emotions', 'AllEmotionsController@index');
+
+Route::post('emotion-delete/{id}', 'EmotionController@destroy');
+
+Route::get('/emotion/create', 'EmotionController@create')->name('emotion.create');
+
+Route::get('emotion/{id}', 'EmotionController@show')->name('emotion.show');
+
+Route::resource('emotion', 'EmotionController', ['except' => ['show', 'create','destroy']]);
+
+// End Emotion Routes
+
 //  home routes
 
 Route::get('/', 'HomeController@index')->name('home.index');
@@ -154,8 +171,6 @@ Route::post('manage-links-delete/{id}', 'ManageLinksController@destroy');
 // Begin MediaLink Routes
 
 Route::get('all-{type}', 'AllMediaLinksController@media')->name('all-media');
-
-
 
 Route::any('api/media-link-data', 'ApiController@mediaLinkData');
 
@@ -251,6 +266,13 @@ Route::resource('subcategory', 'SubcategoryController', ['except' => ['show', 'c
 // test routes
 
 Route::get('test', 'TestController@index')->name('test.index');
+
+
+
+
+
+
+
 
 
 

@@ -14,6 +14,19 @@ use App\Queries\CategoriesForDropdownQuery;
 class ApiController extends Controller
 {
 
+    // Begin Emotion Api Data Grid Method
+
+    public function emotionData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'EmotionQuery');
+
+    }
+
+    // End Emotion Api Data Grid Method
+
+
+
     // Begin MediaLink Api Data Grid Method
 
     public function mediaLinkData(Request $request)

@@ -4,13 +4,13 @@ namespace App\Queries\GridQueries;
 use DB;
 use App\Queries\GridQueries\Contracts\DataQuery;
 
-class :::allQueryName:::Query implements DataQuery
+class AllEmotionsQuery implements DataQuery
 {
 
-    public function data($column, $direction, $type)
+    public function data($column, $direction)
     {
 
-        $rows = DB::table(':::tableName:::')
+        $rows = DB::table('emotions')
                     ->select('id as Id',
                              'name as Name',
                              'slug as Slug',
@@ -25,10 +25,10 @@ class :::allQueryName:::Query implements DataQuery
 
     }
 
-    public function filteredData($column, $direction, $keyword, $type)
+    public function filteredData($column, $direction, $keyword)
     {
 
-        $rows = DB::table(':::tableName:::')
+        $rows = DB::table('emotions')
                 ->select('id as Id',
                          'name as Name',
                          'slug as Slug',

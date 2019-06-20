@@ -15,6 +15,23 @@ return [
 
 
 
+    // Begin Emotion Image Config Array Method
+
+
+        'emotion' => [
+                'destinationFolder'     => '/imgs/emotion/',
+                'createFolder'          => '/imgs/emotion',
+                'destinationThumbnail'  => '/imgs/emotion/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/emotion/',
+                'thumbnailPath'         => '/imgs/emotion/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End Emotion Image Config Array Method
     // Begin MediaLink Image Config Array Method
 
 
