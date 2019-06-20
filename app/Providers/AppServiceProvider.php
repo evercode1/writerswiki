@@ -30,19 +30,20 @@ class AppServiceProvider extends ServiceProvider
 
         Schema::defaultStringLength(191);
 
+        Cache::flush('links');
 
         // Build our navigation
-        $links = Cache::get('links', function()
+        $navs = Cache::get('navs', function()
         {
-            $links = MediaLinkType::where('is_active', 1)->get();
-            $links = $links->pluck('name');
-            $links->all();
-            $links = Arr::sort($links);
-            Cache::put('links', $links, now()->addMinutes(10));
-            return $links;
+            $navs = MediaLinkType::where('is_active', 1)->get();
+            $navs = $navs->pluck('name');
+            $navs->all();
+            $navs = Arr::sort($navs);
+            Cache::put('navs', $navs, now()->addMinutes(10));
+            return $navs;
         });
 
-        view()->share('links', $links);
+        view()->share('navs', $navs);
 
         $value = \App\Utilities\Copyright::displayNotice();
 

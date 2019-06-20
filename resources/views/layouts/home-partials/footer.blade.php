@@ -15,11 +15,11 @@
             <div class="col s6 m3">
                 <h5>Connect</h5>
                 <ul>
-                    @if(isset($links))
+                    @if(isset($navs))
 
-                        @foreach($links as $link)
+                        @foreach($navs as $nav)
 
-                            <li><a href="/all-{{ strtolower($link) }}">{{ ucwords($link) }}</a></li>
+                            <li><a href="/all-{{ strtolower($nav) }}">{{ ucwords($nav) }}</a></li>
 
                         @endforeach
                     @endif
