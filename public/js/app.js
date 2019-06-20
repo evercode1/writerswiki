@@ -43800,27 +43800,15 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("td", [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              href: "/media-link/" + row.Id + "-" + row.Slug
-                            }
-                          },
-                          [_vm._v(" " + _vm._s(row.Name))]
-                        )
+                        _c("a", { attrs: { href: row.Url } }, [
+                          _vm._v(" " + _vm._s(row.Name))
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("td", [
-                        _c(
-                          "a",
-                          {
-                            attrs: {
-                              href: "/media-link/" + row.Id + "-" + row.Slug
-                            }
-                          },
-                          [_vm._v(" " + _vm._s(row.Author))]
-                        )
+                        _c("a", { attrs: { href: row.Url } }, [
+                          _vm._v(" " + _vm._s(row.Author))
+                        ])
                       ]),
                       _vm._v(" "),
                       _c("td", [

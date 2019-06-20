@@ -152,7 +152,7 @@ Route::post('manage-links-delete/{id}', 'ManageLinksController@destroy');
 
 // Begin MediaLink Routes
 
-Route::get('all-{type}', 'AllMediaLinksController@media');
+Route::get('all-{type}', 'AllMediaLinksController@media')->name('all-media');
 
 
 

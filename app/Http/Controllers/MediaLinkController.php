@@ -114,7 +114,11 @@ class MediaLinkController extends Controller
         $mediaLink->save();
 
 
-        return Redirect::route('media-link.index');
+        $type =  MediaLinkType::where('id', $mediaLink->media_link_type_id)->first();
+
+        $type = $type->name;
+
+        return Redirect::route('all-media', ['type' => $type]);
 
     }
 

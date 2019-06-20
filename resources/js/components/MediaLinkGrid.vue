@@ -43,13 +43,13 @@
 
                         <td>
 
-                            <a v-bind:href="'/media-link/' + row.Id + '-' + row.Slug"> {{ row.Name }}</a>
+                            <a v-bind:href="row.Url"> {{ row.Name }}</a>
 
                         </td>
 
                         <td>
 
-                            <a v-bind:href="'/media-link/' + row.Id + '-' + row.Slug"> {{ row.Author }}</a>
+                            <a v-bind:href="row.Url"> {{ row.Author }}</a>
 
                         </td>
 
