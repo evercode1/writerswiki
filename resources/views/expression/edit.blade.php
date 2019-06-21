@@ -1,8 +1,8 @@
-@extends('layouts.masters.master-admin-dash')
+@extends('layouts.masters.master-auth')
 
 @section('title')
 
-    <title>Create a Book</title>
+    <title>Edit Expression</title>
 
 @endsection
 
@@ -12,22 +12,21 @@
 
 @endsection
 
-
 @section('content')
 
     <div class="container ">
 
             <div class="row">
 
-                <h1 class="flow-text grey-text text-darken-1">Book</h1>
+                <h1 class="flow-text grey-text text-darken-1">Edit Expression</h1>
 
                 <section class="mt-20">
 
-                    @include('book.create-form')
+                @include('expression.edit-form')
 
                 </section>
 
-        </div>
+            </div>
 
     </div>
 

@@ -14,7 +14,7 @@ class FrontApiController extends Controller
     public function allEmotionsData(Request $request)
     {
 
-        return GridQuery::sendData($request, 'EmotionQuery');
+        return GridQuery::sendData($request, 'AllEmotionsQuery');
 
     }
 
@@ -41,16 +41,13 @@ class FrontApiController extends Controller
 
 
 
-    // Begin Book Api All Models Method
-
-    public function allBooksData(Request $request)
+    public function emotionExpressionData(Request $request, $type)
     {
 
-        return GridQuery::sendData($request, 'AllBooksQuery');
+        return GridQuery::sendData($request, 'EmotionExpressionQuery', $type);
+
 
     }
-
-    // End Book Api All Models Method
 
 
     public function selfPublishingData(Request $request)

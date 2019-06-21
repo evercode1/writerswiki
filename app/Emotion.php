@@ -12,6 +12,9 @@ class Emotion extends Model
                            'is_active',
                            'user_id'];
 
-
+    public function expressions()
+    {
+        return $this->hasMany('App\Expression');
+    }
 
 }

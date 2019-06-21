@@ -4,7 +4,7 @@
 
 
 
-        <h1 class="flow-text grey-text text-darken-1">Book</h1>
+        <h1 class="flow-text grey-text text-darken-1">Expressions For {{ this.emotion }}</h1>
 
             <search-box></search-box>
 
@@ -23,83 +23,34 @@
 
                     <table>
 
-                        <table-head></table-head>
+                        <all-table-head></all-table-head>
 
                         <tbody>
 
                         <tr v-for="row in gridData">
 
+
                             <td>
 
-                                   {{ row.Id }}
+                                <a v-bind:href="'/expression/' + row.Id + '-' + row.Slug"> {{ row.Label }}</a>
 
                             </td>
 
-                            <td>
-
-                                <a v-bind:href="'/book/' + row.Id + '-' + row.Slug"> {{ row.Name }}</a>
-
-                            </td>
 
                             <td>
 
-                                <a v-bind:href="'/book/' + row.Id + '-' + row.Slug"> {{ row.Author }}</a>
+                                {{ row.Emotion }}
 
                             </td>
 
                             <td>
 
-                                {{ row.Category }}
-
-                            </td>
-
-                            <td>
-
-                                {{ row.Subcategory }}
-
-                            </td>
-
-                            <td>
-
-                                <a :href="'/profile/' + row.Profile">{{ row.Contributor }}</a>
-
-                            </td>
-
-                            <td>
-
-                                {{ formatActive(row.Active) }}
-
-                            </td>
-
-                            <td>
-
-                                   {{ row.Created }}
-
-                            </td>
-
-                            <td >
-
-                                <a v-bind:href="'/book/' + row.Id + '/edit'">
-
-                                <button type="button" class="waves-effect waves-light btn mt-5">
-
-                                        Edit
-
-                                </button>
-
-                                </a>
-
-
-                                <button class="waves-effect waves-light btn mt-5"
-                                        @click="confirmDelete(row.Id)">
-
-                                        Delete
-
-                                </button>
-
+                                <a v-bind:href="'/profile/' + row.Profile"> {{ row.Contributor }}</a>
 
 
                             </td>
+
+
 
                         </tr>
 
@@ -134,6 +85,8 @@
 
     export default {
 
+        props:  ['type', 'emotion'],
+
         components: {'pagination' : Pagination,
                      'search-box' : SearchBox,
                      'grid-count' : GridCount,
@@ -142,15 +95,13 @@
 
         mounted: function () {
 
-            gridData.loadData('/api/book-data', this);
+            gridData.loadData('/api/emotion-expression-data/' + this.type, this);
 
         },
         data: function () {
             return {
                 query: '',
-                gridColumns: ['Id', 'Name', 'Author', 'Category',
-                              'Subcategory', 'Contributor', 'Active',
-                              'Created'],
+                gridColumns: ['Label', 'Emotion', 'Contributor'],
                 gridData: [],
                 total: null,
                 next_page_url: null,
@@ -163,7 +114,7 @@
                 go_to_page: null,
                 sortOrder: 1,
                 sortKey: 'id',
-                createUrl: '/book/create',
+                createUrl: '/expression-preset/create/' + this.type,
                 showCreateButton: true
             }
         },
@@ -183,7 +134,7 @@
 
             getData:  function(request){
 
-                gridData.getQueryData(request, '/api/book-data', this);
+                gridData.getQueryData(request, '/api/emotion-expression-data/' + this.type, this);
 
             },
 
@@ -233,10 +184,10 @@
 
                 if(confirm("Are you sure you want to delete?")){
 
-                    axios.post('/book-delete/' + id)
+                    axios.post('/expression-delete/' + id)
                             .then(response => {
 
-                                gridData.loadData('/api/book-data', this);
+                                gridData.loadData('/api/emotion-expression-data/' + this.type, this);
 
                             });
 

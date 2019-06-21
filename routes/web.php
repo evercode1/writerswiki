@@ -21,12 +21,8 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('api/alarm-data', 'ApiController@alarmData');
 Route::get('api/alarm-data-admin', 'ApiController@alarmDataAdmin');
 Route::get('/api/all-articles-data', 'ApiController@allArticlesData');
-Route::get('/api/all-books-data', 'FrontApiController@allBooksData');
 Route::get('/api/all-emotions-data', 'FrontApiController@allEmotionsData');
 Route::get('/api/all-media-links-data/{type}', 'FrontApiController@allMediaLinksData');
-Route::get('api/article-list-data', 'ApiController@articleListData');
-Route::get('api/archives', 'ApiController@archives');
-Route::get('/api/book-data', 'ApiController@bookData')->middleware(['auth', 'admin']);
 Route::get('api/categories-for-dropdown', 'ApiController@categoriesForDropdown');
 Route::any('api/category-data', 'ApiController@categoryData')->middleware(['auth', 'admin']);
 Route::get('api/closed-contact-data', 'ApiController@closedContactData')->middleware(['auth', 'admin']);
@@ -36,6 +32,8 @@ Route::any('api/content-data', 'ApiController@contentData')->middleware(['auth',
 Route::get('api/contributor-link-data', 'ApiController@contributorLinkData')->middleware(['auth', 'admin']);
 Route::get('api/contributor-link-type-data', 'ApiController@contributorLinkTypeData')->middleware(['auth', 'admin']);
 Route::any('api/emotion-data', 'ApiController@emotionData')->middleware(['auth', 'admin']);
+Route::get('api/emotion-expression-data/{type}', 'FrontApiController@emotionExpressionData');
+Route::any('api/media-link-data', 'ApiController@mediaLinkData')->middleware(['auth', 'admin']);
 Route::get('api/media-link-type-data', 'ApiController@mediaLinkTypeData')->middleware(['auth', 'admin']);
 Route::get('api/media-link-types', 'ApiController@mediaLinkTypes')->middleware(['auth', 'admin']);
 Route::get('api/open-contact-data', 'ApiController@openContactData')->middleware(['auth', 'admin']);
@@ -52,18 +50,6 @@ Route::get('api/user-data', 'ApiController@userData')->middleware(['auth', 'admi
 
 Auth::routes();
 
-// Begin Book Routes
-
-
-Route::post('book-delete/{id}', 'BookController@destroy');
-
-Route::get('/book/create', 'BookController@create')->name('book.create');
-
-Route::get('book/{id}', 'BookController@show')->name('book.show');
-
-Route::resource('book', 'BookController', ['except' => ['show', 'create','destroy']]);
-
-// End Book Routes
 
 // Begin Category Routes
 
@@ -153,6 +139,26 @@ Route::resource('emotion', 'EmotionController', ['except' => ['show', 'create','
 
 // End Emotion Routes
 
+// Emotion Expression Route
+
+Route::get('emotion-expression/{type}', 'EmotionExpressionController@index')->name('emotion-expression.index');
+
+// Begin Expression Routes
+
+Route::get('api/expression-data', 'ApiController@expressionData')->middleware(['auth', 'admin']);
+
+Route::post('expression-delete/{id}', 'ExpressionController@destroy');
+
+Route::get('/expression/create', 'ExpressionController@create')->name('expression.create');
+
+Route::get('/expression-preset/create/{type}', 'ExpressionController@createPreset')->name('expression.create-preset');
+
+Route::get('expression/{id}', 'ExpressionController@show')->name('expression.show');
+
+Route::resource('expression', 'ExpressionController', ['except' => ['show', 'create','destroy']]);
+
+// End Expression Routes
+
 //  home routes
 
 Route::get('/', 'HomeController@index')->name('home.index');
@@ -171,8 +177,6 @@ Route::post('manage-links-delete/{id}', 'ManageLinksController@destroy');
 // Begin MediaLink Routes
 
 Route::get('all-{type}', 'AllMediaLinksController@media')->name('all-media');
-
-Route::any('api/media-link-data', 'ApiController@mediaLinkData');
 
 Route::post('media-link-delete/{id}', 'MediaLinkController@destroy');
 
@@ -266,39 +270,6 @@ Route::resource('subcategory', 'SubcategoryController', ['except' => ['show', 'c
 // test routes
 
 Route::get('test', 'TestController@index')->name('test.index');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

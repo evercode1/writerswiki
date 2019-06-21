@@ -99,6 +99,13 @@ class GridQuery
 
                 break;
 
+            case $query instanceof EmotionExpressionQuery  :
+
+                $column = 'label';
+                $direction = 'asc';
+
+                break;
+
             default:
 
                 $column = 'id';

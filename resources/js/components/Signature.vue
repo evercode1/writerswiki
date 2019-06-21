@@ -19,18 +19,8 @@
 
 
 
-       <ul v-for="(value, name) in info">
 
-           <li><h4 class="flow-text grey-text text-darken-1">{{ name }} by {{ username }}</h4></li>
-
-           <li v-for="row in value"><a v-bind:href="row.Url">{{ row.Name }}</a></li>
-
-
-
-
-       </ul>
-
-       <div><a v-bind:href="'profile/' + profile">Visit {{ username }}'s profile</a></div>
+       <div class="mb-20"><a v-bind:href="'profile/' + profile">Visit {{ username }}'s profile</a></div>
 
 
 

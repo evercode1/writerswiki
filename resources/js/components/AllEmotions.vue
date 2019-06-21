@@ -31,21 +31,16 @@
 
                             <td>
 
-                                   {{ row.Id }}
-
-                            </td>
-
-                            <td>
-
-                                <a v-bind:href="'/emotion/' + row.Id + '-' + row.Slug"> {{ row.Name }}</a>
+                                <a v-bind:href="'/emotion-expression/' + row.Id"> {{ row.Name }}</a>
 
                             </td>
 
 
-
                             <td>
 
-                                   {{ row.Created }}
+                                <a v-bind:href="'/profile/' + row.Profile"> {{ row.Contributor }}</a>
+
+
 
                             </td>
 
@@ -98,7 +93,7 @@
         data: function () {
             return {
                 query: '',
-                gridColumns: ['Id', 'Name', 'Created'],
+                gridColumns: [ 'Name', 'Contributor'],
                 gridData: [],
                 total: null,
                 next_page_url: null,

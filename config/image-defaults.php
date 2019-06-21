@@ -15,6 +15,23 @@ return [
 
 
 
+    // Begin Expression Image Config Array Method
+
+
+        'expression' => [
+                'destinationFolder'     => '/imgs/expression/',
+                'createFolder'          => '/imgs/expression',
+                'destinationThumbnail'  => '/imgs/expression/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/expression/',
+                'thumbnailPath'         => '/imgs/expression/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End Expression Image Config Array Method
     // Begin Emotion Image Config Array Method
 
 

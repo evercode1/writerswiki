@@ -1,8 +1,8 @@
-@extends('layouts.masters.master-admin-dash')
+@extends('layouts.masters.master-auth')
 
 @section('title')
 
-    <title>Book</title>
+    <title>Expression</title>
 
     @endsection
 
@@ -13,7 +13,7 @@
 
             <div class="row">
 
-            <book-grid></book-grid>
+            <expression-grid></expression-grid>
 
             </div>
 
