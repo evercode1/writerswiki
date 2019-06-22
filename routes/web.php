@@ -316,6 +316,10 @@ Route::resource('profile', 'ProfileController', ['except' => ['show', 'create', 
 
 Route::resource('reply', 'ReplyController');
 
+//  Seed Emotions
+
+Route::get('seed-emotions', 'SeedEmotionsController@index');
+
 // Settings routes
 
 Route::get('settings', 'SettingsController@edit');
@@ -328,9 +332,7 @@ Route::get('support-messages', 'Contacts\MessagesController@index');
 
 Route::get('support-messages-show/{message}', 'Contacts\MessagesController@show');
 
-// user routes
 
-Route::resource('user', 'UserController');
 
 // Self-Publishing routes
 
@@ -352,6 +354,10 @@ Route::resource('subcategory', 'SubcategoryController', ['except' => ['show', 'c
 // test routes
 
 Route::get('test', 'TestController@index')->name('test.index');
+
+// user routes
+
+Route::resource('user', 'UserController');
 
 
 
