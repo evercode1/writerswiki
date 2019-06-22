@@ -44519,7 +44519,15 @@ var render = function() {
                       _c("td", [
                         _c(
                           "a",
-                          { attrs: { href: "/action-beat-details/" + row.Id } },
+                          {
+                            attrs: {
+                              href:
+                                "/action-beat-details/" +
+                                row.Id +
+                                "-" +
+                                row.Slug
+                            }
+                          },
                           [_vm._v(" " + _vm._s(row.Name))]
                         )
                       ]),
@@ -44601,7 +44609,12 @@ var render = function() {
                       _c("td", [
                         _c(
                           "a",
-                          { attrs: { href: "/description-detail/" + row.Id } },
+                          {
+                            attrs: {
+                              href:
+                                "/description-detail/" + row.Id + "-" + row.Slug
+                            }
+                          },
                           [_vm._v(" " + _vm._s(row.Name))]
                         )
                       ]),
@@ -44683,7 +44696,12 @@ var render = function() {
                       _c("td", [
                         _c(
                           "a",
-                          { attrs: { href: "/emotion-expression/" + row.Id } },
+                          {
+                            attrs: {
+                              href:
+                                "/emotion-expression/" + row.Id + "-" + row.Slug
+                            }
+                          },
                           [_vm._v(" " + _vm._s(row.Name))]
                         )
                       ]),

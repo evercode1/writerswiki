@@ -30,7 +30,7 @@
 
                             <td>
 
-                                <a v-bind:href="'/emotion-expression/' + row.Id"> {{ row.Name }}</a>
+                                <a v-bind:href="'/emotion-expression/' + row.Id + '-' + row.Slug"> {{ row.Name }}</a>
 
                             </td>
 

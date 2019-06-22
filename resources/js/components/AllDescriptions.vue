@@ -32,7 +32,7 @@
 
                             <td>
 
-                                <a v-bind:href="'/description-detail/' + row.Id"> {{ row.Name }}</a>
+                                <a v-bind:href="'/description-detail/' + row.Id + '-' + row.Slug"> {{ row.Name }}</a>
 
                             </td>
 

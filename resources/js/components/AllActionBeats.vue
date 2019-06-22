@@ -31,7 +31,7 @@
 
                             <td>
 
-                                <a v-bind:href="'/action-beat-details/' + row.Id"> {{ row.Name }}</a>
+                                <a v-bind:href="'/action-beat-details/' + row.Id + '-' + row.Slug"> {{ row.Name }}</a>
 
                             </td>
 
