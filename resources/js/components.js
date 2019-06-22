@@ -78,7 +78,7 @@ Vue.component('emotion-grid', require('./components/EmotionGrid.vue').default);
 /** End Emotion Grid Component Call */
 /** Begin Emotion All Models Call */
 
-Vue.component('all-emotions', require('./components/AllEmotions.vue').default);
+Vue.component('all-emotions', require('./components/ArchiveAllEmotions.vue').default);
 
 /** End Emotion All Models Call */
 /** Begin Expression Grid Component Call */

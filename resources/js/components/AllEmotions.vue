@@ -3,7 +3,6 @@
     <div class="row">
 
 
-
         <h1 class="flow-text grey-text text-darken-1">All Emotions</h1>
 
             <search-box></search-box>
@@ -104,7 +103,7 @@
                 first_page_url: null,
                 last_page_url: null,
                 go_to_page: null,
-                sortOrder: 1,
+                sortOrder: '',
                 sortKey: 'id',
                 createUrl: '/emotion/create',
                 showCreateButton: false

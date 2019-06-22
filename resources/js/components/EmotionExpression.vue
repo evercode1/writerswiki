@@ -113,7 +113,7 @@
                 first_page_url: null,
                 last_page_url: null,
                 go_to_page: null,
-                sortOrder: 1,
+                sortOrder: '',
                 sortKey: 'id',
                 createUrl: '/expression-preset/create/' + this.type,
                 showCreateButton: false
