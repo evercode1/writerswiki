@@ -316,9 +316,9 @@ Route::resource('profile', 'ProfileController', ['except' => ['show', 'create', 
 
 Route::resource('reply', 'ReplyController');
 
-//  Seed Emotions
+//  Seed Emotions  Do not uncomment -- dangerous
 
-Route::get('seed-emotions', 'SeedEmotionsController@index');
+//Route::get('seed-emotions', 'SeedEmotionsController@index');
 
 // Settings routes
 

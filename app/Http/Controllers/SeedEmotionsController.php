@@ -18,7 +18,9 @@ class SeedEmotionsController extends Controller
     public function index()
     {
 
-        $this->seed('EmotionSeeds');
+        // dangerous, will truncate table
+
+       // $this->seed('EmotionSeeds');
 
 
     }
