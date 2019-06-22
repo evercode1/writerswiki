@@ -4,7 +4,7 @@
 
 
 
-        <h1 class="flow-text grey-text text-darken-1">Descriptions For {{ this.actionbeat }}</h1>
+        <h1 class="flow-text grey-text text-darken-1">Descriptions For {{ this.actionbeat }} - <a href="/all-action-beats">Action Beats</a></h1>
 
             <search-box></search-box>
 

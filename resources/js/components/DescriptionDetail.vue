@@ -4,7 +4,7 @@
 
 
 
-        <h1 class="flow-text grey-text text-darken-1">Details For {{ this.description }}</h1>
+        <h1 class="flow-text grey-text text-darken-1">Details For {{ this.description }} - <a href="\all-descriptions">Descriptions</a></h1>
 
             <search-box></search-box>
 

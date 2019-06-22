@@ -4,7 +4,8 @@
 
 
 
-        <h1 class="flow-text grey-text text-darken-1">Expressions For {{ this.emotion }}</h1>
+        <h1 class="flow-text grey-text text-darken-1">Expressions For {{ this.emotion }} - <a href="/all-emotions">Emotions</a></h1>
+
 
             <search-box></search-box>
 
