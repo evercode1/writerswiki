@@ -1,8 +1,20 @@
 @extends('layouts.masters.master-auth')
 
+@section('meta')
+
+    <meta name="description" content="{{ $seo }}">
+    <meta name="keywords" content="{{ $expression->label . ', ' . $emotion }}">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="https://www.writerswiki.com/expression/{{$expression->id}}-{{ $expression->slug }}" />
+    <meta name="twitter:title" content="{{ $expression->label }}" />
+    <meta name="twitter:description" content="{{ \App\Utilities\Summarize::summaryWithoutTags($expression->description) }}" />
+    <meta name="twitter:image" content="{{ config('twitter-cards.thumbnail.url') }}" />
+
+    @endsection
+
 @section('title')
 
-    <title>Expression</title>
+    <title>{{ $seo }}</title>
 
 @endsection
 
@@ -10,7 +22,7 @@
 
         <div class="container">
 
-        <h1 class="flow-text grey-text text-darken-1">{{ $expression->label }} is an expression for {{ $emotion }}</h1>
+        <h1 class="flow-text grey-text text-darken-1">{{ $expression->label }} expresses {{ $emotion }}</h1>
 
         <div class="row">
 
@@ -18,8 +30,9 @@
                         <li class="collection-header"><h4>{{ $expression->label }}</h4></li>
 
 
-
                         <li class="collection-item">{!! $expression->description !!}</li>
+
+                        <li class="collection-item">{{ $seo }}</li>
 
         </ul>
 

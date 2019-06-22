@@ -85,7 +85,7 @@
 
     export default {
 
-        props:  ['type', 'emotion'],
+        props:  ['type', 'emotion', 'contributor'],
 
         components: {'pagination' : Pagination,
                      'search-box' : SearchBox,
@@ -96,6 +96,7 @@
         mounted: function () {
 
             gridData.loadData('/api/emotion-expression-data/' + this.type, this);
+            this.setContributor(this.contributor);
 
         },
         data: function () {
@@ -115,7 +116,7 @@
                 sortOrder: 1,
                 sortKey: 'id',
                 createUrl: '/expression-preset/create/' + this.type,
-                showCreateButton: true
+                showCreateButton: false
             }
         },
 
@@ -193,6 +194,14 @@
 
 
                 }
+
+
+
+            },
+
+            setContributor: function(contributor){
+
+              return this.showCreateButton = this.contributor == 1 ? true : false;
 
 
 

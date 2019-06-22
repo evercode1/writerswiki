@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Emotion;
+use Illuminate\Support\Facades\Auth;
 
 class EmotionExpressionController extends Controller
 {
@@ -12,7 +13,16 @@ class EmotionExpressionController extends Controller
 
         $emotion = Emotion::findOrFail($type);
 
-        return view('emotion-expression.index', compact('type', 'emotion'));
+        $contributor = 0;
+
+        if(Auth::check()){
+
+            $contributor = Auth::user()->is_contributor;
+
+        }
+
+
+        return view('emotion-expression.index', compact('type', 'emotion', 'contributor'));
 
 
     }

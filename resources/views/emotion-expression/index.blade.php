@@ -14,7 +14,8 @@
         <div class="row">
 
             <emotion-expression type="{{ json_encode($emotion->id) }}"
-                                emotion="{{ json_encode($emotion->name) }}"
+                                emotion="{{ $emotion->name }}"
+                                contributor="{{ $contributor }}"
             ></emotion-expression>
 
         </div>

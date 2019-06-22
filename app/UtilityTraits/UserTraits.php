@@ -180,6 +180,18 @@ trait UserTraits
 
     }
 
+    public function getProfileThumb($user)
+    {
+
+        $name = $user->profiles->name;
+
+        $name = $this->formatString($name);
+
+        return '/imgs/profile/thumbnails/thumb-' . $name . '.jpg';
+
+
+    }
+
 
 
 }

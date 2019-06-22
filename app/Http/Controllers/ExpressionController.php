@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\AuthTraits\OwnsRecord;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
@@ -14,16 +15,16 @@ use App\User;
 
 class ExpressionController extends Controller
 {
+    use OwnsRecord;
 
 
     public function __construct()
     {
+        $this->middleware(['auth'], ['except' => 'show']);
 
-        $this->middleware(['auth']);
+        $this->middleware(['contributor'], ['only' => 'create', 'createPreset']);
 
-        $this->middleware(['admin'], ['except' => 'create','show']);
-
-
+        $this->middleware(['admin'], ['only' => 'edit', 'destroy', 'update']);
 
 
     }
@@ -50,8 +51,6 @@ class ExpressionController extends Controller
     public function create(Request $request)
     {
 
-
-
         $emotions = Emotion::orderBy('name', 'asc')->get();
 
 
@@ -61,8 +60,6 @@ class ExpressionController extends Controller
 
     public function createPreset($type)
     {
-
-
 
         $emotion = Emotion::where('id', $type)->first();
 
@@ -127,14 +124,16 @@ class ExpressionController extends Controller
         $userid = $user->id;
         $username = $user->profiles->name;
         $profile = $user->profiles->id;
-        $thumb = $user->profileThumb();
+        $thumb = $user->getProfileThumb($user);
         $tagline = $user->profiles->tagline;
 
         $emotion = $expression->emotion->name;
         $emotionId = $expression->emotion->id;
 
+        $seo = 'How to describe ' . $emotion . ' in writing with ' . $expression->label . '.';
+
         return view('expression.show', compact('expression', 'emotion', 'username', 'emotionId',
-                                               'profile', 'thumb', 'tagline', 'userid'));
+                                               'profile', 'thumb', 'tagline', 'userid', 'seo'));
     }
 
     /**
@@ -146,11 +145,9 @@ class ExpressionController extends Controller
 
     public function edit($id)
     {
-
         $expression = Expression::findOrFail($id);
 
         $emotions = Emotion::where('is_active', 1)->orderBy('name', 'asc')->get();
-
 
         return view('expression.edit', compact('expression', 'emotions'));
 
@@ -183,9 +180,7 @@ class ExpressionController extends Controller
 
         $this->setUpdatedModelValues($request, $expression, $slug);
 
-
         $expression->save();
-
 
         return Redirect::route('expression.show', ['expression' => $expression, $slug]);
 
@@ -200,8 +195,6 @@ class ExpressionController extends Controller
 
     public function destroy($id)
     {
-
-
         Expression::destroy($id);
 
         return Redirect::route('expression.index');

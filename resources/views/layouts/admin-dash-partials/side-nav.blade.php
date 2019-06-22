@@ -8,8 +8,9 @@
                         <li><a href="/home" class="waves-effect active">Dashboard<i class="material-icons">web</i></a></li>
                         <li><a href="/emotion" class="waves-effect">Emotions<i class="material-icons">star</i></a></li>
                         <li><a href="/expression" class="waves-effect">Expressions<i class="material-icons">star</i></a></li>
-                        <li><a href="#" class="waves-effect">Action Beats<i class="material-icons">star</i></a></li>
-                        <li><a href="#" class="waves-effect">Descriptions<i class="material-icons">star</i></a></li>
+                        <li><a href="/action-beat" class="waves-effect">Action Beats<i class="material-icons">star</i></a></li>
+                        <li><a href="/action-beat-description" class="waves-effect">Action Beat Descriptions<i class="material-icons">star</i></a></li>
+                        <li><a href="/description" class="waves-effect">Descriptions<i class="material-icons">star</i></a></li>
                         <li><a href="/self-publishing" class="waves-effect">Self-Publishing<i class="material-icons">star</i></a></li>
 
                     </ul>

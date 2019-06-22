@@ -1,3 +1,4 @@
+Vue.component('action-beat-details', require('./components/ActionBeatDetails.vue').default);
 Vue.component('alarm-bell', require('./components/AlarmBell.vue').default);
 Vue.component('alarm-bell-admin', require('./components/AlarmBellAdmin.vue').default);
 Vue.component('all-table-head', require('./components/AllTableHead.vue').default);
@@ -84,3 +85,28 @@ Vue.component('all-emotions', require('./components/AllEmotions.vue').default);
 Vue.component('expression-grid', require('./components/ExpressionGrid.vue').default);
 
 /** End Expression Grid Component Call */
+/** Begin ActionBeat Grid Component Call */
+
+Vue.component('action-beat-grid', require('./components/ActionBeatGrid.vue').default);
+
+/** End ActionBeat Grid Component Call */
+/** Begin ActionBeat All Models Call */
+
+Vue.component('all-action-beats', require('./components/AllActionBeats.vue').default);
+
+/** End ActionBeat All Models Call */
+/** Begin ActionBeatDescription Grid Component Call */
+
+Vue.component('action-beat-description-grid', require('./components/ActionBeatDescriptionGrid.vue').default);
+
+/** End ActionBeatDescription Grid Component Call */
+/** Begin Description Grid Component Call */
+
+Vue.component('description-grid', require('./components/DescriptionGrid.vue').default);
+
+/** End Description Grid Component Call */
+/** Begin Description All Models Call */
+
+Vue.component('all-descriptions', require('./components/AllDescriptions.vue').default);
+
+/** End Description All Models Call */

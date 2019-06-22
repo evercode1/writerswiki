@@ -85,6 +85,14 @@ class GridQuery
 
                 break;
 
+            case $query instanceof ActionBeatDetailsQuery  :
+
+                $column = 'label';
+                $direction = 'asc';
+
+                break;
+
+
             case $query instanceof EmotionQuery  :
 
                 $column = 'name';

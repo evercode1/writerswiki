@@ -9,6 +9,39 @@ use App\MediaLinkType;
 class FrontApiController extends Controller
 {
 
+    // Begin Description Api All Models Method
+
+    public function allDescriptionsData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'DescriptionQuery');
+
+    }
+
+    // End Description Api All Models Method
+
+
+
+    public function actionBeatDetailsData(Request $request, $type)
+    {
+
+        return GridQuery::sendData($request, 'ActionBeatDetailsQuery', $type);
+
+    }
+
+    // Begin ActionBeat Api All Models Method
+
+    public function allActionBeatsData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'ActionBeatQuery');
+
+    }
+
+    // End ActionBeat Api All Models Method
+
+
+
     // Begin Emotion Api All Models Method
 
     public function allEmotionsData(Request $request)

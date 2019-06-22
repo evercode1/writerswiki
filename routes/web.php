@@ -11,6 +11,42 @@
 |
 */
 
+// Begin ActionBeat Routes
+
+Route::get('all-action-beats', 'AllActionBeatsController@index');
+
+Route::post('action-beat-delete/{id}', 'ActionBeatController@destroy');
+
+Route::get('/action-beat/create', 'ActionBeatController@create')->name('action-beat.create');
+
+Route::get('action-beat/{id}', 'ActionBeatController@show')->name('action-beat.show');
+
+Route::resource('action-beat', 'ActionBeatController', ['except' => ['show', 'create','destroy']]);
+
+// End ActionBeat Routes
+
+// Begin ActionBeatDescription Routes
+
+Route::get('api/action-beat-description-data', 'ApiController@actionBeatDescriptionData')->middleware(['auth', 'admin']);
+
+Route::get('/action-beat-description-preset/create/{type}', 'ActionBeatDescriptionController@createPreset')->name('action-beat-description.create-preset');
+
+Route::post('action-beat-description-delete/{id}', 'ActionBeatDescriptionController@destroy');
+
+Route::get('/action-beat-description/create', 'ActionBeatDescriptionController@create')->name('action-beat-description.create');
+
+Route::get('action-beat-description/{id}', 'ActionBeatDescriptionController@show')->name('action-beat-description.show');
+
+Route::resource('action-beat-description', 'ActionBeatDescriptionController', ['except' => ['show', 'create','destroy']]);
+
+// End ActionBeatDescription Routes
+
+// Action Beat Detail route
+
+Route::get('action-beat-details/{type}', 'ActionBeatDetailsController@index')->name('action-beat-details.index');
+
+
+
 //  Admin Routes
 
 Route::get('/admin', 'AdminController@index')->name('admin');
@@ -18,6 +54,10 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 
 // api routes
 
+
+Route::get('/api/action-beat-details-data/{type}', 'FrontApiController@actionBeatDetailsData');
+Route::any('api/action-beat-data', 'ApiController@actionBeatData')->middleware(['auth', 'admin']);
+Route::get('/api/all-action-beats-data', 'FrontApiController@allActionBeatsData');
 Route::get('api/alarm-data', 'ApiController@alarmData');
 Route::get('api/alarm-data-admin', 'ApiController@alarmDataAdmin');
 Route::get('/api/all-articles-data', 'ApiController@allArticlesData');
@@ -31,6 +71,7 @@ Route::any('api/contact-topic-data', 'ApiController@contactTopicData')->middlewa
 Route::any('api/content-data', 'ApiController@contentData')->middleware(['auth', 'admin']);
 Route::get('api/contributor-link-data', 'ApiController@contributorLinkData')->middleware(['auth', 'admin']);
 Route::get('api/contributor-link-type-data', 'ApiController@contributorLinkTypeData')->middleware(['auth', 'admin']);
+Route::any('api/description-data', 'ApiController@descriptionData')->middleware(['auth', 'admin']);
 Route::any('api/emotion-data', 'ApiController@emotionData')->middleware(['auth', 'admin']);
 Route::get('api/emotion-expression-data/{type}', 'FrontApiController@emotionExpressionData');
 Route::any('api/media-link-data', 'ApiController@mediaLinkData')->middleware(['auth', 'admin']);
@@ -124,6 +165,24 @@ Route::get('contributor-link/{id}', 'ContributorLinkController@show')->name('con
 Route::resource('contributor-link', 'ContributorLinkController', ['except' => ['show', 'create','destroy']]);
 
 // End ContributorLink Routes
+
+// Begin Description Routes
+
+Route::get('all-descriptions', 'AllDescriptionsController@index');
+
+Route::get('/api/all-descriptions-data', 'FrontApiController@allDescriptionsData');
+
+
+
+Route::post('description-delete/{id}', 'DescriptionController@destroy');
+
+Route::get('/description/create', 'DescriptionController@create')->name('description.create');
+
+Route::get('description/{id}', 'DescriptionController@show')->name('description.show');
+
+Route::resource('description', 'DescriptionController', ['except' => ['show', 'create','destroy']]);
+
+// End Description Routes
 
 // Begin Emotion Routes
 
@@ -270,6 +329,23 @@ Route::resource('subcategory', 'SubcategoryController', ['except' => ['show', 'c
 // test routes
 
 Route::get('test', 'TestController@index')->name('test.index');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

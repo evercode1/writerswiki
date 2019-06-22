@@ -14,6 +14,45 @@ use App\Queries\CategoriesForDropdownQuery;
 class ApiController extends Controller
 {
 
+    // Begin Description Api Data Grid Method
+
+    public function descriptionData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'DescriptionQuery');
+
+    }
+
+    // End Description Api Data Grid Method
+
+
+
+    // Begin ActionBeatDescription Api Data Grid Method
+
+    public function actionBeatDescriptionData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'ActionBeatDescriptionQuery');
+
+    }
+
+    // End ActionBeatDescription Api Data Grid Method
+
+
+
+    // Begin ActionBeat Api Data Grid Method
+
+    public function actionBeatData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'ActionBeatQuery');
+
+    }
+
+    // End ActionBeat Api Data Grid Method
+
+
+
     // Begin Expression Api Data Grid Method
 
     public function expressionData(Request $request)

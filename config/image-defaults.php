@@ -15,6 +15,57 @@ return [
 
 
 
+    // Begin Description Image Config Array Method
+
+
+        'description' => [
+                'destinationFolder'     => '/imgs/description/',
+                'createFolder'          => '/imgs/description',
+                'destinationThumbnail'  => '/imgs/description/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/description/',
+                'thumbnailPath'         => '/imgs/description/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End Description Image Config Array Method
+    // Begin ActionBeatDescription Image Config Array Method
+
+
+        'actionbeatdescription' => [
+                'destinationFolder'     => '/imgs/actionbeatdescription/',
+                'createFolder'          => '/imgs/actionbeatdescription',
+                'destinationThumbnail'  => '/imgs/actionbeatdescription/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/actionbeatdescription/',
+                'thumbnailPath'         => '/imgs/actionbeatdescription/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End ActionBeatDescription Image Config Array Method
+    // Begin ActionBeat Image Config Array Method
+
+
+        'actionbeat' => [
+                'destinationFolder'     => '/imgs/actionbeat/',
+                'createFolder'          => '/imgs/actionbeat',
+                'destinationThumbnail'  => '/imgs/actionbeat/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/actionbeat/',
+                'thumbnailPath'         => '/imgs/actionbeat/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End ActionBeat Image Config Array Method
     // Begin Expression Image Config Array Method
 
 
