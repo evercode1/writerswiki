@@ -12,6 +12,13 @@ class Description extends Model
                            'is_active',
                            'user_id'];
 
+    public function details()
+    {
+
+        return $this->hasMany('App\Detail');
+
+    }
+
 
 
 }

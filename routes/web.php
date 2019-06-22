@@ -62,6 +62,7 @@ Route::get('api/alarm-data', 'ApiController@alarmData');
 Route::get('api/alarm-data-admin', 'ApiController@alarmDataAdmin');
 Route::get('/api/all-articles-data', 'ApiController@allArticlesData');
 Route::get('/api/all-emotions-data', 'FrontApiController@allEmotionsData');
+Route::get('/api/all-details-data', 'FrontApiController@allDetailsData');
 Route::get('/api/all-media-links-data/{type}', 'FrontApiController@allMediaLinksData');
 Route::get('api/categories-for-dropdown', 'ApiController@categoriesForDropdown');
 Route::any('api/category-data', 'ApiController@categoryData')->middleware(['auth', 'admin']);
@@ -72,6 +73,8 @@ Route::any('api/content-data', 'ApiController@contentData')->middleware(['auth',
 Route::get('api/contributor-link-data', 'ApiController@contributorLinkData')->middleware(['auth', 'admin']);
 Route::get('api/contributor-link-type-data', 'ApiController@contributorLinkTypeData')->middleware(['auth', 'admin']);
 Route::any('api/description-data', 'ApiController@descriptionData')->middleware(['auth', 'admin']);
+Route::get('api/description-detail-data/{type}', 'FrontApiController@descriptionDetailData');
+Route::get('api/detail-data', 'ApiController@detailData')->middleware(['auth', 'admin']);
 Route::any('api/emotion-data', 'ApiController@emotionData')->middleware(['auth', 'admin']);
 Route::get('api/emotion-expression-data/{type}', 'FrontApiController@emotionExpressionData');
 Route::any('api/media-link-data', 'ApiController@mediaLinkData')->middleware(['auth', 'admin']);
@@ -173,6 +176,11 @@ Route::get('all-descriptions', 'AllDescriptionsController@index');
 Route::get('/api/all-descriptions-data', 'FrontApiController@allDescriptionsData');
 
 
+// Description Detail Route
+
+Route::get('description-detail/{type}', 'DescriptionDetailController@index')->name('description-detail.index');
+
+
 
 Route::post('description-delete/{id}', 'DescriptionController@destroy');
 
@@ -183,6 +191,21 @@ Route::get('description/{id}', 'DescriptionController@show')->name('description.
 Route::resource('description', 'DescriptionController', ['except' => ['show', 'create','destroy']]);
 
 // End Description Routes
+
+// Begin Detail Routes
+
+
+Route::post('detail-delete/{id}', 'DetailController@destroy');
+
+Route::get('/detail/create', 'DetailController@create')->name('detail.create');
+
+Route::get('/detail-preset/create/{type}', 'DetailController@createPreset')->name('detail.create-preset');
+
+Route::get('detail/{id}', 'DetailController@show')->name('detail.show');
+
+Route::resource('detail', 'DetailController', ['except' => ['show', 'create','destroy']]);
+
+// End Detail Routes
 
 // Begin Emotion Routes
 
@@ -329,6 +352,9 @@ Route::resource('subcategory', 'SubcategoryController', ['except' => ['show', 'c
 // test routes
 
 Route::get('test', 'TestController@index')->name('test.index');
+
+
+
 
 
 

@@ -15,6 +15,23 @@ return [
 
 
 
+    // Begin Detail Image Config Array Method
+
+
+        'detail' => [
+                'destinationFolder'     => '/imgs/detail/',
+                'createFolder'          => '/imgs/detail',
+                'destinationThumbnail'  => '/imgs/detail/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/detail/',
+                'thumbnailPath'         => '/imgs/detail/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End Detail Image Config Array Method
     // Begin Description Image Config Array Method
 
 

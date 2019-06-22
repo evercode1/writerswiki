@@ -4,6 +4,7 @@ Vue.component('alarm-bell-admin', require('./components/AlarmBellAdmin.vue').def
 Vue.component('all-table-head', require('./components/AllTableHead.vue').default);
 Vue.component('closed-contact-grid', require('./components/ClosedContactGrid.vue').default);
 Vue.component('contact-grid', require('./components/ContactGrid.vue').default);
+Vue.component('description-detail', require('./components/DescriptionDetail.vue').default);
 Vue.component('emotion-expression', require('./components/EmotionExpression.vue').default);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('open-contact-grid', require('./components/OpenContactGrid.vue').default);
@@ -110,3 +111,8 @@ Vue.component('description-grid', require('./components/DescriptionGrid.vue').de
 Vue.component('all-descriptions', require('./components/AllDescriptions.vue').default);
 
 /** End Description All Models Call */
+/** Begin Detail Grid Component Call */
+
+Vue.component('detail-grid', require('./components/DetailGrid.vue').default);
+
+/** End Detail Grid Component Call */

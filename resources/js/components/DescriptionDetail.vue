@@ -4,7 +4,7 @@
 
 
 
-        <h1 class="flow-text grey-text text-darken-1">Expressions For {{ this.description }}</h1>
+        <h1 class="flow-text grey-text text-darken-1">Details For {{ this.description }}</h1>
 
             <search-box></search-box>
 
@@ -135,7 +135,7 @@
 
             getData:  function(request){
 
-                gridData.getQueryData(request, '/api/descriptions-detail-data/' + this.type, this);
+                gridData.getQueryData(request, '/api/description-detail-data/' + this.type, this);
 
             },
 

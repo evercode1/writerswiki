@@ -4,7 +4,7 @@
 
 
 
-        <h1 class="flow-text grey-text text-darken-1">All Descriptions</h1>
+        <h1 class="flow-text grey-text text-darken-1">Detail</h1>
 
             <search-box></search-box>
 
@@ -23,29 +23,65 @@
 
                     <table>
 
-                        <all-table-head></all-table-head>
+                        <table-head></table-head>
 
                         <tbody>
 
                         <tr v-for="row in gridData">
 
-
                             <td>
 
-                                <a v-bind:href="'/description-detail/' + row.Id"> {{ row.Name }}</a>
+                                   {{ row.Id }}
 
                             </td>
 
+                            <td>
+
+                                <a v-bind:href="'/detail/' + row.Id + '-' + row.Slug"> {{ row.Name }}</a>
+
+                            </td>
 
                             <td>
 
-                                <a v-bind:href="'/profile/' + row.Profile"> {{ row.Contributor }}</a>
+                                {{ formatActive(row.Active) }}
+
+                            </td>
+
+                            <td>
+
+                                {{ row.Contributor }}
+
+                            </td>
+
+                            <td>
+
+                                   {{ row.Created }}
+
+                            </td>
+
+                            <td >
+
+                                <a v-bind:href="'/detail/' + row.Id + '/edit'">
+
+                                <button type="button" class="waves-effect waves-light btn mt-5">
+
+                                        Edit
+
+                                </button>
+
+                                </a>
+
+
+                                <button class="waves-effect waves-light btn mt-5"
+                                        @click="confirmDelete(row.Id)">
+
+                                        Delete
+
+                                </button>
 
 
 
                             </td>
-
-
 
                         </tr>
 
@@ -88,13 +124,13 @@
 
         mounted: function () {
 
-            gridData.loadData('/api/all-descriptions-data', this);
+            gridData.loadData('/api/detail-data', this);
 
         },
         data: function () {
             return {
                 query: '',
-                gridColumns: ['Name', 'Contributor'],
+                gridColumns: ['Id', 'Name', 'Active', 'Contributor', 'Created'],
                 gridData: [],
                 total: null,
                 next_page_url: null,
@@ -107,8 +143,8 @@
                 go_to_page: null,
                 sortOrder: 1,
                 sortKey: 'id',
-                createUrl: '/description/create',
-                showCreateButton: false
+                createUrl: '/detail/create',
+                showCreateButton: true
             }
         },
 
@@ -127,7 +163,7 @@
 
             getData:  function(request){
 
-                gridData.getQueryData(request, '/api/all-descriptions-data', this);
+                gridData.getQueryData(request, '/api/detail-data', this);
 
             },
 
@@ -150,15 +186,45 @@
             },
 
             checkUrlNotNull: function(url){
+
                 return url != null;
+
             },
 
             clearPageNumberInputBox: function(){
+
                 return this.go_to_page = '';
+
             },
 
             pageInRange: function(){
+
                 return this.go_to_page <= parseInt(this.last_page);
+
+            },
+
+                formatActive: function(active){
+
+                    return  active === 1 ? 'Active' : 'Inactive';
+
+            },
+
+            confirmDelete: function(id){
+
+                if(confirm("Are you sure you want to delete?")){
+
+                    axios.post('/detail-delete/' + id)
+                            .then(response => {
+
+                                gridData.loadData('/api/detail-data', this);
+
+                            });
+
+
+                }
+
+
+
             }
 
 

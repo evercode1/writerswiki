@@ -21,6 +21,14 @@ class FrontApiController extends Controller
     // End Description Api All Models Method
 
 
+    public function descriptionDetailData(Request $request, $type)
+    {
+
+        return GridQuery::sendData($request, 'DescriptionDetailQuery', $type);
+
+    }
+
+
 
     public function actionBeatDetailsData(Request $request, $type)
     {
