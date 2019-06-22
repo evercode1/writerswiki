@@ -22,7 +22,8 @@
 
         <div class="container">
 
-        <h1 class="flow-text grey-text text-darken-1">{{ $expression->label }} expresses {{ $emotion }}</h1>
+        <h1 class="flow-text grey-text text-darken-1">{{ $expression->label }} expresses
+            <a href="/emotion-expression/{{ $expression->emotion->id }}">{{ $emotion }} </a></h1>
 
         <div class="row">
 

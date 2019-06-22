@@ -22,7 +22,8 @@
 
         <div class="container">
 
-        <h1 class="flow-text grey-text text-darken-1">{{ $actionBeatDescription->label }} describes {{ $actionBeat }}</h1>
+        <h1 class="flow-text grey-text text-darken-1">{{ $actionBeatDescription->label }} describes
+            <a href="/action-beat-details/{{ $actionBeatDescription->actionBeat->id }}">{{ $actionBeat }}</a></h1>
 
         <div class="row">
 

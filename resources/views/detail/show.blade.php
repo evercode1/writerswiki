@@ -22,7 +22,8 @@
 
         <div class="container">
 
-        <h1 class="flow-text grey-text text-darken-1">{{ $detail->label }} describes {{ $description }}</h1>
+        <h1 class="flow-text grey-text text-darken-1">{{ $detail->label }} describes
+            <a href="/description-detail/{{ $descriptionId }}">{{ $description }}</a> </h1>
 
         <div class="row">
 

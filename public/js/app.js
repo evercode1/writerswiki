@@ -44884,7 +44884,6 @@ var render = function() {
     "div",
     { staticClass: "row" },
     [
-      _vm._v("\n\n" + _vm._s(_vm.next_page_url) + "\n\n        "),
       _c("h1", { staticClass: "flow-text grey-text text-darken-1" }, [
         _vm._v("All Emotions")
       ]),
