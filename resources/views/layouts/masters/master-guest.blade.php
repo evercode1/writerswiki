@@ -25,7 +25,7 @@
         @yield('content')
 
         @include('layouts.master-partials.footer')
-
+           
         </div> <!-- end app div for vue -->
 
         @include('layouts.master-partials.scripts')

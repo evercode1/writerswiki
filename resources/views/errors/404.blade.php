@@ -1,15 +1,14 @@
-@extends('layouts.masters.master-guest')
+@extends('layouts.masters.master-auth')
 
 @section('content')
 
     <div class="container">
 
-    <div class="alert alert-danger alert-dismissible alert-important mt-25 text-center" role="alert">
+    <div class="center mt-50 mb-50">
 
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
 
-        <strong>Oh Snap!</strong> We can't find what you are looking for...
+
+        <h5>Oh Snap! 404 - We can't find what you're looking for...</h5>
 
     </div>
 

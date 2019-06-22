@@ -1,17 +1,16 @@
-@extends('layouts.masters.master-guest')
+@extends('layouts.masters.master-auth')
 
 @section('content')
 
     <div class="container">
 
-    <div class="alert alert-danger alert-dismissible alert-important mt-25 text-center" role="alert">
+        <div class="center mt-50 mb-50">
 
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span></button>
 
-        <strong>Oh Snap!</strong> {{ $exception->getMessage() }} You are not authorized to do this.
 
-    </div>
+            <h5>You are not authorized to do this...</h5>
+
+        </div>
 
     </div>
 
