@@ -38,7 +38,7 @@ class EmotionSeeder extends Seeder
             DB::table('emotions')->insert([
                 'name' => $value,
                 'is_active' => 1,
-                'slug' => $value,
+                'slug' => 'how-to-describe-' . $value . '-in-writing',
                 'user_id' => Auth::id(),
                 'created_at' => now(),
                 'updated_at' => now()

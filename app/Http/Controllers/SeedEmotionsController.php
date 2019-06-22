@@ -20,7 +20,7 @@ class SeedEmotionsController extends Controller
 
         // dangerous, will truncate table
 
-       // $this->seed('EmotionSeeds');
+        $this->seed('EmotionSeeds');
 
 
     }

@@ -318,7 +318,7 @@ Route::resource('reply', 'ReplyController');
 
 //  Seed Emotions  Do not uncomment -- dangerous
 
-//Route::get('seed-emotions', 'SeedEmotionsController@index');
+Route::get('seed-emotions', 'SeedEmotionsController@index');
 
 // Settings routes
 
