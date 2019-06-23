@@ -21,11 +21,11 @@ class MediaLinkController extends Controller
     public function __construct()
     {
 
-        $this->middleware('auth');
+        $this->middleware(['auth'], ['except' => 'show']);
 
-        $this->middleware(['admin'], ['only' => ['edit', 'index']]);
+        $this->middleware(['contributor'], ['only' => 'create', 'edit', 'update']);
 
-        $this->middleware(['contributor'], ['only' => 'create']);
+        $this->middleware(['admin'], ['only' => 'destroy']);
 
     }
 
