@@ -8,7 +8,7 @@
 
         <p class="flow-text mb-20">Definition:  {{ definition }}</p>
 
-        <p class="flow-text mb-20"><h6>Words below describe the emotion of {{ emotion }} in writing.</h6></p>
+        <p class="flow-text mb-20"><h6>Actions or words below describe the emotion of {{ emotion }} in writing.</h6></p>
 
 
 

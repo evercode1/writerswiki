@@ -46562,7 +46562,7 @@ var render = function() {
       _c("p", { staticClass: "flow-text mb-20" }),
       _c("h6", [
         _vm._v(
-          "Words below describe the emotion of " +
+          "Actions or words below describe the emotion of " +
             _vm._s(_vm.emotion) +
             " in writing."
         )
