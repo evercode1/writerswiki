@@ -10,6 +10,7 @@ class Emotion extends Model
     protected $fillable = ['name',
                            'slug',
                            'is_active',
+                           'definition',
                            'user_id'];
 
     public function expressions()

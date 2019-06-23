@@ -15,6 +15,7 @@
 
             <emotion-expression type="{{ json_encode($emotion->id) }}"
                                 emotion="{{ $emotion->name }}"
+                                definition="{{ $emotion->definition }}"
                                 contributor="{{ $contributor }}"
             ></emotion-expression>
 

@@ -5514,6 +5514,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/utilities/gridData.js");
 
 
@@ -5522,7 +5529,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['type', 'emotion', 'contributor'],
+  props: ['type', 'emotion', 'definition', 'contributor'],
   components: {
     'pagination': _Pagination__WEBPACK_IMPORTED_MODULE_0__["default"],
     'search-box': _SearchBox__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -46547,6 +46554,20 @@ var render = function() {
         _vm._v("Expressions For " + _vm._s(this.emotion) + " - "),
         _c("a", { attrs: { href: "/all-emotions" } }, [_vm._v("Emotions")])
       ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "flow-text mb-20" }, [
+        _vm._v("Definition:  " + _vm._s(_vm.definition))
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "flow-text mb-20" }),
+      _c("h6", [
+        _vm._v(
+          "Words below describe the emotion of " +
+            _vm._s(_vm.emotion) +
+            " in writing."
+        )
+      ]),
+      _c("p"),
       _vm._v(" "),
       _c("search-box"),
       _vm._v(" "),

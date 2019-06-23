@@ -8,7 +8,7 @@
 
 
 
-        <h5>Oh Snap! 404 - We can't find what you're looking for...</h5>
+        <h5>We can't find what you're looking for...</h5>
 
     </div>
 

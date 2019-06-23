@@ -29,6 +29,30 @@
 
     <!-- end name input -->
 
+    <!-- definition input -->
+
+    <div class="{{ $errors->has('definition') ? ' has-error' : '' }}">
+
+        <label>Definition</label>
+
+        <input type="text"
+               name="definition"
+               value="{{ old('definition') }}" />
+
+        @if ($errors->has('definition'))
+
+            <span class="help-block">
+
+                    <strong>{{ $errors->first('definition') }}</strong>
+
+                </span>
+
+        @endif
+
+    </div>
+
+    <!-- end definition input -->
+
     <!-- is_active select -->
 
         <div class="{{ $errors->has('is_active') ? ' has-error' : '' }}">

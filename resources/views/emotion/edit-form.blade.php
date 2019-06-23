@@ -1,7 +1,7 @@
 <form class="mt-20"
       role="form"
       method="POST"
-      action="{{ url('/emotion/'. $emotion->id) }}>
+      action="{{ url('/emotion/'. $emotion->id) }}">
 
 {{ method_field('PATCH') }}
 {{ csrf_field() }}
@@ -29,6 +29,30 @@
     </div>
 
     <!-- end name input -->
+
+    <!-- definition input -->
+
+    <div class="{{ $errors->has('definition') ? ' has-error' : '' }}">
+
+        <label>Definition</label>
+
+        <input type="text"
+               name="definition"
+               value="{{ $emotion->definition }}" />
+
+        @if ($errors->has('definition'))
+
+            <span class="help-block">
+
+                    <strong>{{ $errors->first('definition') }}</strong>
+
+                </span>
+
+        @endif
+
+    </div>
+
+    <!-- end definition input -->
 
 
 

@@ -6,6 +6,13 @@
 
         <h1 class="flow-text grey-text text-darken-1">Expressions For {{ this.emotion }} - <a href="/all-emotions">Emotions</a></h1>
 
+        <p class="flow-text mb-20">Definition:  {{ definition }}</p>
+
+        <p class="flow-text mb-20"><h6>Words below describe the emotion of {{ emotion }} in writing.</h6></p>
+
+
+
+
 
             <search-box></search-box>
 
@@ -86,7 +93,7 @@
 
     export default {
 
-        props:  ['type', 'emotion', 'contributor'],
+        props:  ['type', 'emotion', 'definition', 'contributor'],
 
         components: {'pagination' : Pagination,
                      'search-box' : SearchBox,

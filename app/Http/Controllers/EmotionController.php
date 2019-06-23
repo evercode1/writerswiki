@@ -64,7 +64,8 @@ class EmotionController extends Controller
                 $this->validate($request, [
 
                     'name' => 'required|unique:emotions|string|max:100',
-                    'is_active' => 'required|boolean'
+                    'is_active' => 'required|boolean',
+                    'definition' => 'string|max:400'
 
                 ]);
 
@@ -73,6 +74,7 @@ class EmotionController extends Controller
          $emotion = Emotion::create([ 'name' => $request->name,
                                       'slug' => $slug,
                                       'user_id' => Auth::id(),
+                                      'definition' => $request->definition,
                                       'is_active' => $request->is_active]);
 
         $emotion->save();
@@ -133,7 +135,8 @@ class EmotionController extends Controller
         $this->validate($request, [
 
             'name' => 'required|string|max:100|unique:emotions,name,' .$id,
-            'is_active' => 'required|boolean'
+            'is_active' => 'required|boolean',
+            'definition' => 'string|max:400'
 
             ]);
 
@@ -191,6 +194,7 @@ class EmotionController extends Controller
 
         $modelInstance->name = $request->get('name');
         $modelInstance->slug = $slug;
+        $modelInstance->definition = $request->definition;
         $modelInstance->is_active = $request->get('is_active');
 
 

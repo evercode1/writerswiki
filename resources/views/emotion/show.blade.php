@@ -19,7 +19,7 @@
 
 
 
-                        <li class="collection-item">{!! $emotion->description !!}</li>
+                        <li class="collection-item">{!! $emotion->definition !!}</li>
 
         </ul>
 
