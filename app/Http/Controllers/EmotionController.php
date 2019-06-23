@@ -155,7 +155,7 @@ class EmotionController extends Controller
         $emotion->save();
 
 
-        return Redirect::route('emotion.show', ['emotion' => $emotion, $slug]);
+        return Redirect::route('emotion.index');
 
     }
 
