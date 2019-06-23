@@ -153,6 +153,42 @@
 
         <!-- end url input -->
 
+        <!-- by_contributor select -->
+
+        <div class="{{ $errors->has('by_contributor') ? ' has-error' : '' }}">
+
+            <label>Is the Contributor the Author of the Content?</label>
+
+            <select id="by_contributor" name="by_contributor">
+
+                <option value="{{ $mediaLink->by_contributor }}">{{ $mediaLink->by_contributor == 1 ? 'Yes' : 'No' }}</option>
+
+                @if($mediaLink->by_contributor == 1)
+
+                    <option value="0">No</option>
+
+                @else
+
+                    <option value="1">Yes</option>
+
+                @endif
+
+            </select>
+
+            @if ($errors->has('by_contributor'))
+
+                <span class="help-block">
+
+                        <strong>{{ $errors->first('by_contributor') }}</strong>
+
+                    </span>
+
+            @endif
+
+        </div>
+
+        <!-- end by_contributor select -->
+
 
 
         <!-- is_active select -->

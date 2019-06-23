@@ -85,9 +85,7 @@ class MediaLinkController extends Controller
                     'type' => 'required|integer',
                     'category' => 'required|integer',
                     'subcategory' => ['required','integer', new MustHaveValueGreaterThanZero()],
-                    'is_active' => 'required|boolean',
-
-
+                    'by_contributor' => 'required|boolean',
 
 
                 ]);
@@ -99,8 +97,6 @@ class MediaLinkController extends Controller
         }
 
 
-
-
         $mediaLink = MediaLink::create([ 'name' => $request->name,
                                          'author' => $request->author,
                                          'url' => $request->url,
@@ -108,7 +104,8 @@ class MediaLinkController extends Controller
                                          'category_id' => $request->category,
                                          'subcategory_id' => $request->subcategory,
                                          'user_id' => Auth::id(),
-                                         'is_active' => $request->is_active
+                                         'is_active' => 1,
+                                         'by_contributor' => $request->by_contributor
                                        ]);
 
         $mediaLink->save();
@@ -173,7 +170,8 @@ class MediaLinkController extends Controller
             'type' => 'required|integer',
             'category' => 'required|integer',
             'subcategory' => ['required','integer', new MustHaveValueGreaterThanZero()],
-            'is_active' => 'required|boolean'
+            'is_active' => 'required|boolean',
+            'by_contributor' => 'required|boolean'
 
 
             ]);
@@ -224,8 +222,7 @@ class MediaLinkController extends Controller
         $modelInstance->category_id = $request->get('category');
         $modelInstance->subcategory_id = $request->get('subcategory');
         $modelInstance->is_active = $request->get('is_active');
-
-
+        $modelInstance->by_contributor = $request->get('by_contributor');
 
     }
 

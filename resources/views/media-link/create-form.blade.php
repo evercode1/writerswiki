@@ -151,38 +151,39 @@
 
     <!-- end url input -->
 
-    <!-- is_active select -->
+    <!-- by_contributor select -->
 
-        <div class="{{ $errors->has('is_active') ? ' has-error' : '' }}">
+    <div class="{{ $errors->has('by_contributor') ? ' has-error' : '' }}">
 
-            <label>Is Active?</label>
+        <label>Is the Contributor the Author of the Content?</label>
 
-            <select id="is_active" name="is_active">
+        <select id="by_contributor" name="by_contributor">
 
-                <option value="1">Active</option>
-                <option value="0">Inactive</option>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
 
-            </select>
 
-            @if ($errors->has('is_active'))
+        </select>
 
-                <span class="help-block">
+        @if ($errors->has('by_contributor'))
 
-                    <strong>{{ $errors->first('is_active') }}</strong>
+            <span class="help-block">
+
+                    <strong>{{ $errors->first('by_contributor') }}</strong>
 
                 </span>
 
-            @endif
+        @endif
 
-        </div>
+    </div>
 
-    <!-- end is_active select -->
+    <!-- end by_contributor select -->
 
 
 
     <!-- submit button -->
 
-    <div class="row">
+    <div class="row mt-20">
 
         <button type="submit"
                 class="waves-effect waves-light btn">

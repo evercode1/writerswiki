@@ -14,7 +14,8 @@ class MediaLink extends Model
                            'category_id',
                            'subcategory_id',
                            'user_id',
-                           'is_active'
+                           'is_active',
+                           'by_contributor'
                            ];
 
 
