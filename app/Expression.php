@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Http\AuthTraits\OwnsRecord;
 use Illuminate\Database\Eloquent\Model;
 
 class Expression extends Model
 {
+    use OwnsRecord;
 
     protected $fillable = ['label',
                            'slug',

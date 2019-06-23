@@ -48,11 +48,16 @@
 
                     <a href="/action-beat-description-preset/create/{{ $actionBeatId }}" class="waves-effect waves-light btn">Create New</a>
 
+                    @if($actionBeatDescription->adminOrContributorOwns($actionBeatDescription))
+
+                        <a href="/action-beat-description/{{ $actionBeatDescription->id }}/edit" class="waves-effect waves-light btn right">Edit</a>
+
+                    @endif
 
 
                 </div>
 
-        @endif
+            @endif
 
 
 

@@ -2,7 +2,7 @@
 
 @section('title')
 
-    <title>Edit Expression</title>
+    <title>Edit Detail</title>
 
 @endsection
 
@@ -18,7 +18,7 @@
 
             <div class="row">
 
-                <h1 class="flow-text grey-text text-darken-1">Edit Expression</h1>
+                <h1 class="flow-text grey-text text-darken-1">Edit Detail</h1>
 
                 <section class="mt-20">
 

@@ -48,7 +48,11 @@
 
                     <a href="/detail-preset/create/{{ $descriptionId }}" class="waves-effect waves-light btn">Create New</a>
 
+                    @if($detail->adminOrContributorOwns($detail))
 
+                        <a href="/detail/{{ $detail->id }}/edit" class="waves-effect waves-light btn right">Edit</a>
+
+                    @endif
 
                 </div>
 

@@ -48,7 +48,11 @@
 
                     <a href="/expression-preset/create/{{ $emotionId }}" class="waves-effect waves-light btn">Create New</a>
 
+                    @if($expression->adminOrContributorOwns($expression))
 
+                    <a href="/expression/{{ $expression->id }}/edit" class="waves-effect waves-light btn right">Edit</a>
+
+                    @endif
 
                 </div>
 

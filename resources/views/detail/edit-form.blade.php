@@ -6,18 +6,7 @@
 {{ method_field('PATCH') }}
 {{ csrf_field() }}
 
-    <select name="emotion_id" id="emotion_id">
-
-        <option value="{{ $detail->description->id }}">{{ $detail->description->name }}</option>
-
-        @foreach($descriptions as $option)
-
-            <option value="{{ $option->id }}">{{ $option->name }}</option>
-
-        @endforeach
-
-
-    </select>
+    <input type="hidden" name="description_id" value="{{ $descriptionId }}">
 
 <!-- label input -->
 

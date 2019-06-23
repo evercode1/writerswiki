@@ -6,18 +6,8 @@
 {{ method_field('PATCH') }}
 {{ csrf_field() }}
 
-    <select name="action_beat_id" id="action_beat_id">
 
-        <option value="{{ $actionBeatDescription->actionBeat->id }}">{{ $actionBeatDescription->actionBeat->name }}</option>
-
-        @foreach($actionBeats as $beat)
-
-            <option value="{{ $beat->id }}">{{ $beat->name }}</option>
-
-        @endforeach
-
-
-    </select>
+    <input type="hidden" name="action_beat_id" value="{{ $actionBeatDescription->actionBeat->id }}">
 
 <!-- label input -->
 

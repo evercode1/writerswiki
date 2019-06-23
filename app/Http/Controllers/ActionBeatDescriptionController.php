@@ -22,9 +22,9 @@ class ActionBeatDescriptionController extends Controller
     {
         $this->middleware(['auth'], ['except' => 'show']);
 
-        $this->middleware(['contributor'], ['only' => 'create', 'createPreset']);
+        $this->middleware(['contributor'], ['only' => 'create', 'createPreset', 'edit', 'update']);
 
-        $this->middleware(['admin'], ['only' => 'edit', 'destroy', 'update']);
+        $this->middleware(['admin'], ['only' => 'destroy']);
 
 
     }

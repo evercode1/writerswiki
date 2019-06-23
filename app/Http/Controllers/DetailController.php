@@ -22,9 +22,9 @@ class DetailController extends Controller
     {
         $this->middleware(['auth'], ['except' => 'show']);
 
-        $this->middleware(['contributor'], ['only' => 'create', 'createPreset']);
+        $this->middleware(['contributor'], ['only' => 'create', 'createPreset', 'edit', 'update']);
 
-        $this->middleware(['admin'], ['only' => 'edit', 'destroy', 'update']);
+        $this->middleware(['admin'], ['only' => 'destroy']);
 
 
     }
@@ -102,6 +102,8 @@ class DetailController extends Controller
 
         $detail->save();
 
+        dd('i save it');
+
 
         return Redirect::route('description-detail.index', ['type' => $detail->description_id]);
 
@@ -151,9 +153,14 @@ class DetailController extends Controller
 
         $detail = Detail::findOrFail($id);
 
-        $descriptions = Detail::where('is_active', 1)->orderBy('name', 'asc')->get();
+        $descriptions = Description::where('is_active', 1)->orderBy('name', 'asc')->get();
 
-        return view('detail.edit', compact('detail', 'descriptions'));
+        $description = DB::table('descriptions')->where('id', $detail->description_id)->value('name');
+
+        $descriptionId = DB::table('descriptions')->where('id', $detail->description_id)->value('id');
+
+
+        return view('detail.edit', compact('detail', 'descriptions', 'description', 'descriptionId'));
 
     }
 
@@ -167,6 +174,7 @@ class DetailController extends Controller
 
     public function update(Request $request, $id)
     {
+
         // request value is 'body', not 'description' to accommodate ckeditor
 
         $this->validate($request, [

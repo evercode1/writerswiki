@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\UnauthorizedException;
 use App\Http\AuthTraits\OwnsRecord;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -22,9 +23,9 @@ class ExpressionController extends Controller
     {
         $this->middleware(['auth'], ['except' => 'show']);
 
-        $this->middleware(['contributor'], ['only' => 'create', 'createPreset']);
+        $this->middleware(['contributor'], ['only' => 'create', 'createPreset', 'edit', 'update']);
 
-        $this->middleware(['admin'], ['only' => 'edit', 'destroy', 'update']);
+        $this->middleware(['admin'], ['only' => 'destroy']);
 
 
     }
@@ -147,6 +148,12 @@ class ExpressionController extends Controller
     {
         $expression = Expression::findOrFail($id);
 
+       if( ! $this->adminOrContributorOwns($expression)){
+
+           throw new UnauthorizedException();
+
+       }
+
         $emotions = Emotion::where('is_active', 1)->orderBy('name', 'asc')->get();
 
         return view('expression.edit', compact('expression', 'emotions'));
@@ -175,6 +182,12 @@ class ExpressionController extends Controller
             ]);
 
         $expression = Expression::findOrFail($id);
+
+        if( ! $this->adminOrContributorOwns($expression)){
+
+            throw new UnauthorizedException();
+
+        }
 
         $slug = $this->slug($request);
 
