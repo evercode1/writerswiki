@@ -4,11 +4,11 @@
 
 
 
-        <h1 class="flow-text grey-text text-darken-1">Expressions For {{ this.emotion }} - <a href="/all-emotions">Emotions</a></h1>
+        <h1 class="flow-text grey-text text-darken-3">Expressions For {{ this.emotion }} - <a href="/all-emotions">Emotions</a></h1>
 
-        <p class="flow-text mb-20">Definition:  {{ definition }}</p>
+        <p class="flow-text mb-20"><span class="grey-text text-darken-3">Definition:</span>  {{ definition }}</p>
 
-        <p class="flow-text mb-20"><h6>Actions or words below describe the emotion of {{ emotion }} in writing.</h6></p>
+        <p class="flow-text mb-20"><h6>Each row below has an example of how to describe the emotion of {{ emotion }} in writing.</h6></p>
 
 
 

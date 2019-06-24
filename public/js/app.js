@@ -46500,19 +46500,22 @@ var render = function() {
     "div",
     { staticClass: "row" },
     [
-      _c("h1", { staticClass: "flow-text grey-text text-darken-1" }, [
+      _c("h1", { staticClass: "flow-text grey-text text-darken-3" }, [
         _vm._v("Expressions For " + _vm._s(this.emotion) + " - "),
         _c("a", { attrs: { href: "/all-emotions" } }, [_vm._v("Emotions")])
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "flow-text mb-20" }, [
-        _vm._v("Definition:  " + _vm._s(_vm.definition))
+        _c("span", { staticClass: "grey-text text-darken-3" }, [
+          _vm._v("Definition:")
+        ]),
+        _vm._v("  " + _vm._s(_vm.definition))
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "flow-text mb-20" }),
       _c("h6", [
         _vm._v(
-          "Actions or words below describe the emotion of " +
+          "Each row below has an example of how to describe the emotion of " +
             _vm._s(_vm.emotion) +
             " in writing."
         )
