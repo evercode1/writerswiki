@@ -47,7 +47,7 @@ class AllMediaLinksQuery implements DataQuery
 
     public function filteredData($column, $direction, $keyword, $type)
     {
-        
+
         if($column == 'created_at'){
 
             $column = 'media_links.created_at';

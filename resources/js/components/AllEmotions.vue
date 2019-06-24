@@ -35,14 +35,6 @@
                             </td>
 
 
-                            <td>
-
-                                <a v-bind:href="'/profile/' + row.Profile"> {{ row.Contributor }}</a>
-
-
-
-                            </td>
-
 
 
                         </tr>
@@ -92,7 +84,7 @@
         data: function () {
             return {
                 query: '',
-                gridColumns: [ 'Name', 'Contributor'],
+                gridColumns: [ 'Name'],
                 gridData: [],
                 total: null,
                 next_page_url: null,

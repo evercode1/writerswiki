@@ -2578,14 +2578,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/utilities/gridData.js");
 
 
@@ -2607,7 +2599,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
   data: function data() {
     return {
       query: '',
-      gridColumns: ['Name', 'Contributor'],
+      gridColumns: ['Name'],
       gridData: [],
       total: null,
       next_page_url: null,
@@ -2736,16 +2728,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/utilities/gridData.js");
 
 
@@ -2767,7 +2749,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
   data: function data() {
     return {
       query: '',
-      gridColumns: ['Name', 'Contributor'],
+      gridColumns: ['Name'],
       gridData: [],
       total: null,
       next_page_url: null,
@@ -2896,14 +2878,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/utilities/gridData.js");
 
 
@@ -2925,7 +2899,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
   data: function data() {
     return {
       query: '',
-      gridColumns: ['Name', 'Contributor'],
+      gridColumns: ['Name'],
       gridData: [],
       total: null,
       next_page_url: null,
@@ -44537,14 +44511,6 @@ var render = function() {
                           },
                           [_vm._v(" " + _vm._s(row.Name))]
                         )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          { attrs: { href: "/profile/" + row.Profile } },
-                          [_vm._v(" " + _vm._s(row.Contributor))]
-                        )
                       ])
                     ])
                   }),
@@ -44624,14 +44590,6 @@ var render = function() {
                           },
                           [_vm._v(" " + _vm._s(row.Name))]
                         )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          { attrs: { href: "/profile/" + row.Profile } },
-                          [_vm._v(" " + _vm._s(row.Contributor))]
-                        )
                       ])
                     ])
                   }),
@@ -44710,14 +44668,6 @@ var render = function() {
                             }
                           },
                           [_vm._v(" " + _vm._s(row.Name))]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          { attrs: { href: "/profile/" + row.Profile } },
-                          [_vm._v(" " + _vm._s(row.Contributor))]
                         )
                       ])
                     ])
