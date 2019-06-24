@@ -20,19 +20,6 @@ class Category extends Model
 
     // End Subcategory Relationship
 
-    
-
-    
-
-    
-
-    
-
-    
-
-   
-
-    
 
     public static function getCategoryName($categoryId)
     {

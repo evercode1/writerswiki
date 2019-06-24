@@ -30,6 +30,42 @@
 
     <!-- end name input -->
 
+    <!-- is_active select -->
+
+    <div class="{{ $errors->has('is_active') ? ' has-error' : '' }}">
+
+        <label>Is Active?</label>
+
+        <select id="is_active" name="is_active">
+
+            <option value="{{ $category->is_active }}">{{ $category->is_active == 1 ? 'Yes' : 'No' }}</option>
+
+            @if($category->is_active == 1)
+
+                <option value="0">No</option>
+
+            @else
+
+                <option value="1">Yes</option>
+
+            @endif
+
+        </select>
+
+        @if ($errors->has('is_active'))
+
+            <span class="help-block">
+
+                        <strong>{{ $errors->first('is_active') }}</strong>
+
+                    </span>
+
+        @endif
+
+    </div>
+
+    <!-- end is_active select -->
+
 
 
     <!-- submit button -->
