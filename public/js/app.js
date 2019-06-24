@@ -2056,6 +2056,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/utilities/gridData.js");
 
 
@@ -2140,6 +2142,34 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
         axios.post('/expression-delete/' + id).then(function (response) {
           gridData.loadData('/api/action-beat-details-data/' + _this.type, _this);
         });
+      }
+    },
+    formatActionBeat: function formatActionBeat(beat) {
+      var res = beat.toLowerCase().charAt(0);
+
+      switch (res) {
+        case 'a':
+          return 'an ' + beat.toLowerCase();
+          break;
+
+        case 'e':
+          return 'an ' + beat.toLowerCase();
+          break;
+
+        case 'i':
+          return 'an ' + beat.toLowerCase();
+          break;
+
+        case 'o':
+          return 'an ' + beat.toLowerCase();
+          break;
+
+        case 'u':
+          return 'an ' + beat.toLowerCase();
+          break;
+
+        default:
+          return 'a ' + beat.toLowerCase();
       }
     },
     setContributor: function setContributor(contributor) {
@@ -4787,6 +4817,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/utilities/gridData.js");
 
 
@@ -4875,6 +4907,40 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
     },
     setContributor: function setContributor(contributor) {
       return this.showCreateButton = this.contributor == 1 ? true : false;
+    },
+    formatDescription: function formatDescription(description) {
+      var plural = description.substr(description.length - 1);
+
+      if (plural == 's') {
+        return description;
+      }
+
+      var res = description.toLowerCase().charAt(0);
+
+      switch (res) {
+        case 'a':
+          return 'an ' + description.toLowerCase();
+          break;
+
+        case 'e':
+          return 'an ' + description.toLowerCase();
+          break;
+
+        case 'i':
+          return 'an ' + description.toLowerCase();
+          break;
+
+        case 'o':
+          return 'an ' + description.toLowerCase();
+          break;
+
+        case 'u':
+          return 'an ' + description.toLowerCase();
+          break;
+
+        default:
+          return 'a ' + description.toLowerCase();
+      }
     }
   }
 });
@@ -44082,6 +44148,14 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "How to describe " +
+            _vm._s(_vm.formatActionBeat(this.actionbeat)) +
+            " in writing."
+        )
+      ]),
+      _vm._v(" "),
       _c("search-box"),
       _vm._v(" "),
       _c("div", { staticClass: "right" }, [_c("grid-count")], 1),
@@ -46015,6 +46089,14 @@ var render = function() {
         _c("a", { attrs: { href: "\\all-descriptions" } }, [
           _vm._v("Descriptions")
         ])
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "How to describe " +
+            _vm._s(_vm.formatDescription(this.description.toLowerCase())) +
+            " in writing."
+        )
       ]),
       _vm._v(" "),
       _c("search-box"),

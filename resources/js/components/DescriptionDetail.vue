@@ -6,6 +6,8 @@
 
         <h1 class="flow-text grey-text text-darken-1">Details For {{ this.description }} - <a href="\all-descriptions">Descriptions</a></h1>
 
+        <p>How to describe {{ formatDescription(this.description.toLowerCase()) }} in writing.</p>
+
             <search-box></search-box>
 
             <div class="right">
@@ -199,15 +201,61 @@
 
             },
 
+
+
             setContributor: function(contributor){
 
               return this.showCreateButton = this.contributor == 1 ? true : false;
 
 
 
+            },
+
+            formatDescription:  function(description) {
+
+                var plural = description.substr(description.length -1);
+
+                if( plural == 's'){
+
+                    return description;
+                }
+
+                var res = description.toLowerCase().charAt(0);
+
+                switch (res) {
+
+                    case 'a' :
+
+                        return 'an ' + description.toLowerCase();
+                        break;
+                    case 'e' :
+
+                        return 'an ' + description.toLowerCase();
+                        break;
+
+                    case 'i' :
+
+                        return 'an ' + description.toLowerCase();
+                        break;
+
+                    case 'o' :
+
+                        return 'an ' + description.toLowerCase();
+                        break;
+
+                    case 'u' :
+
+                        return 'an ' + description.toLowerCase();
+                        break;
+
+                    default:
+
+                        return 'a ' + description.toLowerCase();
+
+
+                }
+
             }
-
-
         }
 
     }

@@ -8,7 +8,7 @@
 
         <p class="flow-text mb-20"><span class="grey-text text-darken-3">Definition:</span>  {{ definition }}</p>
 
-       
+
 
 
 

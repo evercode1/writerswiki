@@ -6,6 +6,8 @@
 
         <h1 class="flow-text grey-text text-darken-1">Descriptions For {{ this.actionbeat }} - <a href="/all-action-beats">Action Beats</a></h1>
 
+        <p>How to describe {{ formatActionBeat(this.actionbeat) }} in writing.</p>
+
             <search-box></search-box>
 
             <div class="right">
@@ -191,6 +193,47 @@
                                 gridData.loadData('/api/action-beat-details-data/' + this.type, this);
 
                             });
+
+
+                }
+
+
+
+            },
+
+            formatActionBeat:  function(beat){
+
+                var res = beat.toLowerCase().charAt(0);
+
+                switch(res){
+
+                    case 'a' :
+
+                        return 'an ' + beat.toLowerCase();
+                        break;
+                    case 'e' :
+
+                        return 'an ' + beat.toLowerCase();
+                        break;
+
+                    case 'i' :
+
+                        return 'an ' + beat.toLowerCase();
+                        break;
+
+                    case 'o' :
+
+                        return 'an ' + beat.toLowerCase();
+                        break;
+
+                    case 'u' :
+
+                        return 'an ' + beat.toLowerCase();
+                        break;
+
+                    default:
+
+                        return 'a ' + beat.toLowerCase();
 
 
                 }
