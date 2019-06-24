@@ -126,7 +126,7 @@
                 go_to_page: null,
                 sortOrder: '',
                 sortKey: 'id',
-                createUrl: '/media-link/create',
+                createUrl: '/media-link/create-preset/' + this.type,
                 showCreateButton: false
             }
         },

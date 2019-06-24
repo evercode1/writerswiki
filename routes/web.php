@@ -264,6 +264,8 @@ Route::post('media-link-delete/{id}', 'MediaLinkController@destroy');
 
 Route::get('/media-link/create', 'MediaLinkController@create')->name('media-link.create');
 
+Route::get('/media-link/create-preset/{type}', 'MediaLinkController@createPreset')->name('media-link.create-preset');
+
 Route::get('media-link/{id}', 'MediaLinkController@show')->name('media-link.show');
 
 Route::resource('media-link', 'MediaLinkController', ['except' => ['show', 'create','destroy']]);

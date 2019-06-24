@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\MediaLinkType;
 use Illuminate\Http\Request;
+use App\MediaLink;
+
 
 
 class AllMediaLinksController extends Controller
@@ -25,7 +28,11 @@ class AllMediaLinksController extends Controller
 
         $view = 'all-media-links.' . $id;
 
-        return view($view);
+        $type = MediaLinkType::where('name', $id)->first();
+
+        $type = $type->id;
+
+        return view($view, compact('type'));
 
     }
 

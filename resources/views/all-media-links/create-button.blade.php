@@ -3,7 +3,7 @@
     <div class="row">
 
 
-        <a href="/media-link/create" class="waves-effect waves-light btn">Create New</a>
+        <a href="/media-link/create-preset/{{ $type }}" class="waves-effect waves-light btn">Create New</a>
 
 
 

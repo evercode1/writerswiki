@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exceptions\UnauthorizedException;
 use App\Http\AuthTraits\OwnsRecord;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\MediaLink;
 use App\MediaLinkType;
@@ -62,6 +63,25 @@ class MediaLinkController extends Controller
 
 
            return view('media-link.create', compact('types'));
+
+    }
+
+    public function createPreset($type)
+    {
+
+
+
+
+        if( ! Auth::user()->isContributor()){
+
+            throw new UnauthorizedException();
+
+        }
+
+        $typeName = DB::table('media_link_types')->where('id', $type)->value('name');
+
+
+        return view('media-link.create-preset', compact('type', 'typeName'));
 
     }
 
