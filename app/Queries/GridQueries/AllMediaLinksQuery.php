@@ -10,6 +10,12 @@ class AllMediaLinksQuery implements DataQuery
     public function data($column, $direction, $type)
     {
 
+        if($column == 'created_at'){
+
+            $column = 'media_links.created_at';
+
+        }
+
 
 
 
@@ -23,7 +29,9 @@ class AllMediaLinksQuery implements DataQuery
                 'profiles.name as Contributor',
                 'profiles.id as Profile',
                 'categories.name as Category',
-                'subcategories.name as Subcategory')
+                'subcategories.name as Subcategory',
+                DB::raw('DATE_FORMAT(media_links.created_at,
+                             "%m-%d-%Y") as Created'))
             ->leftJoin('users', 'media_links.user_id', '=', 'users.id')
             ->leftJoin('profiles', 'media_links.user_id', '=', 'profiles.user_id')
             ->leftJoin('categories', 'category_id', '=', 'categories.id')
@@ -39,6 +47,13 @@ class AllMediaLinksQuery implements DataQuery
 
     public function filteredData($column, $direction, $keyword, $type)
     {
+        
+        if($column == 'created_at'){
+
+            $column = 'media_links.created_at';
+
+        }
+
 
         $rows = DB::table('media_links')
             ->select('media_links.id as Id',
@@ -50,7 +65,9 @@ class AllMediaLinksQuery implements DataQuery
                 'profiles.name as Contributor',
                 'profiles.id as Profile',
                 'categories.name as Category',
-                'subcategories.name as Subcategory')
+                'subcategories.name as Subcategory',
+                DB::raw('DATE_FORMAT(media_links.created_at,
+                             "%m-%d-%Y") as Created'))
             ->leftJoin('users', 'media_links.user_id', '=', 'users.id')
             ->leftJoin('profiles', 'media_links.user_id', '=', 'profiles.user_id')
             ->leftJoin('categories', 'category_id', '=', 'categories.id')

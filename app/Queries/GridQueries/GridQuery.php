@@ -107,6 +107,13 @@ class GridQuery
 
                 break;
 
+            case $query instanceof AllMediaLinksQuery  :
+
+                $column = 'created_at';
+                $direction = 'desc';
+
+                break;
+
             case $query instanceof EmotionExpressionQuery  :
 
                 $column = 'label';

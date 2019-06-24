@@ -22,9 +22,7 @@ class MediaLinkQuery implements DataQuery
                          'profiles.name as Contributor',
                          'profiles.id as Profile',
                          'categories.name as Category',
-                         'subcategories.name as Subcategory',
-                DB::raw('DATE_FORMAT(media_links.created_at,
-                             "%m-%d-%Y") as Created'))
+                         'subcategories.name as Subcategory')
                 ->leftJoin('users', 'media_links.user_id', '=', 'users.id')
                 ->leftJoin('media_link_types', 'media_link_type_id', '=', 'media_link_types.id')
                 ->leftJoin('profiles', 'media_links.user_id', '=', 'profiles.user_id')
