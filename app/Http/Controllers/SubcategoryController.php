@@ -94,11 +94,11 @@ class SubcategoryController extends Controller
 
         $categories = Category::orderBy('name', 'asc')->get();
 
-        $oldValue = $subcategory->category->name;
+        $oldName = $subcategory->category->name;
 
         $oldId = $subcategory->category->id;
 
-        return view('subcategory.edit', compact('subcategory', 'categories', 'oldValue', 'oldId'));
+        return view('subcategory.edit', compact('subcategory', 'categories', 'oldName', 'oldId'));
     }
 
     /**

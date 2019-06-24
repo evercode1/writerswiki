@@ -14,7 +14,7 @@
 
                              <select  name="category_id">
 
-                             <option value="">Please Choose One</option>
+                             <option value="{{ $oldId }}">{{ $oldName }}</option>
 
                              @foreach($categories as $category)
 
