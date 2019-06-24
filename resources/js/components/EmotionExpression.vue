@@ -8,9 +8,7 @@
 
         <p class="flow-text mb-20"><span class="grey-text text-darken-3">Definition:</span>  {{ definition }}</p>
 
-        <p class="flow-text mb-20"><h6>Each row below has an example of how to describe the emotion of {{ emotion }} in writing.</h6></p>
-
-
+       
 
 
 
