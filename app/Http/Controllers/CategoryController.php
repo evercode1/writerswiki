@@ -137,7 +137,7 @@ class CategoryController extends Controller
 
 
 
-        return Redirect::route('category.show', ['category' => $category]);
+        return Redirect::route('category.index');
 
     }
 

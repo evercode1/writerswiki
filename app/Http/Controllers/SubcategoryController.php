@@ -125,12 +125,9 @@ class SubcategoryController extends Controller
                                        'category_id'  => $request->category_id
                                        ]);
 
-        $category = $subcategory->category->name;
 
 
-        return Redirect::route('subcategory.show', ['subcategory' => $subcategory,
-                                                        'category' => $category
-                                                        ]);
+        return Redirect::route('subcategory.index');
 
     }
 

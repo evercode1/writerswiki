@@ -8,7 +8,7 @@
 
 @section('content')
 
-
+<div class="container">
 
         <h1>Subcategory Details</h1>
 
@@ -65,6 +65,8 @@
                 </table>
 
         </div>
+
+</div>
 
 @endsection
 
