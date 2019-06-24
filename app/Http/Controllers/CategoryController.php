@@ -63,12 +63,14 @@ class CategoryController extends Controller
 
                 $this->validate($request, [
 
-                    'name' => 'required|unique:categories|string|max:100'
+                    'name' => 'required|unique:categories|string|max:100',
+                    'is_active' => 'required|boolean'
 
                 ]);
 
 
-        $category = Category::create([ 'name' => $request->name]);
+        $category = Category::create([ 'name' => $request->name,
+                                       'is_active' => $request->is_active]);
 
         $category->save();
 
@@ -124,6 +126,7 @@ class CategoryController extends Controller
         $this->validate($request, [
 
             'name' => 'required|string|max:100|unique:categories,name,' .$id,
+            'is_active' => 'required|boolean'
 
             ]);
 

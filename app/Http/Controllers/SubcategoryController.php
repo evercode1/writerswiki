@@ -51,12 +51,14 @@ class SubcategoryController extends Controller
 
        $this->validate($request, [
             'name' => 'required|unique:subcategories|string|max:30',
-            'category_id' => "required|numeric|digits_between:1,$count"
+            'category_id' => "required|numeric|digits_between:1,$count",
+            'is_active' => 'required|boolean'
 
         ]);
 
         $subcategory = Subcategory::create(['name' => $request->name,
-                                                                  'category_id'  => $request->category_id]);
+                                            'category_id'  => $request->category_id,
+                                            'is_active' => $request->is_active]);
         $subcategory->save();
 
         return Redirect::route('subcategory.index');
@@ -115,15 +117,17 @@ class SubcategoryController extends Controller
         $this->validate($request, [
 
             'name' => 'required|string|max:40|unique:subcategories,name,' .$id,
-            'category_id' => "required|numeric|digits_between:1,$count"
+            'category_id' => "required|numeric|digits_between:1,$count",
+            'is_active' => 'required|boolean'
 
         ]);
 
         $subcategory = Subcategory::findOrFail($id);
 
         $subcategory->update(['name' => $request->name,
-                                       'category_id'  => $request->category_id
-                                       ]);
+                              'category_id'  => $request->category_id,
+                              'is_active' => $request->is_active
+                              ]);
 
 
 
