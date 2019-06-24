@@ -113,7 +113,7 @@ class MediaLinkController extends Controller
 
         $type =  MediaLinkType::where('id', $mediaLink->media_link_type_id)->first();
 
-        $type = $type->name;
+        $type = strtolower($type->name);
 
         return Redirect::route('all-media', ['type' => $type]);
 
