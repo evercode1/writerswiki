@@ -130,7 +130,7 @@ class ActionBeatDescriptionController extends Controller
         $actionBeat = $actionBeatDescription->actionBeat->name;
         $actionBeatId = $actionBeatDescription->actionBeat->id;
 
-        $seo = 'How to describe ' . $actionBeat . ' in writing with ' . $actionBeatDescription->label . '.';
+        $seo = 'How to describe ' . strtolower($actionBeat) . ' in writing with ' . strtolower($actionBeatDescription->label) . '.';
 
         return view('action-beat-description.show', compact('actionBeatDescription', 'actionBeat', 'username', 'actionBeatId',
                                                'profile', 'thumb', 'tagline', 'userid', 'seo'));
