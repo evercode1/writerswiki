@@ -201,44 +201,49 @@
 
             },
 
-            formatActionBeat:  function(beat){
+            formatActionBeat:  function(action) {
 
-                var res = beat.toLowerCase().charAt(0);
+                var plural = action.substr(action.length -1);
 
-                switch(res){
+                if( plural == 's'){
+
+                    return action.toLowerCase();
+                }
+
+                var res = action.toLowerCase().charAt(0);
+
+                switch (res) {
 
                     case 'a' :
 
-                        return 'an ' + beat.toLowerCase();
+                        return 'an ' + action.toLowerCase();
                         break;
                     case 'e' :
 
-                        return 'an ' + beat.toLowerCase();
+                        return 'an ' + action.toLowerCase();
                         break;
 
                     case 'i' :
 
-                        return 'an ' + beat.toLowerCase();
+                        return 'an ' + action.toLowerCase();
                         break;
 
                     case 'o' :
 
-                        return 'an ' + beat.toLowerCase();
+                        return 'an ' + action.toLowerCase();
                         break;
 
                     case 'u' :
 
-                        return 'an ' + beat.toLowerCase();
+                        return 'an ' + action.toLowerCase();
                         break;
 
                     default:
 
-                        return 'a ' + beat.toLowerCase();
+                        return 'a ' + action.toLowerCase();
 
 
                 }
-
-
 
             },
 
