@@ -131,7 +131,7 @@ class ExpressionController extends Controller
         $emotion = $expression->emotion->name;
         $emotionId = $expression->emotion->id;
 
-        $seo = 'How to describe ' . $emotion . ' in writing with ' . $expression->label . '.';
+        $seo = 'How to describe ' . strtolower($emotion) . ' in writing with ' . strtolower($expression->label) . '.';
 
         return view('expression.show', compact('expression', 'emotion', 'username', 'emotionId',
                                                'profile', 'thumb', 'tagline', 'userid', 'seo'));

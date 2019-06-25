@@ -121,8 +121,6 @@ class DetailController extends Controller
 
         $detail = Detail::findOrFail($id);
 
-
-
         $user = User::where('id', $detail->user_id)->first();
 
         $userid = $user->id;
@@ -135,7 +133,7 @@ class DetailController extends Controller
 
         $descriptionId = DB::table('descriptions')->where('id', $detail->description_id)->value('id');
 
-        $seo = 'How to describe a ' . $description . ' in writing with ' . $detail->label . '.';
+        $seo = 'How to describe a ' . strtolower($description) . ' in writing with ' . strtolower($detail->label) . '.';
 
         return view('detail.show', compact('detail', 'description', 'username', 'descriptionId',
                                                'profile', 'thumb', 'tagline', 'userid', 'seo'));
