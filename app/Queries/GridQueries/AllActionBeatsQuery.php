@@ -15,12 +15,9 @@ class AllActionBeatsQuery implements DataQuery
                          'action_beats.name as Name',
                          'action_beats.slug as Slug',
                          'action_beats.is_active as Active',
-                         'profiles.name as Contributor',
-                         'profiles.id as Profile',
                           DB::raw('DATE_FORMAT(action_beats.created_at,
                              "%m-%d-%Y") as Created'))
                 ->leftJoin('users', 'action_beats.user_id', '=', 'users.id')
-                ->leftJoin('profiles', 'action_beats.user_id', '=', 'profiles.user_id')
                 ->orderBy($column, $direction)
                 ->paginate(10);
 
@@ -37,14 +34,10 @@ class AllActionBeatsQuery implements DataQuery
                          'action_beats.name as Name',
                          'action_beats.slug as Slug',
                          'action_beats.is_active as Active',
-                         'profiles.name as Contributor',
-                         'profiles.id as Profile',
                           DB::raw('DATE_FORMAT(action_beats.created_at,
                              "%m-%d-%Y") as Created'))
                 ->leftJoin('users', 'action_beats.user_id', '=', 'users.id')
-                ->leftJoin('profiles', 'action_beats.user_id', '=', 'profiles.user_id')
                 ->where('action_beats.name', 'like', '%' . $keyword . '%')
-                ->orWhere('profiles.name', 'like', '%' . $keyword . '%')
                 ->orderBy($column, $direction)
                 ->paginate(10);
 

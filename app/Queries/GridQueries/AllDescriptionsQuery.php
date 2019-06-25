@@ -15,12 +15,9 @@ class AllDescriptionsQuery implements DataQuery
                          'descriptions.name as Name',
                          'descriptions.slug as Slug',
                          'descriptions.is_active as Active',
-                         'profiles.name as Contributor',
-                         'profiles.id as Profile',
                          DB::raw('DATE_FORMAT(descriptions.created_at,
                              "%m-%d-%Y") as Created'))
                 ->leftJoin('users', 'descriptions.user_id', '=', 'users.id')
-                ->leftJoin('profiles', 'descriptions.user_id', '=', 'profiles.user_id')
                 ->orderBy($column, $direction)
                 ->paginate(10);
 
@@ -37,14 +34,11 @@ class AllDescriptionsQuery implements DataQuery
                          'descriptions.name as Name',
                          'descriptions.slug as Slug',
                          'descriptions.is_active as Active',
-                         'profiles.name as Contributor',
-                         'profiles.id as Profile',
                          DB::raw('DATE_FORMAT(descriptions.created_at,
                              "%m-%d-%Y") as Created'))
                 ->leftJoin('users', 'descriptions.user_id', '=', 'users.id')
                 ->leftJoin('profiles', 'descriptions.user_id', '=', 'profiles.user_id')
                 ->where('descriptions.name', 'like', '%' . $keyword . '%')
-                ->orWhere('profiles.name', 'like', '%' . $keyword . '%')
                 ->orderBy($column, $direction)
                 ->paginate(10);
 
