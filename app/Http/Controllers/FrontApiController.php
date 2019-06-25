@@ -14,7 +14,7 @@ class FrontApiController extends Controller
     public function allDescriptionsData(Request $request)
     {
 
-        return GridQuery::sendData($request, 'DescriptionQuery');
+        return GridQuery::sendData($request, 'AllDescriptionsQuery');
 
     }
 
@@ -42,7 +42,7 @@ class FrontApiController extends Controller
     public function allActionBeatsData(Request $request)
     {
 
-        return GridQuery::sendData($request, 'ActionBeatQuery');
+        return GridQuery::sendData($request, 'AllActionBeatsQuery');
 
     }
 
