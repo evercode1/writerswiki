@@ -20,7 +20,7 @@ class AllEmotionsQuery implements DataQuery
             ->leftJoin('users', 'emotions.user_id', '=', 'users.id')
 
             ->orderBy($column, $direction)
-            ->paginate(10);
+            ->paginate(5);
 
         return $rows;
 
@@ -41,7 +41,7 @@ class AllEmotionsQuery implements DataQuery
             ->leftJoin('profiles', 'emotions.user_id', '=', 'profiles.user_id')
             ->where('emotions.name', 'like', '%' . $keyword . '%')
             ->orderBy($column, $direction)
-            ->paginate(10);
+            ->paginate(5);
 
         return $rows;
 

@@ -19,7 +19,7 @@ class AllActionBeatsQuery implements DataQuery
                              "%m-%d-%Y") as Created'))
                 ->leftJoin('users', 'action_beats.user_id', '=', 'users.id')
                 ->orderBy($column, $direction)
-                ->paginate(10);
+                ->paginate(5);
 
         return $rows;
 
@@ -39,7 +39,7 @@ class AllActionBeatsQuery implements DataQuery
                 ->leftJoin('users', 'action_beats.user_id', '=', 'users.id')
                 ->where('action_beats.name', 'like', '%' . $keyword . '%')
                 ->orderBy($column, $direction)
-                ->paginate(10);
+                ->paginate(5);
 
         return $rows;
 

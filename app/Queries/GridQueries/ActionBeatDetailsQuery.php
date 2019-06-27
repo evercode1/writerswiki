@@ -26,7 +26,7 @@ class ActionBeatDetailsQuery implements DataQuery
                     ->leftJoin('action_beats', 'action_beat_descriptions.action_beat_id', '=', 'action_beats.id')
                     ->where('action_beats.id', $type)
                     ->orderBy($column, $direction, $type)
-                    ->paginate(10);
+                    ->paginate(5);
 
              return $rows;
 
@@ -53,7 +53,7 @@ class ActionBeatDetailsQuery implements DataQuery
                 ->where([['action_beat_descriptions.action_beat_id', $type],['action_beat_descriptions.label', 'like', '%' . $keyword . '%']])
                 ->orWhere([['action_beat_descriptions.action_beat_id', $type],['profiles.name', 'like', '%' . $keyword . '%']])
                 ->orderBy($column, $direction)
-                ->paginate(10);
+                ->paginate(5);
 
             return $rows;
 

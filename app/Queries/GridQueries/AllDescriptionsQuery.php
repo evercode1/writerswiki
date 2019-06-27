@@ -19,7 +19,7 @@ class AllDescriptionsQuery implements DataQuery
                              "%m-%d-%Y") as Created'))
                 ->leftJoin('users', 'descriptions.user_id', '=', 'users.id')
                 ->orderBy($column, $direction)
-                ->paginate(10);
+                ->paginate(5);
 
         return $rows;
 
@@ -40,7 +40,7 @@ class AllDescriptionsQuery implements DataQuery
                 ->leftJoin('profiles', 'descriptions.user_id', '=', 'profiles.user_id')
                 ->where('descriptions.name', 'like', '%' . $keyword . '%')
                 ->orderBy($column, $direction)
-                ->paginate(10);
+                ->paginate(5);
 
         return $rows;
 

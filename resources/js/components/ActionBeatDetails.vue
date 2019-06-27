@@ -141,6 +141,7 @@
 
             },
 
+
             setPageNumbers: function(){
 
                 this.pages = [];

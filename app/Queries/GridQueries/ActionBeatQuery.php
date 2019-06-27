@@ -22,7 +22,7 @@ class ActionBeatQuery implements DataQuery
                     ->leftJoin('users', 'action_beats.user_id', '=', 'users.id')
                     ->leftJoin('profiles', 'action_beats.user_id', '=', 'profiles.user_id')
                     ->orderBy($column, $direction)
-                    ->paginate(10);
+                    ->paginate(5);
 
              return $rows;
 
@@ -46,7 +46,7 @@ class ActionBeatQuery implements DataQuery
                 ->where('action_beats.name', 'like', '%' . $keyword . '%')
                 ->orWhere('profiles.name', 'like', '%' . $keyword . '%')
                 ->orderBy($column, $direction)
-                ->paginate(10);
+                ->paginate(5);
 
             return $rows;
 
