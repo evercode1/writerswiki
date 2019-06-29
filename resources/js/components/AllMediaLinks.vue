@@ -113,7 +113,7 @@
         data: function () {
             return {
                 query: '',
-                gridColumns: ['Title', 'Author', 'Category', 'Subcategory', 'Contributor'],
+                gridColumns: ['Title', 'Author', 'Category', 'Subcategory', 'Submitted By'],
                 gridData: [],
                 total: null,
                 next_page_url: null,

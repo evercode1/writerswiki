@@ -2964,15 +2964,6 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
     getData: function getData(request) {
       gridData.getQueryData(request, '/api/all-emotions-data', this);
     },
-    yourCallBackFunction: function yourCallBackFunction() {
-      this.getData(this.prev_page_url);
-    },
-    created: function created() {
-      document.addEventListener("backbutton", this.yourCallBackFunction, false);
-    },
-    beforeDestroy: function beforeDestroy() {
-      document.removeEventListener("backbutton", this.yourCallBackFunction);
-    },
     setPageNumbers: function setPageNumbers() {
       this.pages = [];
 
@@ -3121,7 +3112,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
   data: function data() {
     return {
       query: '',
-      gridColumns: ['Title', 'Author', 'Category', 'Subcategory', 'Contributor'],
+      gridColumns: ['Title', 'Author', 'Category', 'Subcategory', 'Submitted By'],
       gridData: [],
       total: null,
       next_page_url: null,

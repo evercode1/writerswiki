@@ -55,7 +55,7 @@
                                 <div class="card-metric-value">{{ $links }}</div>
                                 <div class="card-metric-change decrease">
 
-                                    
+
                                 </div>
                             </div>
                         </div>
