@@ -9,11 +9,11 @@
                     <div class="card-stacked">
                         <div class="card-metrics card-metrics-static">
                             <div class="card-metric">
-                                <div class="card-metric-title"><a href="/all-stars">Stars</a></div>
-                                <div class="card-metric-value">1007</div>
+                                <div class="card-metric-title"><a href="#">Users</a></div>
+                                <div class="card-metric-value">{{ $users }}</div>
                                 <div class="card-metric-change increase">
 
-                                    Placeholder
+
                                 </div>
                             </div>
                         </div>
@@ -30,11 +30,11 @@
                     <div class="card-stacked">
                         <div class="card-metrics card-metrics-static">
                             <div class="card-metric">
-                                <div class="card-metric-title"><a href="/all-planets">Planets</a></div>
-                                <div class="card-metric-value">12,350</div>
+                                <div class="card-metric-title"><a href="#">Contributors</a></div>
+                                <div class="card-metric-value">{{ $contributors }}</div>
                                 <div class="card-metric-change increase">
 
-                                    Placeholder
+
                                 </div>
                             </div>
                         </div>
@@ -51,11 +51,11 @@
                     <div class="card-stacked">
                         <div class="card-metrics card-metrics-static">
                             <div class="card-metric">
-                                <div class="card-metric-title"><a href="/all-moons">Moons</a></div>
-                                <div class="card-metric-value">43,457</div>
+                                <div class="card-metric-title"><a href="#">Links</a></div>
+                                <div class="card-metric-value">{{ $links }}</div>
                                 <div class="card-metric-change decrease">
 
-                                    Placeholder
+                                    
                                 </div>
                             </div>
                         </div>
