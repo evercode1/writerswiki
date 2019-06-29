@@ -10,6 +10,7 @@ class MediaLink extends Model
     protected $fillable = ['name',
                            'author',
                            'url',
+                           'embed_code',
                            'media_link_type_id',
                            'category_id',
                            'subcategory_id',

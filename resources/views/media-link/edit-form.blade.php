@@ -153,6 +153,37 @@
 
         <!-- end url input -->
 
+    @if(strtolower($oldTypeName) == 'videos')
+
+        <!-- embed_code input -->
+
+            <div class="{{ $errors->has('embed_code') ? ' has-error' : '' }}">
+
+                <label>Embed Code</label>
+
+                <p>The embed code is the part after the last backslash in the share link.
+                    Example:  https://youtu.be/i7S_4SIPJRk  the embed code is i7S_4SIPJRk</p>
+
+                <input type="text"
+                       name="embed_code"
+                       value="{{ $mediaLink->embed_code }}" />
+
+                @if ($errors->has('embed_code'))
+
+                    <span class="help-block">
+
+                    <strong>{{ $errors->first('embed_code') }}</strong>
+
+                </span>
+
+                @endif
+
+            </div>
+
+            <!-- end embed_code input -->
+
+    @endif
+
         <!-- by_contributor select -->
 
         <div class="{{ $errors->has('by_contributor') ? ' has-error' : '' }}">

@@ -95,6 +95,8 @@ class MediaLinkController extends Controller
     public function store(Request $request)
     {
 
+        $this->isVideo($request);
+
         // request value is 'body', not 'description' to accommodate ckeditor
 
                 $this->validate($request, [
@@ -120,6 +122,7 @@ class MediaLinkController extends Controller
         $mediaLink = MediaLink::create([ 'name' => $request->name,
                                          'author' => $request->author,
                                          'url' => $request->url,
+                                         'embed_code' => $request->embed_code,
                                          'media_link_type_id' => $request->type,
                                          'category_id' => $request->category,
                                          'subcategory_id' => $request->subcategory,
@@ -162,12 +165,15 @@ class MediaLinkController extends Controller
 
         $oldType = MediaLinkType::where('id', $mediaLink->media_link_type_id)->first();
 
+        $oldTypeName = DB::table('media_link_types')->where('id', $oldType->id)->value('name');
+
         $oldcategory = Category::where('id', $mediaLink->category_id)->first();
 
         $oldsubcategory = Subcategory::where('id', $mediaLink->subcategory_id)->first();
 
 
-        return view('media-link.edit', compact('mediaLink', 'types', 'oldType', 'oldcategory', 'oldsubcategory'));
+        return view('media-link.edit', compact('mediaLink', 'types', 'oldType',
+                                               'oldcategory', 'oldsubcategory', 'oldTypeName'));
 
     }
 
@@ -181,6 +187,8 @@ class MediaLinkController extends Controller
 
     public function update(Request $request, $id)
     {
+
+        $this->isVideo($request);
 
         $this->validate($request, [
 
@@ -238,12 +246,32 @@ class MediaLinkController extends Controller
         $modelInstance->name = $request->get('name');
         $modelInstance->author = $request->get('author');
         $modelInstance->url = $request->get('url');
+        $modelInstance->embed_code = $request->get('embed_code');
         $modelInstance->media_link_type_id = $request->get('type');
         $modelInstance->category_id = $request->get('category');
         $modelInstance->subcategory_id = $request->get('subcategory');
         $modelInstance->is_active = $request->get('is_active');
         $modelInstance->by_contributor = $request->get('by_contributor');
 
+    }
+
+    /**
+     * @param Request $request
+     */
+    private function isVideo(Request $request)
+    {
+        $typeName = DB::table('media_link_types')->where('id', $request->type)->value('name');
+
+        $typeName = strtolower($typeName);
+
+        if ($typeName == 'videos') {
+
+            $this->validate($request, [
+
+                'embed_code' => 'required|string',
+
+            ]);
+        }
     }
 
 }
