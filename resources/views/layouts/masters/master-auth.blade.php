@@ -24,9 +24,9 @@
 
 </div> <!-- end app div for vue -->
 
-@include('layouts.home-partials.scripts')
+    @include('layouts.home-partials.scripts')
 
-@yield('scripts')
+    @yield('scripts')
 
 </body>
 

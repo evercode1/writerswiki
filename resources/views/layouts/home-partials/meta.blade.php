@@ -4,5 +4,3 @@
 <meta name="msapplication-tap-highlight" content="no">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-
-@yield('meta')
