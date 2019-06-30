@@ -22,7 +22,7 @@
 
 
 
-              <p>{{$video->name}}</p>
+              <p class="flow-text grey-text text-darken-1">{{$video->name}}</p>
 
 
               <p>By {{$video->author}}</p>
