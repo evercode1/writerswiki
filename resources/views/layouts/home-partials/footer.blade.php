@@ -1,18 +1,18 @@
 <footer class="page-footer">
     <div class="container">
         <div class="row">
-            <div class="col s8 m3 center">
+            <div class="col s12 m3 center">
                 <img class="materialize-logo" src="/dist/img/materialize-logo.png" alt="Materialize">
                 <p>Made with love</p>
             </div>
-            <div class="col s8 m3 center">
+            <div class="col s12 m3 center">
                 <h5>About</h5>
                 <ul>
                     <li><a href="/about">Our Story</a></li>
 
                 </ul>
             </div>
-            <div class="col s8 m3 center">
+            <div class="col s12 m3 center">
                 <h5>Connect</h5>
                 <ul>
                     @if(isset($navs))
@@ -27,7 +27,7 @@
 
                 </ul>
             </div>
-            <div class="col s8 m3 center">
+            <div class="col s12 m3 center">
                 <h5>Contact</h5>
                 <ul>
                     <li><a href="/support-messages">Support</a></li>
