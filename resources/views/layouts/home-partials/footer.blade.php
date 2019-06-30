@@ -17,6 +17,7 @@
                 <h5>About</h5>
                 <ul>
                     <li><a href="/about">Our Story</a></li>
+                    <li><a href="/profile/1-max-vonne">Max Vonne</a></li>
 
                 </ul>
             </div>
