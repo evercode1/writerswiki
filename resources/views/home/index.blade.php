@@ -22,10 +22,10 @@
 
 
 
-              <p><strong>Title:</strong>  {{$video->name}}</p>
+              <p><strong></strong>  {{$video->name}}</p>
 
 
-              <p><strong>By:</strong> {{$video->author}}</p>
+              <p><strong>By </strong>{{$video->author}}</p>
 
 
 
