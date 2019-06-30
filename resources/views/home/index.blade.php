@@ -20,13 +20,10 @@
 
        <div class="mt-50">
 
-
-
-              <p class="flow-text grey-text text-darken-1">{{$video->name}}</p>
+              <p class="flow-text grey-text text-darken-1">{{ $video->name }}</p>
 
 
               <p>By {{$video->author}}</p>
-
 
 
               <div>
@@ -46,7 +43,6 @@
 
 
        </div><!-- end video -->
-
 
 
           </div> <!-- end row -->
