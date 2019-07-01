@@ -18,10 +18,11 @@
 
             <div class="row">
 
-                <h1 class="flow-text grey-text text-darken-1">{{ ucwords($content->name) }}</h1>
+
 
                 @if($content->name == 'about')
 
+                    <h1 class="flow-text grey-text text-darken-1">{{ ucwords($content->name) }} Writers Wiki</h1>
                     <div class="left">
 
 
@@ -44,6 +45,8 @@
                     </div>
 
                    @else
+
+                    <h1 class="flow-text grey-text text-darken-1">{{ ucwords($content->name) }}</h1>
 
                 <div class="row">
 
