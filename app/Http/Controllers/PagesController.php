@@ -13,8 +13,10 @@ class PagesController extends Controller
 
         $content = Content::where('name', 'about')->first();
 
+        $thumb = '/imgs/profile/max-vonne.jpg';
 
-        return view('content.show', compact('content'));
+
+        return view('content.show', compact('content', 'thumb'));
 
 
     }
