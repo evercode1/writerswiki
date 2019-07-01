@@ -2,18 +2,6 @@
     <div class="container">
         <div class="row">
             <div class="col s12 m3 center">
-                <img class="materialize-logo" src="/dist/img/materialize-logo.png" alt="Materialize">
-
-
-                <ul>
-                    <li>Made With Love</li>
-                     <li><a href="/all-emotions">Emotions</a></li>
-                    <li><a href="/all-action-beats">Action Beats</a></li>
-                    <li><a href="/all-descriptions">Descriptions</a></li>
-
-                </ul>
-            </div>
-            <div class="col s12 m3 center">
                 <h5>About</h5>
                 <ul>
                     <li><a href="/about">Our Story</a></li>
@@ -21,6 +9,21 @@
 
                 </ul>
             </div>
+
+
+            <div class="col s12 m3 center">
+                <h5>Snippets</h5>
+
+
+                <ul>
+                     <li><a href="/all-emotions">Emotions</a></li>
+                    <li><a href="/all-action-beats">Action Beats</a></li>
+                    <li><a href="/all-descriptions">Descriptions</a></li>
+
+                </ul>
+            </div>
+
+
             <div class="col s12 m3 center">
                 <h5>Connect</h5>
                 <ul>
