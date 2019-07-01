@@ -10,7 +10,12 @@
 
             <div>
 
-                <h1 class="flow-text grey-text text-darken-1"><a href="/support-messages">Support</a> Message #{{ $message->id }}</h1>
+                <h1 class="flow-text grey-text text-darken-1"><a href="/support-messages">Support</a></h1>
+
+                <div class="flow-text grey-text text-darken-1">
+                    Message #{{ $message->id }}
+
+                </div>
 
                 <section class="mt-20">
 
