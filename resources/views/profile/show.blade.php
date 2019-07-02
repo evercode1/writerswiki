@@ -39,35 +39,41 @@
                         @endif
 
                     </div>
-                    <div class="card-action">
 
 
+                </div>
 
+                <div class="ml-20 mb-20 mt-20">
+
+                    <h4>{{ $profile->name }}'s Links</h4>
+
+                </div>
+
+                <div clas="mt-20">
 
                     @foreach($links as $name => $infos)
 
-                            <h4><u>{{ $name }}</u></h4>
+                        <h6 class="ml-20"><u>{{ $name }}</u></h6>
 
                         @forEach($infos as $info)
 
-                            <ul>
-                                <li><a href="{{ $info->Url }}" class="blue-text text-darken-2" target="_blank">
-                                        {{ $info->Name }}</a>
-                                </li>
-                            </ul>
-
-                        <hr>
-
-                        @endforeach
+                        <ul>
+                            <li><a href="{{ $info->Url }}" class="ml-20" target="_blank">
+                                    {{ $info->Name }}</a>
+                            </li>
+                        </ul>
 
 
-                @endforeach
+                    @endforeach
 
-                        @if(Auth::check() && $profile->owner($profile))
-                            <a href="/manage-links" class="waves-effect waves-light btn-small mt-20">manage links</a>
-                        @endif
 
-                    </div>
+                    @endforeach
+
+                    @if(Auth::check() && $profile->owner($profile))
+                        <a href="/manage-links" class="waves-effect waves-light btn-small mt-20 ml-20 mb-20">manage links</a>
+                    @endif
+
+
                 </div>
             </div>
         </div>
