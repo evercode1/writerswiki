@@ -17,7 +17,7 @@ Thanks,<br>
 {{ config('app.name') }}
 
 @component('mail::panel', ['url' => ''])
-You are receiving this email because you subscribed to CoinSeer.
+You are receiving this email because you subscribed to WritersWiki.
 You may Unsubscribe by clicking <a href="https://www.writerswiki.com/unsubscribe">here</a>.
 @endcomponent
 

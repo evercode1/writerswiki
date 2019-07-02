@@ -11,7 +11,6 @@
                         <li><a href="/all-emotions" class="waves-effect">Emotions<i class="material-icons">star</i></a></li>
                         <li><a href="/all-action-beats" class="waves-effect">Action Beats<i class="material-icons">star</i></a></li>
                         <li><a href="/all-descriptions" class="waves-effect">Descriptions<i class="material-icons">star</i></a></li>
-                        <li><a href="/self-publishing" class="waves-effect">Self-Publishing<i class="material-icons">star</i></a></li>
 
                     </ul>
                 </div>

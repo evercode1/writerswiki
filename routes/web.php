@@ -357,6 +357,12 @@ Route::resource('subcategory', 'SubcategoryController', ['except' => ['show', 'c
 
 Route::get('test', 'TestController@index')->name('test.index');
 
+// Unsubscribe Routes
+
+Route::get('/unsubscribe', 'UnsubscribeController@edit')->name('unsubscribe');
+Route::post('/unsubscribe', 'UnsubscribeController@store')->name('unsubscribe-store');
+Route::get('/unsubscribe/confirmation', 'UnsubscribeController@confirm')->name('unsubscribe-confirmation');
+
 // user routes
 
 Route::resource('user', 'UserController');
