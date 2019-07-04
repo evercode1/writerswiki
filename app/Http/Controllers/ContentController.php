@@ -122,7 +122,9 @@ class ContentController extends Controller
 
         $content = Content::findOrFail($id);
 
-        return view('content.show', compact('content'));
+        $thumb = '/imgs/profile/max-vonne.jpg';
+
+        return view('content.show', compact('content', 'thumb'));
     }
 
     /**
