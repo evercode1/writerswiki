@@ -96,11 +96,7 @@ Vue.component('action-beat-grid', require('./components/ActionBeatGrid.vue').def
 Vue.component('all-action-beats', require('./components/AllActionBeats.vue').default);
 
 /** End ActionBeat All Models Call */
-/** Begin ActionBeatDescription Grid Component Call */
 
-Vue.component('action-beat-description-grid', require('./components/ActionBeatDescriptionGrid.vue').default);
-
-/** End ActionBeatDescription Grid Component Call */
 /** Begin Description Grid Component Call */
 
 Vue.component('description-grid', require('./components/DescriptionGrid.vue').default);
