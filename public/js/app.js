@@ -1879,8 +1879,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var gridData = __webpack_require__(/*! ../utilities/gridDataAll */ "./resources/js/utilities/gridDataAll.js");
-
 
 
 
@@ -1895,7 +1893,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridDataAll */ "./resources/
     'table-head': _TableHead__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   mounted: function mounted() {
-    gridData.loadData('/api/action-beat-description-data', this);
+    this.loadData();
   },
   data: function data() {
     return {
@@ -1927,7 +1925,82 @@ var gridData = __webpack_require__(/*! ../utilities/gridDataAll */ "./resources/
       this.getData(query);
     },
     getData: function getData(request) {
-      gridData.getQueryData(request, '/api/action-beat-description-data', this);
+      var getPage;
+      var name = 'Name';
+
+      switch (request) {
+        case this.prev_page_url:
+          getPage = this.prev_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.next_page_url:
+          getPage = this.next_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.first_page_url:
+          getPage = this.first_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.last_page_url:
+          getPage = this.last_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.query:
+          getPage = 'api/action-beat-description-data?' + 'keyword=' + this.query + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.go_to_page:
+          if (this.go_to_page != '' && this.pageInRange()) {
+            getPage = 'api/action-beat-description-data?' + 'page=' + this.go_to_page + '&column=' + name + '&direction=' + this.sortOrder + '&keyword=' + this.query;
+            this.clearPageNumberInputBox();
+          } else {
+            alert('Please enter a valid page number');
+          }
+
+          break;
+
+        default:
+          getPage = 'api/action-beat-description-data?' + 'page=' + request + '&column=' + name + '&direction=' + this.sortOrder + '&keyword=' + this.query;
+          break;
+      }
+
+      if (this.query == '' && getPage != null) {
+        $.getJSON(getPage, function (data) {
+          this.gridData = data.data;
+          this.total = data.total;
+          this.last_page = data.last_page;
+          this.next_page_url = data.next_page_url;
+          this.prev_page_url = data.prev_page_url;
+          this.current_page = data.current_page;
+        }.bind(this));
+      } else {
+        if (getPage != null) {
+          $.getJSON(getPage, function (data) {
+            this.gridData = data.data;
+            this.total = data.total;
+            this.last_page = data.last_page;
+            this.next_page_url = data.next_page_url == null ? null : data.next_page_url + '&keyword=' + this.query;
+            this.prev_page_url = data.prev_page_url == null ? null : data.prev_page_url + '&keyword=' + this.query;
+            this.first_page_url = 'api/action-beat-description-data?page=1&keyword=' + this.query;
+            this.last_page_url = 'api/action-beat-description-data?page=' + this.last_page + '&keyword=' + this.query;
+            this.current_page = data.current_page;
+            this.resetPageNumbers();
+          }.bind(this));
+        }
+      }
+    },
+    loadData: function loadData() {
+      $.getJSON('api/action-beat-description-data', function (data) {
+        this.gridData = data.data;
+        this.total = data.total;
+        this.last_page = data.last_page;
+        this.next_page_url = data.next_page_url;
+        this.prev_page_url = data.prev_page_url;
+        this.current_page = data.current_page;
+        this.first_page_url = 'api/action-beat-description-data?page=1';
+        this.last_page_url = 'api/action-beat-description-data?page=' + this.last_page;
+        this.setPageNumbers();
+      }.bind(this));
     },
     setPageNumbers: function setPageNumbers() {
       this.pages = [];
@@ -2058,8 +2131,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/utilities/gridData.js");
-
 
 
 
@@ -2075,7 +2146,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
     'table-head': _TableHead__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   mounted: function mounted() {
-    gridData.loadData('/api/action-beat-details-data/' + this.type, this);
+    this.loadData();
     this.setContributor(this.contributor);
   },
   data: function data() {
@@ -2108,7 +2179,82 @@ var gridData = __webpack_require__(/*! ../utilities/gridData */ "./resources/js/
       this.getData(query);
     },
     getData: function getData(request) {
-      gridData.getQueryData(request, '/api/action-beat-details-data/' + this.type, this);
+      var getPage;
+      var name = 'Name';
+
+      switch (request) {
+        case this.prev_page_url:
+          getPage = this.prev_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.next_page_url:
+          getPage = this.next_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.first_page_url:
+          getPage = this.first_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.last_page_url:
+          getPage = this.last_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.query:
+          getPage = 'api/action-beat-description-data?' + 'keyword=' + this.query + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.go_to_page:
+          if (this.go_to_page != '' && this.pageInRange()) {
+            getPage = 'api/action-beat-description-data?' + 'page=' + this.go_to_page + '&column=' + name + '&direction=' + this.sortOrder + '&keyword=' + this.query;
+            this.clearPageNumberInputBox();
+          } else {
+            alert('Please enter a valid page number');
+          }
+
+          break;
+
+        default:
+          getPage = 'api/action-beat-description-data?' + 'page=' + request + '&column=' + name + '&direction=' + this.sortOrder + '&keyword=' + this.query;
+          break;
+      }
+
+      if (this.query == '' && getPage != null) {
+        $.getJSON(getPage, function (data) {
+          this.gridData = data.data;
+          this.total = data.total;
+          this.last_page = data.last_page;
+          this.next_page_url = data.next_page_url;
+          this.prev_page_url = data.prev_page_url;
+          this.current_page = data.current_page;
+        }.bind(this));
+      } else {
+        if (getPage != null) {
+          $.getJSON(getPage, function (data) {
+            this.gridData = data.data;
+            this.total = data.total;
+            this.last_page = data.last_page;
+            this.next_page_url = data.next_page_url == null ? null : data.next_page_url + '&keyword=' + this.query;
+            this.prev_page_url = data.prev_page_url == null ? null : data.prev_page_url + '&keyword=' + this.query;
+            this.first_page_url = 'api/action-beat-description-data?page=1&keyword=' + this.query;
+            this.last_page_url = 'api/action-beat-description-data?page=' + this.last_page + '&keyword=' + this.query;
+            this.current_page = data.current_page;
+            this.resetPageNumbers();
+          }.bind(this));
+        }
+      }
+    },
+    loadData: function loadData() {
+      $.getJSON('api/action-beat-description-data', function (data) {
+        this.gridData = data.data;
+        this.total = data.total;
+        this.last_page = data.last_page;
+        this.next_page_url = data.next_page_url;
+        this.prev_page_url = data.prev_page_url;
+        this.current_page = data.current_page;
+        this.first_page_url = 'api/action-beat-description-data?page=1';
+        this.last_page_url = 'api/action-beat-description-data?page=' + this.last_page;
+        this.setPageNumbers();
+      }.bind(this));
     },
     setPageNumbers: function setPageNumbers() {
       this.pages = [];
@@ -5044,8 +5190,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var gridData = __webpack_require__(/*! ../utilities/gridDataAll */ "./resources/js/utilities/gridDataAll.js");
-
 
 
 
@@ -5061,7 +5205,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridDataAll */ "./resources/
     'table-head': _TableHead__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   mounted: function mounted() {
-    gridData.loadData('/api/description-detail-data/' + this.type, this);
+    this.loadData();
     this.setContributor(this.contributor);
   },
   data: function data() {
@@ -5094,7 +5238,82 @@ var gridData = __webpack_require__(/*! ../utilities/gridDataAll */ "./resources/
       this.getData(query);
     },
     getData: function getData(request) {
-      gridData.getQueryData(request, '/api/description-detail-data/' + this.type, this);
+      var getPage;
+      var name = 'Name';
+
+      switch (request) {
+        case this.prev_page_url:
+          getPage = this.prev_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.next_page_url:
+          getPage = this.next_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.first_page_url:
+          getPage = this.first_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.last_page_url:
+          getPage = this.last_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.query:
+          getPage = 'api/description-detail-data?' + 'keyword=' + this.query + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.go_to_page:
+          if (this.go_to_page != '' && this.pageInRange()) {
+            getPage = 'api/description-detail-data?' + 'page=' + this.go_to_page + '&column=' + name + '&direction=' + this.sortOrder + '&keyword=' + this.query;
+            this.clearPageNumberInputBox();
+          } else {
+            alert('Please enter a valid page number');
+          }
+
+          break;
+
+        default:
+          getPage = 'api/description-detail-data?' + 'page=' + request + '&column=' + name + '&direction=' + this.sortOrder + '&keyword=' + this.query;
+          break;
+      }
+
+      if (this.query == '' && getPage != null) {
+        $.getJSON(getPage, function (data) {
+          this.gridData = data.data;
+          this.total = data.total;
+          this.last_page = data.last_page;
+          this.next_page_url = data.next_page_url;
+          this.prev_page_url = data.prev_page_url;
+          this.current_page = data.current_page;
+        }.bind(this));
+      } else {
+        if (getPage != null) {
+          $.getJSON(getPage, function (data) {
+            this.gridData = data.data;
+            this.total = data.total;
+            this.last_page = data.last_page;
+            this.next_page_url = data.next_page_url == null ? null : data.next_page_url + '&keyword=' + this.query;
+            this.prev_page_url = data.prev_page_url == null ? null : data.prev_page_url + '&keyword=' + this.query;
+            this.first_page_url = 'api/description-detail-data?page=1&keyword=' + this.query;
+            this.last_page_url = 'api/description-detail-data?page=' + this.last_page + '&keyword=' + this.query;
+            this.current_page = data.current_page;
+            this.resetPageNumbers();
+          }.bind(this));
+        }
+      }
+    },
+    loadData: function loadData() {
+      $.getJSON('api/description-detail-data', function (data) {
+        this.gridData = data.data;
+        this.total = data.total;
+        this.last_page = data.last_page;
+        this.next_page_url = data.next_page_url;
+        this.prev_page_url = data.prev_page_url;
+        this.current_page = data.current_page;
+        this.first_page_url = 'api/description-detail-data?page=1';
+        this.last_page_url = 'api/description-detail-data?page=' + this.last_page;
+        this.setPageNumbers();
+      }.bind(this));
     },
     setPageNumbers: function setPageNumbers() {
       this.pages = [];
@@ -5784,8 +6003,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var gridData = __webpack_require__(/*! ../utilities/gridDataAll */ "./resources/js/utilities/gridDataAll.js");
-
 
 
 
@@ -5801,7 +6018,7 @@ var gridData = __webpack_require__(/*! ../utilities/gridDataAll */ "./resources/
     'table-head': _TableHead__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   mounted: function mounted() {
-    gridData.loadData('/api/emotion-expression-data/' + this.type, this);
+    this.loadData();
     this.setContributor(this.contributor);
   },
   data: function data() {
@@ -5834,7 +6051,82 @@ var gridData = __webpack_require__(/*! ../utilities/gridDataAll */ "./resources/
       this.getData(query);
     },
     getData: function getData(request) {
-      gridData.getQueryData(request, '/api/emotion-expression-data/' + this.type, this);
+      var getPage;
+      var name = 'Name';
+
+      switch (request) {
+        case this.prev_page_url:
+          getPage = this.prev_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.next_page_url:
+          getPage = this.next_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.first_page_url:
+          getPage = this.first_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.last_page_url:
+          getPage = this.last_page_url + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.query:
+          getPage = 'api/emotion-expression-data?' + 'keyword=' + this.query + '&column=' + name + '&direction=' + this.sortOrder;
+          break;
+
+        case this.go_to_page:
+          if (this.go_to_page != '' && this.pageInRange()) {
+            getPage = 'api/emotion-expression-data?' + 'page=' + this.go_to_page + '&column=' + name + '&direction=' + this.sortOrder + '&keyword=' + this.query;
+            this.clearPageNumberInputBox();
+          } else {
+            alert('Please enter a valid page number');
+          }
+
+          break;
+
+        default:
+          getPage = 'api/emotion-expression-data?' + 'page=' + request + '&column=' + name + '&direction=' + this.sortOrder + '&keyword=' + this.query;
+          break;
+      }
+
+      if (this.query == '' && getPage != null) {
+        $.getJSON(getPage, function (data) {
+          this.gridData = data.data;
+          this.total = data.total;
+          this.last_page = data.last_page;
+          this.next_page_url = data.next_page_url;
+          this.prev_page_url = data.prev_page_url;
+          this.current_page = data.current_page;
+        }.bind(this));
+      } else {
+        if (getPage != null) {
+          $.getJSON(getPage, function (data) {
+            this.gridData = data.data;
+            this.total = data.total;
+            this.last_page = data.last_page;
+            this.next_page_url = data.next_page_url == null ? null : data.next_page_url + '&keyword=' + this.query;
+            this.prev_page_url = data.prev_page_url == null ? null : data.prev_page_url + '&keyword=' + this.query;
+            this.first_page_url = 'api/emotion-expression-data?page=1&keyword=' + this.query;
+            this.last_page_url = 'api/emotion-expression-data?page=' + this.last_page + '&keyword=' + this.query;
+            this.current_page = data.current_page;
+            this.resetPageNumbers();
+          }.bind(this));
+        }
+      }
+    },
+    loadData: function loadData() {
+      $.getJSON('api/emotion-expression-data', function (data) {
+        this.gridData = data.data;
+        this.total = data.total;
+        this.last_page = data.last_page;
+        this.next_page_url = data.next_page_url;
+        this.prev_page_url = data.prev_page_url;
+        this.current_page = data.current_page;
+        this.first_page_url = 'api/emotion-expression-data?page=1';
+        this.last_page_url = 'api/emotion-expression-data?page=' + this.last_page;
+        this.setPageNumbers();
+      }.bind(this));
     },
     setPageNumbers: function setPageNumbers() {
       this.pages = [];
@@ -64194,103 +64486,6 @@ var dataHelper = {
   formatUrlGetRequest: function formatUrlGetRequest(request, url, vm) {
     request = request || vm.current_page;
     var sortParams = '&column=' + vm.sortKey + '&direction=' + vm.sortOrder;
-    var searchParams = sortParams + '&keyword=' + vm.query;
-
-    switch (request) {
-      case vm.prev_page_url:
-        url = vm.prev_page_url + sortParams;
-        break;
-
-      case vm.next_page_url:
-        url = vm.next_page_url + sortParams;
-        break;
-
-      case vm.first_page_url:
-        url = vm.first_page_url + sortParams;
-        break;
-
-      case vm.last_page_url:
-        url = vm.last_page_url + sortParams;
-        break;
-
-      case vm.query:
-        url = url + '?' + searchParams;
-        break;
-
-      case vm.go_to_page:
-        if (vm.go_to_page != '' && vm.pageInRange()) {
-          url = url + '?' + 'page=' + vm.go_to_page + searchParams;
-          vm.clearPageNumberInputBox();
-        } else {
-          alert('Please enter a valid page number');
-        }
-
-        break;
-
-      default:
-        url = url + '?' + 'page=' + request + sortParams + searchParams;
-        break;
-    }
-
-    return url;
-  },
-  loadData: function loadData(url, vm) {
-    $.getJSON(url, function (data) {
-      vm.gridData = data.data;
-      vm.total = data.total;
-      vm.last_page = data.last_page;
-      vm.next_page_url = data.next_page_url;
-      vm.prev_page_url = data.prev_page_url;
-      vm.current_page = data.current_page;
-      vm.first_page_url = url + '?page=1';
-      vm.last_page_url = url + '?page=' + vm.last_page;
-      vm.setPageNumbers();
-    }.bind(vm));
-  }
-};
-module.exports = dataHelper;
-
-/***/ }),
-
-/***/ "./resources/js/utilities/gridDataAll.js":
-/*!***********************************************!*\
-  !*** ./resources/js/utilities/gridDataAll.js ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var dataHelper = {
-  getQueryData: function getQueryData(request, url, vm) {
-    url = this.formatUrlGetRequest(request, url, vm);
-
-    if (vm.query == '' && url != null) {
-      $.getJSON(url, function (data) {
-        vm.gridData = data.data;
-        vm.total = data.total;
-        vm.last_page = data.last_page;
-        vm.next_page_url = data.next_page_url;
-        vm.prev_page_url = data.prev_page_url;
-        vm.current_page = data.current_page;
-      }.bind(vm));
-    } else {
-      if (url != null) {
-        $.getJSON(url, function (data) {
-          vm.gridData = data.data;
-          vm.total = data.total;
-          vm.last_page = data.last_page;
-          vm.next_page_url = data.next_page_url == null ? null : data.next_page_url + '&keyword=' + vm.query;
-          vm.prev_page_url = data.prev_page_url == null ? null : data.prev_page_url + '&keyword=' + vm.query;
-          vm.first_page_url = url + '?page=1&keyword=' + vm.query;
-          vm.last_page_url = url + '?page=' + vm.last_page + '&keyword=' + vm.query;
-          vm.current_page = data.current_page;
-          vm.resetPageNumbers();
-        }.bind(vm));
-      }
-    }
-  },
-  formatUrlGetRequest: function formatUrlGetRequest(request, url, vm) {
-    request = request || vm.current_page;
-    var sortParams = '&column=Name' + '&direction=' + vm.sortOrder;
     var searchParams = sortParams + '&keyword=' + vm.query;
 
     switch (request) {
