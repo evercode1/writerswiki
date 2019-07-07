@@ -111,7 +111,7 @@
 
 <script>
 
-    var gridData = require('../utilities/gridData');
+    var gridData = require('../utilities/gridDataAll');
 
         import Pagination from './Pagination';
         import SearchBox from './SearchBox';
