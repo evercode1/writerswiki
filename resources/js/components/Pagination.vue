@@ -52,7 +52,7 @@
 
                     <button @click="$parent.getData($parent.go_to_page)"class="btn-small">
                         Go To Page:</button>
-                    <input v-model="$parent.go_to_page" class="number-input"></input>
+                    <input v-model="$parent.go_to_page" class="number-input">
 
                 </div>
 
