@@ -25,7 +25,7 @@ class DescriptionDetailQuery implements DataQuery
                     ->leftJoin('profiles', 'details.user_id', '=', 'profiles.user_id')
                     ->leftJoin('descriptions', 'details.description_id', '=', 'descriptions.id')
                     ->where('descriptions.id', $type)
-                    ->orderBy($column, $direction, $type)
+                    ->orderBy($column, $direction)
                     ->paginate(10);
 
              return $rows;

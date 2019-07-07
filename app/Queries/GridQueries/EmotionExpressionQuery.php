@@ -25,7 +25,7 @@ class EmotionExpressionQuery implements DataQuery
                     ->leftJoin('profiles', 'expressions.user_id', '=', 'profiles.user_id')
                     ->leftJoin('emotions', 'expressions.emotion_id', '=', 'emotions.id')
                     ->where('emotions.id', $type)
-                    ->orderBy($column, $direction, $type)
+                    ->orderBy($column, $direction)
                     ->paginate(10);
 
              return $rows;

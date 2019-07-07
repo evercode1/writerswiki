@@ -23,7 +23,7 @@ class ActionBeatDescriptionQuery implements DataQuery
                 ->leftJoin('users', 'action_beat_descriptions.user_id', '=', 'users.id')
                 ->leftJoin('profiles', 'action_beat_descriptions.user_id', '=', 'profiles.user_id')
                 ->leftJoin('action_beats', 'action_beat_descriptions.action_beat_id', '=', 'action_beats.id')
-                ->orderBy($column, $direction, $type)
+                ->orderBy($column, $direction)
                 ->paginate(5);
 
         return $rows;
