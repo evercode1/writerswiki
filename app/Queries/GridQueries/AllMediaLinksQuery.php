@@ -16,6 +16,12 @@ class AllMediaLinksQuery implements DataQuery
 
         }
 
+        if($column == 'Title'){
+
+            $column = 'media_links.name';
+
+        }
+
 
 
 
@@ -51,6 +57,12 @@ class AllMediaLinksQuery implements DataQuery
         if($column == 'created_at'){
 
             $column = 'media_links.created_at';
+
+        }
+
+        if($column == 'Title'){
+
+            $column = 'media_links.name';
 
         }
 

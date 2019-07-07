@@ -106,6 +106,8 @@
 
         mounted: function () {
 
+
+
             gridData.loadData('/api/all-media-links-data/' + this.type, this);
 
 
@@ -145,9 +147,7 @@
 
 
             getData:  function(request){
-
                 gridData.getQueryData(request, '/api/all-media-links-data/' + this.type, this);
-
             },
 
             setPageNumbers: function(){
