@@ -140,7 +140,7 @@
             getData: function (request){
 
                 let getPage;
-                let name = 'Name';
+                let name = 'Label';
 
                 switch (request){
 

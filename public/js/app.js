@@ -2180,7 +2180,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     getData: function getData(request) {
       var getPage;
-      var name = 'Name';
+      var name = 'Label';
 
       switch (request) {
         case this.prev_page_url:
@@ -5239,7 +5239,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     getData: function getData(request) {
       var getPage;
-      var name = 'Name';
+      var name = 'Label';
 
       switch (request) {
         case this.prev_page_url:
@@ -6052,7 +6052,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     getData: function getData(request) {
       var getPage;
-      var name = 'Name';
+      var name = 'Label';
 
       switch (request) {
         case this.prev_page_url:
