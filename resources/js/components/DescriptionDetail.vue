@@ -179,7 +179,7 @@
 
                     case this.query :
 
-                        getPage = 'api/description-detail-data?' +
+                        getPage = '/api/description-detail-data/' + this.type + '?' +
                                 'keyword=' + this.query +
                                 '&column=' + name +
                                 '&direction=' + this.sortOrder;
@@ -190,7 +190,7 @@
 
                         if( this.go_to_page != '' && this.pageInRange()){
 
-                            getPage = 'api/description-detail-data?' +
+                            getPage = '/api/description-detail-data/' + this.type + '?' +
                                     'page=' + this.go_to_page +
                                     '&column=' + name +
                                     '&direction=' + this.sortOrder +
@@ -207,7 +207,7 @@
 
                     default :
 
-                        getPage = 'api/description-detail-data?' +
+                        getPage = '/api/description-detail-data/' + this.type + '?' +
                                 'page=' + request +
                                 '&column=' + name +
                                 '&direction=' + this.sortOrder +
@@ -237,8 +237,8 @@
                             this.last_page =  data.last_page;
                             this.next_page_url = (data.next_page_url == null) ? null : data.next_page_url + '&keyword=' +this.query;
                             this.prev_page_url = (data.prev_page_url == null) ? null : data.prev_page_url + '&keyword=' +this.query;
-                            this.first_page_url = 'api/description-detail-data?page=1&keyword=' +this.query;
-                            this.last_page_url = 'api/description-detail-data?page=' + this.last_page + '&keyword=' +this.query;
+                            this.first_page_url = '/api/description-detail-data/' + this.type + '?page=1&keyword=' +this.query;
+                            this.last_page_url = '/api/description-detail-data/' + this.type + '?page=' + this.last_page + '&keyword=' +this.query;
                             this.current_page = data.current_page;
                             this.resetPageNumbers();
                         }.bind(this));
@@ -250,15 +250,15 @@
             },
 
             loadData: function (){
-                $.getJSON('api/description-detail-data', function (data) {
+                $.getJSON('/api/description-detail-data/' + this.type , function (data) {
                     this.gridData = data.data;
                     this.total = data.total;
                     this.last_page =  data.last_page;
                     this.next_page_url = data.next_page_url;
                     this.prev_page_url = data.prev_page_url;
                     this.current_page = data.current_page;
-                    this.first_page_url = 'api/description-detail-data?page=1';
-                    this.last_page_url = 'api/description-detail-data?page=' + this.last_page;
+                    this.first_page_url = '/api/description-detail-data/' + this.type + '?page=1';
+                    this.last_page_url = '/api/description-detail-data/' + this.type + '?page=' + this.last_page;
                     this.setPageNumbers();
                 }.bind(this));
             },
