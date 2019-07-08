@@ -16,6 +16,11 @@ class AllMediaLinksQuery implements DataQuery
 
         }
 
+        if($direction == null){
+
+            $direction = 'desc';
+        }
+
         if($column == 'Title'){
 
             $column = 'media_links.name';
@@ -58,6 +63,11 @@ class AllMediaLinksQuery implements DataQuery
 
             $column = 'media_links.created_at';
 
+        }
+
+        if($direction == null){
+
+            $direction = 'desc';
         }
 
         if($column == 'Title'){
