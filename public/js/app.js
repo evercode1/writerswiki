@@ -3201,7 +3201,7 @@ __webpack_require__.r(__webpack_exports__);
       last_page_url: null,
       go_to_page: null,
       sortOrder: '',
-      sortKey: 'id',
+      sortKey: 'created_at',
       createUrl: '/media-link/create-preset/' + this.type,
       showCreateButton: false
     };
