@@ -101,8 +101,7 @@ class DetailController extends Controller
                                            'description' => $request->body]);
 
         $detail->save();
-
-        dd('i save it');
+        
 
 
         return Redirect::route('description-detail.index', ['type' => $detail->description_id]);
