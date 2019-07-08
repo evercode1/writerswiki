@@ -3210,7 +3210,7 @@ __webpack_require__.r(__webpack_exports__);
     sortBy: function sortBy(key) {
       this.sortKey = key;
       this.sortOrder = this.sortOrder == 1 ? -1 : 1;
-      this.getData(1);
+      this.getData();
     },
     search: function search(query) {
       this.getData(query);
