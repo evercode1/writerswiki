@@ -143,7 +143,7 @@
                 first_page_url: null,
                 last_page_url: null,
                 go_to_page: null,
-                sortOrder: -1,
+                sortOrder: 1,
                 sortKey: 'created_at',
                 createUrl: '/media-link/create-preset/' + this.type,
                 showCreateButton: false
