@@ -23,7 +23,26 @@
 
                     <table>
 
-                        <all-table-head></all-table-head>
+                        <thead>
+                        <tr>
+                            <th v-for="key in gridColumns"
+                                @click="sortBy(key)"
+                                v-bind:class="{active: sortKey == key}">
+
+                                {{ key }} <i class="fa fa-angle-down"></i>
+
+                                <span
+
+                                        v-bind:class="sortOrder > 0 ? 'desc' : 'asc'">
+
+                                </span>
+
+                            </th>
+
+
+
+                        </tr>
+                        </thead>
 
                         <tbody>
 
@@ -85,7 +104,6 @@
 
 <script>
 
-   // var gridData = require('../utilities/gridData');
 
         import Pagination from './Pagination';
         import SearchBox from './SearchBox';
@@ -107,8 +125,7 @@
         mounted: function () {
 
             this.loadData();
-
-          //  gridData.loadData('/api/all-media-links-data/' + this.type, this);
+            
 
 
         },

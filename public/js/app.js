@@ -3168,7 +3168,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// var gridData = require('../utilities/gridData');
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3184,7 +3202,7 @@ __webpack_require__.r(__webpack_exports__);
     'table-head': _TableHead__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   mounted: function mounted() {
-    this.loadData(); //  gridData.loadData('/api/all-media-links-data/' + this.type, this);
+    this.loadData();
   },
   data: function data() {
     return {
@@ -44940,61 +44958,79 @@ var render = function() {
         { staticClass: "mt-20" },
         [
           _c("div", { staticClass: "row" }, [
-            _c(
-              "table",
-              [
-                _c("all-table-head"),
-                _vm._v(" "),
+            _c("table", [
+              _c("thead", [
                 _c(
-                  "tbody",
-                  _vm._l(_vm.gridData, function(row) {
-                    return _c("tr", [
-                      _c("td", [
-                        _c(
-                          "a",
-                          { attrs: { href: row.Url, target: "_blank" } },
-                          [_vm._v(" " + _vm._s(row.Name))]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          { attrs: { href: row.Url, target: "_blank" } },
-                          [_vm._v(" " + _vm._s(row.Author))]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
+                  "tr",
+                  _vm._l(_vm.gridColumns, function(key) {
+                    return _c(
+                      "th",
+                      {
+                        class: { active: _vm.sortKey == key },
+                        on: {
+                          click: function($event) {
+                            return _vm.sortBy(key)
+                          }
+                        }
+                      },
+                      [
                         _vm._v(
-                          "\n\n                            " +
-                            _vm._s(row.Category) +
-                            "\n\n                        "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _vm._v(
-                          "\n\n                            " +
-                            _vm._s(row.Subcategory) +
-                            "\n\n                        "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("td", [
-                        _c(
-                          "a",
-                          { attrs: { href: "/profile/" + row.Profile } },
-                          [_vm._v(_vm._s(row.Contributor))]
-                        )
-                      ])
-                    ])
+                          "\n\n                            " + _vm._s(key) + " "
+                        ),
+                        _c("i", { staticClass: "fa fa-angle-down" }),
+                        _vm._v(" "),
+                        _c("span", {
+                          class: _vm.sortOrder > 0 ? "desc" : "asc"
+                        })
+                      ]
+                    )
                   }),
                   0
                 )
-              ],
-              1
-            )
+              ]),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.gridData, function(row) {
+                  return _c("tr", [
+                    _c("td", [
+                      _c("a", { attrs: { href: row.Url, target: "_blank" } }, [
+                        _vm._v(" " + _vm._s(row.Name))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("a", { attrs: { href: row.Url, target: "_blank" } }, [
+                        _vm._v(" " + _vm._s(row.Author))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "\n\n                            " +
+                          _vm._s(row.Category) +
+                          "\n\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(
+                        "\n\n                            " +
+                          _vm._s(row.Subcategory) +
+                          "\n\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c("a", { attrs: { href: "/profile/" + row.Profile } }, [
+                        _vm._v(_vm._s(row.Contributor))
+                      ])
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
           ]),
           _vm._v(" "),
           _c("page-number")
