@@ -144,7 +144,7 @@
                                    name="terms"
                                     {{ old('terms') ? 'checked' : '' }}
                                    required autofocus/>
-                            <span>I agree to the <a href="/terms-of-service">terms of service</a></span>
+                            <span>I agree to the <a href="/terms-of-service" target="_blank">terms of service</a></span>
                         </label>
                     </p>
 
