@@ -51,6 +51,13 @@ class AllMediaLinksController extends Controller
 
     }
 
+    public function podcasts()
+    {
+
+        return view('all-media-links.podcasts');
+
+    }
+
     public function services()
     {
 
