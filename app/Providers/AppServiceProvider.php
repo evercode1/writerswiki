@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
 
-        Cache::flush();
+        // Cache::flush();
         // Build our navigation
         $navs = Cache::get('navs', function()
         {
