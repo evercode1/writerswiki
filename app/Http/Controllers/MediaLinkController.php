@@ -172,6 +172,7 @@ class MediaLinkController extends Controller
         $oldsubcategory = Subcategory::where('id', $mediaLink->subcategory_id)->first();
 
 
+
         return view('media-link.edit', compact('mediaLink', 'types', 'oldType',
                                                'oldcategory', 'oldsubcategory', 'oldTypeName'));
 

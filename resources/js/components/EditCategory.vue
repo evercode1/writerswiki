@@ -59,7 +59,7 @@
         mounted: function () {
 
             this.loadData();
-            this.loadSubcategories(oldsub);
+            this.loadSubcategories(oldcat);
 
         },
 

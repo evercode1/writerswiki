@@ -5678,7 +5678,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['oldsub', 'oldcat'],
   mounted: function mounted() {
     this.loadData();
-    this.loadSubcategories(oldsub);
+    this.loadSubcategories(oldcat);
   },
   data: function data() {
     return {
