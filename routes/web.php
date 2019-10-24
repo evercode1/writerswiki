@@ -365,6 +365,8 @@ Route::get('/unsubscribe/confirmation', 'UnsubscribeController@confirm')->name('
 
 // user routes
 
+Route::post('user-delete/{id}', 'UserController@destroy');
+
 Route::resource('user', 'UserController');
 
 
