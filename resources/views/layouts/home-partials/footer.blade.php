@@ -11,17 +11,7 @@
             </div>
 
 
-            <div class="col s12 m3 center">
-                <h5>Snippets</h5>
 
-
-                <ul>
-                     <li><a href="/all-emotions">Emotions</a></li>
-                    <li><a href="/all-action-beats">Action Beats</a></li>
-                    <li><a href="/all-descriptions">Descriptions</a></li>
-
-                </ul>
-            </div>
 
 
             <div class="col s12 m3 center">
