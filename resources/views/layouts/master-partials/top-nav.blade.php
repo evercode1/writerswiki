@@ -37,7 +37,7 @@
 
                 <ul id="nav-mobile" class="right">
                     <li><a href="{{ url('/login') }}" class="grey-text text-darken-4">Login</a></li>
-                    <li><a href="{{ url('/register') }}" class="grey-text text-darken-4">Register</a></li>
+
                 </ul>
 
 
