@@ -49,7 +49,7 @@ class AllMediaLinksQuery implements DataQuery
             ->leftJoin('subcategories', 'subcategory_id', '=', 'subcategories.id')
             ->where('media_link_type_id', $type)
             ->orderBy($column, $direction)
-            ->paginate(5);
+            ->paginate(10);
 
         return $rows;
 
@@ -102,7 +102,7 @@ class AllMediaLinksQuery implements DataQuery
             ->orWhere([['media_links.media_link_type_id', $type], ['categories.name', 'like', '%' . $keyword . '%']])
             ->orWhere([['media_links.media_link_type_id', $type], ['subcategories.name', 'like', '%' . $keyword . '%']])
             ->orderBy($column, $direction)
-            ->paginate(5);
+            ->paginate(10);
 
         return $rows;
 
