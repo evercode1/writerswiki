@@ -317,12 +317,6 @@
 
             pageInRange: function(){
                 return this.go_to_page <= parseInt(this.last_page);
-            },
-
-            formatType(type){
-
-                return
-
             }
 
 
