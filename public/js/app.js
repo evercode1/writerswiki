@@ -2673,8 +2673,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -45465,12 +45463,6 @@ var render = function() {
     "div",
     { staticClass: "row" },
     [
-      _c(
-        "h1",
-        { staticClass: "flow-text grey-text text-darken-1 capitalize" },
-        [_vm._v("All Channel Links")]
-      ),
-      _vm._v(" "),
       _c("search-box"),
       _vm._v(" "),
       _c("div", { staticClass: "right" }, [_c("grid-count")], 1),

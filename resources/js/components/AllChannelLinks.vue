@@ -4,8 +4,6 @@
 
 
 
-        <h1 class="flow-text grey-text text-darken-1 capitalize">All Channel Links</h1>
-
             <search-box></search-box>
 
             <div class="right">
