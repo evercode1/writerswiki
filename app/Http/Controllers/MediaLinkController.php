@@ -216,7 +216,7 @@ class MediaLinkController extends Controller
 
 
 
-        return Redirect::route('media-link.edit', ['mediaLink' => $mediaLink]);
+        return Redirect::route('media-link.index');
 
     }
 
