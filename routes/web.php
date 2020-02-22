@@ -67,7 +67,7 @@ Route::get('/api/all-media-links-data/{type}', 'FrontApiController@allMediaLinks
 Route::get('api/categories-for-dropdown', 'ApiController@categoriesForDropdown');
 Route::any('api/category-data', 'ApiController@categoryData')->middleware(['auth', 'admin']);
 Route::any('api/channel-data', 'ApiController@channelData')->middleware(['auth', 'admin']);
-Route::any('/api/all-channel-links-data/{author}', 'FrontApiController@allChannelLinksData')->middleware(['auth', 'admin']);
+Route::any('/api/all-channel-links-data/{author}', 'FrontApiController@allChannelLinksData');
 Route::get('api/closed-contact-data', 'ApiController@closedContactData')->middleware(['auth', 'admin']);
 Route::get('api/contact-data', 'ApiController@ContactData')->middleware(['auth', 'admin']);
 Route::any('api/contact-topic-data', 'ApiController@contactTopicData')->middleware(['auth', 'admin']);
