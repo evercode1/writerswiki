@@ -14,6 +14,19 @@ use App\Queries\CategoriesForDropdownQuery;
 class ApiController extends Controller
 {
 
+    // Begin Channel Api Data Grid Method
+
+    public function channelData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'ChannelQuery');
+
+    }
+
+    // End Channel Api Data Grid Method
+
+
+
     // Begin Detail Api Data Grid Method
 
     public function detailData(Request $request)

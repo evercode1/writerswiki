@@ -7,7 +7,7 @@
             <li class="bold waves-effect active"><a class="collapsible-header">Free Resources<i class="material-icons chevron">chevron_left</i></a>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a href="/home" class="waves-effect active">Dashboard<i class="material-icons">web</i></a></li>
+                        <li><a href="/all-channels" class="waves-effect active">Channels<i class="material-icons">web</i></a></li>
 
 
                     </ul>

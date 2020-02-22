@@ -5,9 +5,33 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Queries\GridQueries\GridQuery;
 use App\MediaLinkType;
+use Illuminate\Support\Facades\DB;
+use App\Queries\ChannelLinksQuery;
 
 class FrontApiController extends Controller
 {
+
+    // Begin Channel Api All Models Method
+
+    public function allChannelsData(Request $request)
+    {
+
+        return GridQuery::sendData($request, 'ChannelQuery');
+
+    }
+
+    // End Channel Api All Models Method
+
+    public function allChannelLinksData($author, Request $request){
+
+
+        return ChannelLinksQuery::sendData($author, $request);
+
+
+
+    }
+
+
 
     // Begin Description Api All Models Method
 

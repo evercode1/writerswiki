@@ -49,6 +49,7 @@
             <li class="bold waves-effect"><a class="collapsible-header">Content<i class="material-icons chevron">chevron_left</i></a>
                 <div class="collapsible-body">
                     <ul>
+                        <li><a href="/channel" class="waves-effect">Channels<i class="material-icons">dashboard</i></a></li>
                         <li><a href="/content" class="waves-effect">Content<i class="material-icons">dashboard</i></a></li>
                         <li><a href="/category" class="waves-effect">Categories<i class="material-icons">dashboard</i></a></li>
                         <li><a href="/subcategory" class="waves-effect">Subcategories<i class="material-icons">dashboard</i></a></li>

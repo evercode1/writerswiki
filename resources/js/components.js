@@ -1,6 +1,7 @@
 Vue.component('action-beat-details', require('./components/ActionBeatDetails.vue').default);
 Vue.component('alarm-bell', require('./components/AlarmBell.vue').default);
 Vue.component('alarm-bell-admin', require('./components/AlarmBellAdmin.vue').default);
+Vue.component('all-channel-links', require('./components/AllChannelLinks.vue').default);
 Vue.component('all-table-head', require('./components/AllTableHead.vue').default);
 Vue.component('closed-contact-grid', require('./components/ClosedContactGrid.vue').default);
 Vue.component('contact-grid', require('./components/ContactGrid.vue').default);
@@ -112,3 +113,13 @@ Vue.component('all-descriptions', require('./components/AllDescriptions.vue').de
 Vue.component('detail-grid', require('./components/DetailGrid.vue').default);
 
 /** End Detail Grid Component Call */
+/** Begin Channel Grid Component Call */
+
+Vue.component('channel-grid', require('./components/ChannelGrid.vue').default);
+
+/** End Channel Grid Component Call */
+/** Begin Channel All Models Call */
+
+Vue.component('all-channels', require('./components/AllChannels.vue').default);
+
+/** End Channel All Models Call */

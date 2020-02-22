@@ -15,6 +15,23 @@ return [
 
 
 
+    // Begin Channel Image Config Array Method
+
+
+        'channel' => [
+                'destinationFolder'     => '/imgs/channel/',
+                'createFolder'          => '/imgs/channel',
+                'destinationThumbnail'  => '/imgs/channel/thumbnails/',
+                'thumbPrefix'           => 'thumb-',
+                'imagePath'             => '/imgs/channel/',
+                'thumbnailPath'         => '/imgs/channel/thumbnails/thumb-',
+                'thumbHeight'           => 60,
+                'thumbWidth'            => 60,
+            ],
+
+
+
+    // End Channel Image Config Array Method
     // Begin Detail Image Config Array Method
 
 

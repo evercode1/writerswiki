@@ -66,6 +66,8 @@ Route::get('/api/all-details-data', 'FrontApiController@allDetailsData');
 Route::get('/api/all-media-links-data/{type}', 'FrontApiController@allMediaLinksData');
 Route::get('api/categories-for-dropdown', 'ApiController@categoriesForDropdown');
 Route::any('api/category-data', 'ApiController@categoryData')->middleware(['auth', 'admin']);
+Route::any('api/channel-data', 'ApiController@channelData')->middleware(['auth', 'admin']);
+Route::any('/api/all-channel-links-data/{author}', 'FrontApiController@allChannelLinksData')->middleware(['auth', 'admin']);
 Route::get('api/closed-contact-data', 'ApiController@closedContactData')->middleware(['auth', 'admin']);
 Route::get('api/contact-data', 'ApiController@ContactData')->middleware(['auth', 'admin']);
 Route::any('api/contact-topic-data', 'ApiController@contactTopicData')->middleware(['auth', 'admin']);
@@ -102,6 +104,33 @@ Route::post('category-delete/{category}', 'CategoryController@destroy');
 Route::resource('category', 'CategoryController', ['except' => ['destroy']]);
 
 // End Category Routes
+
+// Begin Channel Routes
+
+Route::get('all-channels', 'AllChannelsController@index');
+
+Route::get('/api/all-channels-data', 'FrontApiController@allChannelsData')->middleware(['auth', 'admin']);
+
+
+
+Route::post('channel-delete/{id}', 'ChannelController@destroy');
+
+Route::get('/channel/create', 'ChannelController@create')->name('channel.create');
+
+Route::get('channel/{id}', 'ChannelController@show')->name('channel.show');
+
+Route::resource('channel', 'ChannelController', ['except' => ['show', 'create','destroy']]);
+
+// End Channel Routes
+
+// Channel List Route
+
+
+Route::get('/channel-list/{name}', 'ChannelListController@index')->name('channel-list-index');
+
+
+// End Channel List route
+
 
 // Contact Routes
 
@@ -368,25 +397,6 @@ Route::get('/unsubscribe/confirmation', 'UnsubscribeController@confirm')->name('
 Route::post('user-delete/{id}', 'UserController@destroy');
 
 Route::resource('user', 'UserController');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
