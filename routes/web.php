@@ -109,7 +109,7 @@ Route::resource('category', 'CategoryController', ['except' => ['destroy']]);
 
 Route::get('all-channels', 'AllChannelsController@index');
 
-Route::get('/api/all-channels-data', 'FrontApiController@allChannelsData')->middleware(['auth', 'admin']);
+Route::get('/api/all-channels-data', 'FrontApiController@allChannelsData');
 
 
 
