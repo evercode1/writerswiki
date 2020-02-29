@@ -20,16 +20,16 @@
 
        <div class="mt-50">
 
-              <p class="flow-text grey-text text-darken-3">{{ $video->name }}</p>
+              <p class="flow-text grey-text text-darken-3">Writers Wiki Tour</p>
 
 
-              <p>By {{$video->author}}</p>
+              <p>By Max Vonne</p>
 
 
               <div>
                      <div class="video-container">
 
-                            <iframe src="https://www.youtube.com/embed/{{ $video->embed_code }}" frameborder="0" allowfullscreen></iframe>
+                            <iframe src="https://www.youtube.com/embed/daf2SGWzzPw" frameborder="0" allowfullscreen></iframe>
 
                      </div>
 
