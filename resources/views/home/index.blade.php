@@ -45,7 +45,7 @@
        </div><!-- end video -->
 
 
-          </div> <!-- end row here -->
+          </div> <!-- end row -->
 
        </div>
 
