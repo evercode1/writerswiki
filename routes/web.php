@@ -270,6 +270,14 @@ Route::resource('expression', 'ExpressionController', ['except' => ['show', 'cre
 
 // End Expression Routes
 
+// Haggle routes
+
+Route::get('haggle', 'HaggleController@index');
+Route::get('haggle-data', 'HaggleController@counter');
+Route::get('haggle-scenario', 'HaggleController@scenario');
+
+// End Haggle routes
+
 //  home routes
 
 Route::get('/', 'HomeController@index')->name('home.index');

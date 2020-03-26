@@ -8,6 +8,7 @@ Vue.component('contact-grid', require('./components/ContactGrid.vue').default);
 Vue.component('description-detail', require('./components/DescriptionDetail.vue').default);
 Vue.component('emotion-expression', require('./components/EmotionExpression.vue').default);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('haggle', require('./components/Haggle.vue').default);
 Vue.component('open-contact-grid', require('./components/OpenContactGrid.vue').default);
 Vue.component('pending-contributors-grid', require('./components/PendingContributorsGrid.vue').default);
 Vue.component('self-publishing', require('./components/SelfPublishing.vue').default);
