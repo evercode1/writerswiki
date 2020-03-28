@@ -7094,6 +7094,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Haggle",
   data: function data() {
@@ -7107,6 +7126,13 @@ __webpack_require__.r(__webpack_exports__);
       highPrice: null,
       bottomPrice: null,
       optimumPrice: null,
+      salesTarget: null,
+      currentSales: null,
+      previousOfferSessionForSameItem: null,
+      previousOfferSessionForSameItemAmount: null,
+      previousCounterOfferSessionForSameItemAmount: null,
+      customerSalesHistoryValue: null,
+      customerSalesHistoryCount: null,
       description: null,
       scenario: null
     };
@@ -7137,6 +7163,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/haggle-scenario?scenario=' + scenario).then(function (response) {
         _this2.scenarioData = response.data;
       });
+      axios.get('/haggle-clear-offers').then(function (response) {});
     },
     setCost: function setCost(cost) {
       this.cost = cost;
@@ -48421,6 +48448,22 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row mt-20" }, [
+      _c("ul", [
+        _c("li", [_vm._v("User Id: " + _vm._s(_vm.scenarioData.userId) + " ")]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Username: " + _vm._s(_vm.scenarioData.userName))]),
+        _vm._v(" "),
+        _c("li", [_vm._v("Item Id:  " + _vm._s(_vm.scenarioData.itemId))]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v(
+            "Item Description:  " + _vm._s(_vm.scenarioData.itemDescription)
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row mt-20" }, [
       _c("div", [_vm._v("Offer History")]),
       _vm._v(" "),
       _c(
@@ -48549,6 +48592,51 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("li", [_vm._v("scenario:  " + _vm._s(_vm.scenarioData.scenario))]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v("sales Target: " + _vm._s(_vm.scenarioData.salesTarget))
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v("current sales:  " + _vm._s(_vm.scenarioData.currentSales))
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v(
+            "Previous Offer Session For Same Item:  " +
+              _vm._s(_vm.scenarioData.previousOfferSessionForSameItem)
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v(
+            "Previous Offer Session For Same Item Amount:  " +
+              _vm._s(_vm.scenarioData.previousOfferSessionForSameItemAmount)
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v(
+            "Previous Counter Offer Session For Same Item:  " +
+              _vm._s(
+                _vm.scenarioData.previousCounterOfferSessionForSameItemAmount
+              )
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v(
+            "Customer Sales History Count:  " +
+              _vm._s(_vm.scenarioData.customerSalesHistoryCount)
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _vm._v(
+            "Customer Sales History Value:  " +
+              _vm._s(_vm.scenarioData.customerSalesHistoryValue)
+          )
+        ]),
         _vm._v(" "),
         _c("li", [
           _vm._v("description:  " + _vm._s(_vm.scenarioData.description))

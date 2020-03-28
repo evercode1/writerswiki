@@ -4,6 +4,17 @@
 
         <div class="row mt-20">
 
+        <ul>
+        <li>User Id: {{ scenarioData.userId }} </li>
+        <li>Username: {{ scenarioData.userName }}</li>
+        <li>Item Id:  {{ scenarioData.itemId }}</li>
+        <li>Item Description:  {{ scenarioData.itemDescription }}</li>
+        </ul>
+
+        </div>
+
+        <div class="row mt-20">
+
             <div>Offer History</div>
 
             <ul>
@@ -63,6 +74,14 @@
                 <li>optimum price:  ${{ scenarioData.optimumPrice }}</li>
                 <li>bottom price:  ${{ scenarioData.bottomPrice }}</li>
                 <li>scenario:  {{ scenarioData.scenario }}</li>
+                <li>sales Target: {{ scenarioData.salesTarget }}</li>
+                <li>current sales:  {{ scenarioData.currentSales }}</li>
+                <li>Previous Offer Session For Same Item:  {{ scenarioData.previousOfferSessionForSameItem }}</li>
+                <li>Previous Offer Session For Same Item Amount:  {{ scenarioData.previousOfferSessionForSameItemAmount }}</li>
+                <li>Previous Counter Offer Session For Same Item:  {{ scenarioData.previousCounterOfferSessionForSameItemAmount }}</li>
+                <li>Customer Sales History Count:  {{ scenarioData.customerSalesHistoryCount }}</li>
+                <li>Customer Sales History Value:  {{ scenarioData.customerSalesHistoryValue }}</li>
+
                 <li>description:  {{ scenarioData.description }}</li>
 
             </ul>
@@ -97,6 +116,13 @@
                 highPrice: null,
                 bottomPrice: null,
                 optimumPrice: null,
+                salesTarget:  null,
+                currentSales:  null,
+                previousOfferSessionForSameItem: null,
+                previousOfferSessionForSameItemAmount: null,
+                previousCounterOfferSessionForSameItemAmount: null,
+                customerSalesHistoryValue: null,
+                customerSalesHistoryCount: null,
                 description:  null,
                 scenario: null
 
@@ -139,6 +165,14 @@
 
 
                 });
+
+                axios.get('/haggle-clear-offers').then( (response) => {
+
+
+
+                });
+
+
 
             },
 
