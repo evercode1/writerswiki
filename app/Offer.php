@@ -11,5 +11,9 @@ class Offer extends Model
                            'offer',
                            'counter_offer',
                            'is_accepted',
-                           'offer_quality'];
+                           'is_final_counter_offer',
+                           'is_counter_offer_matched_to_user_offer',
+                           'offer_quality',
+                           'offer_quality_id',
+                           'site_id'];
 }

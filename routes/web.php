@@ -274,8 +274,9 @@ Route::resource('expression', 'ExpressionController', ['except' => ['show', 'cre
 
 Route::get('haggle', 'HaggleController@index');
 Route::get('haggle-data', 'HaggleController@counter');
-Route::get('haggle-scenario', 'HaggleController@scenario');
+Route::get('haggle-scenario', 'HaggleController@mockScenario');
 Route::get('haggle-clear-offers', 'HaggleController@truncateOffers');
+Route::get('haggle-accept-offer', 'HaggleController@accept');
 
 // End Haggle routes
 

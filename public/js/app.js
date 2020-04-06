@@ -7113,35 +7113,190 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Haggle",
   data: function data() {
     return {
-      offerData: [],
-      counterData: [],
-      scenarioData: [],
-      currentOffer: null,
-      counterOffer: null,
-      cost: null,
-      highPrice: null,
+      acceptMessage: 'Congratulations, you won for ',
       bottomPrice: null,
-      optimumPrice: null,
-      salesTarget: null,
+      cost: 0,
+      counterData: [],
+      counterOffer: 0,
+      currentOffer: 0,
       currentSales: null,
-      previousOfferSessionForSameItem: null,
-      previousOfferSessionForSameItemAmount: null,
-      previousCounterOfferSessionForSameItemAmount: null,
       customerSalesHistoryValue: null,
       customerSalesHistoryCount: null,
       description: null,
-      scenario: null
+      declined: 1,
+      errorMessage: 'Your offer must be higher than your last offer.',
+      highPrice: null,
+      isCounterOfferFinal: 0,
+      isCounterOfferMatchedToUserOffer: 0,
+      loader: 0,
+      newOffer: null,
+      offerData: [],
+      offerError: 0,
+      offerQuality: null,
+      optimumPrice: null,
+      payMessage: 0,
+      previousOfferSessionForSameItem: null,
+      previousOfferSessionForSameItemAmount: null,
+      previousCounterOfferSessionForSameItemAmount: null,
+      salesTarget: null,
+      showForm: 1,
+      showFullHistory: 0,
+      scenario: null,
+      scenarioData: []
     };
   },
   methods: {
-    offer: function offer(_offer) {
-      this.currentOffer = _offer;
-      this.offerData.push(_offer);
-      this.makeCounterOffer(_offer);
+    offer: function offer(newOffer, currentOffer) {
+      if (Number(newOffer) > Number(currentOffer) && !isNaN(newOffer)) {
+        newOffer = Number(newOffer);
+        this.offerError = 0;
+        this.currentOffer = newOffer;
+        this.offerData.push(newOffer);
+        this.makeCounterOffer(newOffer);
+        this.newOffer = '';
+        this.declined = 0;
+      } else {
+        this.offerError = 1;
+        this.newOffer = '';
+      }
     },
     makeCounterOffer: function makeCounterOffer(offer) {
       var _this = this;
@@ -7152,16 +7307,42 @@ __webpack_require__.r(__webpack_exports__);
           scenario: this.scenario
         }
       }).then(function (response) {
-        _this.counterOffer = response.data;
+        _this.loader = 1;
+        setTimeout(function () {
+          _this.loader = 0;
+        }, 3500);
+        _this.counterOffer = response.data.counterOffer;
+        _this.offerQuality = response.data.offerQuality;
+        _this.isCounterOfferFinal = response.data.isCounterOfferFinal;
+        _this.isCounterOfferMatchedToUserOffer = response.data.isCounterOfferMatchedToUserOffer;
 
         _this.counterData.push(response.data);
       });
     },
-    getScenarioData: function getScenarioData(scenario) {
+    accept: function accept() {
       var _this2 = this;
 
+      this.isCounterOfferFinal = 1;
+      axios.get('/haggle-accept-offer', {
+        params: {
+          counterOffer: this.counterOffer,
+          itemId: this.scenarioData.itemId,
+          userId: this.scenarioData.userId,
+          siteId: this.scenarioData.siteId
+        }
+      }).then(function (response) {
+        _this2.payMessage = 'Congratulations, you won for ';
+      });
+    },
+    decline: function decline() {
+      this.declined = 1;
+    },
+    getScenarioData: function getScenarioData(scenario) {
+      var _this3 = this;
+
+      this.showForm = 0;
       axios.get('/haggle-scenario?scenario=' + scenario).then(function (response) {
-        _this2.scenarioData = response.data;
+        _this3.scenarioData = response.data;
       });
       axios.get('/haggle-clear-offers').then(function (response) {});
     },
@@ -7176,6 +7357,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     setBottomPrice: function setBottomPrice(bottomPrice) {
       this.bottomPrice = bottomPrice;
+    },
+    showMetaHistory: function showMetaHistory() {
+      this.showFullHistory = 1;
+    },
+    hideMetaHistory: function hideMetaHistory() {
+      this.showFullHistory = 0;
     }
   }
 });
@@ -13628,6 +13815,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.alarm {\n\n    color: #ff42c9;\n}\na.alarm:hover {\n\n    color: white;\n}\n.no-alarm {\n\n    color: #141818;\n}\na.no-alarm:hover {\n\n    color: #5f5eff;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Haggle.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Haggle.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.mt-20{\n\n    margin-top: 20px;\n}\n.mt-50{\n\n    margin-top:  50px;\n}\n.mt-100{\n\n    margin-top:  100px;\n}\n.loader {\n    border: 16px solid #f3f3f3; /* Light grey */\n    border-top: 16px solid #3498db; /* Blue */\n    border-radius: 50%;\n    width: 120px;\n    height: 120px;\n    -webkit-animation: spin 2s linear infinite;\n            animation: spin 2s linear infinite;\n}\n@-webkit-keyframes spin {\n0% { -webkit-transform: rotate(0deg); transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg); transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% { -webkit-transform: rotate(0deg); transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg); transform: rotate(360deg);\n}\n}\n\n\n", ""]);
 
 // exports
 
@@ -44552,6 +44758,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Haggle.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Haggle.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Haggle.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Haggle.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -48447,6 +48683,42 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm.showFullHistory === 0
+      ? _c("div", { staticClass: "mt-20" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn-small",
+              on: {
+                click: function($event) {
+                  return _vm.showMetaHistory()
+                }
+              }
+            },
+            [_vm._v("Show Meta Data")]
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.showFullHistory === 1
+      ? _c("div", [
+          _c(
+            "button",
+            {
+              staticClass: "btn-small",
+              on: {
+                click: function($event) {
+                  return _vm.hideMetaHistory()
+                }
+              }
+            },
+            [_vm._v("Hide Meta Data")]
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
     _c("div", { staticClass: "row mt-20" }, [
       _c("ul", [
         _c("li", [_vm._v("User Id: " + _vm._s(_vm.scenarioData.userId) + " ")]),
@@ -48464,201 +48736,445 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row mt-20" }, [
-      _c("div", [_vm._v("Offer History")]),
+      _vm.showFullHistory === 1 && _vm.loader === 0
+        ? _c("div", [
+            _c("div", { staticClass: "row mt-20" }, [_vm._v("Offer History")]),
+            _vm._v(" "),
+            _c(
+              "ul",
+              _vm._l(_vm.counterData, function(counter) {
+                return _c("li", [
+                  _vm._v(
+                    "Offer:  $" +
+                      _vm._s(counter.offer) +
+                      " is a " +
+                      _vm._s(counter.offerQuality) +
+                      " offer - The Counter Offer is: $" +
+                      _vm._s(counter.counterOffer) +
+                      " "
+                  )
+                ])
+              }),
+              0
+            )
+          ])
+        : _vm._e(),
       _vm._v(" "),
-      _c(
-        "ul",
-        _vm._l(_vm.offerData, function(row) {
-          return _c("li", [_vm._v("  " + _vm._s(row) + "  ")])
-        }),
-        0
-      ),
-      _vm._v(" "),
-      _c("div", [_vm._v("Counter History")]),
-      _vm._v(" "),
-      _c(
-        "ul",
-        _vm._l(_vm.counterData, function(counter) {
-          return _c("li", [_vm._v("  " + _vm._s(counter) + "  ")])
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row center" }, [
-      _vm._v("Current Offer:  " + _vm._s(_vm.currentOffer) + "  "),
-      _c("div", [_vm._v("Counter Offer: " + _vm._s(_vm.counterOffer))])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "center mt-20" }, [
-        _vm._v("\n\n\n              Make Offer:\n            "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.currentOffer,
-              expression: "currentOffer"
-            }
-          ],
-          staticClass: "number-input",
-          domProps: { value: _vm.currentOffer },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.currentOffer = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn-small",
-            on: {
-              click: function($event) {
-                return _vm.offer(_vm.currentOffer)
-              }
-            }
-          },
-          [_vm._v("Offer")]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("span", [_vm._v("Scenario: " + _vm._s(_vm.scenario))]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-field col s12" }, [
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.scenario,
-                expression: "scenario"
-              }
-            ],
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.scenario = $event.target.multiple
-                  ? $$selectedVal
-                  : $$selectedVal[0]
-              }
-            }
-          },
-          [
-            _c("option", { attrs: { disabled: "", value: "" } }, [
-              _vm._v("Please select one")
+      _vm.loader === 1 && _vm.showFullHistory === 1
+        ? _c("div", [
+            _c("p", [
+              _vm._v(
+                "Thinking about your offer of $" +
+                  _vm._s(_vm.currentOffer) +
+                  "..."
+              )
             ]),
             _vm._v(" "),
-            _c("option", [_vm._v("Newbie")]),
+            _c("div", { staticClass: "loader" })
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.showFullHistory === 0
+        ? _c("div", [
+            _vm.loader === 1
+              ? _c("div", [
+                  _c("p", [
+                    _vm._v(
+                      "Thinking about your offer of $" +
+                        _vm._s(_vm.currentOffer) +
+                        "..."
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "loader" })
+                ])
+              : _vm._e(),
             _vm._v(" "),
-            _c("option", [_vm._v("Purchaser")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("Reseller")])
-          ]
-        )
-      ])
+            _vm.declined === 1
+              ? _c("div", [
+                  _vm.counterOffer > 0 && _vm.counterOffer !== _vm.currentOffer
+                    ? _c("div", [
+                        _c("ul", [
+                          _c("li", [
+                            _vm._v(
+                              "The Last Counter Offer was: $" +
+                                _vm._s(_vm.counterOffer) +
+                                " "
+                            )
+                          ])
+                        ])
+                      ])
+                    : _vm._e()
+                ])
+              : _vm._e()
+          ])
+        : _vm._e()
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("ul", [
-        _c("li", [_vm._v("item cost:  $" + _vm._s(_vm.scenarioData.cost))]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("high price:  $" + _vm._s(_vm.scenarioData.highPrice))
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("optimum price:  $" + _vm._s(_vm.scenarioData.optimumPrice))
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("bottom price:  $" + _vm._s(_vm.scenarioData.bottomPrice))
-        ]),
-        _vm._v(" "),
-        _c("li", [_vm._v("scenario:  " + _vm._s(_vm.scenarioData.scenario))]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("sales Target: " + _vm._s(_vm.scenarioData.salesTarget))
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("current sales:  " + _vm._s(_vm.scenarioData.currentSales))
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v(
-            "Previous Offer Session For Same Item:  " +
-              _vm._s(_vm.scenarioData.previousOfferSessionForSameItem)
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v(
-            "Previous Offer Session For Same Item Amount:  " +
-              _vm._s(_vm.scenarioData.previousOfferSessionForSameItemAmount)
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v(
-            "Previous Counter Offer Session For Same Item:  " +
-              _vm._s(
-                _vm.scenarioData.previousCounterOfferSessionForSameItemAmount
-              )
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v(
-            "Customer Sales History Count:  " +
-              _vm._s(_vm.scenarioData.customerSalesHistoryCount)
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v(
-            "Customer Sales History Value:  " +
-              _vm._s(_vm.scenarioData.customerSalesHistoryValue)
-          )
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("description:  " + _vm._s(_vm.scenarioData.description))
+    _vm.scenarioData.cost > 0
+      ? _c("div", [
+          _vm.isCounterOfferMatchedToUserOffer === 0
+            ? _c("div", [
+                _vm.declined === 0
+                  ? _c("div", [
+                      _vm.isCounterOfferFinal === 0 && _vm.loader === 0
+                        ? _c("div", { staticClass: "row" }, [
+                            _c("div", [
+                              _vm._v(
+                                "Our Offer: $" + _vm._s(_vm.counterOffer) + " "
+                              )
+                            ])
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.loader === 0
+                        ? _c("div", [
+                            _vm.counterOffer > 0 &&
+                            _vm.payMessage === 0 &&
+                            _vm.isCounterOfferFinal !== 1
+                              ? _c("div", { staticClass: "row" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn-small",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.accept()
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Accept")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn-small",
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.decline()
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("Decline")]
+                                  )
+                                ])
+                              : _vm._e()
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.isCounterOfferFinal === 0 &&
+                _vm.payMessage === 0 &&
+                _vm.declined === 1
+                  ? _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "left mt-20" }, [
+                        _vm._v("\n              Make Offer:\n            "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.newOffer,
+                              expression: "newOffer"
+                            }
+                          ],
+                          staticClass: "number-input",
+                          domProps: { value: _vm.newOffer },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.newOffer = $event.target.value
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn-small",
+                            on: {
+                              click: function($event) {
+                                return _vm.offer(_vm.newOffer, _vm.currentOffer)
+                              }
+                            }
+                          },
+                          [_vm._v("Offer")]
+                        )
+                      ])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.offerError === 1
+                  ? _c("div", { staticClass: "red-text" }, [
+                      _vm._v(_vm._s(_vm.errorMessage))
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.isCounterOfferFinal !== 0 &&
+                _vm.payMessage === 0 &&
+                _vm.loader === 0
+                  ? _c("div", { staticClass: "row" }, [
+                      _c("div", [
+                        _vm._v(
+                          "\n\n       Our final offer is $" +
+                            _vm._s(_vm.counterOffer) +
+                            "\n\n            "
+                        ),
+                        _c("div", { staticClass: "mt-20" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn-small",
+                              on: {
+                                click: function($event) {
+                                  return _vm.accept(_vm.counterOffer)
+                                }
+                              }
+                            },
+                            [_vm._v("Accept")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn-small",
+                              on: {
+                                click: function($event) {
+                                  return _vm.decline()
+                                }
+                              }
+                            },
+                            [_vm._v("Decline")]
+                          )
+                        ])
+                      ])
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.payMessage !== 0 && _vm.loader === 0
+                  ? _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("a", { attrs: { href: "#" } }, [
+                          _vm._v(
+                            _vm._s(_vm.payMessage) +
+                              ": $" +
+                              _vm._s(_vm.counterOffer)
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(1)
+                    ])
+                  : _vm._e()
+              ])
+            : _vm._e()
         ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn-small",
-          on: {
-            click: function($event) {
-              return _vm.getScenarioData(_vm.scenario)
-            }
-          }
-        },
-        [_vm._v("Get Scenario")]
-      )
-    ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.isCounterOfferMatchedToUserOffer === 1 && _vm.loader === 0
+      ? _c("div", [
+          _c("div", { staticClass: "row" }, [
+            _c("a", { attrs: { href: "#" } }, [
+              _vm._v(
+                _vm._s(_vm.acceptMessage) + " $" + _vm._s(_vm.counterOffer)
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(2)
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.showForm
+      ? _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "row" }, [
+            _vm._v("Choose Scenario to Start: " + _vm._s(_vm.scenario))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "input-field col 4" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.scenario,
+                      expression: "scenario"
+                    }
+                  ],
+                  staticClass: "browser-default",
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.scenario = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { disabled: "", value: "" } }, [
+                    _vm._v("Please select one")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Newbie")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Purchaser")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Reseller")])
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn-small",
+                on: {
+                  click: function($event) {
+                    return _vm.getScenarioData(_vm.scenario)
+                  }
+                }
+              },
+              [_vm._v("Get Scenario")]
+            )
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.showFullHistory === 1
+      ? _c("div", { staticClass: "row mt-100" }, [
+          _c("h1", { staticClass: "flow-text" }, [_vm._v("Offer Meta Data")]),
+          _vm._v(" "),
+          _c("ul", [
+            _c("li", [
+              _vm._v("scenario:  " + _vm._s(_vm.scenarioData.scenario))
+            ]),
+            _vm._v(" "),
+            _c("li", [_vm._v("site id:  " + _vm._s(_vm.scenarioData.siteId))]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v("buyer type:  " + _vm._s(_vm.scenarioData.buyerType))
+            ]),
+            _vm._v(" "),
+            _c("li", [_vm._v("item cost:  $" + _vm._s(_vm.scenarioData.cost))]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v("high price:  $" + _vm._s(_vm.scenarioData.highPrice))
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v(
+                "optimum price:  $" + _vm._s(_vm.scenarioData.optimumPrice)
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v(
+                "maximum price:  $" + _vm._s(_vm.scenarioData.maximumPrice)
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v(
+                "purchaser price:  $" + _vm._s(_vm.scenarioData.purchaserPrice)
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v(
+                "reseller price:  $" + _vm._s(_vm.scenarioData.resellerPrice)
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v("bottom price:  $" + _vm._s(_vm.scenarioData.bottomPrice))
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v("volume price:  $" + _vm._s(_vm.scenarioData.volumePrice))
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v(
+                "allowed offers Count:  " +
+                  _vm._s(_vm.scenarioData.allowedOffersCount)
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v("sales Target: " + _vm._s(_vm.scenarioData.salesTarget))
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v("current sales:  " + _vm._s(_vm.scenarioData.currentSales))
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v(
+                "Customer Sales History Count:  " +
+                  _vm._s(_vm.scenarioData.customerSalesHistoryCount)
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v(
+                "Customer Sales History Value:  " +
+                  _vm._s(_vm.scenarioData.customerSalesHistoryValue)
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v("description:  " + _vm._s(_vm.scenarioData.description))
+            ])
+          ])
+        ])
+      : _vm._e()
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h1", { staticClass: "flow-text" }, [
+      _c("a", { attrs: { href: "/haggle" } }, [
+        _c("button", { staticClass: "btn-small" }, [_vm._v("Reset")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mt-20" }, [
+      _c("button", { staticClass: "btn-small" }, [_vm._v("Pay Now")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row mt-20" }, [
+      _c("button", { staticClass: "btn-small" }, [_vm._v("Pay Now")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -64840,7 +65356,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Haggle_vue_vue_type_template_id_8efd8006___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Haggle.vue?vue&type=template&id=8efd8006& */ "./resources/js/components/Haggle.vue?vue&type=template&id=8efd8006&");
 /* harmony import */ var _Haggle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Haggle.vue?vue&type=script&lang=js& */ "./resources/js/components/Haggle.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _Haggle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Haggle.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/Haggle.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -64848,7 +65366,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _Haggle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Haggle_vue_vue_type_template_id_8efd8006___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Haggle_vue_vue_type_template_id_8efd8006___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -64877,6 +65395,22 @@ component.options.__file = "resources/js/components/Haggle.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Haggle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Haggle.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Haggle.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Haggle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Haggle.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/Haggle.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Haggle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Haggle.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Haggle.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Haggle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Haggle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Haggle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Haggle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Haggle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
