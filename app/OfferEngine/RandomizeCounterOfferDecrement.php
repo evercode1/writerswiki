@@ -27,36 +27,56 @@ class RandomizeCounterOfferDecrement
     public function random()
     {
 
-        if($this->offer < 20){
+        if($this->offer < 40){
 
             return rand(1, $this->range);
         }
 
         if ($this->offer >= $this->previousOffer * 2){
 
-            return round($this->offer * .80) + $this->range;
+            if ($this->offer > 400){
+
+                return round($this->offer * .30) + $this->range;
+            }
+
+            return round($this->offer * .60) + $this->range;
         }
 
         if ($this->offer >= $this->previousOffer * 1.75){
 
-            return round($this->offer * .60) + $this->range;
+            if ($this->offer > 400){
 
-        }
-
-        if ($this->offer >= $this->previousOffer * 1.5){
+                return round($this->offer * .25) + $this->range;
+            }
 
             return round($this->offer * .50) + $this->range;
 
         }
 
-        if ($this->offer >= $this->previousOffer * 1.35){
+        if ($this->offer >= $this->previousOffer * 1.5){
+
+            if ($this->offer > 400){
+
+                return round($this->offer * .20) + $this->range;
+            }
 
             return round($this->offer * .40) + $this->range;
 
         }
 
+        if ($this->offer >= $this->previousOffer * 1.35){
 
-        $range = round($this->offer * .30) + $this->range;
+            if ($this->offer > 400){
+
+                return round($this->offer * .20) + $this->range;
+            }
+
+            return round($this->offer * .30) + $this->range;
+
+        }
+
+
+        $range = round($this->offer * .20) + $this->range;
 
         return rand(1, $range);
 

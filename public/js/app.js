@@ -7310,7 +7310,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.loader = 1;
         setTimeout(function () {
           _this.loader = 0;
-        }, 3500);
+        }, 2500);
         _this.counterOffer = response.data.counterOffer;
         _this.offerQuality = response.data.offerQuality;
         _this.isCounterOfferFinal = response.data.isCounterOfferFinal;
@@ -48961,7 +48961,7 @@ var render = function() {
                         _c("a", { attrs: { href: "#" } }, [
                           _vm._v(
                             _vm._s(_vm.payMessage) +
-                              ": $" +
+                              " $" +
                               _vm._s(_vm.counterOffer)
                           )
                         ])

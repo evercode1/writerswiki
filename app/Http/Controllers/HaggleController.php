@@ -18,6 +18,7 @@ class HaggleController extends Controller
     use ScenarioTraits, CounterOfferFinalCheckTrait, UpdateOfferAsAcceptedAndFinalTrait;
 
     public $offerDetails;
+    public $counterOfferAndFinalOfferStatus;
     public $counterOffer;
     public $isCounterOfferFinal;
     public $isCounterOfferMatchedToUserOffer;
@@ -39,11 +40,13 @@ class HaggleController extends Controller
 
         $this->setOfferDetails($request);
 
+        $this->checkForPreviousFinalOffer();
+
         $negotiate = new CounterOffer($this->offerDetails);
 
-        $this->counterOffer = $negotiate->runCounterOffer();
+        $this->counterOfferAndFinalOfferStatus = $negotiate->runCounterOffer();
 
-        $this->isCounterOfferFinal();
+        $this->setCounterOfferAndFinalStatus();
 
         $this->isMatchedAndAcceptedOffer();
 
@@ -55,6 +58,25 @@ class HaggleController extends Controller
                 'offer' => $this->offerDetails['offer'],
                 'isCounterOfferFinal' => $this->isCounterOfferFinal,
                 'isCounterOfferMatchedToUserOffer' => $this->isCounterOfferMatchedToUserOffer];
+
+    }
+
+    public function setCounterOfferAndFinalStatus()
+    {
+
+        $this->counterOffer = $this->counterOfferAndFinalOfferStatus['counterOffer'];
+
+        $this->isCounterOfferFinal = $this->counterOfferAndFinalOfferStatus['finalOffer'];
+
+
+
+    }
+
+    public function checkForPreviousFinalOffer()
+    {
+
+        // to be determined
+
 
     }
 
@@ -106,30 +128,12 @@ class HaggleController extends Controller
     }
 
 
-
-    public function isCounterOfferFinal()
-    {
-
-        if($this->counterOfferFinalCheck($this->offerDetails['itemId'],
-                                         $this->offerDetails['userId'],
-                                         $this->offerDetails['siteId'])){
-
-            return $this->isCounterOfferFinal = 1;
-
-        }
-
-        $this->isCounterOfferFinal = $this->counterOffer == $this->offerDetails['offer'] ? 1 : 0;
-
-        return $this->isCounterOfferFinal;
-
-    }
-
     public function isMatchedAndAcceptedOffer()
     {
 
-        $this->isCounterOfferMatchedToUserOffer = $this->counterOffer == $this->offerDetails['offer'] ? 1 : 0;
+        $this->isCounterOfferMatchedToUserOffer = $this->counterOffer === $this->offerDetails['offer'] ? 1 : 0;
 
-        $this->isAccepted = $this->counterOffer == $this->offerDetails['offer'] ? 1 : 0;
+        $this->isAccepted = $this->counterOffer === $this->offerDetails['offer'] ? 1 : 0;
 
     }
 

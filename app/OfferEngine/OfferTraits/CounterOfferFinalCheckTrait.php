@@ -11,17 +11,15 @@ trait CounterOfferFinalCheckTrait
     public function counterOfferFinalCheck($itemId, $userId, $siteId)
     {
 
-        $rows = Offer::where([['user_id', '=', $userId],
+        $row = Offer::where([['user_id', '=', $userId],
                               ['item_id', '=', $itemId],
-                              ['site_id', '=', $siteId]])
-                       ->orderBy('id', 'desc')
-                       ->limit(2)
-                       ->get();
-
-        $rowsArray = $rows->pluck('counter_offer')->toArray();
+                              ['site_id', '=', $siteId],
+                              ['is_final_counter_offer', '=', 1]])
+                       ->exists();
 
 
-        return count(array_unique($rowsArray)) == 1 && count($rowsArray) == 2 ? true : false;
+
+        return $row ? 1 : 0;
 
 
     }

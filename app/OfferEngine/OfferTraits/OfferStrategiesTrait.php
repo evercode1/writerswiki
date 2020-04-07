@@ -5,19 +5,29 @@ namespace App\OfferEngine\OfferTraits;
 trait OfferStrategiesTrait
 {
 
+    public $range = 5;
+
     public function defaultOfferStrategy()
     {
 
         if ($this->offerAcceptable($this->offer, $this->optimumPrice)){
 
-            return $this->offer;
+            $counterOffer = $this->offer;
+
+            $finalOffer = 1;
+
+            return compact('counterOffer', 'finalOffer');
 
         }
 
         $counterOffer = $this->highPrice - $this->randomDecrement;
 
+        $counterOffer = $counterOffer > $this->optimumPrice ?
+            $counterOffer :  $this->optimumPrice - rand(1, $this->range);
 
-        return $counterOffer > $this->optimumPrice ?  $counterOffer :  $this->optimumPrice;
+        $finalOffer = 0;
+
+        return compact('counterOffer', 'finalOffer');
 
     }
 
@@ -29,17 +39,36 @@ trait OfferStrategiesTrait
 
         if ($this->buyerType == 'Reseller'){
 
-            return $counterOffer > $this->resellerPrice ?  $counterOffer :  $this->resellerPrice;
+            $counterOffer = $counterOffer > $this->resellerPrice ?
+                $counterOffer :  $this->resellerPrice - rand(1, $this->range);
+
+            $finalOffer = $counterOffer < $this->resellerPrice ?
+                $finalOffer = 1 :  $finalOffer = 0;
+
+            return compact('counterOffer', 'finalOffer');
 
         }
 
         if ($this->buyerType == 'Purchaser'){
 
-            return $counterOffer > $this->purchaserPrice ?  $counterOffer :  $this->purchaserPrice;
+            $counterOffer = $counterOffer > $this->purchaserPrice ?
+                $counterOffer :  $this->purchaserPrice - rand(1, $this->range);
+
+            $finalOffer = $counterOffer < $this->purchaserPrice ?
+                $finalOffer = 1 :  $finalOffer = 0;
+
+            return compact('counterOffer', 'finalOffer');
 
         }
 
-        return $counterOffer > $this->optimumPrice ?  $counterOffer :  $this->optimumPrice;
+        $counterOffer = $counterOffer > $this->optimumPrice ?
+            $counterOffer :  $this->optimumPrice - rand(1, $this->range);
+
+        $finalOffer = $counterOffer < $this->optimumPrice ?
+            $finalOffer = 1 :  $finalOffer = 0;
+
+
+        return compact('counterOffer', 'finalOffer');
 
     }
 
@@ -73,14 +102,23 @@ trait OfferStrategiesTrait
 
         if ($this->offerAcceptable($this->offer, $this->optimumPrice)){
 
-            return $this->offer;
+            $counterOffer = $this->offer;
+
+            $finalOffer = 1;
+
+            return compact('counterOffer', 'finalOffer');
 
         }
 
         $counterOffer = $this->highPrice - $this->randomDecrement;
 
+        $counterOffer = $counterOffer > $this->optimumPrice ?
+            $counterOffer :  $this->optimumPrice - rand(1, $this->range);
 
-        return $counterOffer > $this->optimumPrice ?  $counterOffer :  $this->optimumPrice;
+        $finalOffer = $counterOffer < $this->optimumPrice ?
+            $finalOffer = 1 :  $finalOffer = 0;
+
+        return compact('counterOffer', 'finalOffer');
 
     }
 
@@ -90,14 +128,24 @@ trait OfferStrategiesTrait
 
         if ($this->offerAcceptable($this->offer, $this->resellerPrice)){
 
-            return $this->offer;
+            $counterOffer = $this->offer;
+
+            $finalOffer = 1;
+
+            return compact('counterOffer', 'finalOffer');
 
         }
 
         $counterOffer = $this->setCounterOffer();
 
 
-        return $counterOffer > $this->resellerPrice ?  $counterOffer :  $this->resellerPrice;
+        $counterOffer = $counterOffer > $this->resellerPrice ?
+            $counterOffer :  $this->resellerPrice - rand(1, $this->range);
+
+        $finalOffer = $counterOffer < $this->resellerPrice ?
+            $finalOffer = 1 :  $finalOffer = 0;
+
+        return compact('counterOffer', 'finalOffer');
 
     }
 
@@ -107,14 +155,25 @@ trait OfferStrategiesTrait
 
         if ($this->offerAcceptable($this->offer, $this->volumePrice)){
 
-            return $this->offer;
+            $counterOffer = $this->offer;
+
+            $finalOffer = 1;
+
+            return compact('counterOffer', 'finalOffer');
 
         }
 
         $counterOffer = $this->setCounterOffer();
 
 
-        return $counterOffer > $this->volumePrice ?  $counterOffer :  $this->volumePrice;
+
+        $counterOffer = $counterOffer > $this->volumePrice ?
+            $counterOffer :  $this->volumePrice - rand(1, $this->range);
+
+        $finalOffer = $counterOffer < $this->volumePrice ?
+            $finalOffer = 1 :  $finalOffer = 0;
+
+        return compact('counterOffer', 'finalOffer');
 
     }
 
@@ -123,16 +182,24 @@ trait OfferStrategiesTrait
 
         if ($this->offerAcceptable($this->offer, $this->purchaserPrice)){
 
-            return $this->offer;
+            $counterOffer = $this->offer;
+
+            $finalOffer = 1;
+
+            return compact('counterOffer', 'finalOffer');
 
         }
 
 
         $counterOffer = $this->setCounterOffer();
 
+        $counterOffer = $counterOffer > $this->purchaserPrice ?
+            $counterOffer :  $this->purchaserPrice - rand(1, $this->range);
 
-        return $counterOffer > $this->purchaserPrice ?  $counterOffer :  $this->purchaserPrice;
+        $finalOffer = $counterOffer < $this->purchaserPrice ?
+            $finalOffer = 1 :  $finalOffer = 0;
 
+        return compact('counterOffer', 'finalOffer');
     }
 
 
@@ -142,7 +209,11 @@ trait OfferStrategiesTrait
 
         if ($this->offerAcceptable($this->offer, $this->optimumPrice)){
 
-            return $this->offer;
+            $counterOffer = $this->offer;
+
+            $finalOffer = 1;
+
+            return compact('counterOffer', 'finalOffer');
 
 
         }
@@ -150,35 +221,65 @@ trait OfferStrategiesTrait
         $counterOffer = $this->setCounterOffer();
 
 
-        return $counterOffer > $this->optimumPrice ?  $counterOffer :  $this->optimumPrice;
+        $counterOffer = $counterOffer > $this->optimumPrice ?
+            $counterOffer :  $this->optimumPrice - rand(1, $this->range);
+
+        $finalOffer = $counterOffer < $this->optimumPrice ?
+            $finalOffer = 1 :  $finalOffer = 0;
+
+        return compact('counterOffer', 'finalOffer');
 
     }
 
     public function maximumStrategyAdvanced()
     {
 
-        if($this->offer > $this->optimumPrice){
+        if ($this->offerAcceptable($this->offer, $this->optimumPrice)){
 
-            return $this->offer;
+            $counterOffer = $this->offer;
+
+            $finalOffer = 1;
+
+            return compact('counterOffer', 'finalOffer');
+
         }
 
         $counterOffer = $this->setCounterOffer();
 
 
-        if ($counterOffer >= $this->optimumPrice){
+        if ($counterOffer === $this->previousCounterOffer){
 
-            return $counterOffer;
+            $counterOffer = $counterOffer - rand(1, $this->range);
+
+            $finalOffer = $counterOffer < $this->maximumPrice ? 1 : 0;
+
+            return compact('counterOffer', 'finalOffer');
 
         }
+
 
         if ($this->previousCounterOffer < $this->maximumPrice){
 
-            return $this->optimumPrice;
+
+           $counterOffer = $this->optimumPrice - rand(1, $this->range);
+
+           $counterOffer = $counterOffer >= $this->previousCounterOffer ?
+
+               $this->previousCounterOffer - rand(1, $this->range) : $counterOffer;
+
+            $finalOffer = $counterOffer < $this->maximumPrice ? 1 : 0;
+
+            return compact('counterOffer', 'finalOffer');
 
         }
 
 
-        return $counterOffer >= $this->maximumPrice ?  $counterOffer :  $this->maximumPrice;
+        $counterOffer = $counterOffer >= $this->maximumPrice ?
+            $counterOffer :  $this->maximumPrice - rand(1, $this->range);
+
+        $finalOffer = $counterOffer < $this->maximumPrice ? 1 : 0;
+
+        return compact('counterOffer', 'finalOffer');
 
 
     }
@@ -194,6 +295,7 @@ trait OfferStrategiesTrait
 
         return $counterOffer;
     }
+
 
 
 

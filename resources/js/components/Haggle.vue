@@ -142,7 +142,7 @@
 
         <div class="row" v-if="payMessage !== 0 && loader === 0">
 
-            <div class="row"><a href="#">{{ payMessage }}: ${{ counterOffer }}</a></div>
+            <div class="row"><a href="#">{{ payMessage }} ${{ counterOffer }}</a></div>
 
             <div class="row mt-20"><button class="btn-small">Pay Now</button></div>
 
@@ -308,10 +308,9 @@
 
                     axios.get('/haggle-data', { params: { offer: offer, scenario: this.scenario }}).then( (response) => {
 
-
                         this.loader = 1;
 
-                        setTimeout(() => { this.loader = 0;  }, 3500);
+                        setTimeout(() => { this.loader = 0;  }, 2500);
 
                         this.counterOffer = response.data.counterOffer;
 
