@@ -293,6 +293,8 @@ trait OfferStrategiesTrait
 
         $counterOffer = $this->capCounterOffer($counterOffer, $this->previousCounterOffer);
 
+        $counterOffer = $counterOffer < $this->offer ? $this->offer : $counterOffer;
+
         return $counterOffer;
     }
 
