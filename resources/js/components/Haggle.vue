@@ -206,6 +206,7 @@
                 <li>optimum price:  ${{ scenarioData.optimumPrice }}</li>
                 <li>maximum price:  ${{ scenarioData.maximumPrice }}</li>
                 <li>purchaser price:  ${{ scenarioData.purchaserPrice }}</li>
+                <li>spender price:  ${{ scenarioData.spenderPrice }}</li>
                 <li>reseller price:  ${{ scenarioData.resellerPrice }}</li>
                 <li>bottom price:  ${{ scenarioData.bottomPrice }}</li>
                 <li>volume price:  ${{ scenarioData.volumePrice }}</li>

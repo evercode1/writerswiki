@@ -36,20 +36,20 @@ class RandomizeCounterOfferDecrement
 
             if ($this->offer > 400){
 
-                return round($this->offer * .30) + $this->range;
+                return round($this->offer * .30) + rand(1, $this->range);
             }
 
-            return round($this->offer * .60) + $this->range;
+            return round($this->offer * .60) + rand(1, $this->range);
         }
 
         if ($this->offer >= $this->previousOffer * 1.75){
 
             if ($this->offer > 400){
 
-                return round($this->offer * .25) + $this->range;
+                return round($this->offer * .25) + rand(1, $this->range);
             }
 
-            return round($this->offer * .50) + $this->range;
+            return round($this->offer * .50) + rand(1, $this->range);
 
         }
 
@@ -57,10 +57,10 @@ class RandomizeCounterOfferDecrement
 
             if ($this->offer > 400){
 
-                return round($this->offer * .20) + $this->range;
+                return round($this->offer * .20) + rand(1, $this->range);
             }
 
-            return round($this->offer * .40) + $this->range;
+            return round($this->offer * .40) + rand(1, $this->range);
 
         }
 
@@ -68,10 +68,10 @@ class RandomizeCounterOfferDecrement
 
             if ($this->offer > 400){
 
-                return round($this->offer * .20) + $this->range;
+                return round($this->offer * .20) + rand(1, $this->range);
             }
 
-            return round($this->offer * .30) + $this->range;
+            return round($this->offer * .30) + rand(1, $this->range);
 
         }
 
