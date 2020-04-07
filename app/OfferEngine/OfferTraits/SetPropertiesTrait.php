@@ -20,6 +20,7 @@ trait SetPropertiesTrait
     public $previousCounterOffer;
     public $highPrice;
     public $optimumPrice;
+    public $spenderPrice;
     public $resellerPrice;
     public $bottomPrice;
     public $volumePrice;

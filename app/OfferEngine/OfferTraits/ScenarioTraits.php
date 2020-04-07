@@ -30,6 +30,13 @@ trait ScenarioTraits
 
                 return $scenario;
 
+            case 'Spender':
+
+                $scenario = $this->spender();
+
+
+                return $scenario;
+
             case 'Reseller':
 
                 $scenario = $this->reseller();
@@ -63,6 +70,7 @@ trait ScenarioTraits
                 'currentSales' => 6,
                 'bottomPrice' => 37,
                 'purchaserPrice' => 45,
+                'spenderPrice' => 43,
                 'volumePrice' => 41,
                 'cost' => 25,
                 'highPrice' => 101,
@@ -95,6 +103,7 @@ trait ScenarioTraits
                   'maximumPrice' => 757,
                   'resellerPrice' => 423,
                   'purchaserPrice' => 554,
+                  'spenderPrice' => 475,
                   'volumePrice' => 405,
                   'allowedOffersCount' => 10,
                   'customerSalesHistoryCount' => 4,
@@ -105,6 +114,37 @@ trait ScenarioTraits
 
 
     }
+
+    public function spender()
+    {
+        return   ['scenario' => 'Spender',
+                  'siteId' => 1,
+                  'buyerType' => 'Spender',
+                  'userId' => 133,
+                  'userName' => 'Whale',
+                  'itemId' => 4471,
+                  'itemDescription' => 'LG .50 Carat Solitaire Ring',
+                  'salesTarget' => 2,
+                  'currentSales' => 3,
+                  'bottomPrice' => 487,
+                  'cost' => 430,
+                  'highPrice' => 1229,
+                  'optimumPrice' => 861,
+                  'maximumPrice' => 943,
+                  'resellerPrice' => 588,
+                  'purchaserPrice' => 761,
+                  'spenderPrice' => 661,
+                  'volumePrice' => 521,
+                  'allowedOffersCount' => 10,
+                  'customerSalesHistoryCount' => 8,
+                  'customerSalesHistoryValue' => 1600,
+                  'description' => 'Our Spender likes to buy on our site.  They are offering on a mid cost item to add to their collection.'];
+
+
+
+
+    }
+
 
     public function reseller()
     {
@@ -125,6 +165,7 @@ trait ScenarioTraits
                 'resellerPrice' => 1769,
                 'volumePrice' => 1483,
                 'purchaserPrice' => 1927,
+                'spenderPrice' => 1821,
                 'allowedOffersCount' => 10,
                 'customerSalesHistoryCount' => 11,
                 'customerSalesHistoryValue' => 3100,

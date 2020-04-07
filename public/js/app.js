@@ -7247,6 +7247,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Haggle",
   data: function data() {
@@ -49033,6 +49034,8 @@ var render = function() {
                   _c("option", [_vm._v("Newbie")]),
                   _vm._v(" "),
                   _c("option", [_vm._v("Purchaser")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Spender")]),
                   _vm._v(" "),
                   _c("option", [_vm._v("Reseller")])
                 ]

@@ -173,6 +173,7 @@
                     <option disabled value="">Please select one</option>
                     <option>Newbie</option>
                     <option>Purchaser</option>
+                    <option>Spender</option>
                     <option>Reseller</option>
                 </select>
 
