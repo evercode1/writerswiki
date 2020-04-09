@@ -42,8 +42,7 @@ trait OfferStrategiesTrait
             $counterOffer = $counterOffer > $this->resellerPrice ?
                 $counterOffer :  $this->floor('resellerPrice');
 
-            $finalOffer = $counterOffer < $this->resellerPrice ?
-                $finalOffer = 1 :  $finalOffer = 0;
+            $finalOffer = $counterOffer < $this->resellerPrice ? 1 : 0;
 
             return compact('counterOffer', 'finalOffer');
 
@@ -54,8 +53,7 @@ trait OfferStrategiesTrait
             $counterOffer = $counterOffer > $this->purchaserPrice ?
                 $counterOffer :  $this->floor('purchaserPrice');
 
-            $finalOffer = $counterOffer < $this->purchaserPrice ?
-                $finalOffer = 1 :  $finalOffer = 0;
+            $finalOffer = $counterOffer < $this->purchaserPrice ? 1 : 0;
 
             return compact('counterOffer', 'finalOffer');
 
@@ -64,8 +62,7 @@ trait OfferStrategiesTrait
         $counterOffer = $counterOffer > $this->optimumPrice ?
             $counterOffer :  $this->floor('optimumPrice');
 
-        $finalOffer = $counterOffer < $this->optimumPrice ?
-            $finalOffer = 1 :  $finalOffer = 0;
+        $finalOffer = $counterOffer < $this->optimumPrice ? 1 : 0;
 
 
         return compact('counterOffer', 'finalOffer');
@@ -75,7 +72,7 @@ trait OfferStrategiesTrait
     public function previousCounterOfferStrategyAdvanced()
     {
 
-        if ($this->sellingAttitude == 'Volume'){
+        if ($this->sellingMode == 'volume'){
 
             return$this->volumeStrategy();
 
@@ -123,8 +120,7 @@ trait OfferStrategiesTrait
         $counterOffer = $counterOffer > $this->optimumPrice ?
             $counterOffer :  $this->floor('optimumPrice');
 
-        $finalOffer = $counterOffer < $this->optimumPrice ?
-            $finalOffer = 1 :  $finalOffer = 0;
+        $finalOffer = $counterOffer < $this->optimumPrice ? 1 : 0;
 
         return compact('counterOffer', 'finalOffer');
 
@@ -150,8 +146,7 @@ trait OfferStrategiesTrait
         $counterOffer = $counterOffer > $this->resellerPrice ?
             $counterOffer :  $this->floor('resellerPrice');
 
-        $finalOffer = $counterOffer < $this->resellerPrice ?
-            $finalOffer = 1 :  $finalOffer = 0;
+        $finalOffer = $counterOffer < $this->resellerPrice ? 1 : 0;
 
         return compact('counterOffer', 'finalOffer');
 
@@ -178,8 +173,7 @@ trait OfferStrategiesTrait
         $counterOffer = $counterOffer > $this->volumePrice ?
             $counterOffer :  $this->floor('volumePrice');
 
-        $finalOffer = $counterOffer < $this->volumePrice ?
-            $finalOffer = 1 :  $finalOffer = 0;
+        $finalOffer = $counterOffer < $this->volumePrice ? 1 : 0;
 
         return compact('counterOffer', 'finalOffer');
 
@@ -204,8 +198,7 @@ trait OfferStrategiesTrait
         $counterOffer = $counterOffer > $this->purchaserPrice ?
             $counterOffer :  $this->floor('purchaserPrice');
 
-        $finalOffer = $counterOffer < $this->purchaserPrice ?
-            $finalOffer = 1 :  $finalOffer = 0;
+        $finalOffer = $counterOffer < $this->purchaserPrice ? 1 : 0;
 
         return compact('counterOffer', 'finalOffer');
     }
@@ -229,8 +222,7 @@ trait OfferStrategiesTrait
         $counterOffer = $counterOffer > $this->spenderPrice ?
             $counterOffer :  $this->floor('spenderPrice');
 
-        $finalOffer = $counterOffer < $this->spenderPrice ?
-            $finalOffer = 1 :  $finalOffer = 0;
+        $finalOffer = $counterOffer < $this->spenderPrice ? 1 : 0;
 
         return compact('counterOffer', 'finalOffer');
     }
@@ -257,8 +249,7 @@ trait OfferStrategiesTrait
         $counterOffer = $counterOffer > $this->optimumPrice ?
             $counterOffer :  $this->floor('optimumPrice');
 
-        $finalOffer = $counterOffer < $this->optimumPrice ?
-            $finalOffer = 1 :  $finalOffer = 0;
+        $finalOffer = $counterOffer < $this->optimumPrice ? 1 : 0;
 
         return compact('counterOffer', 'finalOffer');
 

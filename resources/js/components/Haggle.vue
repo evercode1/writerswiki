@@ -2,157 +2,193 @@
 
     <div class="container">
 
+        <!-- reset button -->
+
         <h1 class="flow-text"><a href="/haggle"><button class="btn-small">Reset</button></a></h1>
 
-        <div class="mt-20" v-if="showFullHistory === 0">
+        <!-- end reset button -->
 
-            <button @click="showMetaHistory()" class="btn-small">Show Meta Data</button>
+        <!-- show meta data -->
 
-        </div>
+            <div class="mt-20" v-if="showFullHistory === 0">
 
-        <div v-if="showFullHistory === 1">
+                <button @click="showMetaHistory()" class="btn-small">Show Meta Data</button>
 
-            <button @click="hideMetaHistory()" class="btn-small">Hide Meta Data</button>
+            </div>  <!-- end meta data button -->
 
-        </div>
+        <!-- hide meta data -->
+
+            <div v-if="showFullHistory === 1">
+
+                <button @click="hideMetaHistory()" class="btn-small">Hide Meta Data</button>
+
+            </div>  <!-- end hide meta data -->
+
+
+        <!-- User block -->
 
         <div class="row mt-20">
 
         <ul>
-        <li>User Id: {{ scenarioData.userId }} </li>
-        <li>Username: {{ scenarioData.userName }}</li>
+        <li>User Id: {{ userData.userId }} </li>
+        <li>Username: {{ userData.userName }}</li>
         <li>Item Id:  {{ scenarioData.itemId }}</li>
         <li>Item Description:  {{ scenarioData.itemDescription }}</li>
         </ul>
 
-        </div>
+        </div>  <!-- end User block-->
+
+        <!-- begin row with offer history -->
 
         <div class="row mt-20">
 
+            <!-- show offer history -->
 
+             <div  v-if="showFullHistory === 1 && loader === 0">
 
-            <div  v-if="showFullHistory === 1 && loader === 0">
-
-                    <div class="row mt-20">Offer History</div>
-
-
-            <ul>
-
-                <li v-for="counter in counterData">Offer:  ${{ counter.offer }} is a {{ counter.offerQuality }} offer - The Counter Offer is: ${{ counter.counterOffer }} </li>
-
-            </ul>
-
-
-
-
-        </div>
-
-            <div v-if="loader === 1 && showFullHistory === 1">
-                <p>Thinking about your offer of ${{ currentOffer }}...</p>
-                <div class="loader"></div>
-            </div>
-
-            <div  v-if="showFullHistory === 0">
-
-                <div v-if="loader === 1">
-                    <p>Thinking about your offer of ${{ currentOffer }}...</p>
-                <div class="loader"></div>
-                </div>
-                <div v-if="declined === 1">
-
-
-                <div v-if="counterOffer > 0 && counterOffer !== currentOffer">
+                        <div class="row mt-20">Offer History</div>
 
                 <ul>
 
-                    <li >The Last Counter Offer was: ${{ counterOffer }} </li>
+                    <li v-for="counter in counterData">Offer:  ${{ counter.offer }} is a {{ counter.offerQuality }} offer - The Counter Offer is: ${{ counter.counterOffer }} </li>
 
                 </ul>
 
-                </div>
 
-                </div>
+            </div><!-- end full offer history -->
 
-            </div>
+            <!-- show loader in full offer history -->
 
-        </div>
+            <div v-if="loader === 1 && showFullHistory === 1">
+
+                <p>Thinking about your offer of ${{ currentOffer }}...</p>
+                <div class="loader"></div>
+
+            </div>  <!-- end loader with full history and meta data -->
+
+            <!-- show offer info without full history -->
+
+            <div  v-if="showFullHistory === 0">
+
+                <!-- show loader without full history -->
+
+                <div v-if="loader === 1">
+
+                    <p>Thinking about your offer of ${{ currentOffer }}...</p>
+
+                <div class="loader"></div>
+
+                </div>  <!-- end loader without full history and meta data -->
+
+                <!-- show last counter offer if declined -->
+
+                <div v-if="declined === 1">
+
+
+                    <!-- previous offer -->
+
+                    <div v-if="counterOffer > 0 && counterOffer !== currentOffer">
+
+                        <ul>
+
+                            <li >The Last Counter Offer was: ${{ counterOffer }} </li>
+
+                        </ul>
+
+                    </div>  <!-- end previous offer history -->
+
+                </div>  <!-- end if declined -->
+
+            </div>  <!-- end loader and previous offer without full history -->
+
+        </div>  <!-- end row with offer history -->
+
+        <!-- show if scenario not set -->
 
         <div v-if="scenarioData.cost > 0">
 
+        <!-- show if counter offer doesn't match offer -->
 
+        <div v-if="isCounterOfferMatchedToUserOffer === 0">
 
-            <div v-if="isCounterOfferMatchedToUserOffer === 0">
+            <!-- counter offer block -->
 
                 <div v-if="declined === 0">
 
-        <div class="row" v-if="isCounterOfferFinal === 0 && loader === 0">
+                    <!-- show final offer -->
+
+                    <div class="row" v-if="isCounterOfferFinal === 0 && loader === 0">
+
+                        <div>Our Offer: ${{ counterOffer }} </div>
+
+                    </div>
 
 
+                    <!-- show accept/decline buttons -->
 
+                        <div v-if="loader ===0">
 
-            <div>Our Offer: ${{ counterOffer }} </div>
+                            <div class="row" v-if="counterOffer > 0  && payMessage === 0 && isCounterOfferFinal !== 1">
 
+                                <button @click="accept()" class="btn-small">Accept</button>
+                                <button @click="decline()" class="btn-small">Decline</button>
 
-        </div>
+                            </div>
 
+                        </div>  <!-- end accept/decline buttons -->
 
-                    <div v-if="loader ===0">
-
-        <div class="row" v-if="counterOffer > 0  && payMessage === 0 && isCounterOfferFinal !== 1">
-
-            <button @click="accept()" class="btn-small">Accept</button>
-            <button @click="decline()" class="btn-small">Decline</button>
-
-        </div>
-                </div>
-
-                </div>
+               </div>  <!-- end counter offer block -->
 
         <div class="row" v-if="isCounterOfferFinal === 0  && payMessage === 0 && declined === 1">
 
             <div class="left mt-20">
+
                   Make Offer:
+
                 <input v-model="newOffer" class="number-input">
 
                 <button @click="offer(newOffer, currentOffer)" class="btn-small">Offer</button>
 
             </div>
 
-        </div>
 
-                <div class="red-text"   v-if="offerError === 1">{{ errorMessage }}</div>
+        </div> <!-- end make offer form -->
+
+
+        <div class="red-text"   v-if="offerError === 1">
+
+            {{ errorMessage }}
+
+        </div> <!-- end error block -->
+
 
         <div class="row" v-if="isCounterOfferFinal !== 0 && payMessage === 0 && loader === 0">
 
             <div>
 
-           Our final offer is ${{ counterOffer }}
+                    Our final offer is ${{ counterOffer }}
 
-                <div class="mt-20">
-                    <button @click="accept(counterOffer)" class="btn-small">Accept</button>
-                    <button @click="decline()" class="btn-small">Decline</button>
+                        <div class="mt-20">
+                            <button @click="accept(counterOffer)" class="btn-small">Accept</button>
+                            <button @click="decline()" class="btn-small">Decline</button>
 
-                </div>
-
-
+                        </div>
 
             </div>
 
-        </div>
+        </div>  <!-- end final offer block -->
 
-        <div class="row" v-if="payMessage !== 0 && loader === 0">
+            <div class="row" v-if="payMessage !== 0 && loader === 0">
 
-            <div class="row"><a href="#">{{ payMessage }} ${{ counterOffer }}</a></div>
+                <div class="row"><a href="#">{{ payMessage }} ${{ counterOffer }}</a></div>
 
-            <div class="row mt-20"><button class="btn-small">Pay Now</button></div>
+                <div class="row mt-20"><button class="btn-small">Pay Now</button></div>
 
+            </div>
 
+        </div>  <!-- end if offer not matched -->
 
-        </div>
-
-        </div>
-
-        </div>
+        </div>  <!-- end if scenario set -->
 
         <div v-if="isCounterOfferMatchedToUserOffer === 1 && loader === 0">
 
@@ -160,8 +196,7 @@
 
             <div class="row mt-20"><button class="btn-small">Pay Now</button></div>
 
-
-        </div>
+        </div>  <!-- end accepted offer block -->
 
         <div class="row" v-if="showForm">
 
@@ -181,26 +216,25 @@
             </div>
 
 
-        <div class="row">
+            <div class="row">
 
-            <button @click="getScenarioData(scenario)" class="btn-small">Get Scenario</button>
+                <button @click="getScenarioData(scenario)" class="btn-small">Get Scenario</button>
 
-
-        </div>
-
+            </div>
 
 
-        </div>
 
+        </div>  <!-- end show scenario form -->
 
 
         <div v-if="showFullHistory === 1" class="row mt-100">
+
             <h1 class="flow-text">Offer Meta Data</h1>
 
             <ul>
                 <li>scenario:  {{ scenarioData.scenario }}</li>
                 <li>site id:  {{ scenarioData.siteId }}</li>
-                <li>buyer type:  {{ scenarioData.buyerType }}</li>
+                <li>buyer type:  {{ userData.buyerType }}</li>
                 <li>item cost:  ${{ scenarioData.cost }}</li>
                 <li>high price:  ${{ scenarioData.highPrice }}</li>
                 <li>optimum price:  ${{ scenarioData.optimumPrice }}</li>
@@ -211,51 +245,53 @@
                 <li>bottom price:  ${{ scenarioData.bottomPrice }}</li>
                 <li>volume price:  ${{ scenarioData.volumePrice }}</li>
                 <li>allowed offers Count:  {{ scenarioData.allowedOffersCount }}</li>
-                <li>sales Target: {{ scenarioData.salesTarget }}</li>
-                <li>current sales:  {{ scenarioData.currentSales }}</li>
-                <li>Customer Sales History Count:  {{ scenarioData.customerSalesHistoryCount }}</li>
-                <li>Customer Sales History Value:  {{ scenarioData.customerSalesHistoryValue }}</li>
-
-                <li>description:  {{ scenarioData.description }}</li>
+                <li>selling mode: {{ scenarioData.sellingMode }}</li>
+                <li>description:  {{ userData.description }}</li>
 
             </ul>
 
 
-
-        </div>
-
+        </div>  <!-- end meta data -->
 
 
-
-
-
-
-
-
-    </div>
+    </div> <!-- end container -->
 
 </template>
 
 <script>
+
+    const newbieData = require('../scenarios/NewbieData');
+    const purchaserData = require('../scenarios/PurchaserData');
+    const spenderData = require('../scenarios/SpenderData');
+    const resellerData = require('../scenarios/ResellerData');
+    const newbie = require('../users/Newbie');
+    const purchaser = require('../users/Purchaser');
+    const reseller = require('../users/Reseller');
+    const spender = require('../users/Spender');
+
     export default {
         name: "Haggle",
+
+        props: ['newbieData',
+                'purchaserData',
+                'spenderData',
+                'resellerData',
+                'newbie',
+                'purchaser',
+                'reseller',
+                'spender'],
 
         data: function () {
             return {
 
                 acceptMessage: 'Congratulations, you won for ',
-                bottomPrice: null,
                 cost: 0,
                 counterData: [],
                 counterOffer: 0,
                 currentOffer: 0,
-                currentSales:  null,
-                customerSalesHistoryValue: null,
-                customerSalesHistoryCount: null,
                 description:  null,
                 declined: 1,
                 errorMessage:  'Your offer must be higher than your last offer.',
-                highPrice: null,
                 isCounterOfferFinal: 0,
                 isCounterOfferMatchedToUserOffer: 0,
                 loader: 0,
@@ -265,14 +301,11 @@
                 offerQuality: null,
                 optimumPrice: null,
                 payMessage: 0,
-                previousOfferSessionForSameItem: null,
-                previousOfferSessionForSameItemAmount: null,
-                previousCounterOfferSessionForSameItemAmount: null,
-                salesTarget:  null,
                 showForm: 1,
                 showFullHistory: 0,
                 scenario: null,
-                scenarioData: []
+                scenarioData: [],
+                userData: []
 
 
             }
@@ -308,7 +341,26 @@
 
 
 
-                    axios.get('/haggle-data', { params: { offer: offer, scenario: this.scenario }}).then( (response) => {
+                    axios.get('/haggle-data', { params: { offer: offer,
+                                                          itemId: this.scenarioData.itemId,
+                                                          itemDescription: this.scenarioData.itemDescription,
+                                                          scenario: this.scenarioData.scenario,
+                                                          siteId: this.scenarioData.siteId,
+                                                          cost: this.scenarioData.cost,
+                                                          highPrice: this.scenarioData.highPrice,
+                                                          optimumPrice: this.scenarioData.optimumPrice,
+                                                          maximumPrice: this.scenarioData.maximumPrice,
+                                                          purchaserPrice: this.scenarioData.purchaserPrice,
+                                                          spenderPrice: this.scenarioData.spenderPrice,
+                                                          resellerPrice: this.scenarioData.resellerPrice,
+                                                          bottomPrice:  this.scenarioData.bottomPrice,
+                                                          volumePrice: this.scenarioData.volumePrice,
+                                                          allowedOffersCount: this.scenarioData.allowedOffersCount,
+                                                          sellingMode: this.scenarioData.sellingMode,
+                                                          userId: this.userData.userId,
+                                                          buyerType: this.userData.buyerType
+
+                                               }}).then( (response) => {
 
                         this.loader = 1;
 
@@ -354,14 +406,48 @@
 
             getScenarioData: function(scenario){
 
+
                 this.showForm =0;
 
-                axios.get('/haggle-scenario?scenario=' + scenario).then( (response) => {
+                switch(scenario){
 
-                    this.scenarioData = response.data;
+                    case 'Newbie' :
+
+                        this.scenarioData = newbieData;
+                        this.userData = newbie;
+                        this.declined = 1;
+
+                        break;
+
+                    case 'Purchaser' :
+
+                        this.scenarioData = purchaserData;
+                        this.userData = purchaser;
+                        this.declined = 1;
+
+                        break;
+
+                    case 'Spender' :
+
+                        this.scenarioData = spenderData;
+                        this.userData = spender;
+                        this.declined = 1;
+
+                        break;
+
+                    case 'Reseller' :
+
+                        this.scenarioData = resellerData;
+                        this.userData = reseller;
+                        this.declined = 1;
+
+                        break;
+
+                }
 
 
-                });
+
+
 
                 axios.get('/haggle-clear-offers').then( (response) => {
 
@@ -370,30 +456,6 @@
                 });
 
 
-
-            },
-
-            setCost: function(cost){
-
-               this.cost = cost;
-
-            },
-
-            setHighPrice: function(highPrice){
-
-                this.highPrice = highPrice;
-
-            },
-
-            setOptimumPrice: function(optimumPrice){
-
-                this.optimumPrice = optimumPrice;
-
-            },
-
-            setBottomPrice: function(bottomPrice){
-
-                this.bottomPrice = bottomPrice;
 
             },
 

@@ -7,32 +7,31 @@ use App\OfferEngine\RandomizeCounterOfferDecrement;
 trait SetPropertiesTrait
 {
 
-    public $scenario = [];
-    public $siteId;
-    public $sellingAttitude;
+    public $allowedOffersCount;
+    public $bottomPrice;
     public $buyerType;
-    public $userId;
-    public $itemId;
-    public $offer;
+    public $config;
     public $cost;
-    public $offerQuality;
     public $counterOffer;
-    public $previousCounterOffer;
     public $highPrice;
+    public $itemId;
+    public $maximumPrice;
+    public $offer;
+    public $offerQuality;
+    public $offerWithinOfferCountLimit;
+    public $previousCounterOffer;
+    public $previousOfferCount;
+    public $purchaserPrice;
     public $optimumPrice;
     public $spenderPrice;
-    public $resellerPrice;
-    public $bottomPrice;
-    public $volumePrice;
-    public $purchaserPrice;
-    public $maximumPrice;
-    public $allowedOffersCount;
-    public $currentSales;
-    public $salesTarget;
-    public $config;
-    public $offerWithinOfferCountLimit;
     public $randomDecrement;
-    public $previousOfferCount;
+    public $resellerPrice;
+    public $scenario = [];
+    public $sellingMode;
+    public $siteId;
+    public $userId;
+    public $volumePrice;
+
 
     public function setProperties($array): void
     {

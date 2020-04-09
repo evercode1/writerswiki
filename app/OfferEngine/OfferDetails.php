@@ -2,17 +2,14 @@
 
 namespace App\OfferEngine;
 
-use App\OfferEngine\OfferTraits\ScenarioTraits;
 use App\OfferEngine\OfferTraits\SetPropertiesTrait;
 use Illuminate\Http\Request;
 
 class OfferDetails
 {
 
-    use ScenarioTraits, SetPropertiesTrait;
+    use SetPropertiesTrait;
 
-
-    public $scenario = [];
     public $config;
 
 
@@ -32,31 +29,17 @@ class OfferDetails
     public function setConfig(Request $request): void
     {
 
-
-        $this->scenario = $this->createScenario($request);
-
-        $this->setProperties($this->scenario);
-
-        $this->offer = $request->offer;
+        $this->setProperties($request);
 
         $this->previousCounterOffer = $this->getPreviousCounterOffer();
-
-        $this->sellingAttitude = $this->getSellingAttitude();
 
         $this->offerQuality = $this->getOfferQuality();
 
         $this->config = $this->makeConfig();
 
-    }
-
-    public function createScenario(Request $request)
-    {
-
-
-        return $this->mockScenario($request);
-
 
     }
+
 
 
 
@@ -74,11 +57,23 @@ class OfferDetails
 
     }
 
-
-    public function getSellingAttitude()
+    public function setProperties($request): void
     {
 
-        return SellingAttitude::setSellingAttitude($this->currentSales, $this->salesTarget);
+        foreach($request->all() as $propertyName => $propertyValue) {
+
+            if (property_exists($this, $propertyName)) {
+
+                if ($propertyName != 'config') {
+
+                    $this->$propertyName = $propertyValue;
+
+                }
+
+            }
+
+        }
+
 
     }
 

@@ -5,20 +5,20 @@ namespace App\Http\Controllers;
 use App\OfferEngine\CounterOffer;
 use App\OfferEngine\OfferTraits\CounterOfferFinalCheckTrait;
 use App\OfferEngine\OfferTraits\UpdateOfferAsAcceptedAndFinalTrait;
-use App\OfferEngine\OfferTraits\ScenarioTraits;
 use Illuminate\Http\Request;
 use App\Offer;
 use App\OfferEngine\OfferDetails;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 
 class HaggleController extends Controller
 {
-    use ScenarioTraits, CounterOfferFinalCheckTrait, UpdateOfferAsAcceptedAndFinalTrait;
+    use CounterOfferFinalCheckTrait, UpdateOfferAsAcceptedAndFinalTrait;
 
     public $offerDetails;
-    public $counterOfferAndFinalOfferStatus;
+    public $negotiationResult;
     public $counterOffer;
     public $isCounterOfferFinal;
     public $isCounterOfferMatchedToUserOffer;
@@ -44,13 +44,13 @@ class HaggleController extends Controller
 
         $negotiate = new CounterOffer($this->offerDetails);
 
-        $this->counterOfferAndFinalOfferStatus = $negotiate->runCounterOffer();
+        $this->negotiationResult = $negotiate->runCounterOffer();
 
         $this->setCounterOfferAndFinalStatus();
 
         $this->isMatchedAndAcceptedOffer();
 
-        $this->saveOfferAndCounterOffer();
+        $this->saveNegotiationDetails();
 
 
         return ['counterOffer' => $this->counterOffer,
@@ -64,9 +64,9 @@ class HaggleController extends Controller
     public function setCounterOfferAndFinalStatus()
     {
 
-        $this->counterOffer = $this->counterOfferAndFinalOfferStatus['counterOffer'];
+        $this->counterOffer = $this->negotiationResult['counterOffer'];
 
-        $this->isCounterOfferFinal = $this->counterOfferAndFinalOfferStatus['finalOffer'];
+        $this->isCounterOfferFinal = $this->negotiationResult['finalOffer'];
 
 
 
@@ -100,19 +100,19 @@ class HaggleController extends Controller
 
 
 
-    public function saveOfferAndCounterOffer(): void
+    public function saveNegotiationDetails(): void
     {
 
-        $offer = Offer::create(['user_id'        => $this->offerDetails['userId'],
-                                'item_id'        => $this->offerDetails['itemId'],
+        $offer = Offer::create(['user_id'        => (int) $this->offerDetails['userId'],
+                                'item_id'        => (int) $this->offerDetails['itemId'],
                                 'offer'          => (int) $this->offerDetails['offer'],
-                                'counter_offer'  => $this->counterOffer,
+                                'counter_offer'  => (int) $this->counterOffer,
                                 'is_accepted'    => $this->isAccepted,
                                 'is_final_counter_offer' => $this->isCounterOfferFinal,
                                 'is_counter_offer_matched_to_user_offer' => $this->isCounterOfferMatchedToUserOffer,
                                 'offer_quality'  => $this->offerDetails['offerQuality'],
-                                'offer_quality_id' => $this->formatOfferQualityId(),
-                                'site_id' => $this->offerDetails['siteId']]);
+                                'offer_quality_id' => (int) $this->formatOfferQualityId(),
+                                'site_id' => (int) $this->offerDetails['siteId']]);
 
         $offer->save();
     }
@@ -131,9 +131,15 @@ class HaggleController extends Controller
     public function isMatchedAndAcceptedOffer()
     {
 
-        $this->isCounterOfferMatchedToUserOffer = $this->counterOffer === $this->offerDetails['offer'] ? 1 : 0;
+        $this->isCounterOfferMatchedToUserOffer = $this->counterOffer == $this->offerDetails['offer'] ? 1 : 0;
 
-        $this->isAccepted = $this->counterOffer === $this->offerDetails['offer'] ? 1 : 0;
+        $this->isAccepted = $this->counterOffer == $this->offerDetails['offer'] ? 1 : 0;
+
+    }
+
+    public function truncateOffers()
+    {
+        DB::table('offers')->truncate();
 
     }
 

@@ -7249,23 +7249,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var newbieData = __webpack_require__(/*! ../scenarios/NewbieData */ "./resources/js/scenarios/NewbieData.js");
+
+var purchaserData = __webpack_require__(/*! ../scenarios/PurchaserData */ "./resources/js/scenarios/PurchaserData.js");
+
+var spenderData = __webpack_require__(/*! ../scenarios/SpenderData */ "./resources/js/scenarios/SpenderData.js");
+
+var resellerData = __webpack_require__(/*! ../scenarios/ResellerData */ "./resources/js/scenarios/ResellerData.js");
+
+var newbie = __webpack_require__(/*! ../users/Newbie */ "./resources/js/users/Newbie.js");
+
+var purchaser = __webpack_require__(/*! ../users/Purchaser */ "./resources/js/users/Purchaser.js");
+
+var reseller = __webpack_require__(/*! ../users/Reseller */ "./resources/js/users/Reseller.js");
+
+var spender = __webpack_require__(/*! ../users/Spender */ "./resources/js/users/Spender.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Haggle",
+  props: ['newbieData', 'purchaserData', 'spenderData', 'resellerData', 'newbie', 'purchaser', 'reseller', 'spender'],
   data: function data() {
     return {
       acceptMessage: 'Congratulations, you won for ',
-      bottomPrice: null,
       cost: 0,
       counterData: [],
       counterOffer: 0,
       currentOffer: 0,
-      currentSales: null,
-      customerSalesHistoryValue: null,
-      customerSalesHistoryCount: null,
       description: null,
       declined: 1,
       errorMessage: 'Your offer must be higher than your last offer.',
-      highPrice: null,
       isCounterOfferFinal: 0,
       isCounterOfferMatchedToUserOffer: 0,
       loader: 0,
@@ -7275,14 +7309,11 @@ __webpack_require__.r(__webpack_exports__);
       offerQuality: null,
       optimumPrice: null,
       payMessage: 0,
-      previousOfferSessionForSameItem: null,
-      previousOfferSessionForSameItemAmount: null,
-      previousCounterOfferSessionForSameItemAmount: null,
-      salesTarget: null,
       showForm: 1,
       showFullHistory: 0,
       scenario: null,
-      scenarioData: []
+      scenarioData: [],
+      userData: []
     };
   },
   methods: {
@@ -7306,7 +7337,23 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/haggle-data', {
         params: {
           offer: offer,
-          scenario: this.scenario
+          itemId: this.scenarioData.itemId,
+          itemDescription: this.scenarioData.itemDescription,
+          scenario: this.scenarioData.scenario,
+          siteId: this.scenarioData.siteId,
+          cost: this.scenarioData.cost,
+          highPrice: this.scenarioData.highPrice,
+          optimumPrice: this.scenarioData.optimumPrice,
+          maximumPrice: this.scenarioData.maximumPrice,
+          purchaserPrice: this.scenarioData.purchaserPrice,
+          spenderPrice: this.scenarioData.spenderPrice,
+          resellerPrice: this.scenarioData.resellerPrice,
+          bottomPrice: this.scenarioData.bottomPrice,
+          volumePrice: this.scenarioData.volumePrice,
+          allowedOffersCount: this.scenarioData.allowedOffersCount,
+          sellingMode: this.scenarioData.sellingMode,
+          userId: this.userData.userId,
+          buyerType: this.userData.buyerType
         }
       }).then(function (response) {
         _this.loader = 1;
@@ -7340,25 +7387,35 @@ __webpack_require__.r(__webpack_exports__);
       this.declined = 1;
     },
     getScenarioData: function getScenarioData(scenario) {
-      var _this3 = this;
-
       this.showForm = 0;
-      axios.get('/haggle-scenario?scenario=' + scenario).then(function (response) {
-        _this3.scenarioData = response.data;
-      });
+
+      switch (scenario) {
+        case 'Newbie':
+          this.scenarioData = newbieData;
+          this.userData = newbie;
+          this.declined = 1;
+          break;
+
+        case 'Purchaser':
+          this.scenarioData = purchaserData;
+          this.userData = purchaser;
+          this.declined = 1;
+          break;
+
+        case 'Spender':
+          this.scenarioData = spenderData;
+          this.userData = spender;
+          this.declined = 1;
+          break;
+
+        case 'Reseller':
+          this.scenarioData = resellerData;
+          this.userData = reseller;
+          this.declined = 1;
+          break;
+      }
+
       axios.get('/haggle-clear-offers').then(function (response) {});
-    },
-    setCost: function setCost(cost) {
-      this.cost = cost;
-    },
-    setHighPrice: function setHighPrice(highPrice) {
-      this.highPrice = highPrice;
-    },
-    setOptimumPrice: function setOptimumPrice(optimumPrice) {
-      this.optimumPrice = optimumPrice;
-    },
-    setBottomPrice: function setBottomPrice(bottomPrice) {
-      this.bottomPrice = bottomPrice;
     },
     showMetaHistory: function showMetaHistory() {
       this.showFullHistory = 1;
@@ -48723,9 +48780,9 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row mt-20" }, [
       _c("ul", [
-        _c("li", [_vm._v("User Id: " + _vm._s(_vm.scenarioData.userId) + " ")]),
+        _c("li", [_vm._v("User Id: " + _vm._s(_vm.userData.userId) + " ")]),
         _vm._v(" "),
-        _c("li", [_vm._v("Username: " + _vm._s(_vm.scenarioData.userName))]),
+        _c("li", [_vm._v("Username: " + _vm._s(_vm.userData.userName))]),
         _vm._v(" "),
         _c("li", [_vm._v("Item Id:  " + _vm._s(_vm.scenarioData.itemId))]),
         _vm._v(" "),
@@ -48872,7 +48929,7 @@ var render = function() {
                 _vm.declined === 1
                   ? _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "left mt-20" }, [
-                        _vm._v("\n              Make Offer:\n            "),
+                        _vm._v("\n\n              Make Offer:\n\n            "),
                         _c("input", {
                           directives: [
                             {
@@ -48912,7 +48969,9 @@ var render = function() {
                 _vm._v(" "),
                 _vm.offerError === 1
                   ? _c("div", { staticClass: "red-text" }, [
-                      _vm._v(_vm._s(_vm.errorMessage))
+                      _vm._v(
+                        "\n\n        " + _vm._s(_vm.errorMessage) + "\n\n    "
+                      )
                     ])
                   : _vm._e(),
                 _vm._v(" "),
@@ -48922,9 +48981,9 @@ var render = function() {
                   ? _c("div", { staticClass: "row" }, [
                       _c("div", [
                         _vm._v(
-                          "\n\n       Our final offer is $" +
+                          "\n\n                Our final offer is $" +
                             _vm._s(_vm.counterOffer) +
-                            "\n\n            "
+                            "\n\n                    "
                         ),
                         _c("div", { staticClass: "mt-20" }, [
                           _c(
@@ -49073,7 +49132,7 @@ var render = function() {
             _c("li", [_vm._v("site id:  " + _vm._s(_vm.scenarioData.siteId))]),
             _vm._v(" "),
             _c("li", [
-              _vm._v("buyer type:  " + _vm._s(_vm.scenarioData.buyerType))
+              _vm._v("buyer type:  " + _vm._s(_vm.userData.buyerType))
             ]),
             _vm._v(" "),
             _c("li", [_vm._v("item cost:  $" + _vm._s(_vm.scenarioData.cost))]),
@@ -49128,29 +49187,11 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("li", [
-              _vm._v("sales Target: " + _vm._s(_vm.scenarioData.salesTarget))
+              _vm._v("selling mode: " + _vm._s(_vm.scenarioData.sellingMode))
             ]),
             _vm._v(" "),
             _c("li", [
-              _vm._v("current sales:  " + _vm._s(_vm.scenarioData.currentSales))
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _vm._v(
-                "Customer Sales History Count:  " +
-                  _vm._s(_vm.scenarioData.customerSalesHistoryCount)
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _vm._v(
-                "Customer Sales History Value:  " +
-                  _vm._s(_vm.scenarioData.customerSalesHistoryValue)
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _vm._v("description:  " + _vm._s(_vm.scenarioData.description))
+              _vm._v("description:  " + _vm._s(_vm.userData.description))
             ])
           ])
         ])
@@ -66341,6 +66382,190 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserGrid_vue_vue_type_template_id_01423ac8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/scenarios/NewbieData.js":
+/*!**********************************************!*\
+  !*** ./resources/js/scenarios/NewbieData.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var newbieData = {
+  itemId: 2143,
+  itemDescription: 'AMETHYST RING',
+  scenario: 'newbie',
+  siteId: 1,
+  cost: 25,
+  highPrice: 101,
+  optimumPrice: 49,
+  maximumPrice: 60,
+  purchaserPrice: 45,
+  spenderPrice: 43,
+  resellerPrice: 43,
+  bottomPrice: 37,
+  volumePrice: 41,
+  allowedOffersCount: 10,
+  sellingMode: 'margin'
+};
+module.exports = newbieData;
+
+/***/ }),
+
+/***/ "./resources/js/scenarios/PurchaserData.js":
+/*!*************************************************!*\
+  !*** ./resources/js/scenarios/PurchaserData.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var purchaserData = {
+  itemId: 3178,
+  itemDescription: 'LG EARRINGS',
+  scenario: 'purchaser',
+  siteId: 1,
+  cost: 350,
+  highPrice: 975,
+  optimumPrice: 701,
+  maximumPrice: 757,
+  purchaserPrice: 554,
+  spenderPrice: 475,
+  resellerPrice: 423,
+  bottomPrice: 390,
+  volumePrice: 405,
+  allowedOffersCount: 10,
+  sellingMode: 'margin'
+};
+module.exports = purchaserData;
+
+/***/ }),
+
+/***/ "./resources/js/scenarios/ResellerData.js":
+/*!************************************************!*\
+  !*** ./resources/js/scenarios/ResellerData.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var resellerData = {
+  itemId: 5498,
+  itemDescription: 'LG 1 Carat Solitaire',
+  scenario: 'reseller',
+  siteId: 1,
+  cost: 1000,
+  highPrice: 2803,
+  optimumPrice: 1971,
+  maximumPrice: 2325,
+  purchaserPrice: 1927,
+  spenderPrice: 1821,
+  resellerPrice: 1769,
+  bottomPrice: 1350,
+  volumePrice: 1483,
+  allowedOffersCount: 10,
+  sellingMode: 'volume'
+};
+module.exports = resellerData;
+
+/***/ }),
+
+/***/ "./resources/js/scenarios/SpenderData.js":
+/*!***********************************************!*\
+  !*** ./resources/js/scenarios/SpenderData.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var spenderData = {
+  itemId: 4471,
+  itemDescription: 'LG .50 Carat Solitaire Ring',
+  scenario: 'spender',
+  siteId: 1,
+  cost: 430,
+  highPrice: 1229,
+  optimumPrice: 861,
+  maximumPrice: 943,
+  purchaserPrice: 761,
+  spenderPrice: 661,
+  resellerPrice: 588,
+  bottomPrice: 487,
+  volumePrice: 521,
+  allowedOffersCount: 10,
+  sellingMode: 'margin'
+};
+module.exports = spenderData;
+
+/***/ }),
+
+/***/ "./resources/js/users/Newbie.js":
+/*!**************************************!*\
+  !*** ./resources/js/users/Newbie.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var newbie = {
+  userId: 123,
+  userName: 'Grimby',
+  siteId: 1,
+  buyerType: 'Newbie',
+  description: 'Our newbie is less than 30 days old. They are offering on a low cost item to try the system.'
+};
+module.exports = newbie;
+
+/***/ }),
+
+/***/ "./resources/js/users/Purchaser.js":
+/*!*****************************************!*\
+  !*** ./resources/js/users/Purchaser.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var purchaser = {
+  userId: 111,
+  userName: 'Varen',
+  siteId: 1,
+  buyerType: 'Purchaser',
+  description: 'Our purchaser has purchased from us before. They are offering on a mid cost item to add to their collection.'
+};
+module.exports = purchaser;
+
+/***/ }),
+
+/***/ "./resources/js/users/Reseller.js":
+/*!****************************************!*\
+  !*** ./resources/js/users/Reseller.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var reseller = {
+  userId: 143,
+  userName: 'Celeste',
+  siteId: 2,
+  buyerType: 'Reseller',
+  description: 'Our reseller buys a lot. They are offering on a high cost item to add to resell.'
+};
+module.exports = reseller;
+
+/***/ }),
+
+/***/ "./resources/js/users/Spender.js":
+/*!***************************************!*\
+  !*** ./resources/js/users/Spender.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var spender = {
+  userId: 133,
+  userName: 'Whale',
+  siteId: 1,
+  buyerType: 'Spender',
+  description: 'Our Spender likes to buy on our site. They are offering on a mid cost item to add to their collection.'
+};
+module.exports = spender;
 
 /***/ }),
 
