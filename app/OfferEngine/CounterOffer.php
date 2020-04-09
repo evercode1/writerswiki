@@ -2,12 +2,20 @@
 
 namespace App\OfferEngine;
 
+use App\OfferEngine\OfferTraits\CountPreviousOffersTrait;
+use App\OfferEngine\OfferTraits\LimitCounterOfferTrait;
+use App\OfferEngine\OfferTraits\OfferAcceptableTrait;
+use App\OfferEngine\OfferTraits\OfferStrategiesTrait;
 use App\OfferEngine\OfferTraits\SetPropertiesTrait;
 
 
 class CounterOffer
 {
-    use SetPropertiesTrait;
+    use SetPropertiesTrait,
+        OfferAcceptableTrait,
+        CountPreviousOffersTrait,
+        OfferStrategiesTrait,
+        LimitCounterOfferTrait;
 
     public $config;
 
@@ -17,6 +25,7 @@ class CounterOffer
 
         $this->config = $config;
         $this->setProperties($this->config);
+        $this->setAdditionalProperties();
 
 
     }
@@ -25,29 +34,23 @@ class CounterOffer
     {
 
 
-        $offerQuality = $this->config['offerQuality'];
+        if($this->previousCounterOffer){
 
-        $negotiator = $this->invokeClassWithNameFrom($offerQuality);
+            if( ! $this->offerWithinOfferCountLimit ){
 
-        return  $negotiator->counterOffer();
+                return $this->maximumStrategy();
 
+            }
 
-    }
+            return $this->previousCounterOfferStrategy();
 
+        }
 
-    /**
-     * @param $offerQuality
-     * @return mixed
-     */
-    public function invokeClassWithNameFrom($offerQuality)
-    {
-        $className = FormatClassString::formatClassName($offerQuality);
+        return $this->defaultOfferStrategy();
 
-        $negotiator = new $className($this->config);
-
-        return $negotiator;
 
     }
+
 
 
 }

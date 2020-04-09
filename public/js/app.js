@@ -7376,7 +7376,7 @@ var spender = __webpack_require__(/*! ../users/Spender */ "./resources/js/users/
         params: {
           counterOffer: this.counterOffer,
           itemId: this.scenarioData.itemId,
-          userId: this.scenarioData.userId,
+          userId: this.userData.userId,
           siteId: this.scenarioData.siteId
         }
       }).then(function (response) {

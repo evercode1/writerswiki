@@ -7,6 +7,25 @@ trait OfferStrategiesTrait
 
     public $range = 5;
 
+
+
+    public function previousCounterOfferStrategy()
+    {
+
+        if ($this->sellingMode == 'volume'){
+
+            return $this->strategy('volume');
+
+        }
+
+        $priceType = strtolower($this->buyerType);
+
+
+            return $this->strategy($priceType);
+
+
+    }
+
     public function defaultOfferStrategy()
     {
 
@@ -25,101 +44,6 @@ trait OfferStrategiesTrait
         $counterOffer = $counterOffer > $this->optimumPrice ?
             $counterOffer :  $this->floor('optimumPrice');
 
-        $finalOffer = 0;
-
-        return compact('counterOffer', 'finalOffer');
-
-    }
-
-    public function previousDefaultStrategy()
-    {
-
-        $counterOffer = $this->setCounterOffer();
-
-
-        if ($this->buyerType == 'Reseller'){
-
-            $counterOffer = $counterOffer > $this->resellerPrice ?
-                $counterOffer :  $this->floor('resellerPrice');
-
-            $finalOffer = $counterOffer < $this->resellerPrice ? 1 : 0;
-
-            return compact('counterOffer', 'finalOffer');
-
-        }
-
-        if ($this->buyerType == 'Purchaser'){
-
-            $counterOffer = $counterOffer > $this->purchaserPrice ?
-                $counterOffer :  $this->floor('purchaserPrice');
-
-            $finalOffer = $counterOffer < $this->purchaserPrice ? 1 : 0;
-
-            return compact('counterOffer', 'finalOffer');
-
-        }
-
-        $counterOffer = $counterOffer > $this->optimumPrice ?
-            $counterOffer :  $this->floor('optimumPrice');
-
-        $finalOffer = $counterOffer < $this->optimumPrice ? 1 : 0;
-
-
-        return compact('counterOffer', 'finalOffer');
-
-    }
-
-    public function previousCounterOfferStrategyAdvanced()
-    {
-
-        if ($this->sellingMode == 'volume'){
-
-            return$this->volumeStrategy();
-
-        }
-
-        if ($this->buyerType == 'Reseller'){
-
-            return  $this->resellerStrategy();
-
-        }
-
-        if ($this->buyerType == 'Spender'){
-
-
-            return $this->spenderStrategy();
-
-        }
-
-
-        if ($this->buyerType == 'Purchaser'){
-
-            return  $this->purchaserStrategy();
-
-        }
-
-        return $this->newbieOfferStrategy();
-
-    }
-
-    public function optimumDefaultStrategy()
-    {
-
-        if ($this->offerAcceptable($this->offer, $this->optimumPrice)){
-
-            $counterOffer = $this->offer;
-
-            $finalOffer = 1;
-
-            return compact('counterOffer', 'finalOffer');
-
-        }
-
-        $counterOffer = $this->highPrice - $this->randomDecrement;
-
-        $counterOffer = $counterOffer > $this->optimumPrice ?
-            $counterOffer :  $this->floor('optimumPrice');
-
         $finalOffer = $counterOffer < $this->optimumPrice ? 1 : 0;
 
         return compact('counterOffer', 'finalOffer');
@@ -127,112 +51,18 @@ trait OfferStrategiesTrait
     }
 
 
-    public function resellerStrategy()
+
+    public function strategy($priceType)
     {
 
-        if ($this->offerAcceptable($this->offer, $this->resellerPrice)){
+        $priceName = strtolower($priceType) . 'Price';
 
-            $counterOffer = $this->offer;
+        $priceName = strtolower($priceType) === 'newbie' ? 'optimumPrice' : $priceName;
 
-            $finalOffer = 1;
-
-            return compact('counterOffer', 'finalOffer');
-
-        }
-
-        $counterOffer = $this->setCounterOffer();
+        $price = $this->$priceName;
 
 
-        $counterOffer = $counterOffer > $this->resellerPrice ?
-            $counterOffer :  $this->floor('resellerPrice');
-
-        $finalOffer = $counterOffer < $this->resellerPrice ? 1 : 0;
-
-        return compact('counterOffer', 'finalOffer');
-
-    }
-
-
-    public function volumeStrategy()
-    {
-
-        if ($this->offerAcceptable($this->offer, $this->volumePrice)){
-
-            $counterOffer = $this->offer;
-
-            $finalOffer = 1;
-
-            return compact('counterOffer', 'finalOffer');
-
-        }
-
-        $counterOffer = $this->setCounterOffer();
-
-
-
-        $counterOffer = $counterOffer > $this->volumePrice ?
-            $counterOffer :  $this->floor('volumePrice');
-
-        $finalOffer = $counterOffer < $this->volumePrice ? 1 : 0;
-
-        return compact('counterOffer', 'finalOffer');
-
-    }
-
-    public function purchaserStrategy()
-    {
-
-        if ($this->offerAcceptable($this->offer, $this->purchaserPrice)){
-
-            $counterOffer = $this->offer;
-
-            $finalOffer = 1;
-
-            return compact('counterOffer', 'finalOffer');
-
-        }
-
-
-        $counterOffer = $this->setCounterOffer();
-
-        $counterOffer = $counterOffer > $this->purchaserPrice ?
-            $counterOffer :  $this->floor('purchaserPrice');
-
-        $finalOffer = $counterOffer < $this->purchaserPrice ? 1 : 0;
-
-        return compact('counterOffer', 'finalOffer');
-    }
-
-    public function spenderStrategy()
-    {
-
-        if ($this->offerAcceptable($this->offer, $this->spenderPrice)){
-
-            $counterOffer = $this->offer;
-
-            $finalOffer = 1;
-
-            return compact('counterOffer', 'finalOffer');
-
-        }
-
-
-        $counterOffer = $this->setCounterOffer();
-
-        $counterOffer = $counterOffer > $this->spenderPrice ?
-            $counterOffer :  $this->floor('spenderPrice');
-
-        $finalOffer = $counterOffer < $this->spenderPrice ? 1 : 0;
-
-        return compact('counterOffer', 'finalOffer');
-    }
-
-
-
-    public function newbieOfferStrategy()
-    {
-
-        if ($this->offerAcceptable($this->offer, $this->optimumPrice)){
+        if ($this->offerAcceptable($this->offer, $price)){
 
             $counterOffer = $this->offer;
 
@@ -246,16 +76,19 @@ trait OfferStrategiesTrait
         $counterOffer = $this->setCounterOffer();
 
 
-        $counterOffer = $counterOffer > $this->optimumPrice ?
-            $counterOffer :  $this->floor('optimumPrice');
+        $counterOffer = $counterOffer > $price ?
+            $counterOffer :  $this->floor($priceName);
 
-        $finalOffer = $counterOffer < $this->optimumPrice ? 1 : 0;
+        $finalOffer = $counterOffer < $price ? 1 : 0;
 
         return compact('counterOffer', 'finalOffer');
 
+
+
     }
 
-    public function maximumStrategyAdvanced()
+
+    public function maximumStrategy()
     {
 
         if ($this->offerAcceptable($this->offer, $this->optimumPrice)){

@@ -69,7 +69,6 @@ class HaggleController extends Controller
         $this->isCounterOfferFinal = $this->negotiationResult['finalOffer'];
 
 
-
     }
 
     public function checkForPreviousFinalOffer()

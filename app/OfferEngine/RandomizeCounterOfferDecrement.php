@@ -27,7 +27,7 @@ class RandomizeCounterOfferDecrement
     public function random()
     {
 
-        if($this->offer < 40){
+        if($this->previousOffer < 10 && $this->offer < 20){
 
             return rand(1, $this->range);
         }

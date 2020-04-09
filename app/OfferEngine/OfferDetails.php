@@ -41,8 +41,6 @@ class OfferDetails
     }
 
 
-
-
     public function getOfferQuality()
     {
 
@@ -73,7 +71,6 @@ class OfferDetails
             }
 
         }
-
 
     }
 

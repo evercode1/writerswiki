@@ -388,7 +388,7 @@
 
 
                 axios.get('/haggle-accept-offer',
-                    { params: { counterOffer: this.counterOffer, itemId: this.scenarioData.itemId, userId: this.scenarioData.userId, siteId: this.scenarioData.siteId }})
+                    { params: { counterOffer: this.counterOffer, itemId: this.scenarioData.itemId, userId: this.userData.userId, siteId: this.scenarioData.siteId }})
                     .then( (response) => {
 
                     this.payMessage = 'Congratulations, you won for '
